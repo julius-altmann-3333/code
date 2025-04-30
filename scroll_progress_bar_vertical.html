@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vertical Scroll Progress</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #vertical-progress {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 6px;
+      height: 0%;
+      background: linear-gradient(to bottom, #00ccff, #ff6600);
+      transition: height 0.1s ease-in-out;
+      z-index: 1000;
+    }
+
+    .content {
+      padding: 20px;
+      height: 3000px; /* Add enough height to make scrolling necessary */
+    }
+  </style>
+</head>
+<body>
+  <div id="vertical-progress"></div>
+
+  <div class="content">
+    <h1>Vertical Scroll Progress</h1>
+    <p>Scroll down to watch the bar on the right grow from top to bottom.</p>
+  </div>
+
+  <script>
+    window.addEventListener("scroll", function () {
+      const scrollY = window.scrollY;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollY / totalHeight) * 100;
+      document.getElementById("vertical-progress").style.height = progress + "%";
+    });
+  </script>
+</body>
+</html>

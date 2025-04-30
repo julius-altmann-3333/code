@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiple Parallax Sections</title>
+  <link rel="stylesheet" href="style.css">
+<style>
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* Regular Section */
+.section {
+  padding: 50px;
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.regular {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Parallax Section Styles */
+.parallax {
+  height: 100vh;  /* Full height of the viewport */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* First Parallax Background */
+#parallax1 {
+  background-image: url('https://picsum.photos/1920/1080?random=1');
+}
+
+/* Second Parallax Background */
+#parallax2 {
+  background-image: url('https://picsum.photos/1920/1080?random=2');
+}
+
+/* Section Spacing */
+.regular {
+  background-color: #ffffff;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+  <!-- Section 1: Regular Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>Welcome to Our Website</h1>
+      <p>This is the normal section with regular content.</p>
+    </div>
+  </div>
+
+  <!-- Section 2: Parallax Background -->
+  <div class="parallax" id="parallax1"></div>
+
+  <!-- Section 3: Regular Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>More Information</h1>
+      <p>This section also has regular content but with different background.</p>
+    </div>
+  </div>
+
+  <!-- Section 4: Parallax Background -->
+  <div class="parallax" id="parallax2"></div>
+
+  <!-- Section 5: Final Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>Thank You for Visiting</h1>
+      <p>We hope you enjoy our parallax effect!</p>
+    </div>
+  </div>
+</body>
+</html>

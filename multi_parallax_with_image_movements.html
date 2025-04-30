@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiple Parallax Sections</title>
+  <style>
+    /* General Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    /* Regular Section */
+    .section {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .content {
+      max-width: 600px;  /* Smaller textbox width */
+      margin: 0 auto;
+    }
+
+    .regular {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Parallax Section Styles */
+    .parallax {
+      height: 50vh;  /* Full height of the viewport */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-position 0.2s ease-out;
+    }
+
+    /* First Parallax Background */
+    #parallax1 {
+      background-image: url('https://picsum.photos/1920/1080?random=1');
+    }
+
+    /* Second Parallax Background */
+    #parallax2 {
+      background-image: url('https://picsum.photos/1920/1080?random=2');
+    }
+
+    /* Third Parallax Background */
+    #parallax3 {
+      background-image: url('https://picsum.photos/1920/1080?random=3');
+    }
+
+    /* Fourth Parallax Background */
+    #parallax4 {
+      background-image: url('https://picsum.photos/1920/1080?random=4');
+    }
+
+    /* Fifth Parallax Background */
+    #parallax5 {
+      background-image: url('https://picsum.photos/1920/1080?random=5');
+    }
+
+    /* Section Spacing */
+    .regular {
+      background-color: #ffffff;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Section 1: Regular Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>Welcome to Our Website</h1>
+      <p>This is the normal section with regular content.</p>
+    </div>
+  </div>
+
+  <!-- Section 2: Parallax Background -->
+  <div class="parallax" id="parallax1"></div>
+
+  <!-- Section 3: Regular Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>More Information</h1>
+      <p>This section also has regular content but with a different background.</p>
+    </div>
+  </div>
+
+  <section style="height: 500px;"></section>
+
+  <!-- Section 4: Parallax Background -->
+  <div class="parallax" id="parallax2"></div>
+
+  <!-- Section 5: Regular Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>Explore Our Features</h1>
+      <p>We have many exciting features that you will enjoy using.</p>
+    </div>
+  </div>
+
+  <!-- Section 6: Parallax Background -->
+  <div class="parallax" id="parallax3"></div>
+
+  <!-- Section 7: Regular Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>Contact Us</h1>
+      <p>Feel free to reach out for more information or any questions.</p>
+    </div>
+  </div>
+
+  <!-- Section 8: Parallax Background -->
+  <div class="parallax" id="parallax4"></div>
+
+  <!-- Section 9: Final Content -->
+  <div class="section regular">
+    <div class="content">
+      <h1>Thank You for Visiting</h1>
+      <p>We hope you enjoy our parallax effect!</p>
+    </div>
+  </div>
+
+  <!-- Section 10: Parallax Background -->
+  <div class="parallax" id="parallax5"></div>
+
+  <script>
+    // JavaScript to implement parallax effect
+    window.addEventListener('scroll', function () {
+      const parallaxElements = document.querySelectorAll('.parallax');
+      const scrollPosition = window.scrollY;
+
+      // Adjust the background position of the parallax images based on scroll position
+      parallaxElements.forEach(function(parallaxElement) {
+        const speed = 0.4;  // Slower movement factor
+        parallaxElement.style.backgroundPosition = 'center ' + (scrollPosition * speed) + 'px';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        #draggable-elements {
+            width: 200px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .draggable-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+        #drop-container {
+            width: 60%;
+            min-height: 300px;
+            border: 2px dashed #ccc;
+            background-color: #f9f9f9;
+            position: relative;
+            padding: 20px;
+        }
+        .dragged-element {
+            position: absolute;
+            padding: 10px;
+            background-color: #ddd;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div id="draggable-elements">
+        <div class="draggable-item" draggable="true" data-type="text">Text</div>
+        <div class="draggable-item" draggable="true" data-type="image">Image</div>
+        <div class="draggable-item" draggable="true" data-type="button">Button</div>
+        <div class="draggable-item" draggable="true" data-type="div">Div</div>
+    </div>
+
+    <div id="drop-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <p>Drag and drop elements here</p>
+    </div>
+
+    <script>
+        // Allow drop functionality
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        // Handle the drop event
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("type");
+            const dropContainer = document.getElementById("drop-container");
+
+            const x = event.clientX - dropContainer.offsetLeft;
+            const y = event.clientY - dropContainer.offsetTop;
+
+            let element;
+
+            // Create the dragged element based on the type
+            if (data === "text") {
+                element = document.createElement("p");
+                element.innerText = "This is a new text element";
+            } else if (data === "image") {
+                element = document.createElement("img");
+                element.src = "https://via.placeholder.com/150";
+                element.alt = "Placeholder Image";
+                element.style.width = "150px";
+            } else if (data === "button") {
+                element = document.createElement("button");
+                element.innerText = "New Button";
+            } else if (data === "div") {
+                element = document.createElement("div");
+                element.innerText = "This is a new div element";
+                element.style.padding = "20px";
+                element.style.backgroundColor = "#ddd";
+            }
+
+            // Add the dragged element to the drop container
+            element.classList.add("dragged-element");
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+
+            dropContainer.appendChild(element);
+        }
+
+        // Set the data when dragging
+        document.querySelectorAll('.draggable-item').forEach(item => {
+            item.addEventListener('dragstart', function(event) {
+                event.dataTransfer.setData("type", event.target.getAttribute("data-type"));
+            });
+        });
+    </script>
+</body>
+</html>

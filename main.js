@@ -1,43 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Get references to the select elements and other necessary elements
-    const countrySelect = document.getElementById("countrySelect");
-    const citySelect = document.getElementById("citySelect");
+    const manufacturerSelect = document.getElementById("manufacturerSelect");
+    const modelSelect = document.getElementById("modelSelect");
     const searchBtn = document.getElementById("searchBtn");
     const resetBtn = document.getElementById("reset");
     const resultContainer = document.getElementById("resultContainer");
     const resultItems = document.getElementById("resultItems");
 
-    // Function to update city options based on selected country
-    function updateCities(country) {
+    // Function to update city options based on selected manufacturer
+    function updateModels(manufacturer) {
         // Clear previous city options
-        citySelect.innerHTML = '<option value="">Select City</option>';
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
         
-        if (country) {
+        if (manufacturer) {
             // Enable city selector and populate cities
-            citySelect.disabled = false;
-            const cities = cityData[country] || [];
-            cities.forEach(city => {
+            modelSelect.disabled = false;
+            const models = modelsData[manufacturer] || [];
+            models.forEach(model => {
                 const option = document.createElement("option");
-                option.value = city;
-                option.textContent = city;
-                citySelect.appendChild(option);
+                option.value = model;
+                option.textContent = model;
+                modelSelect.appendChild(option);
             });
         } else {
-            citySelect.disabled = true;
+            modelSelect.disabled = true;
         }
     }
 
     // Event listener for country selection
-    countrySelect.addEventListener("change", () => {
-        const selectedCountry = countrySelect.value;
-        updateCities(selectedCountry);
+    manufacturerSelect.addEventListener("change", () => {
+        const selectedManufacturer = manufacturerSelect.value;
+        updateModels(selectedManufacturer);
     });
 
     // Event listener for the reset button
     resetBtn.addEventListener("click", () => {
         // Reset all select menus
         document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
-        citySelect.disabled = true;
+        modelSelect.disabled = true;
         resultItems.innerHTML = ''; // Clear previous results
     });
 

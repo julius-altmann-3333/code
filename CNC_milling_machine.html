@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNC Milling Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .controls, .inputs { margin: 20px; }
+        canvas { border: 1px solid black; background: #eee; }
+    </style>
+</head>
+<body>
+    <h2>CNC Milling Machine Control</h2>
+    
+    <div class="inputs">
+        <label>X: <input type="number" id="xSize" value="50"></label>
+        <label>Y: <input type="number" id="ySize" value="50"></label>
+        <label>Z: <input type="number" id="zSize" value="50"></label>
+        <button onclick="generateObject()">Develop</button>
+    </div>
+    
+    <canvas id="canvas" width="400" height="400"></canvas>
+    
+    <div class="controls">
+        <button onclick="move('left')">⬅</button>
+        <button onclick="move('right')">➡</button>
+        <button onclick="move('up')">⬆</button>
+        <button onclick="move('down')">⬇</button>
+        <button onclick="move('in')">➕ (Z+)</button>
+        <button onclick="move('out')">➖ (Z-)</button>
+    </div>
+    
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let x = 150, y = 150, z = 50;
+        let sizeX = 50, sizeY = 50;
+        
+        function drawCube() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "gray";
+            ctx.fillRect(x, y, sizeX, sizeY);
+        }
+        
+        function generateObject() {
+            sizeX = parseInt(document.getElementById("xSize").value);
+            sizeY = parseInt(document.getElementById("ySize").value);
+            z = parseInt(document.getElementById("zSize").value);
+            drawCube();
+        }
+        
+        function move(direction) {
+            if (direction === 'left') x -= 10;
+            if (direction === 'right') x += 10;
+            if (direction === 'up') y -= 10;
+            if (direction === 'down') y += 10;
+            drawCube();
+        }
+        
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowLeft") move("left");
+            if (event.key === "ArrowRight") move("right");
+            if (event.key === "ArrowUp") move("up");
+            if (event.key === "ArrowDown") move("down");
+        });
+        
+        drawCube();
+    </script>
+</body>
+</html>

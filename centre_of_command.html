@@ -1,134 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Circular Image Slider</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <title>Fullscreen Scrollable Expandable Windows</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
 
-        body {
-            background: url('https://source.unsplash.com/1600x900/?universe,space') no-repeat center center/cover;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            perspective: 1000px;
-        }
+    body {
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      display: flex;
+    }
 
-        .slider-container {
-            width: 100vw;
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
+    a {
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+    }
 
-        .slider {
-            display: flex;
-            transform: translateX(0);
-            transition: transform 0.8s ease-in-out;
-        }
+    .arrows {
+      background-color: transparent;
+      width: 5vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .slide {
-            width: 70vw;
-            height: 50vh;
-            border: 3px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            background: rgba(255, 255, 120, 0.1);
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            text-align: center;
-            margin: 10px;
-            transform: rotateY(0deg) translateZ(0);
-        }
+    .window_wrapper {
+      width: 90vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3rem;
-            color: black;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1 px solid black;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 50%;
-            transition: 0.3s ease;
-        }
+    #left, #left_page_2, #left_page_3, #left_page_4 {
+      margin-left: 0;
+    }
 
-        .arrow:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
+    #right, #right_page_2, #right_page_3, #right_page_4 {
+      margin-right: 0;
+    }
 
-        .left {
-            left: 10px;
-        }
+    .page {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-        .right {
-            right: 10px;
-        }
-    </style>
+    .window {
+      width: 50vw;
+      height: 50vh;
+      background-color: lightblue;
+      border-radius: 1rem;
+      position: relative;
+      transition: all 0.5s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+
+    .window.expanded {
+      width: 90vw !important;
+      height: 100vh !important;
+      border-radius: 0;
+      box-shadow: none;
+      z-index: 10;
+    }
+
+    button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      z-index: 20;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .content_box {
+      width: 400px;
+      height: 2000px;
+      border: 1px solid black;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="slider-container">
-        <button class="arrow left">&#10094;</button>
-        <div class="slider">
-            <!-- Generating 33 divs -->
-            <script>
-                for (let i = 1; i <= 33; i++) {
-                    document.write(`<div class="slide">Box ${i}</div>`);
-                }
-            </script>
+  <div class="page" id="page_1">
+    <a href="#">
+      <div class="arrows" id="left">
+        <p>←</p>
+      </div>
+    </a>
+   
+    <div class="window_wrapper">
+      <div class="window" id="window1">
+        <button onclick="toggleExpand('window1', this)">Expand</button>
+        <div class="content_box">
+
         </div>
-        <button class="arrow right">&#10095;</button>
+      </div>
     </div>
+    <a href="#page_2">
+      <div class="arrows" id="right">
+        <p>→</p>
+      </div>
+  </a>
+  </div>
 
-    <script>
-        let index = 0;
-        const slider = document.querySelector(".slider");
-        const slides = document.querySelectorAll(".slide");
-        const totalSlides = slides.length;
-        const slideWidth = slides[0].offsetWidth + 20; // including margin
+  <div class="page" id="page_2">
+    <a href="#page_1">
+      <div class="arrows" id="left_page_2">
+        <p>←</p>
+      </div>
+    </a>
+   
+    <div class="window_wrapper">
+      <div class="window" id="window2">
+        <button onclick="toggleExpand('window2', this)">Expand</button>
+      </div>
+    </div>
+    <a href="#page_3">
+      <div class="arrows" id="right_page_2">
+        <p>→</p>
+      </div>
+  </a>
+  </div>
 
-        document.querySelector(".right").addEventListener("click", () => {
-            if (index < totalSlides - 1) {
-                index++;
-            } else {
-                index = 0;
-            }
-            updateSlider();
-        });
+  <div class="page" id="page_3">
+    <a href="#page_2">
+      <div class="arrows" id="left_page_3">
+        <p>←</p>
+      </div>
+    </a>
+   
+    <div class="window_wrapper">
+      <div class="window" id="window2">
+        <button onclick="toggleExpand('window2', this)">Expand</button>
+      </div>
+    </div>
+    <a href="#page_4">
+      <div class="arrows" id="right_page_3">
+        <p>→</p>
+      </div>
+  </a>
+  </div>
 
-        document.querySelector(".left").addEventListener("click", () => {
-            if (index > 0) {
-                index--;
-            } else {
-                index = totalSlides - 1;
-            }
-            updateSlider();
-        });
+  <div class="page" id="page_4">
+    <a href="#page_3">
+      <div class="arrows" id="left_page_4">
+        <p>←</p>
+      </div>
+    </a>
+   
+    <div class="window_wrapper">
+      <div class="window" id="window2">
+        <button onclick="toggleExpand('window2', this)">Expand</button>
+      </div>
+    </div>
+    <a href="#page_5">
+      <div class="arrows" id="right_page_4">
+        <p>→</p>
+      </div>
+  </a>
+  </div>
 
-        function updateSlider() {
-            const offset = -index * slideWidth;
-            slider.style.transform = `translateX(${offset}px) rotateY(${index * 5}deg)`;
-        }
-    </script>
+  <script>
+    function toggleExpand(id, btn) {
+      const target = document.getElementById(id);
+      const isExpanded = target.classList.contains('expanded');
+
+      // Collapse all windows first
+      document.querySelectorAll('.window').forEach(win => {
+        win.classList.remove('expanded');
+        const b = win.querySelector('button');
+        if (b) b.textContent = 'Expand';
+      });
+
+      // If it wasn't already expanded, expand the clicked one
+      if (!isExpanded) {
+        target.classList.add('expanded');
+        btn.textContent = 'Close';
+      }
+    }
+  </script>
 
 </body>
 </html>

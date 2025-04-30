@@ -1,773 +1,421 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Europe Selectors</title>
-    <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/yourusername/your-repo/main/styles.css">
-    <script type="text/javascript"></script>
+    <title>Car Selector</title>
+    <link rel="stylesheet" type="text/css" href="#">
+    <script src="main.js"></script>
+    <script src="modelsData.js"></script>
+    <script src="selectors.js"></script>
 <style>
-
-/* General Container */
-#container_nested_tabs {
-    padding: 5px;
+.filter {
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  box-sizing: border-box;
+  float: left;
 }
 
-/* Nested Tabs */
-.nested-tabs .tabs {
-    margin-top: 20px;
-    height: auto;
-    border-bottom: 1px solid black;
-    display: flex;
-    flex-wrap: wrap;
+.filter label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
-.nested-tabs .tab {
-    background-color: #e9e9e9;
-    height: auto;
-    padding: 10px;
-    text-align: center;
+.filter select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20"%3E%3Cpath fill="%23666" d="M5.516 7.548L10 12.032l4.484-4.484L16 8.064 10 14.064 4 8.064z"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
 }
 
-.nested-tabs .tab.active {
-    background-color: #fff;
-    height: auto;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    color: black;
-}
-
-.nested-tabs .tab-content {
-    border: 2px solid black;
-    padding: 20px;
-    height: auto;
-    margin-top: 10px;
-}
-
-/* Property Cards */
-.container_property_cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-}
-
-.card {
-    width: 360px;
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid black;
-}
-
-.card-content {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-}
-
-.card-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0; /* Remove or reduce the margin to eliminate space above the title */
-    padding-top: 5px; /* Optional: add some padding if you need small space at the top */
-}
-
-.card-subheading {
-    font-size: 14px;
-    color: #555;
-}
-
-/* Button Styles */
-.explore-more {
-    display: block;
-    margin-top: 20px;
-    margin-left: auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.explore-more:hover {
-    background-color: #0056b3;
-}
-
-/* Sliders */
-.sliders-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-/* Slider Container */
-.image-slider-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    overflow: hidden;
-    border: 3px solid #ddd;
-    border-radius: 8px;
-    background-color: #f8f8f8;
-    margin-bottom: 20px; /* Add some spacing */
-}
-
-/* Main Slider */
-.slider-main {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 300%; /* Makes sure three images fit */
-}
-
-.main-image {
-    width: 33.33%; /* Adjust for three images in the slider */
-    height: 400px;
-    object-fit: cover;
-}
-
-/* Arrow Navigation */
-.slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2em;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.left {
-    left: 10px;
-}
-
-.right {
-    right: 10px;
-}
-
-/* Thumbnail Adjustments */
-.thumbnail-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 5px;
-    align-items: center;
-    padding-bottom: 5px;
-}
-
-.thumbnail {
-    max-width: 100px;
-    max-height: 70px; /* Added height for thumbnails */
-    object-fit: contain; /* Maintain aspect ratio */
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.thumbnail:hover {
-    opacity: 1;
-}
-
-/* Responsive Design */
-
-/* Tablet */
-@media (max-width: 1024px) {
-    .tabs {
-        flex-wrap: wrap;
-        height: auto;
-    }
-
-    .tab {
-        flex: 1 1 auto;
-        text-align: center;
-        padding: 12px;
-        height: auto;
-    }
-
-    .container_property_cards {
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .card {
-        max-width: 320px;
-    }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .tabs {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .tab {
-        margin-right: 0;
-        margin-bottom: 5px;
-        text-align: center;
-        padding: 15px;
-    }
-
-    .container_property_cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .explore-more {
-        margin: 20px auto 0 auto;
-    }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-    .card-title {
-        font-size: 14px;
-    }
-
-    .card-subheading {
-        font-size: 12px;
-    }
-
-    .explore-more {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-
-    /* Adjust Main Slider on Small Screens */
-    .main-image {
-        width: 100%;
-        height: 250px; /* Smaller images */
-    }
-
-    .thumbnail {
-        max-width: 80px;
-        max-height: 55px; /* Smaller thumbnails */
-    }
+.filter select:focus {
+  border-color: #007BFF;
+  outline: none;
 }
 </style>
-</head>      
+</head>
 <body>
-    <div id="container_nested_tabs">  
-      <h2>California Content</h2>
-            <p>This is the content for California.</p>
-            <div class="nested-tabs">
-              <h3>California</h3>
-              <div class="tabs">
-                <div class="tab active" data-tab="nested-tab1">Los Angeles</div>
-                <div class="tab" data-tab="nested-tab2">San Franciso</div>
-                <div class="tab" data-tab="nested-tab3">San Diego</div>
-              </div>
 
-      <div class="tab-content active" id="nested-tab1">
-        <h1>Los Angeles Listings</h1>
-        <div class="container_property_cards">
-            <!-- Card 1 -->
-              <div class="card">
-                  <div class="image-slider-container" id="slider1-container">
-                      <div class="slider-main" id="slider1">
-                          <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 1" class="main-image">
-                          <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                          <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 3" class="main-image">
-                      </div>
-                      <button class="slider-arrow left" onclick="moveSlide(-1, 'slider1')">&#10094;</button>
-                      <button class="slider-arrow right" onclick="moveSlide(1, 'slider1')">&#10095;</button>
-                      <div class="thumbnail-container">
-                          <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider1')">
-                          <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider1')">
-                          <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider1')">
-                      </div>
-                  </div>
-                  <div class="card-content">
-                      <div class="card-title">Property Name 1</div>
-                      <div class="card-subheading">Property Subheading 1</div>
-                  </div>
-              </div>
-              <!-- Card 2 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider2-container">
-                  <div class="slider-main" id="slider2">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider2')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider2')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider2')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider2')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider2')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 2</div>
-                  <div class="card-subheading">Property Subheading 2</div>
-                </div>
-              </div>
-              <!-- Card 3 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider3-container">
-                  <div class="slider-main" id="slider3">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider3')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider3')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider3')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider3')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider3')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 3</div>
-                  <div class="card-subheading">Property Subheading 3</div>
-                </div>
-              </div>
-              <!-- Card 4 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider4-container">
-                  <div class="slider-main" id="slider4">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider4')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider4')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider4')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider4')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider4')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 4</div>
-                  <div class="card-subheading">Property Subheading 4</div>
-                </div>
-              </div>
-              <!-- Card 5 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider5-container">
-                  <div class="slider-main" id="slider5">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider5')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider5')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider5')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider5')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider5')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 5</div>
-                  <div class="card-subheading">Property Subheading 5</div>
-                </div>
-              </div>
-              <!-- Card 6 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider6-container">
-                  <div class="slider-main" id="slider6">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider6')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider6')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider6')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider6')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider6')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 6</div>
-                  <div class="card-subheading">Property Subheading 6</div>
-                </div>
-              </div>
-          </div>
-          <!-- Explore More Button -->
-          <div>
-            <button class="explore-more">Explore More</button>
-          </div>
-      </div>
+<div class="filter">
+    <select id="manufacturerSelect">
+        <option value="">Select Manufacturer</option>
+        <option value="audi">Audi</option>
+        <option value="bmw">BMW</option>
+        <option value="mercedes">Mercedes</option>
+    </select>
+</div>
 
-      <div class="tab-content" id="nested-tab2">
-          <h1>San Francisco Property</h1>
-          <div class="container_property_cards">
-              <!-- Card 7 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider7-container">
-                  <div class="slider-main" id="slider7">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider7')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider7')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider7')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider7')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider7')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 1</div>
-                  <div class="card-subheading">Property Subheading 1</div>
-                </div>
-              </div>
-              <!-- Card 8 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider8-container">
-                  <div class="slider-main" id="slider8">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider8')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider8')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider8')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider8')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider8')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 2</div>
-                  <div class="card-subheading">Property Subheading 2</div>
-                </div>
-              </div>
-              <!-- Card 9 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider9-container">
-                  <div class="slider-main" id="slider9">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider9')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider9')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider9')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider9')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider9')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 3</div>
-                  <div class="card-subheading">Property Subheading 3</div>
-                </div>
-              </div>
-              <!-- Card 10 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider10-container">
-                  <div class="slider-main" id="slider10">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider10')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider10')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider10')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider10')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider10')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 4</div>
-                  <div class="card-subheading">Property Subheading 4</div>
-                </div>
-              </div>
-              <!-- Card 11 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider11-container">
-                  <div class="slider-main" id="slider11">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider11')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider11')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider11')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider11')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider11')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 5</div>
-                  <div class="card-subheading">Property Subheading 5</div>
-                </div>
-              </div>
-              <!-- Card 12 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider12-container">
-                  <div class="slider-main" id="slider12">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider12')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider12')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider12')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider12')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider12')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 6</div>
-                  <div class="card-subheading">Property Subheading 6</div>
-                </div>
-              </div>
-          </div>
-          <!-- Explore More Button -->
-          <div>
-            <button class="explore-more">Explore More</button>
-          </div>
-      </div>
+<div class="filter">
+    <select id="modelSelect" disabled>
+        <option value="">Select Model</option>
+    </select>
+</div>
 
-      <div class="tab-content" id="nested-tab3">
-          <h1>San Diego Property</h1>
-          <div class="container_property_cards">
-              <!-- Card 13 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider13-container">
-                  <div class="slider-main" id="slider13">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider13')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider13')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider13')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider13')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider13')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 1</div>
-                  <div class="card-subheading">Property Subheading 1</div>
-                </div>
-              </div>
-              <!-- Card 14 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider14-container">
-                  <div class="slider-main" id="slider14">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider14')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider14')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider14')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider14')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider14')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 2</div>
-                  <div class="card-subheading">Property Subheading 2</div>
-                </div>
-              </div>
-              <!-- Card 15 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider15-container">
-                  <div class="slider-main" id="slider15">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider15')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider15')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider15')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider15')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider15')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 3</div>
-                  <div class="card-subheading">Property Subheading 3</div>
-                </div>
-              </div>
-              <!-- Card 16 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider16-container">
-                  <div class="slider-main" id="slider16">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider16')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider16')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider16')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider16')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider16')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 4</div>
-                  <div class="card-subheading">Property Subheading 4</div>
-                </div>
-              </div>
-              <!-- Card 17 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider17-container">
-                  <div class="slider-main" id="slider17">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider17')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider17')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider17')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider17')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider17')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 5</div>
-                  <div class="card-subheading">Property Subheading 5</div>
-                </div>
-              </div>
-              <!-- Card 18 -->
-              <div class="card">
-                <div class="image-slider-container" id="slider18-container">
-                  <div class="slider-main" id="slider18">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
-                  </div>
-                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider18')">&#10094;</button>
-                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider18')">&#10095;</button>
-                  <div class="thumbnail-container">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider18')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider18')">
-                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider18')">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="card-title">Property Name 6</div>
-                  <div class="card-subheading">Property Subheading 6</div>
-                </div>
-              </div>
-          </div>
-          <!-- Explore More Button -->
-          <div>
-            <button class="explore-more">Explore More</button>
-          </div>
-      </div>
+<div id="filters">
+    <div class="filter">
+        <select id="carTypeSelect">
+            <option value="">Select Car Type</option>
+            <option value="sedan">Sedan</option>
+            <option value="coupe">Coupe</option>
+            <option value="cabrio">Cabrio</option>
+            <option value="fastback">Fastback</option>
+            <option value="hatchback">Hatchback</option>
+            <option value="convertible">Convertible</option>
+            <option value="station_wagon">Station Wagon</option>
+            <option value="pickup">Pickup</option>
+            <option value="suv">SUV</option>
+            <option value="minivan">Minivan</option>
+            <option value="roadster">Roadster</option>
+            <option value="coupe_suv">Coupe SUV</option>
+            <option value="sports_car">Sports Car</option>
+            <option value="luxury_sedan">Luxury Sedan</option>
+            <option value="crossover">Crossover</option>
+            <option value="coupe_suv">Coupe SUV</option>
+            <option value="mpv">MPV (Multi-Purpose Vehicle)</option>
+            <option value="electric">Electric Car</option>
+            <option value="hybrid">Hybrid Car</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="vehicleTypeSelect">
+            <option value="">Select Vehicle Type</option>
+            <option value="car">Car</option>
+            <option value="truck">Truck</option>
+            <option value="suv">SUV</option>
+            <option value="van">Van</option>
+            <option value="bus">Bus</option>
+            <option value="bicycle">Bicycle</option>
+            <option value="atv">ATV (All-Terrain Vehicle)</option>
+            <option value="snowmobile">Snowmobile</option>
+            <option value="quad">Quad</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="industrialVehicleSelect">
+            <option value="">Select Industrial Vehicle Type</option>
+            <option value="forklift">Forklift</option>
+            <option value="bulldozer">Bulldozer</option>
+            <option value="excavator">Excavator</option>
+            <option value="crane">Crane</option>
+            <option value="backhoe">Backhoe</option>
+            <option value="tractor">Tractor</option>
+            <option value="loader">Loader</option>
+            <option value="dump_truck">Dump Truck</option>
+            <option value="cement_mixer">Cement Mixer</option>
+            <option value="skid_steer">Skid Steer</option>
+            <option value="grader">Grader</option>
+            <option value="telehandler">Telehandler</option>
+            <option value="compactor">Compactor</option>
+            <option value="trailer">Trailer</option>
+            <option value="paver">Paver</option>
+            <option value="forklift_truck">Forklift Truck</option>
+            <option value="industrial_robot">Industrial Robot</option>
+            <option value="material_handler">Material Handler</option>
+            <option value="earth_mover">Earth Mover</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="industrialVehicleSelect">
+            <option value="">Wählen Sie Fahrzeugtyp</option>
+            <option value="forklift">Gabelstapler</option>
+            <option value="bulldozer">Bulldozer</option>
+            <option value="excavator">Bagger</option>
+            <option value="crane">Kran</option>
+            <option value="backhoe">Laderaupe</option>
+            <option value="tractor">Traktor</option>
+            <option value="loader">Lader</option>
+            <option value="dump_truck">Kippwagen</option>
+            <option value="cement_mixer">Betonmischer</option>
+            <option value="skid_steer">Kompaktlader</option>
+            <option value="grader">Nivelliermaschine</option>
+            <option value="telehandler">Teleskoplader</option>
+            <option value="compactor">Verdichter</option>
+            <option value="trailer">Anhänger</option>
+            <option value="paver">Straßenfertiger</option>
+            <option value="forklift_truck">Staplertruck</option>
+            <option value="industrial_robot">Industrieroboter</option>
+            <option value="material_handler">Materialhandler</option>
+            <option value="earth_mover">Erdbewegungsmaschine</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="kilometerstandSelect">
+            <option value="">Select Mileage</option>
+            <option value="0-10000">0 - 10,000 km</option>
+            <option value="10000-30000">10,000 - 30,000 km</option>
+            <option value="30000-50000">30,000 - 50,000 km</option>
+            <option value="50000-70000">50,000 - 70,000 km</option>
+            <option value="70000-100000">70,000 - 100,000 km</option>
+            <option value="100000-150000">100,000 - 150,000 km</option>
+            <option value="150000-200000">150,000 - 200,000 km</option>
+            <option value="200000+">200,000+ km</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="erstzulassungSelect">
+            <option value="">Select First Registration</option>
+            <option value="01/1900">1900–1910</option>
+            <option value="01/1910">1910–1920</option>
+            <option value="01/1920">1920–1930</option>
+            <option value="01/1930">1930–1940</option>
+            <option value="01/1940">1940–1950</option>
+            <option value="01/1950">1950–1960</option>
+            <option value="01/1960">1960–1970</option>
+            <option value="01/1970">1970–1980</option>
+            <option value="01/1980">1980–1990</option>
+            <option value="01/1990">1990–2000</option>
+            <option value="01/2000">2000–2010</option>
+            <option value="01/2010">2010–2020</option>
+            <option value="01/2020">2020–Present</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="leistungSelect">
+            <option value="">Select Horsepower</option>
+            <option value="100-200PS">100 - 200 PS</option>
+            <option value="200-300PS">200 - 300 PS</option>
+            <option value="300-400PS">300 - 400 PS</option>
+            <option value="400-500PS">400 - 500 PS</option>
+            <option value="500-600PS">500 - 600 PS</option>
+            <option value="600-700PS">600 - 700 PS</option>
+            <option value="700-800PS">700 - 800 PS</option>
+            <option value="800-900PS">800 - 900 PS</option>
+            <option value="900-1000PS">900 - 1000 PS</option>
+            <option value="1000+PS">1000+ PS</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="motorSelect">
+            <option value="">Select Engine</option>
+            <option value="">Select Engine</option>
+            <option value="I2">I2 (Inline 2)</option>
+            <option value="I3">I3 (Inline 3)</option>
+            <option value="I4">I4 (Inline 4)</option>
+            <option value="I6">I6 (Inline 6)</option>
+            <option value="I8">I8 (Inline 8)</option>
+            <option value="V2">V2</option>
+            <option value="V4">V4</option>
+            <option value="V5">V5</option>
+            <option value="V6">V6</option>
+            <option value="V8">V8</option>
+            <option value="V10">V10</option>
+            <option value="V12">V12</option>
+            <option value="V16">V16</option>
+            <option value="W8">W8</option>
+            <option value="W12">W12</option>
+            <option value="W16">W16</option>
+            <option value="electric">Electric</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="plug-in-hybrid">Plug-in Hybrid</option>
+            <option value="boxer">Boxer</option>
+            <option value="rotary">Rotary</option>
+            <option value="diesel">Diesel</option>
+            <option value="diesel-electric">Diesel Electric</option>
+            <option value="turbocharged">Turbocharged</option>
+            <option value="supercharged">Supercharged</option>
+            <option value="twin-turbo">Twin-Turbo</option>
+            <option value="quad-turbo">Quad-Turbo</option>
+            <option value="hydrogen">Hydrogen Fuel Cell</option>
+            <option value="atkinson-cycle">Atkinson Cycle</option>
+            <option value="otto-cycle">Otto Cycle</option>
+            <option value="F1">Formula 1 (F1 engine)</option>
+            <option value="F2">Formula 2 (F2 engine)</option>
+            <option value="H4">H4 (Horizontally Opposed 4)</option>
+            <option value="H6">H6 (Horizontally Opposed 6)</option>
+            <option value="H12">H12 (Horizontally Opposed 12)</option>
+            <option value="variable-valve-timing">Variable Valve Timing (VVT)</option>
+            <option value="stratified-charge">Stratified Charge</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="matchingNumbersSelect">
+            <option value="">Select Matching Numbers</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="typSelect">
+            <option value="">Select Type</option>
+            <option value="sports-car">Sports Car</option>
+            <option value="race-car">Race Car</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+            <option value="convertible">Convertible</option>
+            <option value="coupe">Coupe</option>
+            <option value="hatchback">Hatchback</option>
+            <option value="wagon">Wagon</option>
+            <option value="pickup">Pickup</option>
+            <option value="roadster">Roadster</option>
+            <option value="mpv">MPV (Multi-Purpose Vehicle)</option>
+            <option value="luxury-car">Luxury Car</option>
+            <option value="van">Van</option>
+            <option value="crossover">Crossover</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="fahrzeughalterSelect">
+            <option value="">Select Number of Previous Owners</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="kraftstoffartSelect">
+            <option value="">Select Fuel Type</option>
+            <option value="gasoline">Gasoline</option>
+            <option value="diesel">Diesel</option>
+            <option value="electric">Electric</option>
+            <option value="hybrid">Hybrid (Gasoline + Electric)</option>
+            <option value="plug-in-hybrid">Plug-in Hybrid</option>
+            <option value="lpg">LPG (Liquefied Petroleum Gas)</option>
+            <option value="cng">CNG (Compressed Natural Gas)</option>
+            <option value="e85">E85 (Ethanol)</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="verbrauchSelect">
+            <option value="">Select Fuel Consumption</option>
+            <option value="urban-5.0">5.0 L/100km (Urban)</option>
+            <option value="urban-6.0">6.0 L/100km (Urban)</option>
+            <option value="urban-7.0">7.0 L/100km (Urban)</option>
+            <option value="urban-8.0">8.0 L/100km (Urban)</option>
+            <option value="urban-9.0">9.0 L/100km (Urban)</option>
+            <option value="urban-10.0">10.0 L/100km (Urban)</option>
+            <option value="urban-12.0">12.0 L/100km (Urban)</option>
+            <option value="urban-14.0">14.0 L/100km (Urban)</option>
+            <option value="urban-16.0">16.0 L/100km (Urban)</option>
+            <option value="urban-18.0">18.0 L/100km (Urban)</option>
+            <option value="urban-20.0">20.0 L/100km (Urban)</option>
+
+            <option value="highway-4.0">4.0 L/100km (Highway)</option>
+            <option value="highway-5.0">5.0 L/100km (Highway)</option>
+            <option value="highway-6.0">6.0 L/100km (Highway)</option>
+            <option value="highway-7.0">7.0 L/100km (Highway)</option>
+            <option value="highway-8.0">8.0 L/100km (Highway)</option>
+            <option value="highway-9.0">9.0 L/100km (Highway)</option>
+            <option value="highway-10.0">10.0 L/100km (Highway)</option>
+            <option value="highway-12.0">12.0 L/100km (Highway)</option>
+            <option value="highway-14.0">14.0 L/100km (Highway)</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="energieeffizienzklasseSelect">
+            <option value="">Select Energy Efficiency Class</option>
+            <option value="A++">A++</option>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="getriebeSelect">
+            <option value="">Select Transmission</option>
+            <option value="manual">Manual</option>
+            <option value="automatic">Automatic</option>
+            <option value="semi-automatic">Semi-Automatic</option>
+            <option value="cvT">CVT (Continuously Variable Transmission)</option>
+            <option value="dual-clutch">Dual-Clutch (DCT)</option>
+            <option value="sequential">Sequential Gearbox</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="klimatisierungSelect">
+            <option value="">Select Climate Control</option>
+            <option value="air-conditioning">Air Conditioning</option>
+            <option value="automatic-climate-control">Automatic Climate Control</option>
+            <option value="dual-zone-climate-control">Dual-Zone Climate Control</option>
+            <option value="sunroof">Sunroof</option>
+            <option value="heated-seats">Heated Seats</option>
+            <option value="ventilated-seats">Ventilated Seats</option>
+            <option value="electric-window-defrost">Electric Window Defrost</option>
+            <option value="none">None</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="farbeSelect">
+            <option value="">Select Color</option>
+            <option value="black">Black</option>
+            <option value="white">White</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="silver">Silver</option>
+            <option value="gray">Gray</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="orange">Orange</option>
+            <option value="brown">Brown</option>
+            <option value="beige">Beige</option>
+            <option value="purple">Purple</option>
+            <option value="pink">Pink</option>
+            <option value="gold">Gold</option>
+            <option value="other">Other (Custom or special colors)</option>
+        </select>
+    </div>
+
+    <div class="filter">
+        <select id="innenausstattungSelect">
+            <option value="">Select Interior</option>
+            <option value="leather">Leather</option>
+            <option value="fabric">Fabric</option>
+            <option value="alcantara">Alcantara</option>
+            <option value="vinyl">Vinyl</option>
+            <option value="suede">Suede</option>
+            <option value="cloth">Cloth</option>
+            <option value="synthetic-leather">Synthetic Leather</option>
+            <option value="wood-trim">Wood Trim</option>
+            <option value="carbon-fiber-trim">Carbon Fiber Trim</option>
+            <option value="aluminum-trim">Aluminum Trim</option>
+            <option value="leatherette">Leatherette</option>
+        </select>
     </div>
 </div>
 
-<script>
-  
-// Functionality for nested tabs (United States set)
-    const nestedTabSets = document.querySelectorAll('.nested-tabs');
-    nestedTabSets.forEach(set => {
-      const tabs = set.querySelectorAll('.tabs > .tab');
-      const contents = set.querySelectorAll('.tab-content');
+<div id="box_buttons">
+    <button id="searchBtn">Search</button>
+    <button id="refreshBtn">Refresh Results</button>
+    <button id="reset">Reset Selections</button>
+</div>
 
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('active'));
-          contents.forEach(c => c.classList.remove('active'));
-
-          tab.classList.add('active');
-          set.querySelector(`#${tab.dataset.tab}`).classList.add('active');
-        });
-      });
-    });
-// Image Siders
-let currentIndexes = {
-        slider1: 0,
-        slider2: 0,
-        slider3: 0,
-        slider4: 0,
-        slider5: 0,
-        slider6: 0,
-        slider7: 0,
-        slider8: 0,
-        slider9: 0,
-        slider10: 0,
-        slider11: 0,
-        slider12: 0,
-        slider13: 0,
-        slider14: 0,
-        slider15: 0,
-        slider16: 0,
-        slider17: 0,
-        slider18: 0
-    };
-
-    function moveSlide(direction, sliderId) {
-        const images = document.querySelectorAll(`#${sliderId} .main-image`);
-        const totalImages = images.length;
-
-        currentIndexes[sliderId] += direction;
-        if (currentIndexes[sliderId] < 0) {
-            currentIndexes[sliderId] = totalImages - 1;
-        } else if (currentIndexes[sliderId] >= totalImages) {
-            currentIndexes[sliderId] = 0;
-        }
-
-        updateSlider(sliderId);
-    }
-
-    function changeSlide(index, sliderId) {
-        currentIndexes[sliderId] = index;
-        updateSlider(sliderId);
-    }
-
-    function updateSlider(sliderId) {
-        const slider = document.getElementById(sliderId);
-        const images = slider.querySelectorAll('.main-image');
-        slider.style.transform = `translateX(-${currentIndexes[sliderId] * images[0].offsetWidth}px)`;
-
-        // Highlight active thumbnail
-        const thumbnails = document.querySelectorAll(`#${sliderId}-container .thumbnail`);
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.style.opacity = index === currentIndexes[sliderId] ? '1' : '0.7';
-        });
-    }
-</script>
+<div id="resultContainer">
+    <h3>Selected Cars:</h3>
+    <div id="resultItems"></div>
+</div>
 </body>
 </html>
+
+
+

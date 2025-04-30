@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic File Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .content-box {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .content-box h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="buttons">
+        <button onclick="showDiv(1)">Button 1</button>
+        <button onclick="showDiv(2)">Button 2</button>
+        <button onclick="showDiv(3)">Button 3</button>
+        <button onclick="showDiv(4)">Button 4</button>
+    </div>
+
+    <div id="div1" class="content-box">
+        <h3>Content for Button 1</h3>
+        <p>This is the content related to Button 1.</p>
+    </div>
+    <div id="div2" class="content-box">
+        <h3>Content for Button 2</h3>
+        <p>This is the content related to Button 2.</p>
+    </div>
+    <div id="div3" class="content-box">
+        <h3>Content for Button 3</h3>
+        <p>This is the content related to Button 3.</p>
+    </div>
+    <div id="div4" class="content-box">
+        <h3>Content for Button 4</h3>
+        <p>This is the content related to Button 4.</p>
+    </div>
+
+    <script>
+        function showDiv(buttonId) {
+            // Hide all divs initially
+            const divs = document.querySelectorAll('.content-box');
+            divs.forEach(div => div.style.display = 'none');
+            
+            // Display the clicked button's related div
+            const divToShow = document.getElementById('div' + buttonId);
+            divToShow.style.display = 'block';
+        }
+    </script>
+    
+</body>
+</html>

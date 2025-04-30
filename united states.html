@@ -1,0 +1,2746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Cities & Areas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #box_buttons_states {
+            float: left; 
+            width: 100%; 
+            margin-bottom: 10px;
+        }
+
+        .us_container {
+            margin-bottom: 30px;
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 5px;
+            width: 350px;
+            float: left;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .us_state-title, .us_region-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .us_btn-container {
+            position: relative; /* Keeps dropdown positioned correctly */
+        }
+        .us_btn {
+            padding: 10px 15px;
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            min-width: 150px;
+            margin-top: 1px;
+        }
+        .us_dropdown-toggle {
+            cursor: pointer;
+            text-align: right;
+            display: block;
+            position: relative; /* Ensures proper placement */
+        }
+        .us_dropdown-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            position: absolute; /* Positions it absolutely */
+            background: white; /* Optional: Ensure it doesn't blend with the background */
+            border: 1px solid black;
+            padding: 10px;
+            z-index: 100; /* Ensures it overlays other content */
+            width: 200px; /* Adjust width as needed */
+        }
+        .us_arrow {
+            font-size: 16px;
+            transition: transform 0.5s ease;
+        }
+        .us_collapsed .us_arrow {
+            transform: rotate(180deg);
+        }
+
+    /** Dynamic Content **/    
+        .content-block {
+            display: none;
+            margin-top: 20px;
+        }
+        .content-block img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script>
+        // Function to toggle dropdown visibility
+        function us_toggleDropdown(id) {
+            let section = document.getElementById(id);
+            let toggle = document.getElementById(id + "-toggle");
+            let arrow = toggle.querySelector(".us_arrow");
+
+            // Toggle dropdown visibility
+            if (section.style.display === "none" || section.style.display === "") {
+                closeAllDropdowns(); // Close other open dropdowns
+                section.style.display = "flex"; // Show dropdown
+                toggle.classList.add("us_collapsed");
+                arrow.innerHTML = "&#9650;"; // Up arrow
+            } else {
+                section.style.display = "none"; // Hide dropdown
+                toggle.classList.remove("us_collapsed");
+                arrow.innerHTML = "&#9660;"; // Down arrow
+            }
+        }
+
+        // Function to close all dropdowns when clicking outside
+        function closeAllDropdowns(event) {
+            document.querySelectorAll(".us_dropdown-content").forEach(dropdown => {
+                if (event && dropdown.contains(event.target)) return; // Ignore clicks inside the dropdown
+                dropdown.style.display = "none"; // Hide dropdown
+            });
+
+            // Reset arrow icons
+            document.querySelectorAll(".us_dropdown-toggle").forEach(toggle => {
+                toggle.classList.remove("us_collapsed");
+                toggle.querySelector(".us_arrow").innerHTML = "&#9660;"; // Down arrow
+            });
+        }
+
+        // Attach event listener to close dropdowns when clicking outside
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest(".us_dropdown-toggle") && !event.target.closest(".us_dropdown-content")) {
+                closeAllDropdowns();
+            }
+        });
+
+
+
+       // Function to hide all state containers
+        function hideAllStateContent() {
+            const searchcontainers = document.querySelectorAll('.us_container');
+            searchcontainers.forEach(block => block.style.display = 'none');
+        }
+
+        // Attach event listeners to all buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            hideAllStateContent(); // Hide all initially
+            document.getElementById('california_container').style.display = 'block'; // Show California by default
+
+            const buttons_states = document.querySelectorAll('.container_buttons');
+            buttons_states.forEach(button => {
+                button.addEventListener('click', function() {
+                    hideAllStateContent(); // Hide all states
+                    const targetContents = document.getElementById(this.getAttribute('data-target'));
+                    if (targetContents) {
+                        targetContents.style.display = 'block'; // Show only the selected state container
+                    }
+                });
+            });
+        });
+
+        // Function to hide all content blocks
+        function hideAllContent() {
+            const contentBlocks = document.querySelectorAll('.content-block');
+            contentBlocks.forEach(block => block.style.display = 'none');
+        }
+
+        // Attach event listeners to all buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.content-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    hideAllContent();
+                    const targetContent = document.getElementById(this.getAttribute('data-target'));
+                    targetContent.style.display = 'block'; // Show the selected content block
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="box_buttons_states">
+        <button class="container_buttons" data-target="alabama_container">Alabama</button>
+        <button class="container_buttons" data-target="alaska_container">Alaska</button>
+        <button class="container_buttons" data-target="arizona_container">Arizona</button>
+        <button class="container_buttons" data-target="arkansas_container">Arkansas</button>
+        <button class="container_buttons" data-target="california_container">California</button>
+        <button class="container_buttons" data-target="colorado_container">Colorado</button>
+        <button class="container_buttons" data-target="connecticut_container">Connecticut</button>
+        <button class="container_buttons" data-target="delaware_container">Delaware</button>
+        <button class="container_buttons" data-target="florida_container">Florida</button>
+        <button class="container_buttons" data-target="georgia_container">Georgia</button>
+        <button class="container_buttons" data-target="hawaii_container">Hawaii</button>
+        <button class="container_buttons" data-target="idaho_container">Idaho</button>
+        <button class="container_buttons" data-target="illinois_container">Illinois</button>
+        <button class="container_buttons" data-target="indiana_container">Indiana</button>
+        <button class="container_buttons" data-target="iowa_container">Iowa</button>
+        <button class="container_buttons" data-target="kansas_container">Kansas</button>
+        <button class="container_buttons" data-target="kentucky_container">Kentucky</button>
+        <button class="container_buttons" data-target="louisiana_container">Louisiana</button>
+        <button class="container_buttons" data-target="maine_container">Maine</button>
+        <button class="container_buttons" data-target="maryland_container">Maryland</button>
+        <button class="container_buttons" data-target="massachusetts_container">Massachusetts</button>
+        <button class="container_buttons" data-target="michigan_container">Michigan</button>
+        <button class="container_buttons" data-target="minnesota_container">Minnesota</button>
+        <button class="container_buttons" data-target="mississippi_container">Mississippi</button>
+        <button class="container_buttons" data-target="missouri_container">Missouri</button>
+        <button class="container_buttons" data-target="montana_container">Montana</button>
+        <button class="container_buttons" data-target="nebraska_container">Nebraska</button>
+        <button class="container_buttons" data-target="nevada_container">Nevada</button>
+        <button class="container_buttons" data-target="new_hampshire_container">New Hampshire</button>
+        <button class="container_buttons" data-target="new_jersey_container">New Jersey</button>
+        <button class="container_buttons" data-target="new_mexico_container">New Mexico</button>
+        <button class="container_buttons" data-target="new_york_container">New York</button>
+        <button class="container_buttons" data-target="north_carolina_container">North Carolina</button>
+        <button class="container_buttons" data-target="north_dakota_container">North Dakota</button>
+        <button class="container_buttons" data-target="ohio_container">Ohio</button>
+        <button class="container_buttons" data-target="oklahoma_container">Oklahoma</button>
+        <button class="container_buttons" data-target="oregon_container">Oregon</button>
+        <button class="container_buttons" data-target="pennsylvania_container">Pennsylvania</button>
+        <button class="container_buttons" data-target="rhode_island_container">Rhode Island</button>
+        <button class="container_buttons" data-target="south_carolina_container">South Carolina</button>
+        <button class="container_buttons" data-target="south_dakota_container">South Dakota</button>
+        <button class="container_buttons" data-target="tennessee_container">Tennessee</button>
+        <button class="container_buttons" data-target="texas_container">Texas</button>
+        <button class="container_buttons" data-target="utah_container">Utah</button>
+        <button class="container_buttons" data-target="vermont_container">Vermont</button>
+        <button class="container_buttons" data-target="virginia_container">Virginia</button>
+        <button class="container_buttons" data-target="washington_container">Washington</button>
+        <button class="container_buttons" data-target="west_virginia_container">West Virginia</button>
+        <button class="container_buttons" data-target="wisconsin_container">Wisconsin</button>
+        <button class="container_buttons" data-target="wyoming_container">Wyoming</button>
+    </div>
+  
+        <div class="us_container" id="alabama_container">
+            <h1>Alabama</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-birmingham">Birmingham</button>
+                <div class="us_dropdown-content" id="us_alabama-cities">
+                    <button class="us_btn content-button" data-target="content-montgomery">Montgomery</button>
+                    <button class="us_btn content-button" data-target="content-huntsville">Huntsville</button>
+                    <button class="us_btn content-button" data-target="content-mobile">Mobile</button>
+                    <button class="us_btn content-button" data-target="content-tuscaloosa">Tuscaloosa</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_alabama-cities-toggle" onclick="us_toggleDropdown('us_alabama-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-appalachian-highlands">Appalachian Highlands</button>
+                <div class="us_dropdown-content" id="us_alabama-regions">
+                    <button class="us_btn content-button" data-target="content-gulf-coast">Gulf Coast</button>
+                    <button class="us_btn content-button" data-target="content-tennessee-valley">Tennessee Valley</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_alabama-regions-toggle" onclick="us_toggleDropdown('us_alabama-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="alaska_container">
+            <h1>Alaska</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-anchorage">Anchorage</button>
+                <div class="us_dropdown-content" id="us_alaska-cities">
+                    <button class="us_btn content-button" data-target="content-fairbanks">Fairbanks</button>
+                    <button class="us_btn content-button" data-target="content-juneau">Juneau</button>
+                    <button class="us_btn content-button" data-target="content-wasilla">Wasilla</button>
+                    <button class="us_btn content-button" data-target="content-sitka">Sitka</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_alaska-cities-toggle" onclick="us_toggleDropdown('us_alaska-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-southeast-alaska">Southeast Alaska</button>
+                <div class="us_dropdown-content" id="us_alaska-regions">
+                    <button class="us_btn content-button" data-target="content-southcentral-alaska">Southcentral Alaska</button>
+                    <button class="us_btn content-button" data-target="content-interior-alaska">Interior Alaska</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_alaska-regions-toggle" onclick="us_toggleDropdown('us_alaska-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="arizona_container">
+            <h1>Arizona</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-phoenix">Phoenix</button>
+                <div class="us_dropdown-content" id="us_arizona-cities">
+                    <button class="us_btn content-button" data-target="content-tucson">Tucson</button>
+                    <button class="us_btn content-button" data-target="content-mesa">Mesa</button>
+                    <button class="us_btn content-button" data-target="content-chandler">Chandler</button>
+                    <button class="us_btn content-button" data-target="content-glendale">Glendale</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_arizona-cities-toggle" onclick="us_toggleDropdown('us_arizona-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-sonoran-desert">Sonoran Desert</button>
+                <div class="us_dropdown-content" id="us_arizona-regions">
+                    <button class="us_btn content-button" data-target="content-high-country">High Country</button>
+                    <button class="us_btn content-button" data-target="content-mogollon-rim">Mogollon Rim</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_arizona-regions-toggle" onclick="us_toggleDropdown('us_arizona-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="arkansas_container">
+            <h1>Arkansas</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-little-rock">Little Rock</button>
+                <div class="us_dropdown-content" id="us_arkansas-cities">
+                    <button class="us_btn content-button" data-target="content-fort-smith">Fort Smith</button>
+                    <button class="us_btn content-button" data-target="content-fayetteville">Fayetteville</button>
+                    <button class="us_btn content-button" data-target="content-springdale">Springdale</button>
+                    <button class="us_btn content-button" data-target="content-jonesboro">Jonesboro</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_arkansas-cities-toggle" onclick="us_toggleDropdown('us_arkansas-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-ozarks">Ozarks</button>
+                <div class="us_dropdown-content" id="us_arkansas-regions">
+                    <button class="us_btn content-button" data-target="content-ouachita-mountains">Ouachita Mountains</button>
+                    <button class="us_btn content-button" data-target="content-arkansas-delta">Arkansas Delta</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_arkansas-regions-toggle" onclick="us_toggleDropdown('us_arkansas-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="california_container">
+            <h1>California</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-los-angeles">Los Angeles</button>
+                <div class="us_dropdown-content" id="us_california-cities">
+                    <button class="us_btn content-button" data-target="content-san-francisco">San Francisco</button>
+                    <button class="us_btn content-button" data-target="content-san-diego">San Diego</button>
+                    <button class="us_btn content-button" data-target="content-san-jose">San Jose</button>
+                    <button class="us_btn content-button" data-target="content-sacramento">Sacramento</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_california-cities-toggle" onclick="us_toggleDropdown('us_california-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-bay-area">Bay Area</button>
+                <div class="us_dropdown-content" id="us_california-regions">
+                    <button class="us_btn content-button" data-target="content-silicon-valley">Silicon Valley</button>
+                    <button class="us_btn content-button" data-target="content-central-valley">Central Valley</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_california-regions-toggle" onclick="us_toggleDropdown('us_california-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="colorado_container">
+            <h1>Colorado</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-denver">Denver</button>
+                <div class="us_dropdown-content" id="us_colorado-cities">
+                    <button class="us_btn content-button" data-target="content-colorado-springs">Colorado Springs</button>
+                    <button class="us_btn content-button" data-target="content-aurora">Aurora</button>
+                    <button class="us_btn content-button" data-target="content-fort-collins">Fort Collins</button>
+                    <button class="us_btn content-button" data-target="content-boulder">Boulder</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_colorado-cities-toggle" onclick="us_toggleDropdown('us_colorado-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-rocky-mountains">Rocky Mountains</button>
+                <div class="us_dropdown-content" id="us_colorado-regions">
+                    <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                    <button class="us_btn content-button" data-target="content-western-slope">Western Slope</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_colorado-regions-toggle" onclick="us_toggleDropdown('us_colorado-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="connecticut_container">
+            <h1>Connecticut</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-bridgeport">Bridgeport</button>
+                <div class="us_dropdown-content" id="us_connecticut-cities">
+                    <button class="us_btn content-button" data-target="content-new-haven">New Haven</button>
+                    <button class="us_btn content-button" data-target="content-stamford">Stamford</button>
+                    <button class="us_btn content-button" data-target="content-hartford">Hartford</button>
+                    <button class="us_btn content-button" data-target="content-waterbury">Waterbury</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_connecticut-cities-toggle" onclick="us_toggleDropdown('us_connecticut-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-new-haven-county">New Haven County</button>
+                <div class="us_dropdown-content" id="us_connecticut-regions">
+                    <button class="us_btn content-button" data-target="content-fairfield-county">Fairfield County</button>
+                    <button class="us_btn content-button" data-target="content-hartford-county">Hartford County</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_connecticut-regions-toggle" onclick="us_toggleDropdown('us_connecticut-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="delaware_container">
+            <h1>Delaware</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-wilmington">Wilmington</button>
+                <div class="us_dropdown-content" id="us_delaware-cities">
+                    <button class="us_btn content-button" data-target="content-dover">Dover</button>
+                    <button class="us_btn content-button" data-target="content-newark">Newark</button>
+                    <button class="us_btn content-button" data-target="content-middletown">Middletown</button>
+                    <button class="us_btn content-button" data-target="content-smyrna">Smyrna</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_delaware-cities-toggle" onclick="us_toggleDropdown('us_delaware-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-new-castle-county">New Castle County</button>
+                <div class="us_dropdown-content" id="us_delaware-regions">
+                    <button class="us_btn content-button" data-target="content-kent-county">Kent County</button>
+                    <button class="us_btn content-button" data-target="content-sussex-county">Sussex County</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_delaware-regions-toggle" onclick="us_toggleDropdown('us_delaware-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="florida_container">
+            <h1>Florida</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button">Miami</button>
+                <div class="us_dropdown-content" id="us_florida-cities">
+                    <button class="us_btn content-button" data-target="content1">Orlando</button>
+                    <button class="us_btn content-button" data-target="content2">Tampa</button>
+                    <button class="us_btn content-button" data-target="content3">Jacksonville</button>
+                    <button class="us_btn content-button" data-target="content4">Tallahassee</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_florida-cities-toggle" onclick="us_toggleDropdown('us_florida-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button">South Florida</button>
+                <div class="us_dropdown-content" id="us_florida-regions">
+                    <button class="us_btn content-button">Central Florida</button>
+                    <button class="us_btn content-button">Panhandle</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_florida-regions-toggle" onclick="us_toggleDropdown('us_florida-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="georgia_container">
+            <h1>Georgia</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-atlanta">Atlanta</button>
+                <div class="us_dropdown-content" id="us_georgia-cities">
+                    <button class="us_btn content-button" data-target="content-augusta">Augusta</button>
+                    <button class="us_btn content-button" data-target="content-columbus">Columbus</button>
+                    <button class="us_btn content-button" data-target="content-macon">Macon</button>
+                    <button class="us_btn content-button" data-target="content-savannah">Savannah</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_georgia-cities-toggle" onclick="us_toggleDropdown('us_georgia-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-piedmont">Piedmont</button>
+                <div class="us_dropdown-content" id="us_georgia-regions">
+                    <button class="us_btn content-button" data-target="content-coastal-plain">Coastal Plain</button>
+                    <button class="us_btn content-button" data-target="content-appalachian-mountains">Appalachian Mountains</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_georgia-regions-toggle" onclick="us_toggleDropdown('us_georgia-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="hawaii_container">
+            <h1>Hawaii</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-honolulu">Honolulu</button>
+                <div class="us_dropdown-content" id="us_hawaii-cities">
+                    <button class="us_btn content-button" data-target="content-hilo">Hilo</button>
+                    <button class="us_btn content-button" data-target="content-kailua">Kailua</button>
+                    <button class="us_btn content-button" data-target="content-pearl-city">Pearl City</button>
+                    <button class="us_btn content-button" data-target="content-waipahu">Waipahu</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_hawaii-cities-toggle" onclick="us_toggleDropdown('us_hawaii-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-maui">Maui</button>
+                <div class="us_dropdown-content" id="us_hawaii-regions">
+                    <button class="us_btn content-button" data-target="content-big-island">Big Island</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_hawaii-regions-toggle" onclick="us_toggleDropdown('us_hawaii-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="idaho_container">
+            <h1>Idaho</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-boise">Boise</button>
+                <div class="us_dropdown-content" id="us_idaho-cities">
+                    <button class="us_btn content-button" data-target="content-nampa">Nampa</button>
+                    <button class="us_btn content-button" data-target="content-meridian">Meridian</button>
+                    <button class="us_btn content-button" data-target="content-idaho-falls">Idaho Falls</button>
+                    <button class="us_btn content-button" data-target="content-pocatello">Pocatello</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_idaho-cities-toggle" onclick="us_toggleDropdown('us_idaho-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-snake-river-plain">Snake River Plain</button>
+                <div class="us_dropdown-content" id="us_idaho-regions">
+                    <button class="us_btn content-button" data-target="content-sawtooth-mountains">Sawtooth Mountains</button>
+                    <button class="us_btn content-button" data-target="content-clearwater-mountains">Clearwater Mountains</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_idaho-regions-toggle" onclick="us_toggleDropdown('us_idaho-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="illinois_container">
+            <h1>Illinois</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-chicago">Chicago</button>
+                <div class="us_dropdown-content" id="us_illinois-cities">
+                    <button class="us_btn content-button" data-target="content-aurora">Aurora</button>
+                    <button class="us_btn content-button" data-target="content-naperville">Naperville</button>
+                    <button class="us_btn content-button" data-target="content-joliet">Joliet</button>
+                    <button class="us_btn content-button" data-target="content-rockford">Rockford</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_illinois-cities-toggle" onclick="us_toggleDropdown('us_illinois-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-chicago-metro">Chicago Metro</button>
+                <div class="us_dropdown-content" id="us_illinois-regions">
+                    <button class="us_btn content-button" data-target="content-southern-illinois">Southern Illinois</button>
+                    <button class="us_btn content-button" data-target="content-central-illinois">Central Illinois</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_illinois-regions-toggle" onclick="us_toggleDropdown('us_illinois-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="indiana_container">
+            <h1>Indiana</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-indianapolis">Indianapolis</button>
+                <div class="us_dropdown-content" id="us_indiana-cities">
+                    <button class="us_btn content-button" data-target="content-fort-wayne">Fort Wayne</button>
+                    <button class="us_btn content-button" data-target="content-evansville">Evansville</button>
+                    <button class="us_btn content-button" data-target="content-south-bend">South Bend</button>
+                    <button class="us_btn content-button" data-target="content-carmel">Carmel</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_indiana-cities-toggle" onclick="us_toggleDropdown('us_indiana-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-northern-indiana">Northern Indiana</button>
+                <div class="us_dropdown-content" id="us_indiana-regions">
+                    <button class="us_btn content-button" data-target="content-central-indiana">Central Indiana</button>
+                    <button class="us_btn content-button" data-target="content-southern-indiana">Southern Indiana</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_indiana-regions-toggle" onclick="us_toggleDropdown('us_indiana-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="iowa_container">
+            <h1>Iowa</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-des-moines">Des Moines</button>
+                <div class="us_dropdown-content" id="us_iowa-cities">
+                    <button class="us_btn content-button" data-target="content-cedar-rapids">Cedar Rapids</button>
+                    <button class="us_btn content-button" data-target="content-davenport">Davenport</button>
+                    <button class="us_btn content-button" data-target="content-sioux-city">Sioux City</button>
+                    <button class="us_btn content-button" data-target="content-iowa-city">Iowa City</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_iowa-cities-toggle" onclick="us_toggleDropdown('us_iowa-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-central-iowa">Central Iowa</button>
+                <div class="us_dropdown-content" id="us_iowa-regions">
+                    <button class="us_btn content-button" data-target="content-western-iowa">Western Iowa</button>
+                    <button class="us_btn content-button" data-target="content-eastern-iowa">Eastern Iowa</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_iowa-regions-toggle" onclick="us_toggleDropdown('us_iowa-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="kansas_container">
+            <h1>Kansas</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-wichita">Wichita</button>
+                <div class="us_dropdown-content" id="us_kansas-cities">
+                    <button class="us_btn content-button" data-target="content-overland-park">Overland Park</button>
+                    <button class="us_btn content-button" data-target="content-kansas-city">Kansas City</button>
+                    <button class="us_btn content-button" data-target="content-olathe">Olathe</button>
+                    <button class="us_btn content-button" data-target="content-topeka">Topeka</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_kansas-cities-toggle" onclick="us_toggleDropdown('us_kansas-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-flint-hills">Flint Hills</button>
+                <div class="us_dropdown-content" id="us_kansas-regions">
+                    <button class="us_btn content-button" data-target="content-central-kansas">Central Kansas</button>
+                    <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_kansas-regions-toggle" onclick="us_toggleDropdown('us_kansas-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="kentucky_container">
+            <h1>Kentucky</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-louisville">Louisville</button>
+                <div class="us_dropdown-content" id="us_kentucky-cities">
+                    <button class="us_btn content-button" data-target="content-lexington">Lexington</button>
+                    <button class="us_btn content-button" data-target="content-bowling-green">Bowling Green</button>
+                    <button class="us_btn content-button" data-target="content-owensboro">Owensboro</button>
+                    <button class="us_btn content-button" data-target="content-covington">Covington</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_kentucky-cities-toggle" onclick="us_toggleDropdown('us_kentucky-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-appalachian-region">Appalachian Region</button>
+                <div class="us_dropdown-content" id="us_kentucky-regions">
+                    <button class="us_btn content-button" data-target="content-bluegrass-region">Bluegrass Region</button>
+                    <button class="us_btn content-button" data-target="content-western-kentucky">Western Kentucky</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_kentucky-regions-toggle" onclick="us_toggleDropdown('us_kentucky-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="louisiana_container">
+            <h1>Louisiana</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-new-orleans">New Orleans</button>
+                <div class="us_dropdown-content" id="us_louisiana-cities">
+                    <button class="us_btn content-button" data-target="content-baton-rouge">Baton Rouge</button>
+                    <button class="us_btn content-button" data-target="content-shreveport">Shreveport</button>
+                    <button class="us_btn content-button" data-target="content-lafayette">Lafayette</button>
+                    <button class="us_btn content-button" data-target="content-lake-charles">Lake Charles</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_louisiana-cities-toggle" onclick="us_toggleDropdown('us_louisiana-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-bayou-region">Bayou Region</button>
+                <div class="us_dropdown-content" id="us_louisiana-regions">
+                    <button class="us_btn content-button" data-target="content-cajun-country">Cajun Country</button>
+                    <button class="us_btn content-button" data-target="content-north-louisiana">North Louisiana</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_louisiana-regions-toggle" onclick="us_toggleDropdown('us_louisiana-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="maine_container">
+            <h1>Maine</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-portland">Portland</button>
+                <div class="us_dropdown-content" id="us_maine-cities">
+                    <button class="us_btn content-button" data-target="content-lewiston">Lewiston</button>
+                    <button class="us_btn content-button" data-target="content-bangor">Bangor</button>
+                    <button class="us_btn content-button" data-target="content-auburn">Auburn</button>
+                    <button class="us_btn content-button" data-target="content-south-portland">South Portland</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_maine-cities-toggle" onclick="us_toggleDropdown('us_maine-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-down-east">Down East</button>
+                <div class="us_dropdown-content" id="us_maine-regions">
+                    <button class="us_btn content-button" data-target="content-western-maine">Western Maine</button>
+                    <button class="us_btn content-button" data-target="content-midcoast">Midcoast</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_maine-regions-toggle" onclick="us_toggleDropdown('us_maine-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="maryland_container">
+            <h1>Maryland</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-baltimore">Baltimore</button>
+                <div class="us_dropdown-content" id="us_maryland-cities">
+                    <button class="us_btn content-button" data-target="content-frederick">Frederick</button>
+                    <button class="us_btn content-button" data-target="content-rockville">Rockville</button>
+                    <button class="us_btn content-button" data-target="content-gaithersburg">Gaithersburg</button>
+                    <button class="us_btn content-button" data-target="content-silver-spring">Silver Spring</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_maryland-cities-toggle" onclick="us_toggleDropdown('us_maryland-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-capital-region">Capital Region</button>
+                <div class="us_dropdown-content" id="us_maryland-regions">
+                    <button class="us_btn content-button" data-target="content-western-maryland">Western Maryland</button>
+                    <button class="us_btn content-button" data-target="content-eastern-shore">Eastern Shore</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_maryland-regions-toggle" onclick="us_toggleDropdown('us_maryland-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="massachusetts_container">
+            <h1>Massachusetts</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-boston">Boston</button>
+                <div class="us_dropdown-content" id="us_massachusetts-cities">
+                    <button class="us_btn content-button" data-target="content-worcester">Worcester</button>
+                    <button class="us_btn content-button" data-target="content-springfield">Springfield</button>
+                    <button class="us_btn content-button" data-target="content-cambridge">Cambridge</button>
+                    <button class="us_btn content-button" data-target="content-lowell">Lowell</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_massachusetts-cities-toggle" onclick="us_toggleDropdown('us_massachusetts-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-greater-boston">Greater Boston</button>
+                <div class="us_dropdown-content" id="us_massachusetts-regions">
+                    <button class="us_btn content-button" data-target="content-central-massachusetts">Central Massachusetts</button>
+                    <button class="us_btn content-button" data-target="content-cape-cod">Cape Cod</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_massachusetts-regions-toggle" onclick="us_toggleDropdown('us_massachusetts-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="michigan_container">
+            <h1>Michigan</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-detroit">Detroit</button>
+                <div class="us_dropdown-content" id="us_michigan-cities">
+                    <button class="us_btn content-button" data-target="content-grand-rapids">Grand Rapids</button>
+                    <button class="us_btn content-button" data-target="content-warren">Warren</button>
+                    <button class="us_btn content-button" data-target="content-sterling-heights">Sterling Heights</button>
+                    <button class="us_btn content-button" data-target="content-ann-arbor">Ann Arbor</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_michigan-cities-toggle" onclick="us_toggleDropdown('us_michigan-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-upper-peninsula">Upper Peninsula</button>
+                <div class="us_dropdown-content" id="us_michigan-regions">
+                    <button class="us_btn content-button" data-target="content-detroit-metro">Detroit Metro</button>
+                    <button class="us_btn content-button" data-target="content-west-michigan">West Michigan</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_michigan-regions-toggle" onclick="us_toggleDropdown('us_michigan-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="minnesota_container">
+            <h1>Minnesota</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-minneapolis">Minneapolis</button>
+                <div class="us_dropdown-content" id="us_minnesota-cities">
+                    <button class="us_btn content-button" data-target="content-saint-paul">Saint Paul</button>
+                    <button class="us_btn content-button" data-target="content-rochester">Rochester</button>
+                    <button class="us_btn content-button" data-target="content-duluth">Duluth</button>
+                    <button class="us_btn content-button" data-target="content-bloomington">Bloomington</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_minnesota-cities-toggle" onclick="us_toggleDropdown('us_minnesota-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-twin-cities">Twin Cities</button>
+                <div class="us_dropdown-content" id="us_minnesota-regions">
+                    <button class="us_btn content-button" data-target="content-north-shore">North Shore</button>
+                    <button class="us_btn content-button" data-target="content-southern-minnesota">Southern Minnesota</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_minnesota-regions-toggle" onclick="us_toggleDropdown('us_minnesota-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="mississippi_container">
+            <h1>Mississippi</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-jackson">Jackson</button>
+                <div class="us_dropdown-content" id="us_mississippi-cities">
+                    <button class="us_btn content-button" data-target="content-gulfport">Gulfport</button>
+                    <button class="us_btn content-button" data-target="content-biloxi">Biloxi</button>
+                    <button class="us_btn content-button" data-target="content-hattiesburg">Hattiesburg</button>
+                    <button class="us_btn content-button" data-target="content-meridian">Meridian</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_mississippi-cities-toggle" onclick="us_toggleDropdown('us_mississippi-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-delta">Delta</button>
+                <div class="us_dropdown-content" id="us_mississippi-regions">
+                    <button class="us_btn content-button" data-target="content-gulf-coast">Gulf Coast</button>
+                    <button class="us_btn content-button" data-target="content-pine-belt">Pine Belt</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_mississippi-regions-toggle" onclick="us_toggleDropdown('us_mississippi-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="missouri_container">
+            <h1>Missouri</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-st-louis">St. Louis</button>
+                <div class="us_dropdown-content" id="us_missouri-cities">
+                    <button class="us_btn content-button" data-target="content-kansas-city">Kansas City</button>
+                    <button class="us_btn content-button" data-target="content-springfield">Springfield</button>
+                    <button class="us_btn content-button" data-target="content-columbia">Columbia</button>
+                    <button class="us_btn content-button" data-target="content-independence">Independence</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_missouri-cities-toggle" onclick="us_toggleDropdown('us_missouri-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-ozarks">Ozarks</button>
+                <div class="us_dropdown-content" id="us_missouri-regions">
+                    <button class="us_btn content-button" data-target="content-bootheel">Bootheel</button>
+                    <button class="us_btn content-button" data-target="content-st-louis-metro">St. Louis Metro</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_missouri-regions-toggle" onclick="us_toggleDropdown('us_missouri-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="montana_container">
+            <h1>Montana</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-billings">Billings</button>
+                <div class="us_dropdown-content" id="us_montana-cities">
+                    <button class="us_btn content-button" data-target="content-missoula">Missoula</button>
+                    <button class="us_btn content-button" data-target="content-great-falls">Great Falls</button>
+                    <button class="us_btn content-button" data-target="content-bozeman">Bozeman</button>
+                    <button class="us_btn content-button" data-target="content-helena">Helena</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_montana-cities-toggle" onclick="us_toggleDropdown('us_montana-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-rocky-mountains">Rocky Mountains</button>
+                <div class="us_dropdown-content" id="us_montana-regions">
+                    <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                    <button class="us_btn content-button" data-target="content-yellowstone-region">Yellowstone Region</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_montana-regions-toggle" onclick="us_toggleDropdown('us_montana-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="nebraska_container">
+            <h1>Nebraska</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-omaha">Omaha</button>
+                <div class="us_dropdown-content" id="us_nebraska-cities">
+                    <button class="us_btn content-button" data-target="content-lincoln">Lincoln</button>
+                    <button class="us_btn content-button" data-target="content-bellevue">Bellevue</button>
+                    <button class="us_btn content-button" data-target="content-grand-island">Grand Island</button>
+                    <button class="us_btn content-button" data-target="content-kearney">Kearney</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_nebraska-cities-toggle" onclick="us_toggleDropdown('us_nebraska-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-sandhills">Sandhills</button>
+                <div class="us_dropdown-content" id="us_nebraska-regions">
+                    <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                    <button class="us_btn content-button" data-target="content-panhandle">Panhandle</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_nebraska-regions-toggle" onclick="us_toggleDropdown('us_nebraska-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="nevada_container">
+            <h1>Nevada</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-las-vegas">Las Vegas</button>
+                <div class="us_dropdown-content" id="us_nevada-cities">
+                    <button class="us_btn content-button" data-target="content-reno">Reno</button>
+                    <button class="us_btn content-button" data-target="content-henderson">Henderson</button>
+                    <button class="us_btn content-button" data-target="content-north-las-vegas">North Las Vegas</button>
+                    <button class="us_btn content-button" data-target="content-elko">Elko</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_nevada-cities-toggle" onclick="us_toggleDropdown('us_nevada-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-sierra-nevada">Sierra Nevada</button>
+                <div class="us_dropdown-content" id="us_nevada-regions">
+                    <button class="us_btn content-button" data-target="content-great-basin">Great Basin</button>
+                    <button class="us_btn content-button" data-target="content-mojave-desert">Mojave Desert</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_nevada-regions-toggle" onclick="us_toggleDropdown('us_nevada-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="new_hampshire_container">
+            <h1>New Hampshire</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-manchester">Manchester</button>
+                <div class="us_dropdown-content" id="us_new-hampshire-cities">
+                    <button class="us_btn content-button" data-target="content-nashua">Nashua</button>
+                    <button class="us_btn content-button" data-target="content-concord">Concord</button>
+                    <button class="us_btn content-button" data-target="content-derry">Derry</button>
+                    <button class="us_btn content-button" data-target="content-keene">Keene</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-hampshire-cities-toggle" onclick="us_toggleDropdown('us_new-hampshire-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-white-mountains">White Mountains</button>
+                <div class="us_dropdown-content" id="us_new-hampshire-regions">
+                    <button class="us_btn content-button" data-target="content-seacoast">Seacoast</button>
+                    <button class="us_btn content-button" data-target="content-lakes-region">Lakes Region</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-hampshire-regions-toggle" onclick="us_toggleDropdown('us_new-hampshire-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="new_jersey_container">
+            <h1>New Jersey</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-newark">Newark</button>
+                <div class="us_dropdown-content" id="us_new-jersey-cities">
+                    <button class="us_btn content-button" data-target="content-jersey-city">Jersey City</button>
+                    <button class="us_btn content-button" data-target="content-paterson">Paterson</button>
+                    <button class="us_btn content-button" data-target="content-elizabeth">Elizabeth</button>
+                    <button class="us_btn content-button" data-target="content-edison">Edison</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-jersey-cities-toggle" onclick="us_toggleDropdown('us_new-jersey-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-central-jersey">Central Jersey</button>
+                <div class="us_dropdown-content" id="us_new-jersey-regions">
+                    <button class="us_btn content-button" data-target="content-north-jersey">North Jersey</button>
+                    <button class="us_btn content-button" data-target="content-south-jersey">South Jersey</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-jersey-regions-toggle" onclick="us_toggleDropdown('us_new-jersey-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="new_mexico_container">
+            <h1>New Mexico</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-albuquerque">Albuquerque</button>
+                <div class="us_dropdown-content" id="us_new-mexico-cities">
+                    <button class="us_btn content-button" data-target="content-santa-fe">Santa Fe</button>
+                    <button class="us_btn content-button" data-target="content-las-cruces">Las Cruces</button>
+                    <button class="us_btn content-button" data-target="content-rio-rancho">Rio Rancho</button>
+                    <button class="us_btn content-button" data-target="content-roswell">Roswell</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-mexico-cities-toggle" onclick="us_toggleDropdown('us_new-mexico-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-high-desert">High Desert</button>
+                <div class="us_dropdown-content" id="us_new-mexico-regions">
+                    <button class="us_btn content-button" data-target="content-chihuahuan-desert">Chihuahuan Desert</button>
+                    <button class="us_btn content-button" data-target="content-rocky-mountains">Rocky Mountains</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-mexico-regions-toggle" onclick="us_toggleDropdown('us_new-mexico-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="new_york_container">
+            <h1>New York</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-new-york-city">New York City</button>
+                <div class="us_dropdown-content" id="us_new-york-cities">
+                    <button class="us_btn content-button" data-target="content-buffalo">Buffalo</button>
+                    <button class="us_btn content-button" data-target="content-rochester">Rochester</button>
+                    <button class="us_btn content-button" data-target="content-syracuse">Syracuse</button>
+                    <button class="us_btn content-button" data-target="content-albany">Albany</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-york-cities-toggle" onclick="us_toggleDropdown('us_new-york-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-hudson-valley">Hudson Valley</button>
+                <div class="us_dropdown-content" id="us_new-york-regions">
+                    <button class="us_btn content-button" data-target="content-long-island">Long Island</button>
+                    <button class="us_btn content-button" data-target="content-western-new-york">Western New York</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_new-york-regions-toggle" onclick="us_toggleDropdown('us_new-york-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="north_carolina_container">
+            <h1>North Carolina</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-charlotte">Charlotte</button>
+                <div class="us_dropdown-content" id="us_north-carolina-cities">
+                    <button class="us_btn content-button" data-target="content-raleigh">Raleigh</button>
+                    <button class="us_btn content-button" data-target="content-greensboro">Greensboro</button>
+                    <button class="us_btn content-button" data-target="content-durham">Durham</button>
+                    <button class="us_btn content-button" data-target="content-winston-salem">Winston-Salem</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_north-carolina-cities-toggle" onclick="us_toggleDropdown('us_north-carolina-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-piedmont-triad">Piedmont Triad</button>
+                <div class="us_dropdown-content" id="us_north-carolina-regions">
+                    <button class="us_btn content-button" data-target="content-coastal-plain">Coastal Plain</button>
+                    <button class="us_btn content-button" data-target="content-appalachian-mountains">Appalachian Mountains</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_north-carolina-regions-toggle" onclick="us_toggleDropdown('us_north-carolina-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="north_dakota_container">
+            <h1>North Dakota</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-fargo">Fargo</button>
+                <div class="us_dropdown-content" id="us_north-dakota-cities">
+                    <button class="us_btn content-button" data-target="content-bismarck">Bismarck</button>
+                    <button class="us_btn content-button" data-target="content-grand-forks">Grand Forks</button>
+                    <button class="us_btn content-button" data-target="content-minot">Minot</button>
+                    <button class="us_btn content-button" data-target="content-williston">Williston</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_north-dakota-cities-toggle" onclick="us_toggleDropdown('us_north-dakota-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                <div class="us_dropdown-content" id="us_north-dakota-regions">
+                    <button class="us_btn content-button" data-target="content-missouri-plateau">Missouri Plateau</button>
+                    <button class="us_btn content-button" data-target="content-badlands">Badlands</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_north-dakota-regions-toggle" onclick="us_toggleDropdown('us_north-dakota-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="ohio_container">
+            <h1>Ohio</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-columbus">Columbus</button>
+                <div class="us_dropdown-content" id="us_ohio-cities">
+                    <button class="us_btn content-button" data-target="content-cleveland">Cleveland</button>
+                    <button class="us_btn content-button" data-target="content-cincinnati">Cincinnati</button>
+                    <button class="us_btn content-button" data-target="content-toledo">Toledo</button>
+                    <button class="us_btn content-button" data-target="content-akron">Akron</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_ohio-cities-toggle" onclick="us_toggleDropdown('us_ohio-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-central-ohio">Central Ohio</button>
+                <div class="us_dropdown-content" id="us_ohio-regions">
+                    <button class="us_btn content-button" data-target="content-western-ohio">Western Ohio</button>
+                    <button class="us_btn content-button" data-target="content-lake-erie">Lake Erie</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_ohio-regions-toggle" onclick="us_toggleDropdown('us_ohio-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="oklahoma_container">
+            <h1>Oklahoma</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-oklahoma-city">Oklahoma City</button>
+                <div class="us_dropdown-content" id="us_oklahoma-cities">
+                    <button class="us_btn content-button" data-target="content-tulsa">Tulsa</button>
+                    <button class="us_btn content-button" data-target="content-norman">Norman</button>
+                    <button class="us_btn content-button" data-target="content-broken-arrow">Broken Arrow</button>
+                    <button class="us_btn content-button" data-target="content-edmond">Edmond</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_oklahoma-cities-toggle" onclick="us_toggleDropdown('us_oklahoma-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                <div class="us_dropdown-content" id="us_oklahoma-regions">
+                    <button class="us_btn content-button" data-target="content-oklahoma-panhandle">Oklahoma Panhandle</button>
+                    <button class="us_btn content-button" data-target="content-osage-hills">Osage Hills</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_oklahoma-regions-toggle" onclick="us_toggleDropdown('us_oklahoma-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="oregon_container">
+            <h1>Oregon</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-portland">Portland</button>
+                <div class="us_dropdown-content" id="us_oregon-cities">
+                    <button class="us_btn content-button" data-target="content-eugene">Eugene</button>
+                    <button class="us_btn content-button" data-target="content-salem">Salem</button>
+                    <button class="us_btn content-button" data-target="content-gresham">Gresham</button>
+                    <button class="us_btn content-button" data-target="content-beaverton">Beaverton</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_oregon-cities-toggle" onclick="us_toggleDropdown('us_oregon-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-willamette-valley">Willamette Valley</button>
+                <div class="us_dropdown-content" id="us_oregon-regions">
+                    <button class="us_btn content-button" data-target="content-coastal-range">Coastal Range</button>
+                    <button class="us_btn content-button" data-target="content-high-desert">High Desert</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_oregon-regions-toggle" onclick="us_toggleDropdown('us_oregon-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="pennsylvania_container">
+            <h1>Pennsylvania</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-philadelphia">Philadelphia</button>
+                <div class="us_dropdown-content" id="us_pennsylvania-cities">
+                    <button class="us_btn content-button" data-target="content-pittsburgh">Pittsburgh</button>
+                    <button class="us_btn content-button" data-target="content-allentown">Allentown</button>
+                    <button class="us_btn content-button" data-target="content-erie">Erie</button>
+                    <button class="us_btn content-button" data-target="content-reading">Reading</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_pennsylvania-cities-toggle" onclick="us_toggleDropdown('us_pennsylvania-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-philadelphia-metro">Philadelphia Metro</button>
+                <div class="us_dropdown-content" id="us_pennsylvania-regions">
+                    <button class="us_btn content-button" data-target="content-western-pennsylvania">Western Pennsylvania</button>
+                    <button class="us_btn content-button" data-target="content-central-pennsylvania">Central Pennsylvania</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_pennsylvania-regions-toggle" onclick="us_toggleDropdown('us_pennsylvania-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="rhode_island_container">
+            <h1>Rhode Island</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-providence">Providence</button>
+                <div class="us_dropdown-content" id="us_rhode-island-cities">
+                    <button class="us_btn content-button" data-target="content-cranston">Cranston</button>
+                    <button class="us_btn content-button" data-target="content-warwick">Warwick</button>
+                    <button class="us_btn content-button" data-target="content-pawtucket">Pawtucket</button>
+                    <button class="us_btn content-button" data-target="content-east-providence">East Providence</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_rhode-island-cities-toggle" onclick="us_toggleDropdown('us_rhode-island-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-block-island">Block Island</button>
+                <div class="us_dropdown-content" id="us_rhode-island-regions">
+                    <button class="us_btn content-button" data-target="content-blackstone-valley">Blackstone Valley</button>
+                    <button class="us_btn content-button" data-target="content-woonsocket">Woonsocket</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_rhode-island-regions-toggle" onclick="us_toggleDropdown('us_rhode-island-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="south_carolina_container">
+            <h1>South Carolina</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-columbia">Columbia</button>
+                <div class="us_dropdown-content" id="us_south-carolina-cities">
+                    <button class="us_btn content-button" data-target="content-charleston">Charleston</button>
+                    <button class="us_btn content-button" data-target="content-greenville">Greenville</button>
+                    <button class="us_btn content-button" data-target="content-spartanburg">Spartanburg</button>
+                    <button class="us_btn content-button" data-target="content-summerville">Summerville</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_south-carolina-cities-toggle" onclick="us_toggleDropdown('us_south-carolina-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-coastal-plain">Coastal Plain</button>
+                <div class="us_dropdown-content" id="us_south-carolina-regions">
+                    <button class="us_btn content-button" data-target="content-upstate">Upstate</button>
+                    <button class="us_btn content-button" data-target="content-lowcountry">Lowcountry</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_south-carolina-regions-toggle" onclick="us_toggleDropdown('us_south-carolina-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="south_dakota_container">
+            <h1>South Dakota</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-sioux-falls">Sioux Falls</button>
+                <div class="us_dropdown-content" id="us_south-dakota-cities">
+                    <button class="us_btn content-button" data-target="content-rapid-city">Rapid City</button>
+                    <button class="us_btn content-button" data-target="content-aberdeen">Aberdeen</button>
+                    <button class="us_btn content-button" data-target="content-brookings">Brookings</button>
+                    <button class="us_btn content-button" data-target="content-mitchell">Mitchell</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_south-dakota-cities-toggle" onclick="us_toggleDropdown('us_south-dakota-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-great-plains">Great Plains</button>
+                <div class="us_dropdown-content" id="us_south-dakota-regions">
+                    <button class="us_btn content-button" data-target="content-black-hills">Black Hills</button>
+                    <button class="us_btn content-button" data-target="content-badlands">Badlands</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_south-dakota-regions-toggle" onclick="us_toggleDropdown('us_south-dakota-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="tennessee_container">
+            <h1>Tennessee</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-memphis">Memphis</button>
+                <div class="us_dropdown-content" id="us_tennessee-cities">
+                    <button class="us_btn content-button" data-target="content-nashville">Nashville</button>
+                    <button class="us_btn content-button" data-target="content-knoxville">Knoxville</button>
+                    <button class="us_btn content-button" data-target="content-chattanooga">Chattanooga</button>
+                    <button class="us_btn content-button" data-target="content-clarksville">Clarksville</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_tennessee-cities-toggle" onclick="us_toggleDropdown('us_tennessee-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-cumberland-plateau">Cumberland Plateau</button>
+                <div class="us_dropdown-content" id="us_tennessee-regions">
+                    <button class="us_btn content-button" data-target="content-appalachian-mountains">Appalachian Mountains</button>
+                    <button class="us_btn content-button" data-target="content-mississippi-river-valley">Mississippi River Valley</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_tennessee-regions-toggle" onclick="us_toggleDropdown('us_tennessee-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="texas_container">
+            <h1>Texas</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-houston">Houston</button>
+                <div class="us_dropdown-content" id="us_texas-cities">
+                    <button class="us_btn content-button" data-target="content-dallas">Dallas</button>
+                    <button class="us_btn content-button" data-target="content-san-antonio">San Antonio</button>
+                    <button class="us_btn content-button" data-target="content-austin">Austin</button>
+                    <button class="us_btn content-button" data-target="content-fort-worth">Fort Worth</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_texas-cities-toggle" onclick="us_toggleDropdown('us_texas-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-east-texas">East Texas</button>
+                <div class="us_dropdown-content" id="us_texas-regions">
+                    <button class="us_btn content-button" data-target="content-hill-country">Hill Country</button>
+                    <button class="us_btn content-button" data-target="content-gulf-coast">Gulf Coast</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_texas-regions-toggle" onclick="us_toggleDropdown('us_texas-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="utah_container">
+            <h1>Utah</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-salt-lake-city">Salt Lake City</button>
+                <div class="us_dropdown-content" id="us_utah-cities">
+                    <button class="us_btn content-button" data-target="content-provo">Provo</button>
+                    <button class="us_btn content-button" data-target="content-west-valley-city">West Valley City</button>
+                    <button class="us_btn content-button" data-target="content-ogden">Ogden</button>
+                    <button class="us_btn content-button" data-target="content-sandy">Sandy</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_utah-cities-toggle" onclick="us_toggleDropdown('us_utah-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-wasatch-mountains">Wasatch Mountains</button>
+                <div class="us_dropdown-content" id="us_utah-regions">
+                    <button class="us_btn content-button" data-target="content-great-salt-lake">Great Salt Lake</button>
+                    <button class="us_btn content-button" data-target="content-red-rock-country">Red Rock Country</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_utah-regions-toggle" onclick="us_toggleDropdown('us_utah-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="virginia_container">
+            <h1>Virginia</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-virginia-beach">Virginia Beach</button>
+                <div class="us_dropdown-content" id="us_virginia-cities">
+                    <button class="us_btn content-button" data-target="content-norfolk">Norfolk</button>
+                    <button class="us_btn content-button" data-target="content-chesapeake">Chesapeake</button>
+                    <button class="us_btn content-button" data-target="content-richmond">Richmond</button>
+                    <button class="us_btn content-button" data-target="content-newport-news">Newport News</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_virginia-cities-toggle" onclick="us_toggleDropdown('us_virginia-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-shenandoah-valley">Shenandoah Valley</button>
+                <div class="us_dropdown-content" id="us_virginia-regions">
+                    <button class="us_btn content-button" data-target="content-tidewater">Tidewater</button>
+                    <button class="us_btn content-button" data-target="content-piedmont-region">Piedmont Region</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_virginia-regions-toggle" onclick="us_toggleDropdown('us_virginia-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="vermont_container">
+            <h1>Vermont</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-burlington">Burlington</button>
+                <div class="us_dropdown-content" id="us_vermont-cities">
+                    <button class="us_btn content-button" data-target="content-south-burlington">South Burlington</button>
+                    <button class="us_btn content-button" data-target="content-rutland">Rutland</button>
+                    <button class="us_btn content-button" data-target="content-barre">Barre</button>
+                    <button class="us_btn content-button" data-target="content-montpelier">Montpelier</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_vermont-cities-toggle" onclick="us_toggleDropdown('us_vermont-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-green-mountains">Green Mountains</button>
+                <div class="us_dropdown-content" id="us_vermont-regions">
+                    <button class="us_btn content-button" data-target="content-champlain-valley">Champlain Valley</button>
+                    <button class="us_btn content-button" data-target="content-lake-champlain">Lake Champlain</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_vermont-regions-toggle" onclick="us_toggleDropdown('us_vermont-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="west_virginia_container">
+            <h1>West Virginia</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-virginia-beach">Virginia Beach</button>
+                <div class="us_dropdown-content" id="us_virginia-cities">
+                    <button class="us_btn content-button" data-target="content-norfolk">Norfolk</button>
+                    <button class="us_btn content-button" data-target="content-chesapeake">Chesapeake</button>
+                    <button class="us_btn content-button" data-target="content-richmond">Richmond</button>
+                    <button class="us_btn content-button" data-target="content-newport-news">Newport News</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_virginia-cities-toggle" onclick="us_toggleDropdown('us_virginia-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-shenandoah-valley">Shenandoah Valley</button>
+                <div class="us_dropdown-content" id="us_virginia-regions">
+                    <button class="us_btn content-button" data-target="content-tidewater">Tidewater</button>
+                    <button class="us_btn content-button" data-target="content-piedmont-region">Piedmont Region</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_virginia-regions-toggle" onclick="us_toggleDropdown('us_virginia-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="washington_container">
+            <h1>Washington</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-seattle">Seattle</button>
+                <div class="us_dropdown-content" id="us_washington-cities">
+                    <button class="us_btn content-button" data-target="content-spokane">Spokane</button>
+                    <button class="us_btn content-button" data-target="content-tacoma">Tacoma</button>
+                    <button class="us_btn content-button" data-target="content-vancouver">Vancouver</button>
+                    <button class="us_btn content-button" data-target="content-bellingham">Bellingham</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_washington-cities-toggle" onclick="us_toggleDropdown('us_washington-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-puget-sound">Puget Sound</button>
+                <div class="us_dropdown-content" id="us_washington-regions">
+                    <button class="us_btn content-button" data-target="content-columbia-basin">Columbia Basin</button>
+                    <button class="us_btn content-button" data-target="content-olympic-peninsula">Olympic Peninsula</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_washington-regions-toggle" onclick="us_toggleDropdown('us_washington-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="west_virginia_container">
+            <h1>West Virginia</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-charleston">Charleston</button>
+                <div class="us_dropdown-content" id="us_west-virginia-cities">
+                    <button class="us_btn content-button" data-target="content-huntington">Huntington</button>
+                    <button class="us_btn content-button" data-target="content-morgantown">Morgantown</button>
+                    <button class="us_btn content-button" data-target="content-wheeling">Wheeling</button>
+                    <button class="us_btn content-button" data-target="content-parkersburg">Parkersburg</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_west-virginia-cities-toggle" onclick="us_toggleDropdown('us_west-virginia-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-appalachian-mountains">Appalachian Mountains</button>
+                <div class="us_dropdown-content" id="us_west-virginia-regions">
+                    <button class="us_btn content-button" data-target="content-mountain-state">Mountain State</button>
+                    <button class="us_btn content-button" data-target="content-monongahela-river">Monongahela River</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_west-virginia-regions-toggle" onclick="us_toggleDropdown('us_west-virginia-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="wisconsin_container">
+            <h1>Wisconsin</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-milwaukee">Milwaukee</button>
+                <div class="us_dropdown-content" id="us_wisconsin-cities">
+                    <button class="us_btn content-button" data-target="content-madison">Madison</button>
+                    <button class="us_btn content-button" data-target="content-green-bay">Green Bay</button>
+                    <button class="us_btn content-button" data-target="content-racine">Racine</button>
+                    <button class="us_btn content-button" data-target="content-kenosha">Kenosha</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_wisconsin-cities-toggle" onclick="us_toggleDropdown('us_wisconsin-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-lake-michigan">Lake Michigan</button>
+                <div class="us_dropdown-content" id="us_wisconsin-regions">
+                    <button class="us_btn content-button" data-target="content-northwoods">Northwoods</button>
+                    <button class="us_btn content-button" data-target="content-driftless-area">Driftless Area</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_wisconsin-regions-toggle" onclick="us_toggleDropdown('us_wisconsin-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+        <div class="us_container" id="wyoming_container">
+            <h1>Wyoming</h1>
+            <h2 class="us_state-title">City</h2>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-cheyenne">Cheyenne</button>
+                <div class="us_dropdown-content" id="us_wyoming-cities">
+                    <button class="us_btn content-button" data-target="content-casper">Casper</button>
+                    <button class="us_btn content-button" data-target="content-laramie">Laramie</button>
+                    <button class="us_btn content-button" data-target="content-gillette">Gillette</button>
+                    <button class="us_btn content-button" data-target="content-rock-springs">Rock Springs</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_wyoming-cities-toggle" onclick="us_toggleDropdown('us_wyoming-cities')">
+                More cities <span class="us_arrow">&#9660;</span>
+            </div>
+
+            <h3 class="us_region-title">Region</h3>
+            <div class="us_btn-container">
+                <button class="us_btn content-button" data-target="content-yellowstone">Yellowstone</button>
+                <div class="us_dropdown-content" id="us_wyoming-regions">
+                    <button class="us_btn content-button" data-target="content-grand-teton">Grand Teton</button>
+                    <button class="us_btn content-button" data-target="content-high-plains">High Plains</button>
+                </div>
+            </div>
+            <div class="us_dropdown-toggle" id="us_wyoming-regions-toggle" onclick="us_toggleDropdown('us_wyoming-regions')">
+                More regions <span class="us_arrow">&#9660;</span>
+            </div>
+        </div>
+
+ 
+<div style="width: 100%; height: 500px; border: 1px solid black; float: left;">
+    
+    <div id="content-birmingham" class="content-block">
+        <h2>Birmingham</h2>
+    </div>
+    <div id="content-montgomery" class="content-block">
+        <h2>Montgomery</h2>
+    </div>
+    <div id="content-huntsville" class="content-block">
+        <h2>Huntsville</h2>
+    </div>
+    <div id="content-mobile" class="content-block">
+        <h2>Mobile</h2>
+    </div>
+    <div id="content-tuscaloosa" class="content-block">
+        <h2>Tuscaloosa</h2>
+    </div>
+    <div id="content-appalachian-highlands" class="content-block">
+        <h2>Appalachian Highlands</h2>
+    </div>
+    <div id="content-gulf-coast" class="content-block">
+        <h2>Gulf Coast</h2>
+    </div>
+    <div id="content-tennessee-valley" class="content-block">
+        <h2>Tennessee Valley</h2>
+    </div>
+
+    <div id="content-anchorage" class="content-block">
+        <h2>Anchorage</h2>
+    </div>
+    <div id="content-fairbanks" class="content-block">
+        <h2>Fairbanks</h2>
+    </div>
+    <div id="content-juneau" class="content-block">
+        <h2>Juneau</h2>
+    </div>
+    <div id="content-wasilla" class="content-block">
+        <h2>Wasilla</h2>
+    </div>
+    <div id="content-sitka" class="content-block">
+        <h2>Sitka</h2>
+    </div>
+    <div id="content-southeast-alaska" class="content-block">
+        <h2>Southeast Alaska</h2>
+    </div>
+    <div id="content-southcentral-alaska" class="content-block">
+        <h2>Southcentral Alaska</h2>
+    </div>
+    <div id="content-interior-alaska" class="content-block">
+        <h2>Interior Alaska</h2>
+    </div>
+
+    <div id="content-phoenix" class="content-block">
+        <h2>Phoenix</h2>
+    </div>
+    <div id="content-tucson" class="content-block">
+        <h2>Tucson</h2>
+    </div>
+    <div id="content-mesa" class="content-block">
+        <h2>Mesa</h2>
+    </div>
+    <div id="content-chandler" class="content-block">
+        <h2>Chandler</h2>
+    </div>
+    <div id="content-glendale" class="content-block">
+        <h2>Glendale</h2>
+    </div>
+    <div id="content-sonoran-desert" class="content-block">
+        <h2>Sonoran Desert</h2>
+    </div>
+    <div id="content-high-country" class="content-block">
+        <h2>High Country</h2>
+    </div>
+    <div id="content-mogollon-rim" class="content-block">
+        <h2>Mogollon Rim</h2>
+    </div>
+
+    <div id="content-little-rock" class="content-block">
+        <h2>Little Rock</h2>
+    </div>
+    <div id="content-fort-smith" class="content-block">
+        <h2>Fort Smith</h2>
+    </div>
+    <div id="content-fayetteville" class="content-block">
+        <h2>Fayetteville</h2>
+    </div>
+    <div id="content-springdale" class="content-block">
+        <h2>Springdale</h2>
+    </div>
+    <div id="content-jonesboro" class="content-block">
+        <h2>Jonesboro</h2>
+    </div>
+    <div id="content-ozarks" class="content-block">
+        <h2>Ozarks</h2>
+    </div>
+    <div id="content-ouachita-mountains" class="content-block">
+        <h2>Ouachita Mountains</h2>
+    </div>
+    <div id="content-arkansas-delta" class="content-block">
+        <h2>Arkansas Delta</h2>
+    </div>
+
+    <div id="content-los-angeles" class="content-block">
+        <h2>Los Angeles</h2>
+    </div>
+    <div id="content-san-francisco" class="content-block">
+        <h2>San Francisco</h2>
+    </div>
+    <div id="content-san-diego" class="content-block">
+        <h2>San Diego</h2>
+    </div>
+    <div id="content-san-jose" class="content-block">
+        <h2>San Jose</h2>
+    </div>
+    <div id="content-sacramento" class="content-block">
+        <h2>Sacramento</h2>
+    </div>
+    <div id="content-central-valley" class="content-block">
+        <h2>Central Valley</h2>
+    </div>
+    <div id="content-bay-area" class="content-block">
+        <h2>Bay Area</h2>
+    </div>
+    <div id="content-southern-california" class="content-block">
+        <h2>Southern California</h2>
+    </div>
+
+    <div id="content-denver" class="content-block">
+        <h2>Denver</h2>
+    </div>
+    <div id="content-colorado-springs" class="content-block">
+        <h2>Colorado Springs</h2>
+    </div>
+    <div id="content-aurora" class="content-block">
+        <h2>Aurora</h2>
+    </div>
+    <div id="content-fort-collins" class="content-block">
+        <h2>Fort Collins</h2>
+    </div>
+    <div id="content-boulder" class="content-block">
+        <h2>Boulder</h2>
+    </div>
+    <div id="content-rocky-mountains" class="content-block">
+        <h2>Rocky Mountains</h2>
+    </div>
+    <div id="content-great-plains" class="content-block">
+        <h2>Great Plains</h2>
+    </div>
+    <div id="content-western-slope" class="content-block">
+        <h2>Western Slope</h2>
+    </div>
+
+    <div id="content-bridgeport" class="content-block">
+        <h2>Bridgeport</h2>
+    </div>
+    <div id="content-new-haven" class="content-block">
+        <h2>New Haven</h2>
+    </div>
+    <div id="content-stamford" class="content-block">
+        <h2>Stamford</h2>
+    </div>
+    <div id="content-hartford" class="content-block">
+        <h2>Hartford</h2>
+    </div>
+    <div id="content-waterbury" class="content-block">
+        <h2>Waterbury</h2>
+    </div>
+    <div id="content-new-haven-county" class="content-block">
+        <h2>New Haven County</h2>
+    </div>
+    <div id="content-fairfield-county" class="content-block">
+        <h2>Fairfield County</h2>
+    </div>
+    <div id="content-hartford-county" class="content-block">
+        <h2>Hartford County</h2>
+    </div>
+
+    <div id="content-wilmington" class="content-block">
+        <h2>Wilmington</h2>
+    </div>
+    <div id="content-dover" class="content-block">
+        <h2>Dover</h2>
+    </div>
+    <div id="content-newark" class="content-block">
+        <h2>Newark</h2>
+    </div>
+    <div id="content-middletown" class="content-block">
+        <h2>Middletown</h2>
+    </div>
+    <div id="content-sussex-county" class="content-block">
+        <h2>Sussex County</h2>
+    </div>
+
+    <div id="content-miami" class="content-block">
+        <h2>Miami</h2>
+    </div>
+    <div id="content-orlando" class="content-block">
+        <h2>Orlando</h2>
+    </div>
+    <div id="content-tampa" class="content-block">
+        <h2>Tampa</h2>
+    </div>
+    <div id="content-jacksonville" class="content-block">
+        <h2>Jacksonville</h2>
+    </div>
+    <div id="content-st-petersburg" class="content-block">
+        <h2>St. Petersburg</h2>
+    </div>
+    <div id="content-south-florida" class="content-block">
+        <h2>South Florida</h2>
+    </div>
+    <div id="content-central-florida" class="content-block">
+        <h2>Central Florida</h2>
+    </div>
+    <div id="content-northern-florida" class="content-block">
+        <h2>Northern Florida</h2>
+    </div>
+
+    <div id="content-atlanta" class="content-block">
+        <h2>Atlanta</h2>
+    </div>
+    <div id="content-savannah" class="content-block">
+        <h2>Savannah</h2>
+    </div>
+    <div id="content-columbus" class="content-block">
+        <h2>Columbus</h2>
+    </div>
+    <div id="content-macon" class="content-block">
+        <h2>Macon</h2>
+    </div>
+    <div id="content-athens" class="content-block">
+        <h2>Athens</h2>
+    </div>
+    <div id="content-north-georgia" class="content-block">
+        <h2>North Georgia</h2>
+    </div>
+    <div id="content-south-georgia" class="content-block">
+        <h2>South Georgia</h2>
+    </div>
+    <div id="content-augusta" class="content-block">
+        <h2>Augusta</h2>
+    </div>
+
+    <div id="content-honolulu" class="content-block">
+        <h2>Honolulu</h2>
+    </div>
+    <div id="content-hilo" class="content-block">
+        <h2>Hilo</h2>
+    </div>
+    <div id="content-kailua" class="content-block">
+        <h2>Kailua</h2>
+    </div>
+    <div id="content-kaneohe" class="content-block">
+        <h2>Kaneohe</h2>
+    </div>
+    <div id="content-maui" class="content-block">
+        <h2>Maui</h2>
+    </div>
+    <div id="content-kauai" class="content-block">
+        <h2>Kauai</h2>
+    </div>
+    <div id="content-big-island" class="content-block">
+        <h2>Big Island</h2>
+    </div>
+    <div id="content-oahu" class="content-block">
+        <h2>Oahu</h2>
+    </div>
+
+    <div id="content-boise" class="content-block">
+        <h2>Boise</h2>
+    </div>
+    <div id="content-meridian" class="content-block">
+        <h2>Meridian</h2>
+    </div>
+    <div id="content-nampa" class="content-block">
+        <h2>Nampa</h2>
+    </div>
+    <div id="content-idaho-falls" class="content-block">
+        <h2>Idaho Falls</h2>
+    </div>
+    <div id="content-twin-falls" class="content-block">
+        <h2>Twin Falls</h2>
+    </div>
+    <div id="content-northwest-idaho" class="content-block">
+        <h2>Northwest Idaho</h2>
+    </div>
+    <div id="content-southwest-idaho" class="content-block">
+        <h2>Southwest Idaho</h2>
+    </div>
+    <div id="content-eastern-idaho" class="content-block">
+        <h2>Eastern Idaho</h2>
+    </div>
+
+    <div id="content-chicago" class="content-block">
+        <h2>Chicago</h2>
+    </div>
+    <div id="content-aurora" class="content-block">
+        <h2>Aurora</h2>
+    </div>
+    <div id="content-rockford" class="content-block">
+        <h2>Rockford</h2>
+    </div>
+    <div id="content-joliet" class="content-block">
+        <h2>Joliet</h2>
+    </div>
+    <div id="content-naperville" class="content-block">
+        <h2>Naperville</h2>
+    </div>
+    <div id="content-peoria" class="content-block">
+        <h2>Peoria</h2>
+    </div>
+    <div id="content-champaign" class="content-block">
+        <h2>Champaign</h2>
+    </div>
+    <div id="content-illinois-valley" class="content-block">
+        <h2>Illinois Valley</h2>
+    </div>
+
+    <div id="content-indianapolis" class="content-block">
+        <h2>Indianapolis</h2>
+    </div>
+    <div id="content-fort-wayne" class="content-block">
+        <h2>Fort Wayne</h2>
+    </div>
+    <div id="content-evansville" class="content-block">
+        <h2>Evansville</h2>
+    </div>
+    <div id="content-south-bend" class="content-block">
+        <h2>South Bend</h2>
+    </div>
+    <div id="content-carmel" class="content-block">
+        <h2>Carmel</h2>
+    </div>
+    <div id="content-terre-haute" class="content-block">
+        <h2>Terre Haute</h2>
+    </div>
+    <div id="content-anderson" class="content-block">
+        <h2>Anderson</h2>
+    </div>
+    <div id="content-indiana-dunes" class="content-block">
+        <h2>Indiana Dunes</h2>
+    </div>
+
+    <div id="content-des-moines" class="content-block">
+        <h2>Des Moines</h2>
+    </div>
+    <div id="content-cedar-rapids" class="content-block">
+        <h2>Cedar Rapids</h2>
+    </div>
+    <div id="content-davenport" class="content-block">
+        <h2>Davenport</h2>
+    </div>
+    <div id="content-sioux-city" class="content-block">
+        <h2>Sioux City</h2>
+    </div>
+    <div id="content-ames" class="content-block">
+        <h2>Ames</h2>
+    </div>
+    <div id="content-iowa-city" class="content-block">
+        <h2>Iowa City</h2>
+    </div>
+    <div id="content-western-iowa" class="content-block">
+        <h2>Western Iowa</h2>
+    </div>
+    <div id="content-southeast-iowa" class="content-block">
+        <h2>Southeast Iowa</h2>
+    </div>
+
+    <div id="content-wichita" class="content-block">
+        <h2>Wichita</h2>
+    </div>
+    <div id="content-overland-park" class="content-block">
+        <h2>Overland Park</h2>
+    </div>
+    <div id="content-kansas-city" class="content-block">
+        <h2>Kansas City</h2>
+    </div>
+    <div id="content-topeka" class="content-block">
+        <h2>Topeka</h2>
+    </div>
+    <div id="content-olathe" class="content-block">
+        <h2>Olathe</h2>
+    </div>
+    <div id="content-lawrence" class="content-block">
+        <h2>Lawrence</h2>
+    </div>
+    <div id="content-salina" class="content-block">
+        <h2>Salina</h2>
+    </div>
+    <div id="content-st-francis" class="content-block">
+        <h2>St. Francis</h2>
+    </div>
+
+    <div id="content-louisville" class="content-block">
+        <h2>Louisville</h2>
+    </div>
+    <div id="content-lexington" class="content-block">
+        <h2>Lexington</h2>
+    </div>
+    <div id="content-owensboro" class="content-block">
+        <h2>Owensboro</h2>
+    </div>
+    <div id="content-hopkinsville" class="content-block">
+        <h2>Hopkinsville</h2>
+    </div>
+    <div id="content-bowling-green" class="content-block">
+        <h2>Bowling Green</h2>
+    </div>
+    <div id="content-richmond" class="content-block">
+        <h2>Richmond</h2>
+    </div>
+    <div id="content-florence" class="content-block">
+        <h2>Florence</h2>
+    </div>
+    <div id="content-northern-kentucky" class="content-block">
+        <h2>Northern Kentucky</h2>
+    </div>
+
+    <div id="content-new-orleans" class="content-block">
+        <h2>New Orleans</h2>
+    </div>
+    <div id="content-baton-rouge" class="content-block">
+        <h2>Baton Rouge</h2>
+    </div>
+    <div id="content-shreveport" class="content-block">
+        <h2>Shreveport</h2>
+    </div>
+    <div id="content-lafayette" class="content-block">
+        <h2>Lafayette</h2>
+    </div>
+    <div id="content-lake-charles" class="content-block">
+        <h2>Lake Charles</h2>
+    </div>
+    <div id="content-thibodaux" class="content-block">
+        <h2>Thibodaux</h2>
+    </div>
+    <div id="content-louisiana-parishes" class="content-block">
+        <h2>Louisiana Parishes</h2>
+    </div>
+
+    <div id="content-portland" class="content-block">
+        <h2>Portland</h2>
+    </div>
+    <div id="content-lewiston" class="content-block">
+        <h2>Lewiston</h2>
+    </div>
+    <div id="content-bangor" class="content-block">
+        <h2>Bangor</h2>
+    </div>
+    <div id="content-augsburg" class="content-block">
+        <h2>Auburn</h2>
+    </div>
+    <div id="content-waterville" class="content-block">
+        <h2>Waterville</h2>
+    </div>
+    <div id="content-south-portland" class="content-block">
+        <h2>South Portland</h2>
+    </div>
+
+    <div id="content-baltimore" class="content-block">
+        <h2>Baltimore</h2>
+    </div>
+    <div id="content-columbia" class="content-block">
+        <h2>Columbia</h2>
+    </div>
+    <div id="content-silver-spring" class="content-block">
+        <h2>Silver Spring</h2>
+    </div>
+    <div id="content-germantown" class="content-block">
+        <h2>Germantown</h2>
+    </div>
+    <div id="content-bowie" class="content-block">
+        <h2>Bowie</h2>
+    </div>
+    <div id="content-rockville" class="content-block">
+        <h2>Rockville</h2>
+    </div>
+    <div id="content-hagerstown" class="content-block">
+        <h2>Hagerstown</h2>
+    </div>
+
+    <div id="content-boston" class="content-block">
+        <h2>Boston</h2>
+    </div>
+    <div id="content-worcester" class="content-block">
+        <h2>Worcester</h2>
+    </div>
+    <div id="content-springfield" class="content-block">
+        <h2>Springfield</h2>
+    </div>
+    <div id="content-cambridge" class="content-block">
+        <h2>Cambridge</h2>
+    </div>
+    <div id="content-lowell" class="content-block">
+        <h2>Lowell</h2>
+    </div>
+    <div id="content-brockton" class="content-block">
+        <h2>Brockton</h2>
+    </div>
+    <div id="content-new-bedford" class="content-block">
+        <h2>New Bedford</h2>
+    </div>
+    <div id="content-fall-river" class="content-block">
+        <h2>Fall River</h2>
+    </div>
+
+    <div id="content-detroit" class="content-block">
+        <h2>Detroit</h2>
+    </div>
+    <div id="content-grand-rapids" class="content-block">
+        <h2>Grand Rapids</h2>
+    </div>
+    <div id="content-warren" class="content-block">
+        <h2>Warren</h2>
+    </div>
+    <div id="content-flint" class="content-block">
+        <h2>Flint</h2>
+    </div>
+    <div id="content-saginaw" class="content-block">
+        <h2>Saginaw</h2>
+    </div>
+    <div id="content-lansing" class="content-block">
+        <h2>Lansing</h2>
+    </div>
+    <div id="content-ann-arbor" class="content-block">
+        <h2>Ann Arbor</h2>
+    </div>
+    <div id="content-kalamazoo" class="content-block">
+        <h2>Kalamazoo</h2>
+    </div>
+
+    <div id="content-minneapolis" class="content-block">
+        <h2>Minneapolis</h2>
+    </div>
+    <div id="content-saint-paul" class="content-block">
+        <h2>Saint Paul</h2>
+    </div>
+    <div id="content-rochester" class="content-block">
+        <h2>Rochester</h2>
+    </div>
+    <div id="content-duluth" class="content-block">
+        <h2>Duluth</h2>
+    </div>
+    <div id="content-bloomington" class="content-block">
+        <h2>Bloomington</h2>
+    </div>
+    <div id="content-ankeny" class="content-block">
+        <h2>Ankeny</h2>
+    </div>
+
+    <div id="content-jackson" class="content-block">
+        <h2>Jackson</h2>
+    </div>
+    <div id="content-gulfport" class="content-block">
+        <h2>Gulfport</h2>
+    </div>
+    <div id="content-biloxi" class="content-block">
+        <h2>Biloxi</h2>
+    </div>
+    <div id="content-hattiesburg" class="content-block">
+        <h2>Hattiesburg</h2>
+    </div>
+    <div id="content-southhaven" class="content-block">
+        <h2>Southaven</h2>
+    </div>
+    <div id="content-meridian" class="content-block">
+        <h2>Meridian</h2>
+    </div>
+
+    <div id="content-st-louis" class="content-block">
+        <h2>St. Louis</h2>
+    </div>
+    <div id="content-kansas-city" class="content-block">
+        <h2>Kansas City</h2>
+    </div>
+    <div id="content-springfield" class="content-block">
+        <h2>Springfield</h2>
+    </div>
+    <div id="content-columbia" class="content-block">
+        <h2>Columbia</h2>
+    </div>
+    <div id="content-independence" class="content-block">
+        <h2>Independence</h2>
+    </div>
+    <div id="content-st-charles" class="content-block">
+        <h2>St. Charles</h2>
+    </div>
+    <div id="content-jefferson-city" class="content-block">
+        <h2>Jefferson City</h2>
+    </div>
+    <div id="content-joplin" class="content-block">
+        <h2>Joplin</h2>
+    </div>
+
+    <div id="content-billings" class="content-block">
+        <h2>Billings</h2>
+    </div>
+    <div id="content-missoula" class="content-block">
+        <h2>Missoula</h2>
+    </div>
+    <div id="content-great-falls" class="content-block">
+        <h2>Great Falls</h2>
+    </div>
+    <div id="content-bozeman" class="content-block">
+        <h2>Bozeman</h2>
+    </div>
+    <div id="content-butte" class="content-block">
+        <h2>Butte</h2>
+    </div>
+    <div id="content-helena" class="content-block">
+        <h2>Helena</h2>
+    </div>
+
+    <div id="content-omaha" class="content-block">
+        <h2>Omaha</h2>
+    </div>
+    <div id="content-lincoln" class="content-block">
+        <h2>Lincoln</h2>
+    </div>
+    <div id="content-bellevue" class="content-block">
+        <h2>Bellevue</h2>
+    </div>
+    <div id="content-grand-island" class="content-block">
+        <h2>Grand Island</h2>
+    </div>
+    <div id="content-kearney" class="content-block">
+        <h2>Kearney</h2>
+    </div>
+    <div id="content-scottsbluff" class="content-block">
+        <h2>Scottsbluff</h2>
+    </div>
+
+    <div id="content-las-vegas" class="content-block">
+        <h2>Las Vegas</h2>
+    </div>
+    <div id="content-reno" class="content-block">
+        <h2>Reno</h2>
+    </div>
+    <div id="content-sparks" class="content-block">
+        <h2>Sparks</h2>
+    </div>
+    <div id="content-carson-city" class="content-block">
+        <h2>Carson City</h2>
+    </div>
+    <div id="content-henderson" class="content-block">
+        <h2>Henderson</h2>
+    </div>
+
+    <div id="content-manchester" class="content-block">
+        <h2>Manchester</h2>
+    </div>
+    <div id="content-nashua" class="content-block">
+        <h2>Nashua</h2>
+    </div>
+    <div id="content-concord" class="content-block">
+        <h2>Concord</h2>
+    </div>
+    <div id="content-dover" class="content-block">
+        <h2>Dover</h2>
+    </div>
+    <div id="content-rochester" class="content-block">
+        <h2>Rochester</h2>
+    </div>
+
+    <div id="content-newark" class="content-block">
+        <h2>Newark</h2>
+    </div>
+    <div id="content-jersey-city" class="content-block">
+        <h2>Jersey City</h2>
+    </div>
+    <div id="content-paterson" class="content-block">
+        <h2>Paterson</h2>
+    </div>
+    <div id="content-Elizabeth" class="content-block">
+        <h2>Elizabeth</h2>
+    </div>
+    <div id="content-edison" class="content-block">
+        <h2>Edison</h2>
+    </div>
+    <div id="content-woodbridge" class="content-block">
+        <h2>Woodbridge</h2>
+    </div>
+
+    <div id="content-albuquerque" class="content-block">
+        <h2>Albuquerque</h2>
+    </div>
+    <div id="content-las-cruces" class="content-block">
+        <h2>Las Cruces</h2>
+    </div>
+    <div id="content-santa-fe" class="content-block">
+        <h2>Santa Fe</h2>
+    </div>
+    <div id="content-rio-rancho" class="content-block">
+        <h2>Rio Rancho</h2>
+    </div>
+    <div id="content-roswell" class="content-block">
+        <h2>Roswell</h2>
+    </div>
+
+    <div id="content-new-york-city" class="content-block">
+        <h2>New York City</h2>
+    </div>
+    <div id="content-buffalo" class="content-block">
+        <h2>Buffalo</h2>
+    </div>
+    <div id="content-rochester" class="content-block">
+        <h2>Rochester</h2>
+    </div>
+    <div id="content-syracuse" class="content-block">
+        <h2>Syracuse</h2>
+    </div>
+    <div id="content-albany" class="content-block">
+        <h2>Albany</h2>
+    </div>
+    <div id="content-utica" class="content-block">
+        <h2>Utica</h2>
+    </div>
+    <div id="content-kingston" class="content-block">
+        <h2>Kingston</h2>
+    </div>
+    <div id="content-binghamton" class="content-block">
+        <h2>Binghamton</h2>
+    </div>
+
+    <div id="content-charlotte" class="content-block">
+        <h2>Charlotte</h2>
+    </div>
+    <div id="content-raleigh" class="content-block">
+        <h2>Raleigh</h2>
+    </div>
+    <div id="content-greensboro" class="content-block">
+        <h2>Greensboro</h2>
+    </div>
+    <div id="content-durham" class="content-block">
+        <h2>Durham</h2>
+    </div>
+    <div id="content-winston-salem" class="content-block">
+        <h2>Winston-Salem</h2>
+    </div>
+    <div id="content-fayetteville" class="content-block">
+        <h2>Fayetteville</h2>
+    </div>
+
+    <div id="content-fargo" class="content-block">
+        <h2>Fargo</h2>
+    </div>
+    <div id="content-bismarck" class="content-block">
+        <h2>Bismarck</h2>
+    </div>
+    <div id="content-grand-forks" class="content-block">
+        <h2>Grand Forks</h2>
+    </div>
+    <div id="content-minot" class="content-block">
+        <h2>Minot</h2>
+    </div>
+    <div id="content-west-fargo" class="content-block">
+        <h2>West Fargo</h2>
+    </div>
+
+    <div id="content-columbus" class="content-block">
+        <h2>Columbus</h2>
+    </div>
+    <div id="content-cleveland" class="content-block">
+        <h2>Cleveland</h2>
+    </div>
+    <div id="content-cincinnati" class="content-block">
+        <h2>Cincinnati</h2>
+    </div>
+    <div id="content-akron" class="content-block">
+        <h2>Akron</h2>
+    </div>
+    <div id="content-dayton" class="content-block">
+        <h2>Dayton</h2>
+    </div>
+    <div id="content-parma" class="content-block">
+        <h2>Parma</h2>
+    </div>
+
+    <div id="content-oklahoma-city" class="content-block">
+        <h2>Oklahoma City</h2>
+    </div>
+    <div id="content-tulsa" class="content-block">
+        <h2>Tulsa</h2>
+    </div>
+    <div id="content-norman" class="content-block">
+        <h2>Norman</h2>
+    </div>
+    <div id="content-broken-arrow" class="content-block">
+        <h2>Broken Arrow</h2>
+    </div>
+    <div id="content-lawton" class="content-block">
+        <h2>Lawton</h2>
+    </div>
+    <div id="content-moore" class="content-block">
+        <h2>Moore</h2>
+    </div>
+
+    <div id="content-portland" class="content-block">
+        <h2>Portland</h2>
+    </div>
+    <div id="content-salem" class="content-block">
+        <h2>Salem</h2>
+    </div>
+    <div id="content-eugene" class="content-block">
+        <h2>Eugene</h2>
+    </div>
+    <div id="content-gresham" class="content-block">
+        <h2>Gresham</h2>
+    </div>
+    <div id="content-hillsboro" class="content-block">
+        <h2>Hillsboro</h2>
+    </div>
+    <div id="content-beaverton" class="content-block">
+        <h2>Beaverton</h2>
+    </div>
+
+    <div id="content-philadelphia" class="content-block">
+        <h2>Philadelphia</h2>
+    </div>
+    <div id="content-pittsburgh" class="content-block">
+        <h2>Pittsburgh</h2>
+    </div>
+    <div id="content-allentown" class="content-block">
+        <h2>Allentown</h2>
+    </div>
+    <div id="content-erie" class="content-block">
+        <h2>Erie</h2>
+    </div>
+    <div id="content-reading" class="content-block">
+        <h2>Reading</h2>
+    </div>
+    <div id="content-scranton" class="content-block">
+        <h2>Scranton</h2>
+    </div>
+
+    <div id="content-providence" class="content-block">
+        <h2>Providence</h2>
+    </div>
+    <div id="content-warwick" class="content-block">
+        <h2>Warwick</h2>
+    </div>
+    <div id="content-cranston" class="content-block">
+        <h2>Cranston</h2>
+    </div>
+    <div id="content-pawtucket" class="content-block">
+        <h2>Pawtucket</h2>
+    </div>
+    <div id="content-east-greenwich" class="content-block">
+        <h2>East Greenwich</h2>
+    </div>
+
+    <div id="content-columbia" class="content-block">
+        <h2>Columbia</h2>
+    </div>
+    <div id="content-charleston" class="content-block">
+        <h2>Charleston</h2>
+    </div>
+    <div id="content-north-charleston" class="content-block">
+        <h2>North Charleston</h2>
+    </div>
+    <div id="content-myrtle-beach" class="content-block">
+        <h2>Myrtle Beach</h2>
+    </div>
+    <div id="content-greenville" class="content-block">
+        <h2>Greenville</h2>
+    </div>
+    <div id="content-spartanburg" class="content-block">
+        <h2>Spartanburg</h2>
+    </div>
+
+    <div id="content-sioux-falls" class="content-block">
+        <h2>Sioux Falls</h2>
+    </div>
+    <div id="content-rapid-city" class="content-block">
+        <h2>Rapid City</h2>
+    </div>
+    <div id="content-brookings" class="content-block">
+        <h2>Brookings</h2>
+    </div>
+    <div id="content-aberdeen" class="content-block">
+        <h2>Aberdeen</h2>
+    </div>
+    <div id="content-yankton" class="content-block">
+        <h2>Yankton</h2>
+    </div>
+
+    <div id="content-nashville" class="content-block">
+        <h2>Nashville</h2>
+    </div>
+    <div id="content-memphis" class="content-block">
+        <h2>Memphis</h2>
+    </div>
+    <div id="content-knoxville" class="content-block">
+        <h2>Knoxville</h2>
+    </div>
+    <div id="content-chattanooga" class="content-block">
+        <h2>Chattanooga</h2>
+    </div>
+    <div id="content-clarksville" class="content-block">
+        <h2>Clarksville</h2>
+    </div>
+
+    <div id="content-houston" class="content-block">
+        <h2>Houston</h2>
+    </div>
+    <div id="content-san-antonio" class="content-block">
+        <h2>San Antonio</h2>
+    </div>
+    <div id="content-dallas" class="content-block">
+        <h2>Dallas</h2>
+    </div>
+    <div id="content-austin" class="content-block">
+        <h2>Austin</h2>
+    </div>
+    <div id="content-fort-worth" class="content-block">
+        <h2>Fort Worth</h2>
+    </div>
+    <div id="content-arlington" class="content-block">
+        <h2>Arlington</h2>
+    </div>
+    <div id="content-el-paso" class="content-block">
+        <h2>El Paso</h2>
+    </div>
+    <div id="content-corpus-christi" class="content-block">
+        <h2>Corpus Christi</h2>
+    </div>
+
+    <div id="content-salt-lake-city" class="content-block">
+        <h2>Salt Lake City</h2>
+    </div>
+    <div id="content-west-valley-city" class="content-block">
+        <h2>West Valley City</h2>
+    </div>
+    <div id="content-provo" class="content-block">
+        <h2>Provo</h2>
+    </div>
+    <div id="content-west-jordan" class="content-block">
+        <h2>West Jordan</h2>
+    </div>
+    <div id="content-ogden" class="content-block">
+        <h2>Ogden</h2>
+    </div>
+
+    <div id="content-burlington" class="content-block">
+        <h2>Burlington</h2>
+    </div>
+    <div id="content-south-burlington" class="content-block">
+        <h2>South Burlington</h2>
+    </div>
+    <div id="content-essex" class="content-block">
+        <h2>Essex</h2>
+    </div>
+    <div id="content-barre" class="content-block">
+        <h2>Barre</h2>
+    </div>
+    <div id="content-montpelier" class="content-block">
+        <h2>Montpelier</h2>
+    </div>
+
+    <div id="content-virginia-beach" class="content-block">
+        <h2>Virginia Beach</h2>
+    </div>
+    <div id="content-norfolk" class="content-block">
+        <h2>Norfolk</h2>
+    </div>
+    <div id="content-chesapeake" class="content-block">
+        <h2>Chesapeake</h2>
+    </div>
+    <div id="content-richmond" class="content-block">
+        <h2>Richmond</h2>
+    </div>
+    <div id="content-newport-news" class="content-block">
+        <h2>Newport News</h2>
+    </div>
+    <div id="content-portsmouth" class="content-block">
+        <h2>Portsmouth</h2>
+    </div>
+
+    <div id="content-seattle" class="content-block">
+        <h2>Seattle</h2>
+    </div>
+    <div id="content-spokane" class="content-block">
+        <h2>Spokane</h2>
+    </div>
+    <div id="content-tacoma" class="content-block">
+        <h2>Tacoma</h2>
+    </div>
+    <div id="content-vancouver" class="content-block">
+        <h2>Vancouver</h2>
+    </div>
+    <div id="content-bellevue" class="content-block">
+        <h2>Bellevue</h2>
+    </div>
+
+    <div id="content-charleston" class="content-block">
+        <h2>Charleston</h2>
+    </div>
+    <div id="content-huntington" class="content-block">
+        <h2>Huntington</h2>
+    </div>
+    <div id="content-morgantown" class="content-block">
+        <h2>Morgantown</h2>
+    </div>
+    <div id="content-parkersburg" class="content-block">
+        <h2>Parkersburg</h2>
+    </div>
+    <div id="content-weirton" class="content-block">
+        <h2>Weirton</h2>
+    </div>
+
+    <div id="content-milwaukee" class="content-block">
+        <h2>Milwaukee</h2>
+    </div>
+    <div id="content-madison" class="content-block">
+        <h2>Madison</h2>
+    </div>
+    <div id="content-green-bay" class="content-block">
+        <h2>Green Bay</h2>
+    </div>
+    <div id="content-kenosha" class="content-block">
+        <h2>Kenosha</h2>
+    </div>
+    <div id="content-appleton" class="content-block">
+        <h2>Appleton</h2>
+    </div>
+
+    <div id="content-cheyenne" class="content-block">
+        <h2>Cheyenne</h2>
+    </div>
+    <div id="content-casper" class="content-block">
+        <h2>Casper</h2>
+    </div>
+    <div id="content-laramie" class="content-block">
+        <h2>Laramie</h2>
+    </div>
+    <div id="content-rock-springs" class="content-block">
+        <h2>Rock Springs</h2>
+    </div>
+    <div id="content-rawlins" class="content-block">
+        <h2>Rawlins</h2>
+    </div>
+
+</div>
+
+</body>
+</html>

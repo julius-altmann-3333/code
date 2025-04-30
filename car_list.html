@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Types and Manufacturers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2C3E50;
+        }
+        h2 {
+            color: #2980B9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .car-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #BDC3C7;
+            width: 300px;
+            height: 100px;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 10px;
+            position: relative;
+        }
+        .car-box a {
+            text-decoration: none;
+            color: #34495E;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #f9f9f9;
+            border: 1px solid #BDC3C7;
+            display: none;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+        .car-box:hover .dropdown {
+            display: block;
+        }
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #34495E;
+        }
+        .dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        @media (max-width: 768px) {
+            .car-box {
+                width: 100%;
+                height: 50px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Types and Manufacturers</h1>
+    <div class="container">
+        <section class="section">
+            <h2>Car Manufacturers</h2>
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Acura</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">ILX</a>
+                <a href="#" class="car-type">TLX</a>
+                <a href="#" class="car-type">RDX</a>
+                <a href="#" class="car-type">MDX</a>
+                <a href="#" class="car-type">NSX</a>
+              </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Alfa Romeo</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Giulia</a>
+                    <a href="#" class="car-type">Stelvio</a>
+                    <a href="#" class="car-type">Spider</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Aston Martin</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">DB11</a>
+                    <a href="#" class="car-type">Vantage</a>
+                    <a href="#" class="car-type">Rapide</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Audi</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">A3</a>
+                    <a href="#" class="car-type">Q5</a>
+                    <a href="#" class="car-type">R8</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Bentley</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Continental GT</a>
+                    <a href="#" class="car-type">Flying Spur</a>
+                    <a href="#" class="car-type">Bentayga</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">BMW</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">3 Series</a>
+                    <a href="#" class="car-type">X5</a>
+                    <a href="#" class="car-type">i8</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Buick</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Enclave</a>
+                    <a href="#" class="car-type">LaCrosse</a>
+                    <a href="#" class="car-type">Regal</a>
+                </div>
+            </div>
+            <div class="car-box">
+            <a href="#" class="car-manufacturer">Bugatti</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Chiron</a>
+                <a href="#" class="car-type">Veyron</a>
+                <a href="#" class="car-type">Divo</a>
+            </div>
+        </div>
+        <div class="car-box">
+              <a href="#" class="car-manufacturer">Changan (China)</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">CS35</a>
+                <a href="#" class="car-type">CS55</a>
+                <a href="#" class="car-type">CS75</a>
+                <a href="#" class="car-type">CS95</a>
+                <a href="#" class="car-type">Eado</a>
+              </div>
+            </div>
+        
+
+        
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Cadillac</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Escalade</a>
+                    <a href="#" class="car-type">CTS</a>
+                    <a href="#" class="car-type">XT5</a>
+                </div>
+            </div>
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Caterham (United Kingdom)</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Seven 270</a>
+                <a href="#" class="car-type">Seven 310</a>
+                <a href="#" class="car-type">Seven 420</a>
+                <a href="#" class="car-type">Seven 620R</a>
+                <a href="#" class="car-type">Seven 990</a>
+              </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Chevrolet</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Malibu</a>
+                    <a href="#" class="car-type">Silverado</a>
+                    <a href="#" class="car-type">Corvette</a>
+                </div>
+            </div>
+            <div class="car-box">
+            <a href="#" class="car-manufacturer">Chery</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Tiggo 5</a>
+                <a href="#" class="car-type">Arrizo 5</a>
+            </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Chrysler</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Pacifica</a>
+                    <a href="#" class="car-type">300</a>
+                    <a href="#" class="car-type">Voyager</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Citroën</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">C3</a>
+                    <a href="#" class="car-type">C4</a>
+                    <a href="#" class="car-type">Berlingo</a>
+                </div>
+            </div>
+           <div class="car-box">
+            <a href="#" class="car-manufacturer">Dacia</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Duster</a>
+                <a href="#" class="car-type">Spring</a>
+                <a href="#" class="car-type">Sandero</a>
+            </div>
+            </div>
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Daihatsu</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Sirion</a>
+                <a href="#" class="car-type">Terios</a>
+                <a href="#" class="car-type">Mira</a>
+                <a href="#" class="car-type">Rocky</a>
+                <a href="#" class="car-type">Copen</a>
+              </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Dodge</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Charger</a>
+                    <a href="#" class="car-type">Durango</a>
+                    <a href="#" class="car-type">Challenger</a>
+                </div>
+            </div>
+             <div class="car-box">
+              <a href="#" class="car-manufacturer">FAW Group (China)</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Hongqi H9</a>
+                <a href="#" class="car-type">Besturn X80</a>
+                <a href="#" class="car-type">Besturn B70</a>
+                <a href="#" class="car-type">Besturn X40</a>
+                <a href="#" class="car-type">Junpai</a>
+              </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Fiat</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">500</a>
+                    <a href="#" class="car-type">Panda</a>
+                    <a href="#" class="car-type">Tipo</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Ford</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">Mustang</a>
+                    <a href="#" class="car-type">F-150</a>
+                    <a href="#" class="car-type">Focus</a>
+                    <a href="#" class="car-type">Explorer</a>
+                    <a href="#" class="car-type">Escape</a>
+                    <a href="#" class="car-type">Fusion</a>
+                </div>
+            </div>
+            <div class="car-box">
+                <a href="#" class="car-manufacturer">Genesis</a>
+                <div class="dropdown">
+                    <a href="#" class="car-type">G70</a>
+                    <a href="#" class="car-type">G80</a>
+                    <a href="#" class="car-type">GV70</a>
+                    <a href="#" class="car-type">GV80</a>
+                </div>
+            </div>
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Great Wall Motors</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Haval H6</a>
+                <a href="#" class="car-type">Haval F7</a>
+                <a href="#" class="car-type">Haval H9</a>
+                <a href="#" class="car-type">Wingle 5</a>
+                <a href="#" class="car-type">Steed</a>
+              </div>
+            </div>
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Koenigsegg</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Agera RS</a>
+                <a href="#" class="car-type">Regera</a>
+                <a href="#" class="car-type">Jesko</a>
+                <a href="#" class="car-type">Gemera</a>
+                <a href="#" class="car-type">One:1</a>
+              </div>
+            </div>
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Lancia</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Delta</a>
+                <a href="#" class="car-type">Ypsilon</a>
+                <a href="#" class="car-type">Fulvia</a>
+                <a href="#" class="car-type">Thema</a>
+                <a href="#" class="car-type">Musa</a>
+              </div>
+            </div>
+         
+
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Rimac Automobili</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Concept One</a>
+                <a href="#" class="car-type">Nevera</a>
+                <a href="#" class="car-type">Nevera GT</a>
+                <a href="#" class="car-type">Sport</a>
+                <a href="#" class="car-type">eVision</a>
+              </div>
+            </div>
+
+           
+
+            
+
+
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Morgan (United Kingdom)</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">3 Wheeler</a>
+                <a href="#" class="car-type">Plus 4</a>
+                <a href="#" class="car-type">Roadster</a>
+                <a href="#" class="car-type">Plus 8</a>
+                <a href="#" class="car-type">Aero</a>
+              </div>
+            </div>
+
+            
+
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">TVR (United Kingdom)</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Griffith</a>
+                <a href="#" class="car-type">Cerbera</a>
+                <a href="#" class="car-type">Tuscan</a>
+                <a href="#" class="car-type">Tamora</a>
+                <a href="#" class="car-type">Sagaris</a>
+              </div>
+            </div>
+
+            <div class="car-box">
+              <a href="#" class="car-manufacturer">Zenvo (Denmark)</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">ST1</a>
+                <a href="#" class="car-type">TSR-S</a>
+                <a href="#" class="car-type">TSR-GT</a>
+                <a href="#" class="car-type">Alpha</a>
+                <a href="#" class="car-type">Omega</a>
+              </div>
+
+          </div>
+        </div>
+                  
+                    
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">GMC</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Sierra 1500</a>
+                <a href="#" class="car-type">Yukon</a>
+                <a href="#" class="car-type">Terrain</a>
+                <a href="#" class="car-type">Acadia</a>
+                <a href="#" class="car-type">Canyon</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Hyundai</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Elantra</a>
+                <a href="#" class="car-type">Tucson</a>
+                <a href="#" class="car-type">Santa Fe</a>
+                <a href="#" class="car-type">Sonata</a>
+                <a href="#" class="car-type">Kona</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Infiniti</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Q50</a>
+                <a href="#" class="car-type">Q60</a>
+                <a href="#" class="car-type">QX50</a>
+                <a href="#" class="car-type">QX60</a>
+                <a href="#" class="car-type">QX80</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Jaguar</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">XE</a>
+                <a href="#" class="car-type">XF</a>
+                <a href="#" class="car-type">F-PACE</a>
+                <a href="#" class="car-type">I-PACE</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Jeep</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Wrangler</a>
+                <a href="#" class="car-type">Cherokee</a>
+                <a href="#" class="car-type">Grand Cherokee</a>
+                <a href="#" class="car-type">Renegade</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Kia</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Seltos</a>
+                <a href="#" class="car-type">Sorento</a>
+                <a href="#" class="car-type">Telluride</a>
+                <a href="#" class="car-type">Sportage</a>
+                <a href="#" class="car-type">Forte</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Lamborghini</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Aventador</a>
+                <a href="#" class="car-type">Huracán</a>
+                <a href="#" class="car-type">Urus</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Land Rover</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Defender</a>
+                <a href="#" class="car-type">Range Rover</a>
+                <a href="#" class="car-type">Discovery</a>
+                <a href="#" class="car-type">Evoque</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Lexus</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">ES</a>
+                <a href="#" class="car-type">RX</a>
+                <a href="#" class="car-type">NX</a>
+                <a href="#" class="car-type">LS</a>
+                <a href="#" class="car-type">GX</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Lincoln</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Navigator</a>
+                <a href="#" class="car-type">Corsair</a>
+                <a href="#" class="car-type">Aviator</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Maserati</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Levante</a>
+                <a href="#" class="car-type">Ghibli</a>
+                <a href="#" class="car-type">Quattroporte</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Mazda</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">CX-5</a>
+                <a href="#" class="car-type">Mazda3</a>
+                <a href="#" class="car-type">Mazda6</a>
+                <a href="#" class="car-type">MX-5 Miata</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">McLaren</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">720S</a>
+                <a href="#" class="car-type">570S</a>
+                <a href="#" class="car-type">Artura</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Mercedes-Benz</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">C-Class</a>
+                <a href="#" class="car-type">E-Class</a>
+                <a href="#" class="car-type">S-Class</a>
+                <a href="#" class="car-type">GLC</a>
+                <a href="#" class="car-type">GLS</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Mini</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Cooper</a>
+                <a href="#" class="car-type">Clubman</a>
+                <a href="#" class="car-type">Countryman</a>
+            </div>
+        </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Mitsubishi</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Outlander</a>
+                <a href="#" class="car-type">Eclipse Cross</a>
+                <a href="#" class="car-type">Lancer</a>
+                <a href="#" class="car-type">Mirage</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Nissan</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Altima</a>
+                <a href="#" class="car-type">Maxima</a>
+                <a href="#" class="car-type">Leaf</a>
+                <a href="#" class="car-type">370Z</a>
+                <a href="#" class="car-type">Rogue</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Pagani</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Huayra</a>
+                <a href="#" class="car-type">Zonda</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Peugeot</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">208</a>
+                <a href="#" class="car-type">3008</a>
+                <a href="#" class="car-type">508</a>
+                <a href="#" class="car-type">Partner</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Porsche</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">911</a>
+                <a href="#" class="car-type">Cayenne</a>
+                <a href="#" class="car-type">Macan</a>
+                <a href="#" class="car-type">Taycan</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Ram</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">1500</a>
+                <a href="#" class="car-type">2500</a>
+                <a href="#" class="car-type">3500</a>
+                <a href="#" class="car-type">ProMaster</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Renault</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Clio</a>
+                <a href="#" class="car-type">Megane</a>
+                <a href="#" class="car-type">Captur</a>
+                <a href="#" class="car-type">Koleos</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Rolls-Royce</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Phantom</a>
+                <a href="#" class="car-type">Ghost</a>
+                <a href="#" class="car-type">Wraith</a>
+                <a href="#" class="car-type">Cullinan</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Saab</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">9-3</a>
+                <a href="#" class="car-type">9-5</a>
+                <a href="#" class="car-type">9-4X</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Subaru</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Impreza</a>
+                <a href="#" class="car-type">Outback</a>
+                <a href="#" class="car-type">Forester</a>
+                <a href="#" class="car-type">Crosstrek</a>
+            </div>
+        </div>
+        <div class="car-box">
+              <a href="#" class="car-manufacturer">Suzuki</a>
+              <div class="dropdown">
+                <a href="#" class="car-type">Swift</a>
+                <a href="#" class="car-type">Vitara</a>
+                <a href="#" class="car-type">Jimny</a>
+                <a href="#" class="car-type">Baleno</a>
+                <a href="#" class="car-type">Celerio</a>
+              </div>
+            </div>
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Tesla</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Model S</a>
+                <a href="#" class="car-type">Model 3</a>
+                <a href="#" class="car-type">Model X</a>
+                <a href="#" class="car-type">Model Y</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Toyota</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Camry</a>
+                <a href="#" class="car-type">Corolla</a>
+                <a href="#" class="car-type">Land Cruiser</a>
+                <a href="#" class="car-type">Hilux</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Volkswagen (VW)</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Golf</a>
+                <a href="#" class="car-type">Passat</a>
+                <a href="#" class="car-type">Polo</a>
+                <a href="#" class="car-type">Tiguan</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Volvo</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">XC90</a>
+                <a href="#" class="car-type">XC60</a>
+                <a href="#" class="car-type">S60</a>
+                <a href="#" class="car-type">V90</a>
+            </div>
+        </div>
+
+        
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Ferrari</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">488 GTB</a>
+                <a href="#" class="car-type">Portofino</a>
+                <a href="#" class="car-type">F8 Tributo</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Honda</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Civic</a>
+                <a href="#" class="car-type">Accord</a>
+                <a href="#" class="car-type">CR-V</a>
+                <a href="#" class="car-type">Pilot</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Seat</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Ibiza</a>
+                <a href="#" class="car-type">Leon</a>
+                <a href="#" class="car-type">Ateca</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Skoda</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Octavia</a>
+                <a href="#" class="car-type">Kodiaq</a>
+                <a href="#" class="car-type">Superb</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Smart</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Fortwo</a>
+                <a href="#" class="car-type">Forfour</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Tata Motors</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Nexon</a>
+                <a href="#" class="car-type">Harrier</a>
+                <a href="#" class="car-type">Tigor</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Rivian</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">R1T</a>
+                <a href="#" class="car-type">R1S</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Lucid Motors</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Lucid Air</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">BYD</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Tang</a>
+                <a href="#" class="car-type">Qin</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Polestar</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Polestar 1</a>
+                <a href="#" class="car-type">Polestar 2</a>
+            </div>
+        </div>
+
+        <div class="car-box">
+            <a href="#" class="car-manufacturer">Fisker</a>
+            <div class="dropdown">
+                <a href="#" class="car-type">Ocean</a>
+                <a href="#" class="car-type">Pearl</a>
+            </div>
+        </div>
+
+
+        </section>
+    </div>
+</body>
+</html>

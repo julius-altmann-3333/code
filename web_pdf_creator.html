@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h2>Fill Out Property Information</h2>
+    <form id="propertyForm">
+        <label for="address">Property Address:</label>
+        <input type="text" id="address" name="address"><br><br>
+        <label for="type">Property Type:</label>
+        <input type="text" id="type" name="type"><br><br>
+        <label for="year">Year Built:</label>
+        <input type="text" id="year" name="year"><br><br>
+        <button type="button" onclick="generatePDF()">Generate PDF</button>
+    </form>
+
+    <script>
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Capture form values
+            const address = document.getElementById('address').value;
+            const type = document.getElementById('type').value;
+            const year = document.getElementById('year').value;
+            
+            // Add content to the PDF
+            doc.text('Property Information', 10, 10);
+            doc.text('Address: ' + address, 10, 20);
+            doc.text('Type: ' + type, 10, 30);
+            doc.text('Year Built: ' + year, 10, 40);
+            
+            // Save PDF
+            doc.save('property_information.pdf');
+        }
+    </script>
+</body>
+</html>

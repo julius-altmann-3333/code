@@ -1,0 +1,966 @@
+<style>
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9; /* Light background */
+}
+
+.navbar {
+  background-color: #333; /* Dark gray for navbar */
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+
+.brand {
+  font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-width: 100%;
+}
+
+.nav-links li {
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect for main nav links */
+.nav-links li:hover > a {
+  background-color: #575757; /* Darker gray for hover effect */
+}
+
+/* Dropdown Menu (Hidden by Default) */
+.dropdown {
+  background-color: #f8f9fa; /* Light gray for the dropdown */
+  color: black;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  max-width: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  border: 1px solid #ccc; /* Lighter border for contrast */
+  flex-direction: column;
+}
+
+/* Dropdown Items */
+.dropdown li {
+  list-style: none;
+  height: auto; /* Set a fixed height for each item */
+  padding: 0 10px;
+  background-color: #f8f9fa; /* Same light gray */
+  color: black;
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover Effect for Dropdown Items */
+.dropdown li:hover {
+  background-color: #666; /* Darker gray on hover */
+  border-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  cursor: pointer;
+}
+
+/* Show Dropdown on Hover */
+.nav-links li:hover .dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive: Menu Toggle for Smaller Screens */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  background: transparent;
+  border: none;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links li {
+    flex: 1 1 300px;
+  }
+  .dropdown {
+    min-width: 100%;
+    max-width: none;
+    z-index: 100;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #333; /* Dark background on mobile */
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  /* Make the dropdown span 100% width on mobile */
+  .dropdown {
+    position: absolute;
+    width: 100%; /* Make the dropdown 100% of the viewport width */
+    left: 0;
+    top: 100%; /* Position it directly below the parent item */
+    max-height: 150px; /* Optional: Adjust the max-height on mobile */
+    overflow-y: auto; /* Ensure the dropdown scrolls */
+    min-width: 100%;
+    max-width: none;
+    display: none; /* Hide dropdown by default on mobile */
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+    </style>
+
+<body>
+<nav class="navbar">
+    <div class="brand">Industry List</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+                <a href="#" class="#">Aviation & Aerospace</a>
+                <ul class="dropdown">
+                    <li href="#">Aircraft Manufacturing</li>
+                    <li href="#">Airports & Infrastructure</li>
+                    <li href="#">Defense & Military Aviation</li>
+                    <li href="#">Commercial Airlines</li>
+                    <li href="#">Space Exploration</li>
+                    <li href="#">Aircraft Parts & Components</li>
+                    <li href="#">Aerospace Engineering</li>
+                    <li href="#">Air Traffic Control Systems</li>
+                    <li href="#">Aviation Safety & Security</li>
+                    <li href="#">Pilot Training & Simulation</li>
+                    <li href="#">Aerospace Materials</li>
+                    <li href="#">Private Jet Services</li>
+                    <li href="#">Aerospace Software & Technology</li>
+                    <li href="#">Airline Catering & Services</li>
+                    <li href="#">Air Freight & Cargo</li>
+                    <li href="#">Airport Operations & Management</li>
+                    <li href="#">Unmanned Aerial Vehicles (UAV)</li>
+                    <li href="#">Satellite Manufacturing</li>
+                    <li href="#">Space Tourism</li>
+                    <li href="#">Space Research & Development</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="#">Banking & Financial Services</a>
+                <ul class="dropdown">
+                    <li href="#">Retail Banking</li>
+                    <li href="#">Investment Banking</li>
+                    <li href="#">Insurance</li>
+                    <li href="#">Wealth Management</li>
+                    <li href="#">Fintech</li>
+                    <li href="#">Corporate Banking</li>
+                    <li href="#">Private Equity</li>
+                    <li href="#">Asset Management</li>
+                    <li href="#">Capital Markets</li>
+                    <li href="#">Financial Technology</li>
+                    <li href="#">Hedge Funds</li>
+                    <li href="#">Venture Capital</li>
+                    <li href="#">Mortgage & Real Estate Finance</li>
+                    <li href="#">Banking Software & Solutions</li>
+                    <li href="#">Credit Cards & Payments</li>
+                    <li href="#">Cryptocurrency & Blockchain</li>
+                    <li href="#">Investment Advisory Services</li>
+                    <li href="#">Microfinance</li>
+                    <li href="#">Financial Planning & Consulting</li>
+                    <li href="#">Risk Management & Compliance</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="#">Biotechnology</a>
+                <ul class="dropdown">
+                    <li href="#">Pharmaceuticals</li>
+                    <li href="#">Genetic Engineering</li>
+                    <li href="#">Biomedical Research</li>
+                    <li href="#">Biotech Startups</li>
+                    <li href="#">Industrial Biotech</li>
+                    <li href="#">Gene Therapy</li>
+                    <li href="#">Cell & Gene Therapy</li>
+                    <li href="#">Agricultural Biotechnology</li>
+                    <li href="#">Bioinformatics</li>
+                    <li href="#">Stem Cell Research</li>
+                    <li href="#">Molecular Diagnostics</li>
+                    <li href="#">Vaccine Development</li>
+                    <li href="#">Biopharmaceuticals</li>
+                    <li href="#">Tissue Engineering</li>
+                    <li href="#">Bioengineering</li>
+                    <li href="#">Biodegradable Plastics</li>
+                    <li href="#">Environmental Biotechnology</li>
+                    <li href="#">Biotechnology Equipment & Tools</li>
+                    <li href="#">Medical Devices & Diagnostics</li>
+                    <li href="#">Synthetic Biology</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Cloud Computing</a>
+                <ul class="dropdown">
+                    <li href="#">Data Centers</li>
+                    <li href="#">Cloud Security</li>
+                    <li href="#">Platform as a Service (PaaS)</li>
+                    <li href="#">Software as a Service (SaaS)</li>
+                    <li href="#">Edge Computing</li>
+                    <li href="#">Infrastructure as a Service (IaaS)</li>
+                    <li href="#">Cloud Storage</li>
+                    <li href="#">Cloud Migration</li>
+                    <li href="#">Cloud Consulting</li>
+                    <li href="#">Hybrid Cloud Solutions</li>
+                    <li href="#">Cloud Analytics</li>
+                    <li href="#">Cloud Networking</li>
+                    <li href="#">Cloud Monitoring & Management</li>
+                    <li href="#">Serverless Computing</li>
+                    <li href="#">Cloud Backup & Disaster Recovery</li>
+                    <li href="#">Cloud Platforms & Development</li>
+                    <li href="#">Cloud Databases</li>
+                    <li href="#">Cloud-based Enterprise Software</li>
+                    <li href="#">Cloud Automation</li>
+                    <li href="#">Cloud DevOps</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Cybersecurity</a>
+                <ul class="dropdown">
+                    <li href="#">Network Security</li>
+                    <li href="#">Data Protection</li>
+                    <li href="#">Ethical Hacking</li>
+                    <li href="#">Cyber Threat Intelligence</li>
+                    <li href="#">Endpoint Security</li>
+                    <li href="#">Identity & Access Management</li>
+                    <li href="#">Cloud Security</li>
+                    <li href="#">Application Security</li>
+                    <li href="#">Security Information & Event Management (SIEM)</li>
+                    <li href="#">Incident Response</li>
+                    <li href="#">Cybersecurity Compliance</li>
+                    <li href="#">Security Operations Centers (SOC)</li>
+                    <li href="#">Risk Management</li>
+                    <li href="#">Penetration Testing</li>
+                    <li href="#">Encryption Technologies</li>
+                    <li href="#">Security Awareness Training</li>
+                    <li href="#">Malware Protection</li>
+                    <li href="#">Vulnerability Management</li>
+                    <li href="#">Advanced Persistent Threats (APT) Defense</li>
+                    <li href="#">Zero Trust Security Models</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Pharmaceuticals</a>
+                <ul class="dropdown">
+                    <li href="#">Drug Development</li>
+                    <li href="#">Vaccine Production</li>
+                    <li href="#">Biopharmaceuticals</li>
+                    <li href="#">Clinical Trials</li>
+                    <li href="#">Generic Medicine</li>
+                    <li href="#">Pharmaceutical Manufacturing</li>
+                    <li href="#">Pharmacovigilance</li>
+                    <li href="#">Over-the-Counter (OTC) Medications</li>
+                    <li href="#">Drug Research & Discovery</li>
+                    <li href="#">Pharmaceutical Packaging</li>
+                    <li href="#">Drug Distribution & Logistics</li>
+                    <li href="#">Regulatory Affairs</li>
+                    <li href="#">Biologics</li>
+                    <li href="#">Pharmaceutical Marketing & Sales</li>
+                    <li href="#">Medical Chemistry</li>
+                    <li href="#">Pharmaceutical Consulting</li>
+                    <li href="#">Orphan Drugs</li>
+                    <li href="#">Pharmaceutical Licensing</li>
+                    <li href="#">Contract Manufacturing</li>
+                    <li href="#">Telepharmacy</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Construction</a>
+                <ul class="dropdown">
+                    <li href="#">Residential Construction</li>
+                    <li href="#">Commercial Construction</li>
+                    <li href="#">Infrastructure Development</li>
+                    <li href="#">Green Building</li>
+                    <li href="#">Smart Cities</li>
+                    <li href="#">Construction Materials</li>
+                    <li href="#">Building Information Modeling (BIM)</li>
+                    <li href="#">Sustainable Construction</li>
+                    <li href="#">Construction Equipment</li>
+                    <li href="#">Urban Planning & Development</li>
+                    <li href="#">Road Construction</li>
+                    <li href="#">Commercial Real Estate Development</li>
+                    <li href="#">Energy-Efficient Buildings</li>
+                    <li href="#">Construction Project Management</li>
+                    <li href="#">Renovation & Remodeling</li>
+                    <li href="#">Construction Safety</li>
+                    <li href="#">Building Contractors</li>
+                    <li href="#">Modular & Prefabricated Construction</li>
+                    <li href="#">High-Rise & Skyscraper Construction</li>
+                    <li href="#">Civil Engineering</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="#">Telecommunications</a>
+                <ul class="dropdown">
+                    <li href="#">Mobile Networks</li>
+                    <li href="#">Fiber Optic Technology</li>
+                    <li href="#">Satellite Communications</li>
+                    <li href="#">5G Technology</li>
+                    <li href="#">Internet Service Providers</li>
+                    <li href="#">Wireless Communication</li>
+                    <li href="#">Broadband Services</li>
+                    <li href="#">Telecom Infrastructure</li>
+                    <li href="#">Telecom Equipment & Devices</li>
+                    <li href="#">Telecom Retail & Consumer Services</li>
+                    <li href="#">Network Virtualization</li>
+                    <li href="#">Telecom Consulting</li>
+                    <li href="#">Fixed-Line Networks</li>
+                    <li href="#">Telecom Software</li>
+                    <li href="#">Telecom Billing Solutions</li>
+                    <li href="#">Telecommunications Regulatory Affairs</li>
+                    <li href="#">IoT (Internet of Things) Solutions</li>
+                    <li href="#">Telecommunications Security</li>
+                    <li href="#">Telecom Outsourcing</li>
+                    <li href="#">Telecom Industry Analytics</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Healthcare</a>
+                <ul class="dropdown">
+                    <li href="#">Hospitals & Clinics</li>
+                    <li href="#">Medical Devices</li>
+                    <li href="#">Telemedicine</li>
+                    <li href="#">Healthcare IT</li>
+                    <li href="#">Medical Research</li>
+                    <li href="#">Pharmaceuticals</li>
+                    <li href="#">Health Insurance</li>
+                    <li href="#">Health & Wellness</li>
+                    <li href="#">Home Healthcare</li>
+                    <li href="#">Healthcare Consulting</li>
+                    <li href="#">Healthcare Staffing</li>
+                    <li href="#">Healthcare Management</li>
+                    <li href="#">Laboratories & Diagnostics</li>
+                    <li href="#">Mental Health Services</li>
+                    <li href="#">Long-Term Care</li>
+                    <li href="#">Public Health</li>
+                    <li href="#">Medical Supplies</li>
+                    <li href="#">Medical Training & Education</li>
+                    <li href="#">Medical Tourism</li>
+                    <li href="#">Healthcare Equipment Leasing</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Education</a>
+                <ul class="dropdown">
+                    <li href="#">Primary & Secondary Schools</li>
+                    <li href="#">Higher Education</li>
+                    <li href="#">Online Learning</li>
+                    <li href="#">EdTech</li>
+                    <li href="#">Vocational Training</li>
+                    <li href="#">Adult Education</li>
+                    <li href="#">Language Learning</li>
+                    <li href="#">Special Education</li>
+                    <li href="#">Corporate Training</li>
+                    <li href="#">Test Preparation</li>
+                    <li href="#">Educational Publishing</li>
+                    <li href="#">Tutoring Services</li>
+                    <li href="#">International Education</li>
+                    <li href="#">Study Abroad Programs</li>
+                    <li href="#">E-learning Platforms</li>
+                    <li href="#">Educational Consulting</li>
+                    <li href="#">Homeschooling Resources</li>
+                    <li href="#">Learning Management Systems (LMS)</li>
+                    <li href="#">Education Administration</li>
+                    <li href="#">Student Counseling & Support</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Logistics & Supply Chain</a>
+                <ul class="dropdown">
+                    <li href="#">Freight & Shipping</li>
+                    <li href="#">Warehousing</li>
+                    <li href="#">Last-Mile Delivery</li>
+                    <li href="#">Supply Chain Management</li>
+                    <li href="#">Cold Chain Logistics</li>
+                    <li href="#">Freight Forwarding</li>
+                    <li href="#">Inventory Management</li>
+                    <li href="#">Third-Party Logistics (3PL)</li>
+                    <li href="#">Supply Chain Optimization</li>
+                    <li href="#">Packaging & Distribution</li>
+                    <li href="#">Logistics Consulting</li>
+                    <li href="#">Reverse Logistics</li>
+                    <li href="#">Global Supply Chain</li>
+                    <li href="#">E-commerce Logistics</li>
+                    <li href="#">Fleet Management</li>
+                    <li href="#">Customs Brokerage</li>
+                    <li href="#">Transport Management Systems (TMS)</li>
+                    <li href="#">Supply Chain Financing</li>
+                    <li href="#">Fleet Leasing & Rental</li>
+                    <li href="#">Logistics Software</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Retail</a>
+                <ul class="dropdown">
+                    <li href="#">Brick-and-Mortar Stores</li>
+                    <li href="#">Luxury Goods</li>
+                    <li href="#">Grocery Stores</li>
+                    <li href="#">Department Stores</li>
+                    <li href="#">Retail Tech</li>
+                    <li href="#">E-commerce</li>
+                    <li href="#">Fashion & Apparel</li>
+                    <li href="#">Consumer Electronics</li>
+                    <li href="#">Beauty & Cosmetics</li>
+                    <li href="#">Home Goods & Furniture</li>
+                    <li href="#">Supermarkets</li>
+                    <li href="#">Convenience Stores</li>
+                    <li href="#">Online Marketplaces</li>
+                    <li href="#">Discount Stores</li>
+                    <li href="#">Health & Wellness Retail</li>
+                    <li href="#">Pet Supplies Retail</li>
+                    <li href="#">Sports Equipment Retail</li>
+                    <li href="#">Bookstores</li>
+                    <li href="#">Jewelry Retail</li>
+                    <li href="#">DIY & Hardware Retail</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Entertainment</a>
+                <ul class="dropdown">
+                    <li href="#">Film Industry</li>
+                    <li href="#">Music Industry</li>
+                    <li href="#">Gaming Industry</li>
+                    <li href="#">Streaming Services</li>
+                    <li href="#">Live Events</li>
+                    <li href="#">Theater & Performing Arts</li>
+                    <li href="#">Television Industry</li>
+                    <li href="#">Amusement Parks</li>
+                    <li href="#">Sports Entertainment</li>
+                    <li href="#">Music Festivals</li>
+                    <li href="#">Online Content Creation</li>
+                    <li href="#">Video Production</li>
+                    <li href="#">Event Management</li>
+                    <li href="#">Concert Tours</li>
+                    <li href="#">Esports</li>
+                    <li href="#">Media & Broadcasting</li>
+                    <li href="#">Podcasting</li>
+                    <li href="#">Virtual Reality (VR) Entertainment</li>
+                    <li href="#">Animation & Special Effects</li>
+                    <li href="#">Talent Agencies</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Tourism & Hospitality</a>
+                <ul class="dropdown">
+                    <li href="#">Hotels & Resorts</li>
+                    <li href="#">Airlines</li>
+                    <li href="#">Travel Agencies</li>
+                    <li href="#">Cruise Lines</li>
+                    <li href="#">Theme Parks</li>
+                    <li href="#">Tour Operators</li>
+                    <li href="#">Eco-Tourism</li>
+                    <li href="#">Hospitality Technology</li>
+                    <li href="#">Luxury Travel</li>
+                    <li href="#">Adventure Travel</li>
+                    <li href="#">Corporate Travel</li>
+                    <li href="#">Cultural Tourism</li>
+                    <li href="#">Vacation Rentals</li>
+                    <li href="#">Bed & Breakfasts</li>
+                    <li href="#">Travel Insurance</li>
+                    <li href="#">MICE (Meetings, Incentives, Conferences, Exhibitions)</li>
+                    <li href="#">Tourism Marketing</li>
+                    <li href="#">Hospitality Consulting</li>
+                    <li href="#">Food & Beverage Services</li>
+                    <li href="#">Event Planning & Management</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Mining & Metals</a>
+                <ul class="dropdown">
+                    <li href="#">Gold & Precious Metals</li>
+                    <li href="#">Iron & Steel</li>
+                    <li href="#">Rare Earth Elements</li>
+                    <li href="#">Coal Mining</li>
+                    <li href="#">Mineral Exploration</li>
+                    <li href="#">Copper Mining</li>
+                    <li href="#">Aluminum Production</li>
+                    <li href="#">Mining Equipment & Technology</li>
+                    <li href="#">Coal Processing</li>
+                    <li href="#">Silver & Base Metals</li>
+                    <li href="#">Mining Consulting</li>
+                    <li href="#">Metal Recycling</li>
+                    <li href="#">Mining Safety</li>
+                    <li href="#">Mining Operations Management</li>
+                    <li href="#">Mining Logistics & Transportation</li>
+                    <li href="#">Mining & Environmental Sustainability</li>
+                    <li href="#">Mining Investment</li>
+                    <li href="#">Precious Metal Trading</li>
+                    <li href="#">Mine Site Rehabilitation</li>
+                    <li href="#">Mining Exploration & Drilling</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="#">Oil & Gas</a>
+                <ul class="dropdown">
+                    <li href="#">Upstream Exploration</li>
+                    <li href="#">Midstream Transport</li>
+                    <li href="#">Downstream Refining</li>
+                    <li href="#">LNG Industry</li>
+                    <li href="#">Offshore Drilling</li>
+                    <li href="#">Oilfield Services</li>
+                    <li href="#">Petroleum Exploration</li>
+                    <li href="#">Natural Gas Production</li>
+                    <li href="#">Oil & Gas Drilling Equipment</li>
+                    <li href="#">Refinery & Petrochemical Products</li>
+                    <li href="#">Oil Trading</li>
+                    <li href="#">Oil & Gas Pipelines</li>
+                    <li href="#">Oil Refining Technology</li>
+                    <li href="#">Hydraulic Fracturing (Fracking)</li>
+                    <li href="#">Crude Oil Transport</li>
+                    <li href="#">Renewable Energy Integration</li>
+                    <li href="#">Oil & Gas Exploration Technology</li>
+                    <li href="#">Reservoir Engineering</li>
+                    <li href="#">Oilfield Chemicals</li>
+                    <li href="#">Offshore Platforms</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Chemicals</a>
+                <ul class="dropdown">
+                    <li href="#">Petrochemicals</li>
+                    <li href="#">Specialty Chemicals</li>
+                    <li href="#">Agrochemicals</li>
+                    <li href="#">Pharmaceutical Chemicals</li>
+                    <li href="#">Polymers & Plastics</li>
+                    <li href="#">Industrial Chemicals</li>
+                    <li href="#">Cleaning Products</li>
+                    <li href="#">Cosmetic Chemicals</li>
+                    <li href="#">Food Additives</li>
+                    <li href="#">Paints & Coatings</li>
+                    <li href="#">Fertilizers</li>
+                    <li href="#">Lubricants & Oils</li>
+                    <li href="#">Chemical Engineering</li>
+                    <li href="#">Water Treatment Chemicals</li>
+                    <li href="#">Rubber Chemicals</li>
+                    <li href="#">Textile Chemicals</li>
+                    <li href="#">Adhesives & Sealants</li>
+                    <li href="#">Biochemicals</li>
+                    <li href="#">Green Chemistry</li>
+                    <li href="#">Flavors & Fragrances</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Fashion & Apparel</a>
+                <ul class="dropdown">
+                    <li href="#">Luxury Fashion</li>
+                    <li href="#">Fast Fashion</li>
+                    <li href="#">Sportswear</li>
+                    <li href="#">Textile Manufacturing</li>
+                    <li href="#">Ethical Fashion</li>
+                    <li href="#">Streetwear</li>
+                    <li href="#">Sustainable Fashion</li>
+                    <li href="#">Fashion Retail</li>
+                    <li href="#">Footwear</li>
+                    <li href="#">Fashion Accessories</li>
+                    <li href="#">Menswear</li>
+                    <li href="#">Womenswear</li>
+                    <li href="#">Children's Clothing</li>
+                    <li href="#">Online Fashion Retail</li>
+                    <li href="#">Fashion Design</li>
+                    <li href="#">Textile & Fabric Suppliers</li>
+                    <li href="#">Apparel Manufacturing</li>
+                    <li href="#">Fashion Technology</li>
+                    <li href="#">Plus-Size Fashion</li>
+                    <li href="#">Fashion Marketing & Branding</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Food & Beverage</a>
+                <ul class="dropdown">
+                    <li href="#">Restaurants</li>
+                    <li href="#">Food Processing</li>
+                    <li href="#">Dairy Industry</li>
+                    <li href="#">Soft Drinks</li>
+                    <li href="#">Alcoholic Beverages</li>
+                    <li href="#">Snacks & Confectionery</li>
+                    <li href="#">Packaged Foods</li>
+                    <li href="#">Frozen Foods</li>
+                    <li href="#">Organic Food</li>
+                    <li href="#">Health Foods</li>
+                    <li href="#">Catering Services</li>
+                    <li href="#">Food Retail</li>
+                    <li href="#">Beverage Manufacturing</li>
+                    <li href="#">Brewery</li>
+                    <li href="#">Wineries</li>
+                    <li href="#">Meal Kits</li>
+                    <li href="#">Seafood Industry</li>
+                    <li href="#">Vegan & Plant-Based Foods</li>
+                    <li href="#">Culinary Tourism</li>
+                    <li href="#">Food Delivery Services</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Sports Industry</a>
+                <ul class="dropdown">
+                    <li href="#">Professional Sports</li>
+                    <li href="#">Sports Equipment</li>
+                    <li href="#">Esports</li>
+                    <li href="#">Sports Media</li>
+                    <li href="#">Fitness & Gyms</li>
+                    <li href="#">Sports Apparel</li>
+                    <li href="#">Sports Sponsorship</li>
+                    <li href="#">Sports Marketing</li>
+                    <li href="#">Sports Nutrition</li>
+                    <li href="#">Sports Management</li>
+                    <li href="#">Athlete Representation</li>
+                    <li href="#">Outdoor & Adventure Sports</li>
+                    <li href="#">Sports Events</li>
+                    <li href="#">Sports Broadcasting</li>
+                    <li href="#">Recreational Sports</li>
+                    <li href="#">Sports Technology</li>
+                    <li href="#">Sports Betting</li>
+                    <li href="#">Sports Fan Engagement</li>
+                    <li href="#">Sports Analytics</li>
+                    <li href="#">Sports Tourism</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Aerospace & Defense</a>
+                <ul class="dropdown">
+                    <li href="#">Military Aviation</li>
+                    <li href="#">Space Technology</li>
+                    <li href="#">Defense Contracting</li>
+                    <li href="#">Weapon Systems</li>
+                    <li href="#">Cyber Warfare</li>
+                    <li href="#">Aerospace Manufacturing</li>
+                    <li href="#">Aircraft Maintenance & Repair</li>
+                    <li href="#">Satellite Technology</li>
+                    <li href="#">Missile Systems</li>
+                    <li href="#">Defense Research & Development</li>
+                    <li href="#">Aerospace Engineering</li>
+                    <li href="#">Defense Logistics</li>
+                    <li href="#">Military Defense Systems</li>
+                    <li href="#">Space Exploration</li>
+                    <li href="#">Aircraft Components & Parts</li>
+                    <li href="#">Naval Defense</li>
+                    <li href="#">Radar & Surveillance Technology</li>
+                    <li href="#">Unmanned Aerial Vehicles (UAV)</li>
+                    <li href="#">Aerospace Consulting</li>
+                    <li href="#">Aviation Safety & Security</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Agritech</a>
+                <ul class="dropdown">
+                    <li href="#">Precision Farming</li>
+                    <li href="#">Agri-Drones</li>
+                    <li href="#">Smart Irrigation</li>
+                    <li href="#">Vertical Farming</li>
+                    <li href="#">Biotechnology in Agriculture</li>
+                    <li href="#">AgriTech Software & Platforms</li>
+                    <li href="#">Sustainable Farming</li>
+                    <li href="#">Farm Automation</li>
+                    <li href="#">Agricultural Robotics</li>
+                    <li href="#">AgriTech Consulting</li>
+                    <li href="#">Crop Monitoring & Analytics</li>
+                    <li href="#">Soil Health & Fertilization</li>
+                    <li href="#">Livestock Technology</li>
+                    <li href="#">Climate-Smart Agriculture</li>
+                    <li href="#">Agricultural Equipment & Machinery</li>
+                    <li href="#">Agri-food Supply Chain</li>
+                    <li href="#">Aquaculture Technology</li>
+                    <li href="#">Agricultural Biotechnology</li>
+                    <li href="#">Farm Management Software</li>
+                    <li href="#">Agri-fintech</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Art & Culture</a>
+                <ul class="dropdown">
+                    <li href="#">Fine Arts</li>
+                    <li href="#">Galleries & Museums</li>
+                    <li href="#">Performing Arts</li>
+                    <li href="#">Film & Theater</li>
+                    <li href="#">Creative Design</li>
+                    <li href="#">Art Exhibitions</li>
+                    <li href="#">Photography</li>
+                    <li href="#">Literary Arts</li>
+                    <li href="#">Dance & Music</li>
+                    <li href="#">Cultural Heritage Preservation</li>
+                    <li href="#">Art Market & Auctions</li>
+                    <li href="#">Art Curation</li>
+                    <li href="#">Street Art</li>
+                    <li href="#">Cultural Events</li>
+                    <li href="#">Sculpture</li>
+                    <li href="#">Art Education</li>
+                    <li href="#">Fashion Design</li>
+                    <li href="#">Film Production</li>
+                    <li href="#">Theater Production</li>
+                    <li href="#">Cultural Festivals</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Blockchain & Cryptocurrency</a>
+                <ul class="dropdown">
+                    <li href="#">Bitcoin & Altcoins</li>
+                    <li href="#">DeFi (Decentralized Finance)</li>
+                    <li href="#">Blockchain Development</li>
+                    <li href="#">Crypto Exchanges</li>
+                    <li href="#">NFTs & Digital Collectibles</li>
+                    <li href="#">Blockchain Consulting</li>
+                    <li href="#">Crypto Wallets</li>
+                    <li href="#">Blockchain Security</li>
+                    <li href="#">Mining & Staking</li>
+                    <li href="#">Smart Contracts</li>
+                    <li href="#">Tokenization</li>
+                    <li href="#">Crypto Regulations</li>
+                    <li href="#">Blockchain as a Service (BaaS)</li>
+                    <li href="#">Initial Coin Offerings (ICOs)</li>
+                    <li href="#">Stablecoins</li>
+                    <li href="#">Cryptocurrency Payment Solutions</li>
+                    <li href="#">Crypto Taxation</li>
+                    <li href="#">Decentralized Applications (DApps)</li>
+                    <li href="#">Blockchain Integration</li>
+                    <li href="#">Crypto Investing & Trading</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Consulting</a>
+                <ul class="dropdown">
+                    <li href="#">Management Consulting</li>
+                    <li href="#">IT Consulting</li>
+                    <li href="#">Financial Advisory</li>
+                    <li href="#">HR Consulting</li>
+                    <li href="#">Strategy Consulting</li>
+                    <li href="#">Marketing Consulting</li>
+                    <li href="#">Operations Consulting</li>
+                    <li href="#">Risk Management Consulting</li>
+                    <li href="#">Technology Consulting</li>
+                    <li href="#">Legal Consulting</li>
+                    <li href="#">Environmental Consulting</li>
+                    <li href="#">Supply Chain Consulting</li>
+                    <li href="#">Corporate Governance Consulting</li>
+                    <li href="#">Digital Transformation Consulting</li>
+                    <li href="#">Business Process Outsourcing</li>
+                    <li href="#">Mergers & Acquisitions Consulting</li>
+                    <li href="#">Human Capital Consulting</li>
+                    <li href="#">Public Relations Consulting</li>
+                    <li href="#">Change Management Consulting</li>
+                    <li href="#">Project Management Consulting</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Health & Fitness</a>
+                <ul class="dropdown">
+                    <li href="#">Gyms & Personal Training</li>
+                    <li href="#">Sports Nutrition</li>
+                    <li href="#">Wearable Tech</li>
+                    <li href="#">Yoga & Wellness</li>
+                    <li href="#">Fitness Apps</li>
+                    <li href="#">Health Clubs</li>
+                    <li href="#">Physical Therapy</li>
+                    <li href="#">Mental Health & Therapy</li>
+                    <li href="#">Supplements</li>
+                    <li href="#">Fitness Equipment</li>
+                    <li href="#">Diet & Nutrition Counseling</li>
+                    <li href="#">Health Coaching</li>
+                    <li href="#">Fitness Influencers</li>
+                    <li href="#">Corporate Wellness Programs</li>
+                    <li href="#">Weight Management</li>
+                    <li href="#">Fitness Retreats</li>
+                    <li href="#">Home Fitness</li>
+                    <li href="#">Sports Medicine</li>
+                    <li href="#">Online Fitness Classes</li>
+                    <li href="#">Athletic Training</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="#">Home Improvement</a>
+                <ul class="dropdown">
+                    <li href="#">DIY & Hardware</li>
+                    <li href="#">Smart Home Tech</li>
+                    <li href="#">Furniture & Decor</li>
+                    <li href="#">Landscaping</li>
+                    <li href="#">HVAC & Plumbing</li>
+                    <li href="#">Home Renovation</li>
+                    <li href="#">Electrical Services</li>
+                    <li href="#">Roofing & Siding</li>
+                    <li href="#">Interior Design</li>
+                    <li href="#">Painting & Finishing</li>
+                    <li href="#">Home Security Systems</li>
+                    <li href="#">Home Automation</li>
+                    <li href="#">Kitchen & Bath Remodeling</li>
+                    <li href="#">Windows & Doors</li>
+                    <li href="#">Gardening & Outdoor Furniture</li>
+                    <li href="#">Flooring & Carpeting</li>
+                    <li href="#">Swimming Pools</li>
+                    <li href="#">Home Appliance Repair</li>
+                    <li href="#">Real Estate Renovation</li>
+                    <li href="#">Home Improvement Supplies</li>
+                </ul>
+            </li>
+        </ul>
+</nav>
+
+<div id="result-container">
+    <h2>Select a topic to see details here.</h2>
+    <p></p>
+</div>
+<script>
+        // Toggle menu visibility on mobile
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Toggle dropdown visibility when clicked
+        function toggleDropdown(event) {
+            const dropdown = event.target.nextElementSibling;
+            dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Close the menu if clicked outside
+        window.addEventListener('click', function(event) {
+            const menu = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            // If click is outside the menu and the toggle button, close the menu
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Prevent the click event from propagating to the window when clicking on the toggle button
+        document.querySelector('.menu-toggle').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+
+        // Dynamic Results
+
+        document.querySelectorAll('.dropdown li').forEach(item => {
+          item.addEventListener('click', function() {
+              let resultContainer = document.getElementById('result-container');
+              resultContainer.innerHTML = ""; // Clear previous content
+
+              // Create and style title
+              let title = document.createElement('h2');
+              title.textContent = this.dataset.title;
+              title.style.color = "#333";
+              title.style.fontSize = "24px";
+              title.style.marginBottom = "10px";
+
+              // Create and style description
+              let description = document.createElement('p');
+              description.textContent = this.dataset.content;
+              description.style.fontSize = "18px";
+              description.style.color = "#555";
+
+              // Append title and description
+              resultContainer.appendChild(title);
+              resultContainer.appendChild(description);
+
+              // Add images if available
+              if (this.dataset.img1 && this.dataset.img2) {
+                  let imgContainer = document.createElement('div');
+                  imgContainer.style.display = "flex";
+                  imgContainer.style.gap = "10px";
+                  imgContainer.style.justifyContent = "center";
+                  imgContainer.style.marginTop = "10px";
+
+                  let img1 = document.createElement('img');
+                  img1.src = this.dataset.img1;
+                  img1.alt = "Image 1";
+                  img1.style.width = "45%";
+                  img1.style.height = "100px";
+                  img1.style.borderRadius = "8px";
+                  img1.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+
+                  let img2 = document.createElement('img');
+                  img2.src = this.dataset.img2;
+                  img2.alt = "Image 2";
+                  img2.style.width = "45%";
+                  img1.style.height = "200px";
+                  img2.style.borderRadius = "8px";
+                  img2.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+
+                  // Append images inside container
+                  imgContainer.appendChild(img1);
+                  imgContainer.appendChild(img2);
+                  resultContainer.appendChild(imgContainer);
+              }
+          });
+      });
+
+</script>
+</body>

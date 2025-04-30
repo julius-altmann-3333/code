@@ -3,127 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fully responsive HTML template">
-    <meta name="author" content="Your Name">
-    <title>Responsive Template</title>
-    
-    <!-- External CSS Libraries -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Placeholder for custom CSS -->
-    
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Car Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        .output {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .car-box {
+            border: 2px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            text-align: center;
+            width: 200px;
+            margin: 10px;
+        }
+
+        .car-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .select-container {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Brand</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('about')">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('services')">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('contact')">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <header class="text-center p-5 bg-primary text-white">
-        <h1>Welcome to Responsive Template</h1>
-        <p>Fully responsive and modern web template</p>
-    </header>
-    
-    <main class="container my-5">
-        <div id="about" class="content-section">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div id="services" class="content-section" style="display: none;">
-            <h2>Services</h2>
-            <p>We offer amazing services to make your life easier.</p>
-        </div>
-        <div id="contact" class="content-section" style="display: none;">
-            <h2>Contact</h2>
-            <p>Get in touch with us for more details.</p>
-            <h3>German Regions</h3>
-            <ul>
-                <li>Baden-Württemberg
-                    <ul>
-                        <li><strong>Cities:</strong>
-                            <ul>
-                                <li><a href="#">Stuttgart</a></li>
-                                <li><a href="#">Mannheim</a></li>
-                                <li><a href="#">Karlsruhe</a></li>
-                                <li><a href="#">Freiburg</a></li>
-                                <li><a href="#">Heidelberg</a></li>
-                                <li><a href="#">Ulm</a></li>
-                                <li><a href="#">Heilbronn</a></li>
-                                <li><a href="#">Pforzheim</a></li>
-                                <li><a href="#">Reutlingen</a></li>
-                                <li><a href="#">Esslingen</a></li>
-                            </ul>
-                        </li>
-                        <li><strong>Main Areas:</strong>
-                            <ul>
-                                <li><a href="#">Black Forest</a></li>
-                                <li><a href="#">Swabian Jura</a></li>
-                                <li><a href="#">Lake Constance</a></li>
-                                <li><a href="#">Rhine Valley</a></li>
-                                <li><a href="#">Upper Rhine Plain</a></li>
-                                <li><a href="#">Kraichgau</a></li>
-                                <li><a href="#">Tauber Valley</a></li>
-                                <li><a href="#">Stuttgart Region</a></li>
-                                <li><a href="#">Neckar Valley</a></li>
-                                <li><a href="#">Danube Valley</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Bavaria
-                    <ul>
-                        <li><strong>Cities:</strong>
-                            <ul>
-                                <li><a href="#">Munich</a></li>
-                                <li><a href="#">Nuremberg</a></li>
-                                <li><a href="#">Augsburg</a></li>
-                                <li><a href="#">Regensburg</a></li>
-                                <li><a href="#">Ingolstadt</a></li>
-                                <li><a href="#">Würzburg</a></li>
-                                <li><a href="#">Fürth</a></li>
-                                <li><a href="#">Erlangen</a></li>
-                                <li><a href="#">Bayreuth</a></li>
-                                <li><a href="#">Bamberg</a></li>
-                            </ul>
-                        </li>
-                        <li><strong>Main Areas:</strong>
-                            <ul>
-                                <li><a href="#">Bavarian Alps</a></li>
-                                <li><a href="#">Franconian Switzerland</a></li>
-                                <li><a href="#">Upper Bavaria</a></li>
-                                <li><a href="#">Allgäu</a></li>
-                                <li><a href="#">Lower Bavaria</a></li>
-                                <li><a href="#">Upper Palatinate</a></li>
-                                <li><a href="#">Franconian Lake District</a></li>
-                                <li><a href="#">Berchtesgadener Land</a></li>
-                                <li><a href="#">Danube Valley</a></li>
-                                <li><a href="#">Main River Valley</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <p>For a complete list of German cities, districts, and villages, refer to detailed resources.</p>
-        </div>
-    </main>
-    
-    <footer class="text-center p-4 bg-dark text-white">
-        <p>&copy; 2025 Your Company. All Rights Reserved.</p>
-        <a href="https://github.com/yourgithub" class="text-white"><i class="fab fa-github"></i> GitHub</a>
-    </footer>
+<body>
+    <h1>Search Cars</h1>
+
+    <!-- Filter section -->
+    <div class="select-container">
+        <select id="manufacturerSelect">
+            <option value="">Select Manufacturer</option>
+            <option value="audi">Audi</option>
+            <option value="bmw">BMW</option>
+            <option value="mercedes">Mercedes</option>
+        </select>
+
+        <select id="modelSelect" disabled>
+            <option value="">Select Model</option>
+        </select>
+
+        <select id="kilometerstandSelect">
+            <option value="">Select Kilometerstand</option>
+            <option value="70000-80000">70,000 - 80,000 km</option>
+            <option value="80000-90000">80,000 - 90,000 km</option>
+            <option value="90000-100000">90,000 - 100,000 km</option>
+        </select>
+
+        <select id="leistungSelect">
+            <option value="">Select Leistung</option>
+            <option value="400kW">400 kW / 600 PS</option>
+            <option value="350kW">350 kW / 500 PS</option>
+            <option value="300kW">300 kW / 400 PS</option>
+        </select>
+
+        <select id="erstzulassungSelect">
+            <option value="">Select Erstzulassung</option>
+            <option value="01/2020">01/2020</option>
+            <option value="01/2021">01/2021</option>
+            <option value="01/2019">01/2019</option>
+        </select>
+
+        <select id="motorSelect">
+            <option value="">Select Motor</option>
+            <option value="V8">V8</option>
+            <option value="I4">I4</option>
+            <option value="I6">I6</option>
+            <option value="V6">V6</option>
+        </select>
+
+        <select id="matchingNumbersSelect">
+            <option value="">Select Matching Numbers</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <select id="typSelect">
+            <option value="">Select Typ</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+            <option value="sports-car">Sports Car</option>
+        </select>
+
+        <select id="fahrzeughalterSelect">
+            <option value="">Select Fahrzeughalter</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <select id="kraftstoffartSelect">
+            <option value="">Select Kraftstoffart</option>
+            <option value="gasoline">Gasoline</option>
+            <option value="diesel">Diesel</option>
+            <option value="hybrid">Hybrid</option>
+        </select>
+
+        <select id="verbrauchSelect">
+            <option value="">Select Verbrauch</option>
+            <option value="urban-7.0">7.0</option>
+            <option value="urban-8.0">8.0</option>
+            <option value="urban-10.0">10.0</option>
+        </select>
+
+        <select id="energieeffizienzklasseSelect">
+            <option value="">Select Energieeffizienzklasse</option>
+            <option value="A++">A++</option>
+            <option value="A+">A+</option>
+            <option value="A">A</option>
+        </select>
+
+        <select id="getriebeSelect">
+            <option value="">Select Getriebe</option>
+            <option value="manual">Manual</option>
+            <option value="automatic">Automatic</option>
+            <option value="dual-clutch">Dual-Clutch</option>
+        </select>
+
+        <select id="klimatisierungSelect">
+            <option value="">Select Klimatisierung</option>
+            <option value="air-conditioning">Air Conditioning</option>
+            <option value="automatic-climate-control">Automatic Climate Control</option>
+            <option value="sunroof">Sunroof</option>
+        </select>
+
+        <select id="farbeSelect">
+            <option value="">Select Farbe</option>
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+            <option value="white">White</option>
+            <option value="silver">Silver</option>
+        </select>
+
+        <select id="innenausstattungSelect">
+            <option value="">Select Innenausstattung</option>
+            <option value="leather">Leather</option>
+            <option value="vinyl">Vinyl</option>
+            <option value="fabric">Fabric</option>
+            <option value="alcantara">Alcantara</option>
+            <option value="suede">Suede</option>
+        </select>
+
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- Output Section -->
+    <div id="output" class="output"></div>
+
+    <script>
+        document.getElementById('searchBtn').addEventListener('click', searchCars);
+
+        // Your carData array and other code here remains the same
+
+        function searchCars() {
+            const manufacturer = document.getElementById('manufacturerSelect').value;
+            const model = document.getElementById('modelSelect').value;
+            const kilometerstand = document.getElementById('kilometerstandSelect').value;
+            const leistung = document.getElementById('leistungSelect').value;
+            const erstzulassung = document.getElementById('erstzulassungSelect').value;
+            const motor = document.getElementById('motorSelect').value;
+            const matchingNumbers = document.getElementById('matchingNumbersSelect').value;
+            const typ = document.getElementById('typSelect').value;
+            const fahrzeughalter = document.getElementById('fahrzeughalterSelect').value;
+            const kraftstoffart = document.getElementById('kraftstoffartSelect').value;
+            const verbrauch = document.getElementById('verbrauchSelect').value;
+            const energieeffizienzklasse = document.getElementById('energieeffizienzklasseSelect').value;
+            const getriebe = document.getElementById('getriebeSelect').value;
+            const klimatisierung = document.getElementById('klimatisierungSelect').value;
+            const farbe = document.getElementById('farbeSelect').value;
+            const innenausstattung = document.getElementById('innenausstattungSelect').value;
+
+            const filteredCars = carData.filter(car => {
+                const matchesManufacturer = manufacturer ? car.manufacturer === manufacturer : true;
+                const matchesModel = model ? car.model === model : true;
+                const matchesKilometerstand = kilometerstand ? isKilometerstandInRange(car.kilometerstand, kilometerstand) : true;
+                const matchesLeistung = leistung ? car.leistung === leistung : true;
+                const matchesErstzulassung = erstzulassung ? car.erstzulassung === erstzulassung : true;
+                const matchesMotor = motor ? car.motor === motor : true;
+                const matchesMatchingNumbers = matchingNumbers ? car.matchingNumbers === matchingNumbers : true;
+                const matchesTyp = typ ? car.typ === typ : true;
+                const matchesFahrzeughalter = fahrzeughalter ? car.fahrzeughalter === fahrzeughalter : true;
+                const matchesKraftstoffart = kraftstoffart ? car.kraftstoffart === kraftstoffart : true;
+                const matchesVerbrauch = verbrauch ? car.verbrauch === verbrauch : true;
+                const matchesEnergieeffizienzklasse = energieeffizienzklasse ? car.energieeffizienzklasse === energieeffizienzklasse : true;
+                const matchesGetriebe = getriebe ? car.getriebe === getriebe : true;
+                const matchesKlimatisierung = klimatisierung ? car.klimatisierung === klimatisierung : true;
+                const matchesFarbe = farbe ? car.farbe === farbe : true;
+                const matchesInnenausstattung = innenausstattung ? car.innenausstattung === innenausstattung : true;
+
+                return matchesManufacturer && matchesModel && matchesKilometerstand && matchesLeistung &&
+                    matchesErstzulassung && matchesMotor && matchesMatchingNumbers && matchesTyp &&
+                    matchesFahrzeughalter && matchesKraftstoffart && matchesVerbrauch &&
+                    matchesEnergieeffizienzklasse && matchesGetriebe && matchesKlimatisierung &&
+                    matchesFarbe && matchesInnenausstattung;
+            });
+
+            displayCars(filteredCars);
+        }
+
+        function isKilometerstandInRange(carKm, range) {
+            const [min, max] = range.split('-').map(val => parseInt(val));
+            const carKmValue = parseInt(carKm);
+            return carKmValue >= min && carKmValue <= max;
+        }
+
+        function displayCars(cars) {
+            const output = document.getElementById('output');
+            output.innerHTML = '';  // Clear previous results
+
+            if (cars.length === 0) {
+                output.innerHTML = '<p>No cars match your criteria.</p>';
+            }
+
+            cars.forEach(car => {
+                const carDiv = document.createElement('div');
+                carDiv.classList.add('car-box');
+
+                carDiv.innerHTML = `
+
+                    <!-- car data display -->
+
+                `;
+
+                output.appendChild(carDiv);
+            });
+        }
+    </script>
 </body>
 </html>

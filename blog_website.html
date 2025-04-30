@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal blog to share ideas and thoughts.">
+    <meta name="author" content="Your Name">
+    <title>My Blog</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and font styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header .logo h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header nav ul {
+            list-style-type: none;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content area */
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .post-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .post .content p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        /* Social share buttons */
+        .social-share {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+
+        .social-share li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .social-share li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-share li a:hover {
+            color: #ff6600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header nav ul {
+                display: block;
+            }
+
+            header nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .post header h2 {
+                font-size: 1.8em;
+            }
+
+            .post .content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>My Blog</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Blog Post Section -->
+    <main>
+        <article class="post">
+            <header>
+                <h2>Welcome to My Blog!</h2>
+                <p class="post-meta">Published on April 3, 2025 | Author: Your Name</p>
+            </header>
+            <section class="content">
+                <p>Welcome to my personal blog where I share my thoughts, experiences, and insights. This is where I can write about anything that inspires me, from technology to travel, lifestyle, or just random musings. Stay tuned for more!</p>
+                <p>Feel free to explore and leave comments or feedback! I would love to hear from you.</p>
+            </section>
+            <footer class="post-footer">
+                <p>Share this post:</p>
+                <ul class="social-share">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </footer>
+        </article>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Example JavaScript for blog interactivity
+        document.addEventListener("DOMContentLoaded", () => {
+            const socialLinks = document.querySelectorAll('.social-share li a');
+
+            socialLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    alert('Sharing to ' + e.target.innerText);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

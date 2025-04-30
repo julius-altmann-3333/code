@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scroll Progress Bar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 0%;
+      background: linear-gradient(to right, #ff6600, #00ccff);
+      transition: width 0.1s ease-in-out;
+      z-index: 9999;
+    }
+
+    .content {
+      height: 3000px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <div class="content">
+    <h1>Scroll to See the Progress Bar</h1>
+    <p>Keep scrolling... the bar on top will fill up as you go down the page.</p>
+  </div>
+
+  <script>
+    window.addEventListener("scroll", function () {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = scrollPercent + "%";
+    });
+  </script>
+</body>
+</html>

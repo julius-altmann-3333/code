@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boat and Yacht Types</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        /* Container Styles */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Label Styles */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        /* Dropdown on focus */
+        .dropdown:focus {
+            outline-color: #0066cc;
+            border-color: #0066cc;
+        }
+
+        /* Add some space at the bottom */
+        .dropdown:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Styling for the page layout */
+        .section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Boat and Yacht Selection</h1>
+
+        <div class="section">
+            <label for="yachtTypes">Select a Yacht Type:</label>
+            <select id="yachtTypes" class="dropdown yacht">
+                <option value="" disabled selected>Select a yacht type</option>
+                <option value="motor">Motor Yacht</option>
+                <option value="sailing">Sailing Yacht</option>
+                <option value="catamaran">Catamaran</option>
+                <option value="superyacht">Superyacht</option>
+                <option value="megayacht">Megayacht</option>
+                <option value="expedition">Expedition Yacht</option>
+                <option value="classic">Classic Yacht</option>
+                <option value="sportsFishing">Sports Fishing Yacht</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="sailboatTypes">Select a Sailboat Type:</label>
+            <select id="sailboatTypes" class="dropdown sailboat">
+                <option value="" disabled selected>Select a sailboat type</option>
+                <option value="dinghy">Dinghy</option>
+                <option value="sloop">Sloop</option>
+                <option value="cutter">Cutter</option>
+                <option value="ketch">Ketch</option>
+                <option value="yawl">Yawl</option>
+                <option value="schooner">Schooner</option>
+                <option value="trimaran">Trimaran</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="motorboatTypes">Select a Motorboat Type:</label>
+            <select id="motorboatTypes" class="dropdown motorboat">
+                <option value="" disabled selected>Select a motorboat type</option>
+                <option value="runabout">Runabout</option>
+                <option value="bowrider">Bowrider</option>
+                <option value="cuddy">Cuddy Cabin</option>
+                <option value="pontoon">Pontoon Boat</option>
+                <option value="deck">Deck Boat</option>
+                <option value="cabinCruiser">Cabin Cruiser</option>
+                <option value="trawler">Trawler</option>
+                <option value="houseboat">Houseboat</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="fishingBoatTypes">Select a Fishing Boat Type:</label>
+            <select id="fishingBoatTypes" class="dropdown fishingBoat">
+                <option value="" disabled selected>Select a fishing boat type</option>
+                <option value="bass">Bass Boat</option>
+                <option value="centerConsole">Center Console</option>
+                <option value="walkaround">Walkaround</option>
+                <option value="bay">Bay Boat</option>
+                <option value="flats">Flats Boat</option>
+                <option value="sportFishing">Sportfishing Boat</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="pwcTypes">Select a Personal Watercraft Type:</label>
+            <select id="pwcTypes" class="dropdown pwc">
+                <option value="" disabled selected>Select a PWC type</option>
+                <option value="jetski">Jet Ski</option>
+                <option value="waverunner">WaveRunner</option>
+                <option value="standup">Stand-up PWC</option>
+            </select>
+        </div>
+
+        <div class="section">
+            <label for="specialtyBoatTypes">Select a Specialty or Workboat Type:</label>
+            <select id="specialtyBoatTypes" class="dropdown specialtyBoat">
+                <option value="" disabled selected>Select a specialty boat type</option>
+                <option value="tugboat">Tugboat</option>
+                <option value="ferry">Ferry</option>
+                <option value="pilot">Pilot Boat</option>
+                <option value="fireboat">Fireboat</option>
+                <option value="barge">Barge</option>
+                <option value="rescue">Rescue Boat</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
