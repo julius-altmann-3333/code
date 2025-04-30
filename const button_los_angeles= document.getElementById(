@@ -1,0 +1,105 @@
+const button_los_angeles= document.getElementById('los_angeles');
+const boxconst_los_angeles = document.getElementById('box_content_card_los_angeles');
+const button_san_francisco = document.getElementById('san_francisco');
+const boxconst_san_francisco = document.getElementById('box_content_card_san_francisco');
+const button_san_diego = document.getElementById('san_diego');
+const boxconst_san_diego = document.getElementById('box_content_card_san_diego');
+const button_san_jose = document.getElementById('san_jose');
+const boxconst_san_jose = document.getElementById('box_content_card_san_jose');
+const button_sacramento = document.getElementById('sacramento');
+const boxconst_sacramento = document.getElementById('box_content_card_sacramento');
+const button_bay_area = document.getElementById('bay_area');
+const boxconst_bay_area = document.getElementById('box_content_card_bay_area');
+const button_silicon_valley = document.getElementById('silicon_valley');
+const boxconst_silicon_valley = document.getElementById('box_content_card_silicon_valley');
+const button_central_valley = document.getElementById('central_valley');
+const boxconst_central_valley = document.getElementById('box_content_card_central_valley');
+
+
+button_los_angeles.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'block';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'none';
+    });
+    
+button_san_francisco.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'block';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'none';
+    });
+    
+button_san_diego.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'block';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'none';
+    });
+    
+button_san_jose.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'block';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'none';
+    });
+    
+button_sacramento.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'block';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'none';
+    });
+    
+button_bay_area.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'block';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'none';
+    });
+
+button_silicon_valley.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'block';
+        boxconst_central_valley.style.display = 'none';
+    });
+    
+button_central_valley.addEventListener('click', () => {
+    	boxconst_los_angeles.style.display = 'none';
+        boxconst_san_francisco.style.display = 'none';
+        boxconst_san_diego.style.display = 'none';
+        boxconst_san_jose.style.display = 'none';
+        boxconst_sacramento.style.display = 'none';
+        boxconst_bay_area.style.display = 'none';
+        boxconst_silicon_valley.style.display = 'none';
+        boxconst_central_valley.style.display = 'block';
+    });

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable World Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .map-container {
+            max-width: 800px;
+            margin: auto;
+        }
+        img {
+            width: 500px;
+            height: 250px;
+        }
+        area {
+            cursor: pointer;
+        }
+        area:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Clickable World Map</h1>
+
+    <div class="map-container">
+        <!-- The World Map Image with clickable areas -->
+        <img src="your-world-map.jpg" usemap="#worldmap" alt="World Map">
+        <map name="worldmap">
+            <!-- Define clickable areas for continents using coordinates (replace with actual coordinates of your map) -->
+            <area shape="rect" coords="10,10,200,200" alt="North America" href="north-america.html" target="_blank">
+            <area shape="rect" coords="220,10,400,200" alt="South America" href="south-america.html" target="_blank">
+            <area shape="rect" coords="420,10,600,200" alt="Europe" href="europe.html" target="_blank">
+            <area shape="rect" coords="10,210,200,400" alt="Africa" href="africa.html" target="_blank">
+            <area shape="rect" coords="220,210,400,400" alt="Asia" href="asia.html" target="_blank">
+            <area shape="rect" coords="420,210,600,400" alt="Australia" href="australia.html" target="_blank">
+            <area shape="rect" coords="10,410,200,600" alt="Antarctica" href="antarctica.html" target="_blank">
+        </map>
+    </div>
+
+</body>
+</html>

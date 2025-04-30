@@ -1,0 +1,65 @@
+/* Base styles for the section */
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+/* Container that holds the images and button */
+.image-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Desktop image (shown by default) */
+.desktop-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Mobile image (hidden by default) */
+.mobile-image {
+  width: 350px;
+  height: auto;
+  object-fit: cover;
+  display: none;
+}
+
+/* Centered Button */
+.cta-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 350px) {
+  /* Hide the desktop image on small screens */
+  .desktop-image {
+    display: none;
+  }
+
+  /* Show the mobile image when the screen width is 350px or less */
+  .mobile-image {
+    display: block;
+  }
+
+  /* Adjust button placement on mobile */
+  .cta-button {
+    position: absolute;
+    bottom: 10px;
+  }
+}

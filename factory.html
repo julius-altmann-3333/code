@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Factory Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin: 5px;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>3D Factory Model</h1>
+    
+    <!-- Measurement Controls -->
+    <div class="controls">
+        <label for="x-dimension">X Dimension (width):</label>
+        <input type="number" id="x-dimension" value="100" min="1" max="500" step="1">
+        
+        <label for="y-dimension">Y Dimension (height):</label>
+        <input type="number" id="y-dimension" value="50" min="1" max="500" step="1">
+        
+        <label for="z-dimension">Z Dimension (depth):</label>
+        <input type="number" id="z-dimension" value="100" min="1" max="500" step="1">
+        
+        <button onclick="updateFactory()">Update Factory</button>
+    </div>
+
+    <!-- 3D Canvas -->
+    <canvas id="factoryCanvas" width="800" height="600"></canvas>
+
+    <!-- Display Current Dimensions -->
+    <div id="dimension-display">
+        <p>Current Dimensions:</p>
+        <p id="dimension-output">X: 100m, Y: 50m, Z: 100m</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up the scene, camera, and renderer for Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('factoryCanvas') });
+
+        renderer.setSize(800, 600);
+
+        // Initial factory dimensions
+        let factoryWidth = 100;
+        let factoryHeight = 50;
+        let factoryDepth = 100;
+
+        // Factory Geometry
+        let factoryGeometry = new THREE.BoxGeometry(factoryWidth, factoryHeight, factoryDepth);
+        let factoryMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        let factory = new THREE.Mesh(factoryGeometry, factoryMaterial);
+        scene.add(factory);
+
+        // Camera position
+        camera.position.z = 200;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Update the factory size based on user input
+        function updateFactory() {
+            factoryWidth = parseFloat(document.getElementById('x-dimension').value);
+            factoryHeight = parseFloat(document.getElementById('y-dimension').value);
+            factoryDepth = parseFloat(document.getElementById('z-dimension').value);
+
+            // Update factory geometry with new dimensions
+            factory.geometry.dispose();
+            factory.geometry = new THREE.BoxGeometry(factoryWidth, factoryHeight, factoryDepth);
+
+            // Update the dimension display text
+            document.getElementById('dimension-output').innerText = `X: ${factoryWidth}m, Y: ${factoryHeight}m, Z: ${factoryDepth}m`;
+        }
+    </script>
+</body>
+</html>

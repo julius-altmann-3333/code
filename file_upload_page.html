@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Upload</title>
+</head>
+<body>
+
+<h2>Upload Property Documents</h2>
+<form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+    <label for="fileUpload">Choose File:</label>
+    <input type="file" id="fileUpload" name="fileUpload" multiple><br><br>
+    <button type="submit">Upload</button>
+</form>
+
+</body>
+</html>

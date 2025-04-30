@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Distance Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input, button { margin: 10px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Projectile Distance Calculator</h2>
+    <label>Mass of Projectile (kg): </label>
+    <input type="number" id="mass" step="0.01" placeholder="Enter mass">
+    <br>
+    <label>Pressure (psi): </label>
+    <input type="number" id="pressure" step="1" placeholder="Enter pressure">
+    <br>
+    <label>Launch Angle (degrees): </label>
+    <input type="number" id="angle" step="1" placeholder="Enter angle">
+    <br>
+    <button onclick="calculateDistance()">Calculate Distance</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function calculateDistance() {
+            const g = 9.81; // Gravity (m/s²)
+            let mass = parseFloat(document.getElementById("mass").value);
+            let pressure = parseFloat(document.getElementById("pressure").value);
+            let angle = parseFloat(document.getElementById("angle").value);
+            
+            if (isNaN(mass) || isNaN(pressure) || isNaN(angle)) {
+                document.getElementById("result").innerText = "Please enter valid numbers.";
+                return;
+            }
+            
+            // Convert psi to pascals (1 psi = 6894.76 Pa)
+            let pressurePa = pressure * 6894.76;
+            
+            // Estimate velocity using kinetic energy: P = 1/2 m v^2
+            let velocity = Math.sqrt((2 * pressurePa) / mass);
+            
+            // Convert angle to radians
+            let angleRad = angle * (Math.PI / 180);
+            
+            // Calculate range
+            let range = (Math.pow(velocity, 2) * Math.sin(2 * angleRad)) / g;
+            
+            document.getElementById("result").innerText = "Estimated Distance: " + range.toFixed(2) + " meters";
+        }
+    </script>
+</body>
+</html>

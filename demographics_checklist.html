@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demographics Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .checklist-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .checklist-container h2 {
+            text-align: center;
+        }
+        .checklist-container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .checklist-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .checklist-container button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        .checklist-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="checklist-container">
+    <h2>Demographics Data Entry</h2>
+    <form id="demographicsForm">
+        <label for="ageGroup">Age Group:</label>
+        <input type="text" id="ageGroup" name="ageGroup" placeholder="e.g., 25-34, 35-44">
+        
+        <label for="incomeRange">Income Range:</label>
+        <input type="text" id="incomeRange" name="incomeRange" placeholder="e.g., $50,000 - $75,000">
+        
+        <label for="familySize">Family Size:</label>
+        <input type="text" id="familySize" name="familySize" placeholder="e.g., 1-2, 3-4">
+        
+        <label for="employmentStatus">Employment Status:</label>
+        <input type="text" id="employmentStatus" name="employmentStatus" placeholder="e.g., Employed, Unemployed">
+        
+        <button type="button" onclick="submitDemographics()">Submit Demographics</button>
+    </form>
+</div>
+
+<script>
+    function submitDemographics() {
+        const ageGroup = document.getElementById("ageGroup").value;
+        const incomeRange = document.getElementById("incomeRange").value;
+        const familySize = document.getElementById("familySize").value;
+        const employmentStatus = document.getElementById("employmentStatus").value;
+
+        alert("Demographics Submitted!");
+        console.log({ ageGroup, incomeRange, familySize, employmentStatus });
+
+        // You could send this data to a server or store locally
+    }
+</script>
+
+</body>
+</html>

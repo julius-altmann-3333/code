@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            color: lightgrey;
+        }
+        ul {
+            list-style: none;
+        }
+        #task-list, #finished-tasks {
+            list-style: none;
+            padding: 0;
+        }
+        #task-list li, #finished-tasks li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #finished-container {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                <li><a href="#tasks" onclick="showPage('tasks')">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="home">
+        <h1>Welcome to the To-Do List App</h1>
+        <a href="#tasks" onclick="showPage('tasks')">Go to Tasks</a>
+    </main>
+
+    <main id="tasks">
+        <h1>Your Tasks</h1>
+        <ul id="task-list" style="border: 1px solid black; display: flex; flex-direction: column; align-items: center; justify-content: center;"></ul>
+        <input type="text" id="task-input" placeholder="Add new task" />
+        <button onclick="addTask()">Add Task</button>
+        
+        <button onclick="toggleFinishedTasks()">Show/Hide Finished Tasks</button>
+        
+        <div id="finished-container">
+            <h2>Finished Tasks</h2>
+            <ul id="finished-tasks"></ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 To-Do List App</p>
+    </footer>
+
+    <script>
+        function showPage(page) {
+            document.querySelectorAll('main').forEach(p => p.style.display = 'none');
+            document.getElementById(page).style.display = 'block';
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+            if (taskText !== "") {
+                const tasks = getTasksFromLocalStorage();
+                tasks.push(taskText);
+                saveTasksToLocalStorage(tasks);
+                taskInput.value = "";
+                renderTaskList();
+            }
+        }
+
+        function getTasksFromLocalStorage() {
+            return JSON.parse(localStorage.getItem('tasks')) || [];
+        }
+
+        function saveTasksToLocalStorage(tasks) {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function renderTaskList() {
+            const tasks = getTasksFromLocalStorage();
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = "";
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.onclick = () => completeTask(index);
+                li.appendChild(checkbox);
+                li.appendChild(document.createTextNode(task));
+                const deleteButton = document.createElement('button');
+                deleteButton.innerHTML = '🗑️'; // Unicode trash bin icon
+                deleteButton.style.border = 'none';
+                deleteButton.style.background = 'none';
+                deleteButton.style.cursor = 'pointer';
+                deleteButton.style.marginLeft = '10px';
+                deleteButton.onclick = () => deleteTask(index);
+                li.appendChild(deleteButton);
+                taskList.appendChild(li);
+            });
+        }
+
+        function completeTask(index) {
+            const tasks = getTasksFromLocalStorage();
+            const finishedTasks = JSON.parse(localStorage.getItem('finishedTasks')) || [];
+            finishedTasks.push(tasks.splice(index, 1)[0]);
+            saveTasksToLocalStorage(tasks);
+            localStorage.setItem('finishedTasks', JSON.stringify(finishedTasks));
+            renderTaskList();
+            renderFinishedTasks();
+        }
+
+        function deleteTask(index) {
+            const tasks = getTasksFromLocalStorage();
+            tasks.splice(index, 1);
+            saveTasksToLocalStorage(tasks);
+            renderTaskList();
+        }
+
+        function renderFinishedTasks() {
+            const finishedTasks = JSON.parse(localStorage.getItem('finishedTasks')) || [];
+            const finishedList = document.getElementById('finished-tasks');
+            finishedList.innerHTML = "";
+            finishedTasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task;
+                finishedList.appendChild(li);
+            });
+        }
+
+        function toggleFinishedTasks() {
+            const finishedContainer = document.getElementById('finished-container');
+            finishedContainer.style.display = (finishedContainer.style.display === 'none' || finishedContainer.style.display === '') ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage(window.location.hash.slice(1) || 'home');
+            renderTaskList();
+            renderFinishedTasks();
+        });
+    </script>
+
+</body>
+</html>

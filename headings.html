@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Headings with Full-Width Background</title>
+    <style>
+        /* Reset margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Heading Section */
+        .headings {
+            background-image: url('background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0 20px;
+        }
+
+        /* Styling for multiple headings */
+        .headings-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .heading {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+            width: 80%;
+            margin: 10px 0;
+            font-size: 24px;
+            text-transform: capitalize;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .heading:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Mobile responsive styling */
+        @media (max-width: 768px) {
+            .headings {
+                font-size: 24px; /* Smaller font size for tablets */
+            }
+
+            .heading {
+                width: 90%;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headings {
+                font-size: 20px; /* Even smaller font size for mobile */
+            }
+
+            .heading {
+                width: 95%;
+                font-size: 16px;
+            }
+        }
+
+        /* Smooth scroll for clicking on headings */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Headings Section with Background Image -->
+    <div class="headings" id="heading1">
+        United States
+    </div>
+
+    <!-- Multiple Headings Below -->
+    <div class="headings-container">
+        <div class="heading" id="heading2" onclick="document.getElementById('heading2').scrollIntoView()">Canada</div>
+        <div class="heading" id="heading3" onclick="document.getElementById('heading3').scrollIntoView()">Mexico</div>
+        <div class="heading" id="heading4" onclick="document.getElementById('heading4').scrollIntoView()">Brazil</div>
+        <div class="heading" id="heading5" onclick="document.getElementById('heading5').scrollIntoView()">Argentina</div>
+        <!-- You can add more headings here -->
+    </div>
+
+</body>
+</html>

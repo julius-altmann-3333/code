@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Table Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        input, button, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        #codeDisplay, #htmlOutput {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #htmlOutput {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .result-box {
+            padding: 10px;
+            border: 1px solid #333;
+            background-color: #fff;
+            display: inline-block;
+            min-width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GitHub Table Search</h1>
+
+    <input type="text" id="urlInput" placeholder="Enter GitHub Raw URL (e.g., https://raw.githubusercontent.com/user/repo/main/file.html)">
+    <button onclick="fetchGitHubCode()">Fetch Code</button>
+
+    <textarea id="codeArea" placeholder="Code from GitHub will appear here..." readonly></textarea>
+
+    <input type="text" id="searchBox" placeholder="Enter table cell (e.g., <td>#</td>)">
+    <button onclick="searchCode()">Search</button>
+
+    <h3>Search Results (Code Format)</h3>
+    <textarea id="codeDisplay" readonly></textarea>
+
+    <h3>Rendered HTML Output</h3>
+    <div id="htmlOutput"></div>
+
+    <script>
+        async function fetchGitHubCode() {
+            const url = document.getElementById("urlInput").value;
+            if (!url.startsWith("https://raw.githubusercontent.com")) {
+                alert("Please enter a valid GitHub Raw URL.");
+                return;
+            }
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Failed to fetch file.");
+                
+                const code = await response.text();
+                document.getElementById("codeArea").value = code;
+            } catch (error) {
+                alert("Error fetching file: " + error.message);
+            }
+        }
+
+        function searchCode() {
+            const searchQuery = document.getElementById("searchBox").value.trim();
+            const code = document.getElementById("codeArea").value;
+            if (!searchQuery || !code) {
+                alert("Please fetch code and enter a search term.");
+                return;
+            }
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(code, "text/html");
+            const allRows = doc.querySelectorAll("tr"); // Select all table rows
+
+            let matchedResults = [];
+            let visualResults = [];
+
+            allRows.forEach(row => {
+                if (row.innerHTML.includes(searchQuery)) {
+                    let extractedTDs = row.querySelectorAll("td");
+                    let extractedHTML = Array.from(extractedTDs).map(td => td.outerHTML).join("\n");
+                    let visualHTML = Array.from(extractedTDs).map(td => `<div class="result-box">${td.innerHTML}</div>`).join("");
+
+                    matchedResults.push(extractedHTML);
+                    visualResults.push(visualHTML);
+                }
+            });
+
+            // Display results in Code Format
+            document.getElementById("codeDisplay").value = matchedResults.join("\n\n");
+
+            // Display results in Rendered Format
+            document.getElementById("htmlOutput").innerHTML = visualResults.join("") || "<p>No results found.</p>";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,74 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dynamic Results Example</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .links a {
-      margin-right: 15px;
-      cursor: pointer;
-      text-decoration: underline;
-      color: blue;
-    }
-    .results-container {
-      margin-top: 20px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      width: 300px;
-      border-radius: 8px;
-    }
-    .result-box img {
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    .result-box p {
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content on Button Click</title>
+    <style>
+        .content-block {
+            display: none;
+            margin-top: 20px;
+        }
+        .content-block img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
+    <h1>Dynamic Content Example</h1>
+    
+    <button class="content-btn" data-target="content1">Show Content 1</button>
+    <button class="content-btn" data-target="content2">Show Content 2</button>
+    <button class="content-btn" data-target="content3">Show Content 3</button>
+    <button class="content-btn" data-target="content4">Show Content 4</button>
 
-  <div class="links">
-    <a onclick="showResult(1)">Show Result 1</a>
-    <a onclick="showResult(2)">Show Result 2</a>
-    <a onclick="showResult(3)">Show Result 3</a>
-  </div>
+    <div id="content1" class="content-block">
+        <h2>Content Block 1</h2>
+        <p>This is the first block of content.</p>
+        <img src="https://via.placeholder.com/300" alt="Placeholder Image 1">
+    </div>
 
-  <div class="results-container" id="resultsContainer">
-    <!-- Result content will appear here -->
-  </div>
+    <div id="content2" class="content-block">
+        <h2>Content Block 2</h2>
+        <p>This is the second block of content.</p>
+        <img src="https://via.placeholder.com/300" alt="Placeholder Image 2">
+    </div>
 
-  <script>
-    function showResult(num) {
-      const content = {
-        1: {
-          img: "https://via.placeholder.com/300x200?text=Image+1",
-          text: "This is the content for result 1."
-        },
-        2: {
-          img: "https://via.placeholder.com/300x200?text=Image+2",
-          text: "Here is the second result with different info."
-        },
-        3: {
-          img: "https://via.placeholder.com/300x200?text=Image+3",
-          text: "Finally, this is the third result shown."
+    <div id="content3" class="content-block">
+        <h2>Content Block 3</h2>
+        <p>This is the third block of content.</p>
+        <img src="https://via.placeholder.com/300" alt="Placeholder Image 3">
+    </div>
+
+    <div id="content4" class="content-block">
+        <h2>Content Block 4</h2>
+        <p>This is the fourth block of content.</p>
+        <img src="https://via.placeholder.com/300" alt="Placeholder Image 4">
+    </div>
+
+    <script>
+        // Function to hide all content blocks
+        function hideAllContent() {
+            const contentBlocks = document.querySelectorAll('.content-block');
+            contentBlocks.forEach(block => block.style.display = 'none');
         }
-      };
 
-      const result = content[num];
-      const container = document.getElementById("resultsContainer");
-      container.innerHTML = `
-        <div class="result-box">
-          <img src="${result.img}" alt="Result ${num}">
-          <p>${result.text}</p>
-        </div>
-      `;
-    }
-  </script>
-
+        // Attach event listeners to all buttons
+        const buttons = document.querySelectorAll('.content-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                hideAllContent();
+                const targetContent = document.getElementById(this.getAttribute('data-target'));
+                targetContent.style.display = 'block'; // Show the selected content block
+            });
+        });
+    </script>
 </body>
 </html>

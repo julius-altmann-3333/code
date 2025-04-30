@@ -1,0 +1,347 @@
+<ul>
+  <li><strong>Île-de-France</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Paris</li>
+          <li>Boulogne-Billancourt</li>
+          <li>Saint-Denis</li>
+          <li>Montreuil</li>
+          <li>Argenteuil</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Paris metropolitan area</li>
+          <li>Seine-Saint-Denis</li>
+          <li>Val-de-Marne</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Provence-Alpes-Côte d'Azur (PACA)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Marseille</li>
+          <li>Nice</li>
+          <li>Toulon</li>
+          <li>Aix-en-Provence</li>
+          <li>Cannes</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Côte d'Azur (French Riviera)</li>
+          <li>Alpes-de-Haute-Provence</li>
+          <li>Var</li>
+          <li>Luberon</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Auvergne-Rhône-Alpes</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Lyon</li>
+          <li>Saint-Étienne</li>
+          <li>Grenoble</li>
+          <li>Clermont-Ferrand</li>
+          <li>Villeurbanne</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Rhône Valley</li>
+          <li>Mont Blanc</li>
+          <li>Beaujolais</li>
+          <li>Massif Central</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Normandy (Normandie)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Rouen</li>
+          <li>Le Havre</li>
+          <li>Caen</li>
+          <li>Cherbourg</li>
+          <li>Evreux</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Upper Normandy (Haute-Normandie)</li>
+          <li>Lower Normandy (Basse-Normandie)</li>
+          <li>Cotentin Peninsula</li>
+          <li>Pays de Caux</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Brittany (Bretagne)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Rennes</li>
+          <li>Brest</li>
+          <li>Quimper</li>
+          <li>Vannes</li>
+          <li>Lorient</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Armorique</li>
+          <li>Breizh (traditional Breton region)</li>
+          <li>Côte d'Armor</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Nouvelle-Aquitaine</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Bordeaux</li>
+          <li>Limoges</li>
+          <li>Poitiers</li>
+          <li>La Rochelle</li>
+          <li>Pau</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Dordogne Valley</li>
+          <li>Aquitaine</li>
+          <li>Basque Country</li>
+          <li>Landes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Occitanie</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Toulouse</li>
+          <li>Montpellier</li>
+          <li>Nîmes</li>
+          <li>Perpignan</li>
+          <li>Tarbes</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Languedoc</li>
+          <li>Midi-Pyrénées</li>
+          <li>Pyrenees Mountains</li>
+          <li>Corbières</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Hauts-de-France</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Lille</li>
+          <li>Amiens</li>
+          <li>Roubaix</li>
+          <li>Tourcoing</li>
+          <li>Calais</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Nord-Pas-de-Calais</li>
+          <li>Picardy (Picardie)</li>
+          <li>Pas-de-Calais</li>
+          <li>Somme</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Grand Est</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Strasbourg</li>
+          <li>Reims</li>
+          <li>Metz</li>
+          <li>Mulhouse</li>
+          <li>Nancy</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Alsace</li>
+          <li>Lorraine</li>
+          <li>Champagne-Ardenne</li>
+          <li>Vosges Mountains</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Pays de la Loire</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Nantes</li>
+          <li>Angers</li>
+          <li>Le Mans</li>
+          <li>Saint-Nazaire</li>
+          <li>La Roche-sur-Yon</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Loire Valley</li>
+          <li>Vendée</li>
+          <li>Anjou</li>
+          <li>Mayenne</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Centre-Val de Loire</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Tours</li>
+          <li>Orléans</li>
+          <li>Bourges</li>
+          <li>Châteauroux</li>
+          <li>Vierzon</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Loire Valley</li>
+          <li>Berry</li>
+          <li>Touraine</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Bourgogne-Franche-Comté</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Dijon</li>
+          <li>Besançon</li>
+          <li>Le Creusot</li>
+          <li>Nevers</li>
+          <li>Mâcon</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Burgundy (Bourgogne)</li>
+          <li>Franche-Comté</li>
+          <li>Jura Mountains</li>
+          <li>Auxerre</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Corsica (Corse)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Ajaccio</li>
+          <li>Bastia</li>
+          <li>Calvi</li>
+          <li>Porto-Vecchio</li>
+          <li>Corte</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Balagne</li>
+          <li>Cap Corse</li>
+          <li>Castagniccia</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>La Réunion</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Saint-Denis</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Piton de la Fournaise</li>
+          <li>Cirques of Mafate, Salazie, and Cilaos</li>
+          <li>West Coast (St-Gilles)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Martinique</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Fort-de-France</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Caravelle Peninsula</li>
+          <li>Mount Pelée</li>
+          <li>Le Marin</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Guadeloupe</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Basse-Terre, Pointe-à-Pitre</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Grande-Terre</li>
+          <li>Basse-Terre</li>
+          <li>Les Saintes Islands</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>French Guiana (Guyane)</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Cayenne</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Tumuc-Humac Mountains</li>
+          <li>Kourou</li>
+          <li>Amazon Rainforest</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Mayotte</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Mamoudzou</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Petite-Terre</li>
+          <li>Grande-Terre</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

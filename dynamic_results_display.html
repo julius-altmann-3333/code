@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Result Display</title>
+    <style>
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dynamic Result Display</h1>
+
+    <!-- Input form to get data -->
+    <label for="inputValue">Enter a number:</label>
+    <input type="number" id="inputValue" placeholder="Enter a number">
+    <button onclick="displayResult()">Show Result</button>
+
+    <!-- Div where result will be displayed -->
+    <div id="result" class="result"></div>
+
+    <script>
+        // Function to display the result dynamically
+        function displayResult() {
+            // Get the input value
+            const inputValue = document.getElementById('inputValue').value;
+
+            // Get the result div element
+            const resultDiv = document.getElementById('result');
+
+            // Check if the input value is a number
+            if (inputValue !== '') {
+                // Perform a calculation or display the input value
+                const result = `You entered: ${inputValue}. The double of your number is: ${inputValue * 2}`;
+                
+                // Show the result
+                resultDiv.innerHTML = result;
+                resultDiv.style.display = 'block'; // Make the result div visible
+            } else {
+                // Hide result if input is empty
+                resultDiv.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section with Explore Button</title>
+    <style>
+        /* Resetting margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        /* Button Styling */
+        .explore-button {
+            width: 50%;
+            padding: 15px 0;
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid black;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .explore-button:hover {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* Centering the button */
+        .button-container {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 40px; /* Padding towards the background */
+        }
+
+        /* Responsive Button */
+        @media (max-width: 768px) {
+            .explore-button {
+                width: 50%; /* For tablet devices */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-button {
+                width: 75%; /* For mobile devices */
+            }
+        }
+
+        /* Smooth scroll to the next section */
+        .next-section {
+            height: 1000px; /* Next section height, you can modify it */
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="button-container">
+            <button class="explore-button" onclick="scrollToSection()">Explore</button>
+        </div>
+    </section>
+
+    <!-- Next Section -->
+    <section id="next-section" class="next-section">
+        <h1>This is the next section!</h1>
+        <p>Content of the next section...</p>
+    </section>
+
+    <script>
+        // Function to scroll to the next section
+        function scrollToSection() {
+            document.getElementById('next-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+</body>
+</html>

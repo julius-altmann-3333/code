@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes Image List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .plane-box {
+            width: 300px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+        .plane-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .plane-name {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .plane-link {
+            text-decoration: none;
+            color: #2980B9;
+            font-weight: bold;
+        }
+        .plane-link:hover {
+            color: #3498DB;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Boeing 747 -->
+        <div class="plane-box">
+            <img src="https://www.boeing.com/resources/boeingdotcom/commercial/747/main.jpg" alt="Boeing 747">
+            <div class="plane-name">Boeing 747</div>
+            <a href="https://www.boeing.com/commercial/747/" class="plane-link">Learn More</a>
+        </div>
+
+        <!-- Airbus A380 -->
+        <div class="plane-box">
+            <img src="https://www.airbus.com/sites/g/files/jlcbta136/files/styles/teaser_desktop/public/2020-05/A380%20cockpit.jpg?itok=eRTDN0HL" alt="Airbus A380">
+            <div class="plane-name">Airbus A380</div>
+            <a href="https://www.airbus.com/aircraft/passenger-aircraft/a380.html" class="plane-link">Learn More</a>
+        </div>
+
+        <!-- F-22 Raptor -->
+        <div class="plane-box">
+            <img src="https://www.lockheedmartin.com/content/dam/lockheed-martin/eo/f-22.jpg" alt="F-22 Raptor">
+            <div class="plane-name">F-22 Raptor</div>
+            <a href="https://www.lockheedmartin.com/en-us/products/f-22.html" class="plane-link">Learn More</a>
+        </div>
+
+        <!-- Concorde -->
+        <div class="plane-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Concorde_F-BVFB.jpg" alt="Concorde">
+            <div class="plane-name">Concorde</div>
+            <a href="https://en.wikipedia.org/wiki/Concorde" class="plane-link">Learn More</a>
+        </div>
+
+        <!-- Boeing 787 Dreamliner -->
+        <div class="plane-box">
+            <img src="https://www.boeing.com/resources/boeingdotcom/commercial/787/main.jpg" alt="Boeing 787 Dreamliner">
+            <div class="plane-name">Boeing 787 Dreamliner</div>
+            <a href="https://www.boeing.com/commercial/787/" class="plane-link">Learn More</a>
+        </div>
+    </div>
+</body>
+</html>

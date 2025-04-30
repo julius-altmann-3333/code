@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Boxes</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .quote-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns for larger screens */
+            gap: 20px;
+            justify-items: center;
+        }
+
+        /* Quote Box Styling */
+        .quote-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(30px); /* Initially off-screen */
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        /* Quote Text Styling */
+        .quote-text {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Icon Styling */
+        .quote-icon {
+            font-size: 30px;
+            color: #007BFF;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(30px); /* Initially off-screen */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Media Query for Mobile (less than 768px) */
+        @media (max-width: 768px) {
+            .quote-section {
+                grid-template-columns: 1fr 1fr; /* 2 columns for tablets */
+            }
+        }
+
+        @media (max-width: 500px) {
+            .quote-section {
+                grid-template-columns: 1fr; /* 1 column for mobile */
+            }
+        }
+
+        /* Class for Fading In */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .fade-in-delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .fade-in-delay-4 {
+            transition-delay: 0.8s;
+        }
+
+        .fade-in-delay-5 {
+            transition-delay: 1s;
+        }
+
+        .fade-in-delay-6 {
+            transition-delay: 1.2s;
+        }
+
+        .fade-in-delay-7 {
+            transition-delay: 1.4s;
+        }
+
+        .fade-in-delay-8 {
+            transition-delay: 1.6s;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Quote Section -->
+<section class="quote-section">
+    <!-- Quote Box 1 -->
+    <div class="quote-box fade-in-delay-1" id="quote-1">
+        <div class="quote-text">"The only limit to our realization of tomorrow is our doubts of today."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 2 -->
+    <div class="quote-box fade-in-delay-2" id="quote-2">
+        <div class="quote-text">"The future belongs to those who believe in the beauty of their dreams."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 3 -->
+    <div class="quote-box fade-in-delay-3" id="quote-3">
+        <div class="quote-text">"In the end, we will remember not the words of our enemies, but the silence of our friends."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 4 -->
+    <div class="quote-box fade-in-delay-4" id="quote-4">
+        <div class="quote-text">"Do not go where the path may lead, go instead where there is no path and leave a trail."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 5 -->
+    <div class="quote-box fade-in-delay-5" id="quote-5">
+        <div class="quote-text">"Success is not final, failure is not fatal: It is the courage to continue that counts."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 6 -->
+    <div class="quote-box fade-in-delay-6" id="quote-6">
+        <div class="quote-text">"You must be the change you wish to see in the world."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 7 -->
+    <div class="quote-box fade-in-delay-7" id="quote-7">
+        <div class="quote-text">"It does not matter how slowly you go as long as you do not stop."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+
+    <!-- Quote Box 8 -->
+    <div class="quote-box fade-in-delay-8" id="quote-8">
+        <div class="quote-text">"The best time to plant a tree was 20 years ago. The second best time is now."</div>
+        <div class="quote-icon">&#9733;</div> <!-- Star Icon -->
+    </div>
+</section>
+
+<script>
+    // Function to check if the element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+    }
+
+    // Function to handle fade-in effect
+    function handleScrollAnimations() {
+        const quoteBoxes = document.querySelectorAll('.quote-box');
+        quoteBoxes.forEach((box) => {
+            const icon = box.querySelector('.quote-icon');
+            // Fade in quote box and icon with delay
+            if (isInViewport(box)) {
+                box.classList.add('fade-in');
+                icon.classList.add('fade-in');
+            }
+        });
+    }
+
+    // Trigger fade-in effect on scroll
+    window.addEventListener('scroll', handleScrollAnimations);
+
+    // Trigger fade-in effect on page load
+    window.addEventListener('load', handleScrollAnimations);
+</script>
+
+</body>
+</html>

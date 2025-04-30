@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Factory Model with Axes and Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin: 5px;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>3D Factory Model</h1>
+    
+    <!-- Measurement Controls -->
+    <div class="controls">
+        <label for="x-dimension">X Dimension (width):</label>
+        <input type="number" id="x-dimension" value="100" min="1" max="500" step="1">
+        
+        <label for="y-dimension">Y Dimension (height):</label>
+        <input type="number" id="y-dimension" value="50" min="1" max="500" step="1">
+        
+        <label for="z-dimension">Z Dimension (depth):</label>
+        <input type="number" id="z-dimension" value="100" min="1" max="500" step="1">
+        
+        <button onclick="updateFactory()">Update Factory</button>
+    </div>
+
+    <!-- 3D Canvas -->
+    <canvas id="factoryCanvas" width="800" height="600"></canvas>
+
+    <!-- Display Current Dimensions -->
+    <div id="dimension-display">
+        <p>Current Dimensions:</p>
+        <p id="dimension-output">X: 100m, Y: 50m, Z: 100m</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up the scene, camera, and renderer for Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('factoryCanvas') });
+
+        renderer.setSize(800, 600);
+
+        // Initial factory dimensions
+        let factoryWidth = 100;
+        let factoryHeight = 50;
+        let factoryDepth = 100;
+
+        // Factory Geometry
+        let factoryGeometry = new THREE.BoxGeometry(factoryWidth, factoryHeight, factoryDepth);
+        let factoryMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        let factory = new THREE.Mesh(factoryGeometry, factoryMaterial);
+        scene.add(factory);
+
+        // Create cube for rotation and movement
+        let cubeGeometry = new THREE.BoxGeometry(50, 50, 50);
+        let cubeMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+        let cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        scene.add(cube);
+
+        // Position cube initially
+        cube.position.set(0, 0, 0);
+
+        // Create grid helpers for visualizing 10m intervals
+        function createGridHelpers() {
+            const gridSize = 10;
+            const gridHelperX = new THREE.GridHelper(factoryWidth, factoryWidth / gridSize, 0x555555, 0x555555);
+            gridHelperX.rotation.x = Math.PI / 2; // Rotate the grid to be on the X axis
+            const gridHelperY = new THREE.GridHelper(factoryDepth, factoryDepth / gridSize, 0x555555, 0x555555);
+            gridHelperY.rotation.x = Math.PI / 2; // Rotate the grid to be on the Y axis
+            const gridHelperZ = new THREE.GridHelper(factoryHeight, factoryHeight / gridSize, 0x555555, 0x555555);
+
+            scene.add(gridHelperX);
+            scene.add(gridHelperY);
+            scene.add(gridHelperZ);
+        }
+
+        // Add axis arrows to indicate X, Y, Z axes
+        function createAxisArrows() {
+            const arrowLength = 20;
+            const arrowHelperX = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0), arrowLength, 0xff0000);
+            const arrowHelperY = new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 0), arrowLength, 0x00ff00);
+            const arrowHelperZ = new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, 0), arrowLength, 0x0000ff);
+
+            scene.add(arrowHelperX);
+            scene.add(arrowHelperY);
+            scene.add(arrowHelperZ);
+        }
+
+        // Camera position
+        camera.position.z = 200;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Update the factory size based on user input
+        function updateFactory() {
+            factoryWidth = parseFloat(document.getElementById('x-dimension').value);
+            factoryHeight = parseFloat(document.getElementById('y-dimension').value);
+            factoryDepth = parseFloat(document.getElementById('z-dimension').value);
+
+            // Update factory geometry with new dimensions
+            factory.geometry.dispose();
+            factory.geometry = new THREE.BoxGeometry(factoryWidth, factoryHeight, factoryDepth);
+
+            // Clear previous grid and axes
+            scene.children = scene.children.filter(child => !(child instanceof THREE.GridHelper || child instanceof THREE.ArrowHelper));
+
+            // Recreate the grid helpers and axes
+            createGridHelpers();
+            createAxisArrows();
+
+            // Update the dimension display text
+            document.getElementById('dimension-output').innerText = `X: ${factoryWidth}m, Y: ${factoryHeight}m, Z: ${factoryDepth}m`;
+        }
+
+        // Initial setup
+        createGridHelpers();
+        createAxisArrows();
+
+        // Handle key events to move and rotate the cube
+        let rotationSpeed = 0.05;
+        let moveSpeed = 1;
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "ArrowLeft") {
+                cube.rotation.y -= rotationSpeed;  // Rotate left horizontally
+            }
+            if (event.key === "ArrowRight") {
+                cube.rotation.y += rotationSpeed;  // Rotate right horizontally
+            }
+            if (event.key === "ArrowUp") {
+                cube.rotation.x -= rotationSpeed;  // Rotate up vertically
+            }
+            if (event.key === "ArrowDown") {
+                cube.rotation.x += rotationSpeed;  // Rotate down vertically
+            }
+            if (event.key === "w") {
+                cube.position.z -= moveSpeed;  // Move forward
+            }
+            if (event.key === "s") {
+                cube.position.z += moveSpeed;  // Move backward
+            }
+            if (event.key === "a") {
+                cube.position.x -= moveSpeed;  // Move left
+            }
+            if (event.key === "d") {
+                cube.position.x += moveSpeed;  // Move right
+            }
+        });
+
+    </script>
+</body>
+</html>

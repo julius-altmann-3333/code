@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Information Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Property Information Form</h2>
+    <form id="propertyForm">
+        <label for="propertyAddress">Property Address:</label>
+        <input type="text" id="propertyAddress" placeholder="Full legal address" required><br>
+
+        <label for="propertyType">Property Type:</label>
+        <input type="text" id="propertyType" placeholder="Residential, commercial, etc." required><br>
+
+        <label for="yearBuilt">Year Built:</label>
+        <input type="text" id="yearBuilt" placeholder="Year property was built" required><br>
+
+        <label for="lotSize">Lot Size:</label>
+        <input type="text" id="lotSize" placeholder="Square footage or acreage" required><br>
+
+        <label for="buildingSize">Building Size:</label>
+        <input type="text" id="buildingSize" placeholder="Total square footage of livable space" required><br>
+
+        <button type="button" onclick="generatePDF()">Download PDF</button>
+        <button type="button" onclick="sendEmail()">Send via Email</button>
+    </form>
+
+    <script>
+        // Initialize EmailJS
+        emailjs.init("YOUR_USER_ID");
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Capture form values
+            const propertyAddress = document.getElementById('propertyAddress').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const yearBuilt = document.getElementById('yearBuilt').value;
+            const lotSize = document.getElementById('lotSize').value;
+            const buildingSize = document.getElementById('buildingSize').value;
+            
+            // Add content to the PDF
+            doc.text('Property Information Form', 10, 10);
+            doc.text('Property Address: ' + propertyAddress, 10, 20);
+            doc.text('Property Type: ' + propertyType, 10, 30);
+            doc.text('Year Built: ' + yearBuilt, 10, 40);
+            doc.text('Lot Size: ' + lotSize, 10, 50);
+            doc.text('Building Size: ' + buildingSize, 10, 60);
+            
+            // Save the PDF with the provided data
+            doc.save('Property_Information_Form.pdf');
+        }
+
+        function sendEmail() {
+            // Capture form values
+            const propertyAddress = document.getElementById('propertyAddress').value;
+            const propertyType = document.getElementById('propertyType').value;
+            const yearBuilt = document.getElementById('yearBuilt').value;
+            const lotSize = document.getElementById('lotSize').value;
+            const buildingSize = document.getElementById('buildingSize').value;
+
+            // EmailJS send function
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                propertyAddress: propertyAddress,
+                propertyType: propertyType,
+                yearBuilt: yearBuilt,
+                lotSize: lotSize,
+                buildingSize: buildingSize
+            })
+            .then(function(response) {
+                alert("Email sent successfully!");
+            }, function(error) {
+                alert("Failed to send email. Please try again later.");
+            });
+        }
+    </script>
+
+</body>
+</html>

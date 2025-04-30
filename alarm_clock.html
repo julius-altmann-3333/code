@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #current-time {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #alarm-time {
+            font-size: 18px;
+            padding: 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Alarm Clock</h1>
+    <div id="current-time"></div>
+    <input type="time" id="alarm-time">
+    <button onclick="setAlarm()">Set Alarm</button>
+    <button onclick="clearAlarm()">Clear Alarm</button>
+    <audio id="alarm-sound" src="https://www.soundjay.com/button/beep-07.wav" loop></audio>
+
+    <script>
+        let alarmTime = null;
+        let alarmTimeout = null;
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').innerText = now.toLocaleTimeString();
+            if (alarmTime && now.toLocaleTimeString('en-US', { hour12: false }) === alarmTime) {
+                document.getElementById('alarm-sound').play();
+            }
+        }
+        
+        function setAlarm() {
+            alarmTime = document.getElementById('alarm-time').value + ":00";
+            if (alarmTime !== "") {
+                alert("Alarm set for " + alarmTime);
+            }
+        }
+        
+        function clearAlarm() {
+            alarmTime = null;
+            document.getElementById('alarm-sound').pause();
+            document.getElementById('alarm-sound').currentTime = 0;
+            alert("Alarm cleared");
+        }
+        
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

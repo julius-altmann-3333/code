@@ -1,0 +1,156 @@
+<ul>
+  <li><strong>England</strong>
+    <ul>
+      <li>Largest Cities:
+        <ul>
+          <li>London (Capital)</li>
+          <li>Birmingham</li>
+          <li>Manchester</li>
+          <li>Liverpool</li>
+          <li>Leeds</li>
+        </ul>
+      </li>
+      <li>Major Areas:
+        <ul>
+          <li><strong>South East England</strong>
+            <ul>
+              <li>Kent</li>
+              <li>Surrey</li>
+              <li>Sussex</li>
+              <li>Thames Valley</li>
+            </ul>
+          </li>
+          <li><strong>South West England</strong>
+            <ul>
+              <li>Cornwall</li>
+              <li>Devon</li>
+              <li>Dorset</li>
+              <li>Somerset</li>
+            </ul>
+          </li>
+          <li><strong>North West England</strong>
+            <ul>
+              <li>Lake District</li>
+              <li>Cheshire</li>
+              <li>Lancashire</li>
+              <li>Merseyside</li>
+            </ul>
+          </li>
+          <li><strong>North East England</strong>
+            <ul>
+              <li>Newcastle upon Tyne</li>
+              <li>Durham</li>
+              <li>Sunderland</li>
+              <li>Teesside</li>
+            </ul>
+          </li>
+          <li><strong>Midlands</strong>
+            <ul>
+              <li>Warwickshire</li>
+              <li>Derbyshire</li>
+              <li>Nottinghamshire</li>
+              <li>Staffordshire</li>
+            </ul>
+          </li>
+          <li><strong>East of England</strong>
+            <ul>
+              <li>Norfolk</li>
+              <li>Suffolk</li>
+              <li>Cambridgeshire</li>
+              <li>Essex</li>
+              <li>Bedfordshire</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Scotland</strong>
+    <ul>
+      <li>Largest Cities:
+        <ul>
+          <li>Glasgow</li>
+          <li>Edinburgh (Capital)</li>
+          <li>Aberdeen</li>
+          <li>Dundee</li>
+          <li>Inverness</li>
+        </ul>
+      </li>
+      <li>Major Areas:
+        <ul>
+          <li><strong>Central Belt</strong>
+            <ul>
+              <li>Glasgow</li>
+              <li>Edinburgh</li>
+              <li>Stirling</li>
+              <li>Falkirk</li>
+            </ul>
+          </li>
+          <li><strong>Highlands and Islands</strong>
+            <ul>
+              <li>Inverness</li>
+              <li>Skye</li>
+              <li>Orkney Islands</li>
+              <li>Shetland Islands</li>
+            </ul>
+          </li>
+          <li><strong>Lowlands</strong>
+            <ul>
+              <li>Fife</li>
+              <li>Perth</li>
+              <li>Dumfries</li>
+            </ul>
+          </li>
+          <li><strong>Borders Region</strong>
+            <ul>
+              <li>Scottish Borders</li>
+              <li>Hawick</li>
+              <li>Galashiels</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Wales</strong>
+    <ul>
+      <li>Largest Cities:
+        <ul>
+          <li>Cardiff (Capital)</li>
+          <li>Swansea</li>
+          <li>Newport</li>
+          <li>Wrexham</li>
+          <li>Bangor</li>
+        </ul>
+      </li>
+      <li>Major Areas:
+        <ul>
+          <li><strong>South Wales</strong>
+            <ul>
+              <li>Valleys (such as Rhondda)</li>
+              <li>Cardiff</li>
+              <li>Swansea</li>
+              <li>Newport</li>
+            </ul>
+          </li>
+          <li><strong>North Wales</strong>
+            <ul>
+              <li>Snowdonia National Park</li>
+              <li>Llandudno</li>
+              <li>Wrexham</li>
+            </ul>
+          </li>
+          <li><strong>Mid Wales</strong>
+            <ul>
+              <li>Brecon Beacons</li>
+              <li>Aberystwyth</li>
+              <li>Montgomeryshire</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

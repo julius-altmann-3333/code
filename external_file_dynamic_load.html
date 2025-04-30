@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load External HTML</title>
+</head>
+<body>
+
+    <div id="content"></div> <!-- Content will be loaded here -->
+
+    <script>
+        fetch('external.html') // Replace with your actual file path
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading content:', error));
+    </script>
+
+</body>
+</html>

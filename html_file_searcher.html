@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tag Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        input { margin: 10px; }
+        #result { font-size: 18px; margin-top: 10px; }
+        #searchResults { margin-top: 20px; text-align: left; }
+        .result-item { margin-bottom: 10px; color: #333; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+
+    <h2>Select an HTML File and Scan for Tags</h2>
+    <input type="file" id="fileInput" accept=".html" />
+    <br><br>
+    <button id="scanButton" disabled>Scan</button>
+    
+    <div id="result"></div>
+    <div id="searchResults"></div>
+
+    <script>
+        let fileContent = ""; // Variable to store the file content
+
+        // Handle file selection
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    fileContent = e.target.result;
+                    document.getElementById("result").textContent = `File loaded. Ready to scan tags.`;
+                    document.getElementById("scanButton").disabled = false;  // Enable scan button
+                };
+                
+                reader.readAsText(file);
+            } else {
+                document.getElementById("result").textContent = "No file selected.";
+                document.getElementById("scanButton").disabled = true; // Disable scan button if no file
+            }
+        });
+
+        // Handle scan button click
+        document.getElementById("scanButton").addEventListener("click", function() {
+            checkHTMLTags(fileContent);
+        });
+
+        function checkHTMLTags(content) {
+            const tagStack = [];  // Stack to track open tags
+            const tagPattern = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g;
+            const searchResults = [];
+            let match;
+            let isValid = true;
+
+            while ((match = tagPattern.exec(content)) !== null) {
+                const tag = match[0];
+                const tagName = match[1];
+                const isClosingTag = tag.startsWith("</");
+
+                if (isClosingTag) {
+                    // If closing tag, check if there's an open tag to match
+                    if (tagStack.length === 0 || tagStack[tagStack.length - 1] !== tagName) {
+                        // If no matching opening tag, it's an error
+                        isValid = false;
+                        searchResults.push({
+                            type: 'error',
+                            message: `Mismatched or extra closing tag: </${tagName}>`
+                        });
+                    } else {
+                        tagStack.pop(); // Remove the matched opening tag from the stack
+                    }
+                } else {
+                    // If opening tag, push it onto the stack
+                    tagStack.push(tagName);
+                }
+            }
+
+            // If there are any unmatched opening tags left in the stack
+            if (tagStack.length > 0) {
+                isValid = false;
+                tagStack.forEach(tag => {
+                    searchResults.push({
+                        type: 'error',
+                        message: `Missing closing tag for <${tag}>`
+                    });
+                });
+            }
+
+            // If everything is valid, display the success message
+            if (isValid) {
+                searchResults.push({
+                    type: 'success',
+                    message: "Everything's great, Commander Julius! All tags are properly matched."
+                });
+            }
+
+            displayTagResults(searchResults);
+        }
+
+        function displayTagResults(results) {
+            const resultsDiv = document.getElementById("searchResults");
+            resultsDiv.innerHTML = '';  // Clear previous results
+
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                if (result.type === 'error') {
+                    resultItem.classList.add('error');
+                } else {
+                    resultItem.classList.add('success');
+                }
+                resultItem.textContent = result.message;
+                resultsDiv.appendChild(resultItem);
+            });
+        }
+    </script>
+
+</body>
+</html>

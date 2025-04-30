@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Example</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container for flex items */
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;  /* Allow wrapping of items */
+            justify-content: flex-start;  /* Align items to the left */
+            padding: 20px;
+        }
+
+        /* Flex items */
+        .flex-item {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: calc(33.33% - 20px);  /* Default to 3 items per row (web version) */
+            margin-bottom: 20px;  /* Space between items vertically */
+        }
+
+        /* Tablet screen (up to 1024px) - Two items per row */
+        @media (max-width: 1024px) {
+            .flex-item {
+                width: calc(50% - 20px);  /* 2 items per row */
+            }
+        }
+
+        /* Mobile screen (up to 700px) - Stack items one above the other */
+        @media (max-width: 700px) {
+            .flex-item {
+                width: 100%;  /* 1 item per row */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="flex-container">
+    <div class="flex-item">Box 1</div>
+    <div class="flex-item">Box 2</div>
+    <div class="flex-item">Box 3</div>
+    <div class="flex-item">Box 4</div>
+    <div class="flex-item">Box 5</div>
+    <div class="flex-item">Box 6</div>
+</div>
+
+</body>
+</html>

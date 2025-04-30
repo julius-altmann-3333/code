@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Specifications Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2C3E50;
+        }
+        .specifications-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .specification {
+            padding: 10px;
+            border: 1px solid #BDC3C7;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            width: 300px;
+            margin: 10px auto;
+            text-align: center;
+            cursor: pointer;
+        }
+        .dropdown {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #BDC3C7;
+        }
+        .specification:hover .dropdown {
+            display: block;
+        }
+        .dropdown a {
+            display: block;
+            padding: 5px;
+            text-decoration: none;
+            color: #34495E;
+            cursor: pointer;
+        }
+        .dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #BDC3C7;
+            background-color: #ecf0f1;
+        }
+        .selected {
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Car Specifications Selector</h1>
+        <div class="specifications-selector">
+            <div class="specification" data-type="engine">
+                Engine Type
+                <div class="dropdown">
+                    <a class="filter" data-category="engine" data-value="V8">V8</a>
+                    <a class="filter" data-category="engine" data-value="V6">V6</a>
+                    <a class="filter" data-category="engine" data-value="Inline-4">Inline-4</a>
+                    <a class="filter" data-category="engine" data-value="Electric">Electric</a>
+                </div>
+            </div>
+            <div class="specification" data-type="fuel">
+                Fuel Type
+                <div class="dropdown">
+                    <a class="filter" data-category="fuel" data-value="Gasoline">Gasoline</a>
+                    <a class="filter" data-category="fuel" data-value="Diesel">Diesel</a>
+                    <a class="filter" data-category="fuel" data-value="Electric">Electric</a>
+                    <a class="filter" data-category="fuel" data-value="Hybrid">Hybrid</a>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Selected Options</h2>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        let selectedFilters = {};
+
+        document.querySelectorAll('.filter').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault();
+                let category = this.dataset.category;
+                let value = this.dataset.value;
+                
+                if (!selectedFilters[category]) {
+                    selectedFilters[category] = new Set();
+                }
+                
+                if (selectedFilters[category].has(value)) {
+                    selectedFilters[category].delete(value);
+                    this.classList.remove('selected');
+                } else {
+                    selectedFilters[category].add(value);
+                    this.classList.add('selected');
+                }
+
+                updateOutput();
+            });
+        });
+
+        function updateOutput() {
+            let output = document.getElementById('output');
+            output.innerHTML = '';
+            
+            let filtersApplied = Object.keys(selectedFilters).filter(key => selectedFilters[key].size > 0);
+            if (filtersApplied.length === 0) {
+                output.innerHTML = 'No filters selected';
+                return;
+            }
+            
+            let resultText = 'Selected Filters:<br>';
+            filtersApplied.forEach(category => {
+                resultText += `<strong>${category}:</strong> ${Array.from(selectedFilters[category]).join(', ')}<br>`;
+            });
+            
+            output.innerHTML = resultText;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expandable Google Maps Iframe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .map-container {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Button style */
+        .expand-btn {
+            position: absolute;
+            top: 10px;   /* Position it at the top */
+            right: 10px; /* Position it on the right */
+            background-color: transparent; /* Transparent background */
+            border: none;
+            width: 30px; /* Size of the button */
+            height: 30px; /* Size of the button */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-btn svg {
+            fill: #808080; /* Set the SVG fill color to grey */
+            width: 100%;
+            height: 100%;
+            transition: fill 0.3s ease;
+        }
+
+        .expand-btn:hover svg {
+            fill: #b0b0b0; /* Change color to lighter grey on hover */
+        }
+
+        /* Expanded Map */
+        .map-container.expanded {
+            width: 90vw;
+            height: 70vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="map-container" id="mapContainer">
+        <button class="expand-btn" onclick="toggleExpand()">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 122.88 122.88" style="enable-background:new 0 0 122.88 122.88; width: 100%; height: 100%; background-color: transparent;">
+                <g>
+                    <polygon class="st0" points="122.88,0 73.05,0.98 88.77,16.7 61.44,44.04 34.11,16.7 49.83,0.98 0,0 0.98,49.83 16.7,34.11 44.03,61.44 16.7,88.77 0.98,73.05 0,122.88 49.83,121.9 34.11,106.18 61.44,78.85 88.77,106.18 73.05,121.9 122.87,122.88 121.9,73.05 106.18,88.77 78.85,61.44 106.18,34.11 121.9,49.83 122.88,0"/>
+                </g>
+            </svg>
+        </button>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093703!2d144.95373631531865!3d-37.81627937975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df5c40a9f%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1614352468096!5m2!1sen!2sus"></iframe>
+    </div>
+
+    <script>
+        function toggleExpand() {
+            const mapContainer = document.getElementById('mapContainer');
+            mapContainer.classList.toggle('expanded');
+        }
+    </script>
+
+</body>
+</html>

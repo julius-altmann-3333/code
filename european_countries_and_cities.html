@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Countries and Cities</title>
+</head>
+<style>
+  a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  }
+  a:hover {
+    color: grey;
+  }
+</style>
+<body>
+
+<ul>
+  <li><a href="#" class="country-link">Germany</a>
+    <ul>
+      <li><a href="#" class="city-link">Berlin</a></li>
+      <li><a href="#" class="city-link">Hamburg</a></li>
+      <li><a href="#" class="city-link">Munich</a></li>
+      <li><a href="#" class="city-link">Cologne</a></li>
+      <li><a href="#" class="city-link">Frankfurt</a></li>
+      <li><a href="#" class="city-link">Stuttgart</a></li>
+      <li><a href="#" class="city-link">Düsseldorf</a></li>
+      <li><a href="#" class="city-link">Dortmund</a></li>
+      <li><a href="#" class="city-link">Essen</a></li>
+      <li><a href="#" class="city-link">Leipzig</a></li>
+    </ul>
+  </li>
+  
+  <li><a href="#" class="country-link">France</a>
+    <ul>
+      <li><a href="#" class="city-link">Paris</a></li>
+      <li><a href="#" class="city-link">Marseille</a></li>
+      <li><a href="#" class="city-link">Lyon</a></li>
+      <li><a href="#" class="city-link">Toulouse</a></li>
+      <li><a href="#" class="city-link">Nice</a></li>
+      <li><a href="#" class="city-link">Nantes</a></li>
+      <li><a href="#" class="city-link">Montpellier</a></li>
+      <li><a href="#" class="city-link">Strasbourg</a></li>
+      <li><a href="#" class="city-link">Bordeaux</a></li>
+      <li><a href="#" class="city-link">Lille</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Italy</a>
+    <ul>
+      <li><a href="#" class="city-link">Rome</a></li>
+      <li><a href="#" class="city-link">Milan</a></li>
+      <li><a href="#" class="city-link">Naples</a></li>
+      <li><a href="#" class="city-link">Turin</a></li>
+      <li><a href="#" class="city-link">Palermo</a></li>
+      <li><a href="#" class="city-link">Genoa</a></li>
+      <li><a href="#" class="city-link">Bologna</a></li>
+      <li><a href="#" class="city-link">Florence</a></li>
+      <li><a href="#" class="city-link">Bari</a></li>
+      <li><a href="#" class="city-link">Catania</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Spain</a>
+    <ul>
+      <li><a href="#" class="city-link">Madrid</a></li>
+      <li><a href="#" class="city-link">Barcelona</a></li>
+      <li><a href="#" class="city-link">Valencia</a></li>
+      <li><a href="#" class="city-link">Seville</a></li>
+      <li><a href="#" class="city-link">Zaragoza</a></li>
+      <li><a href="#" class="city-link">Málaga</a></li>
+      <li><a href="#" class="city-link">Murcia</a></li>
+      <li><a href="#" class="city-link">Palma</a></li>
+      <li><a href="#" class="city-link">Las Palmas</a></li>
+      <li><a href="#" class="city-link">Bilbao</a></li>
+    </ul>
+  </li>
+  
+  <li><a href="#" class="country-link">United Kingdom</a>
+    <ul>
+      <li><a href="#" class="city-link">London</a></li>
+      <li><a href="#" class="city-link">Birmingham</a></li>
+      <li><a href="#" class="city-link">Manchester</a></li>
+      <li><a href="#" class="city-link">Glasgow</a></li>
+      <li><a href="#" class="city-link">Liverpool</a></li>
+      <li><a href="#" class="city-link">Bristol</a></li>
+      <li><a href="#" class="city-link">Leeds</a></li>
+      <li><a href="#" class="city-link">Sheffield</a></li>
+      <li><a href="#" class="city-link">Edinburgh</a></li>
+      <li><a href="#" class="city-link">Leicester</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+<ul>
+  <li><a href="#" class="country-link">Poland</a>
+    <ul>
+      <li><a href="#" class="city-link">Warsaw</a></li>
+      <li><a href="#" class="city-link">Kraków</a></li>
+      <li><a href="#" class="city-link">Łódź</a></li>
+      <li><a href="#" class="city-link">Wrocław</a></li>
+      <li><a href="#" class="city-link">Poznań</a></li>
+      <li><a href="#" class="city-link">Gdańsk</a></li>
+      <li><a href="#" class="city-link">Szczecin</a></li>
+      <li><a href="#" class="city-link">Bydgoszcz</a></li>
+      <li><a href="#" class="city-link">Lublin</a></li>
+      <li><a href="#" class="city-link">Katowice</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Portugal</a>
+    <ul>
+      <li><a href="#" class="city-link">Lisbon</a></li>
+      <li><a href="#" class="city-link">Porto</a></li>
+      <li><a href="#" class="city-link">Amadora</a></li>
+      <li><a href="#" class="city-link">Braga</a></li>
+      <li><a href="#" class="city-link">Coimbra</a></li>
+      <li><a href="#" class="city-link">Funchal</a></li>
+      <li><a href="#" class="city-link">Évora</a></li>
+      <li><a href="#" class="city-link">Aveiro</a></li>
+      <li><a href="#" class="city-link">Viseu</a></li>
+      <li><a href="#" class="city-link">Leiria</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Romania</a>
+    <ul>
+      <li><a href="#" class="city-link">Bucharest</a></li>
+      <li><a href="#" class="city-link">Cluj-Napoca</a></li>
+      <li><a href="#" class="city-link">Timișoara</a></li>
+      <li><a href="#" class="city-link">Iași</a></li>
+      <li><a href="#" class="city-link">Constanța</a></li>
+      <li><a href="#" class="city-link">Craiova</a></li>
+      <li><a href="#" class="city-link">Galați</a></li>
+      <li><a href="#" class="city-link">Ploiești</a></li>
+      <li><a href="#" class="city-link">Brașov</a></li>
+      <li><a href="#" class="city-link">Arad</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">San Marino</a>
+    <ul>
+      <li><a href="#" class="city-link">City of San Marino</a></li>
+      <li><a href="#" class="city-link">Serravalle</a></li>
+      <li><a href="#" class="city-link">Borgo Maggiore</a></li>
+      <li><a href="#" class="city-link">Domagnano</a></li>
+      <li><a href="#" class="city-link">Faetano</a></li>
+      <li><a href="#" class="city-link">Fiorentino</a></li>
+      <li><a href="#" class="city-link">Montegiardino</a></li>
+      <li><a href="#" class="city-link">Chiesanuova</a></li>
+      <li><a href="#" class="city-link">Acquaviva</a></li>
+      <li><a href="#" class="city-link">San Marino</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Serbia</a>
+    <ul>
+      <li><a href="#" class="city-link">Belgrade</a></li>
+      <li><a href="#" class="city-link">Novi Sad</a></li>
+      <li><a href="#" class="city-link">Niš</a></li>
+      <li><a href="#" class="city-link">Kragujevac</a></li>
+      <li><a href="#" class="city-link">Subotica</a></li>
+      <li><a href="#" class="city-link">Zrenjanin</a></li>
+      <li><a href="#" class="city-link">Leskovac</a></li>
+      <li><a href="#" class="city-link">Vranje</a></li>
+      <li><a href="#" class="city-link">Kraljevo</a></li>
+      <li><a href="#" class="city-link">Senta</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Slovakia</a>
+    <ul>
+      <li><a href="#" class="city-link">Bratislava</a></li>
+      <li><a href="#" class="city-link">Košice</a></li>
+      <li><a href="#" class="city-link">Prešov</a></li>
+      <li><a href="#" class="city-link">Nitra</a></li>
+      <li><a href="#" class="city-link">Trnava</a></li>
+      <li><a href="#" class="city-link">Žilina</a></li>
+      <li><a href="#" class="city-link">Martin</a></li>
+      <li><a href="#" class="city-link">Trenčín</a></li>
+      <li><a href="#" class="city-link">Poprad</a></li>
+      <li><a href="#" class="city-link">Prievidza</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Slovenia</a>
+    <ul>
+      <li><a href="#" class="city-link">Ljubljana</a></li>
+      <li><a href="#" class="city-link">Maribor</a></li>
+      <li><a href="#" class="city-link">Celje</a></li>
+      <li><a href="#" class="city-link">Kranj</a></li>
+      <li><a href="#" class="city-link">Novo Mesto</a></li>
+      <li><a href="#" class="city-link">Koper</a></li>
+      <li><a href="#" class="city-link">Murska Sobota</a></li>
+      <li><a href="#" class="city-link">Velenje</a></li>
+      <li><a href="#" class="city-link">Jesenice</a></li>
+      <li><a href="#" class="city-link">Ptuj</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Spain</a>
+    <ul>
+      <li><a href="#" class="city-link">Madrid</a></li>
+      <li><a href="#" class="city-link">Barcelona</a></li>
+      <li><a href="#" class="city-link">Valencia</a></li>
+      <li><a href="#" class="city-link">Seville</a></li>
+      <li><a href="#" class="city-link">Zaragoza</a></li>
+      <li><a href="#" class="city-link">Málaga</a></li>
+      <li><a href="#" class="city-link">Murcia</a></li>
+      <li><a href="#" class="city-link">Palma</a></li>
+      <li><a href="#" class="city-link">Las Palmas</a></li>
+      <li><a href="#" class="city-link">Bilbao</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Sweden</a>
+    <ul>
+      <li><a href="#" class="city-link">Stockholm</a></li>
+      <li><a href="#" class="city-link">Göteborg</a></li>
+      <li><a href="#" class="city-link">Malmö</a></li>
+      <li><a href="#" class="city-link">Uppsala</a></li>
+      <li><a href="#" class="city-link">Västerås</a></li>
+      <li><a href="#" class="city-link">Örebro</a></li>
+      <li><a href="#" class="city-link">Linköping</a></li>
+      <li><a href="#" class="city-link">Helsingborg</a></li>
+      <li><a href="#" class="city-link">Jönköping</a></li>
+      <li><a href="#" class="city-link">Norrköping</a></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li><a href="#" class="country-link">Austria</a>
+    <ul>
+      <li><a href="#" class="city-link">Vienna</a></li>
+      <li><a href="#" class="city-link">Graz</a></li>
+      <li><a href="#" class="city-link">Linz</a></li>
+      <li><a href="#" class="city-link">Salzburg</a></li>
+      <li><a href="#" class="city-link">Innsbruck</a></li>
+      <li><a href="#" class="city-link">Klagenfurt</a></li>
+      <li><a href="#" class="city-link">Villach</a></li>
+      <li><a href="#" class="city-link">Wels</a></li>
+      <li><a href="#" class="city-link">Sankt Pölten</a></li>
+      <li><a href="#" class="city-link">Dornbirn</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Belgium</a>
+    <ul>
+      <li><a href="#" class="city-link">Brussels</a></li>
+      <li><a href="#" class="city-link">Antwerp</a></li>
+      <li><a href="#" class="city-link">Ghent</a></li>
+      <li><a href="#" class="city-link">Charleroi</a></li>
+      <li><a href="#" class="city-link">Liège</a></li>
+      <li><a href="#" class="city-link">Bruges</a></li>
+      <li><a href="#" class="city-link">Namur</a></li>
+      <li><a href="#" class="city-link">Leuven</a></li>
+      <li><a href="#" class="city-link">Oostende</a></li>
+      <li><a href="#" class="city-link">Mechelen</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Bulgaria</a>
+    <ul>
+      <li><a href="#" class="city-link">Sofia</a></li>
+      <li><a href="#" class="city-link">Plovdiv</a></li>
+      <li><a href="#" class="city-link">Varna</a></li>
+      <li><a href="#" class="city-link">Burgas</a></li>
+      <li><a href="#" class="city-link">Ruse</a></li>
+      <li><a href="#" class="city-link">Stara Zagora</a></li>
+      <li><a href="#" class="city-link">Pleven</a></li>
+      <li><a href="#" class="city-link">Sliven</a></li>
+      <li><a href="#" class="city-link">Dobrich</a></li>
+      <li><a href="#" class="city-link">Shumen</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Croatia</a>
+    <ul>
+      <li><a href="#" class="city-link">Zagreb</a></li>
+      <li><a href="#" class="city-link">Split</a></li>
+      <li><a href="#" class="city-link">Rijeka</a></li>
+      <li><a href="#" class="city-link">Osijek</a></li>
+      <li><a href="#" class="city-link">Zadar</a></li>
+      <li><a href="#" class="city-link">Pula</a></li>
+      <li><a href="#" class="city-link">Dubrovnik</a></li>
+      <li><a href="#" class="city-link">Šibenik</a></li>
+      <li><a href="#" class="city-link">Varaždin</a></li>
+      <li><a href="#" class="city-link">Karlovac</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Czech Republic</a>
+    <ul>
+      <li><a href="#" class="city-link">Prague</a></li>
+      <li><a href="#" class="city-link">Brno</a></li>
+      <li><a href="#" class="city-link">Ostrava</a></li>
+      <li><a href="#" class="city-link">Plzeň</a></li>
+      <li><a href="#" class="city-link">Liberec</a></li>
+      <li><a href="#" class="city-link">Olomouc</a></li>
+      <li><a href="#" class="city-link">Ústí nad Labem</a></li>
+      <li><a href="#" class="city-link">Hradec Králové</a></li>
+      <li><a href="#" class="city-link">Pardubice</a></li>
+      <li><a href="#" class="city-link">Zlín</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Denmark</a>
+    <ul>
+      <li><a href="#" class="city-link">Copenhagen</a></li>
+      <li><a href="#" class="city-link">Aarhus</a></li>
+      <li><a href="#" class="city-link">Odense</a></li>
+      <li><a href="#" class="city-link">Aalborg</a></li>
+      <li><a href="#" class="city-link">Esbjerg</a></li>
+      <li><a href="#" class="city-link">Randers</a></li>
+      <li><a href="#" class="city-link">Kolding</a></li>
+      <li><a href="#" class="city-link">Vejle</a></li>
+      <li><a href="#" class="city-link">Roskilde</a></li>
+      <li><a href="#" class="city-link">Horsens</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Estonia</a>
+    <ul>
+      <li><a href="#" class="city-link">Tallinn</a></li>
+      <li><a href="#" class="city-link">Tartu</a></li>
+      <li><a href="#" class="city-link">Narva</a></li>
+      <li><a href="#" class="city-link">Pärnu</a></li>
+      <li><a href="#" class="city-link">Kohtla-Järve</a></li>
+      <li><a href="#" class="city-link">Viljandi</a></li>
+      <li><a href="#" class="city-link">Jõhvi</a></li>
+      <li><a href="#" class="city-link">Rakvere</a></li>
+      <li><a href="#" class="city-link">Kuressaare</a></li>
+      <li><a href="#" class="city-link">Paide</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Finland</a>
+    <ul>
+      <li><a href="#" class="city-link">Helsinki</a></li>
+      <li><a href="#" class="city-link">Espoo</a></li>
+      <li><a href="#" class="city-link">Tampere</a></li>
+      <li><a href="#" class="city-link">Vantaa</a></li>
+      <li><a href="#" class="city-link">Oulu</a></li>
+      <li><a href="#" class="city-link">Turku</a></li>
+      <li><a href="#" class="city-link">Jyväskylä</a></li>
+      <li><a href="#" class="city-link">Lahti</a></li>
+      <li><a href="#" class="city-link">Kuopio</a></li>
+      <li><a href="#" class="city-link">Pori</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Georgia</a>
+    <ul>
+      <li><a href="#" class="city-link">Tbilisi</a></li>
+      <li><a href="#" class="city-link">Batumi</a></li>
+      <li><a href="#" class="city-link">Kutaisi</a></li>
+      <li><a href="#" class="city-link">Zugdidi</a></li>
+      <li><a href="#" class="city-link">Rustavi</a></li>
+      <li><a href="#" class="city-link">Zestaponi</a></li>
+      <li><a href="#" class="city-link">Gori</a></li>
+      <li><a href="#" class="city-link">Samtredia</a></li>
+      <li><a href="#" class="city-link">Telavi</a></li>
+      <li><a href="#" class="city-link">Khashuri</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Hungary</a>
+    <ul>
+      <li><a href="#" class="city-link">Budapest</a></li>
+      <li><a href="#" class="city-link">Debrecen</a></li>
+      <li><a href="#" class="city-link">Szeged</a></li>
+      <li><a href="#" class="city-link">Miskolc</a></li>
+      <li><a href="#" class="city-link">Pécs</a></li>
+      <li><a href="#" class="city-link">Győr</a></li>
+      <li><a href="#" class="city-link">Nyíregyháza</a></li>
+      <li><a href="#" class="city-link">Kecskemét</a></li>
+      <li><a href="#" class="city-link">Székesfehérvár</a></li>
+      <li><a href="#" class="city-link">Szombathely</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Iceland</a>
+    <ul>
+      <li><a href="#" class="city-link">Reykjavik</a></li>
+      <li><a href="#" class="city-link">Akureyri</a></li>
+      <li><a href="#" class="city-link">Reykjanesbær</a></li>
+      <li><a href="#" class="city-link">Keflavik</a></li>
+      <li><a href="#" class="city-link">Hafnarfjordur</a></li>
+      <li><a href="#" class="city-link">Mosfellsbær</a></li>
+      <li><a href="#" class="city-link">Selfoss</a></li>
+      <li><a href="#" class="city-link">Egilsstadir</a></li>
+      <li><a href="#" class="city-link">Ísafjörður</a></li>
+      <li><a href="#" class="city-link">Húsavík</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Ireland</a>
+    <ul>
+      <li><a href="#" class="city-link">Dublin</a></li>
+      <li><a href="#" class="city-link">Cork</a></li>
+      <li><a href="#" class="city-link">Limerick</a></li>
+      <li><a href="#" class="city-link">Galway</a></li>
+      <li><a href="#" class="city-link">Waterford</a></li>
+      <li><a href="#" class="city-link">Derry</a></li>
+      <li><a href="#" class="city-link">Kilkenny</a></li>
+      <li><a href="#" class="city-link">Ennis</a></li>
+      <li><a href="#" class="city-link">Tralee</a></li>
+      <li><a href="#" class="city-link">Sligo</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Kosovo</a>
+    <ul>
+      <li><a href="#" class="city-link">Pristina</a></li>
+      <li><a href="#" class="city-link">Pec</a></li>
+      <li><a href="#" class="city-link">Mitrovica</a></li>
+      <li><a href="#" class="city-link">Gjakova</a></li>
+      <li><a href="#" class="city-link">Prizren</a></li>
+      <li><a href="#" class="city-link">Ferizaj</a></li>
+      <li><a href="#" class="city-link">Vushtrri</a></li>
+      <li><a href="#" class="city-link">Gjilan</a></li>
+      <li><a href="#" class="city-link">Suharekë</a></li>
+      <li><a href="#" class="city-link">Kamenicë</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Latvia</a>
+    <ul>
+      <li><a href="#" class="city-link">Riga</a></li>
+      <li><a href="#" class="city-link">Daugavpils</a></li>
+      <li><a href="#" class="city-link">Jurmala</a></li>
+      <li><a href="#" class="city-link">Liepaja</a></li>
+      <li><a href="#" class="city-link">Jelgava</a></li>
+      <li><a href="#" class="city-link">Jurmala</a></li>
+      <li><a href="#" class="city-link">Ventspils</a></li>
+      <li><a href="#" class="city-link">Rēzekne</a></li>
+      <li><a href="#" class="city-link">Jurmala</a></li>
+      <li><a href="#" class="city-link">Valmiera</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Lithuania</a>
+    <ul>
+      <li><a href="#" class="city-link">Vilnius</a></li>
+      <li><a href="#" class="city-link">Kaunas</a></li>
+      <li><a href="#" class="city-link">Klaipeda</a></li>
+      <li><a href="#" class="city-link">Šiauliai</a></li>
+      <li><a href="#" class="city-link">Panevėžys</a></li>
+      <li><a href="#" class="city-link">Alytus</a></li>
+      <li><a href="#" class="city-link">Marijampolė</a></li>
+      <li><a href="#" class="city-link">Mažeikiai</a></li>
+      <li><a href="#" class="city-link">Jonava</a></li>
+      <li><a href="#" class="city-link">Utena</a></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li><a href="#" class="country-link">Luxembourg</a>
+    <ul>
+      <li><a href="#" class="city-link">Luxembourg City</a></li>
+      <li><a href="#" class="city-link">Ettelbruck</a></li>
+      <li><a href="#" class="city-link">Ettelbruck</a></li>
+      <li><a href="#" class="city-link">Differdange</a></li>
+      <li><a href="#" class="city-link">Ettelbruck</a></li>
+      <li><a href="#" class="city-link">Bettembourg</a></li>
+      <li><a href="#" class="city-link">Dudelange</a></li>
+      <li><a href="#" class="city-link">Remich</a></li>
+      <li><a href="#" class="city-link">Mersch</a></li>
+      <li><a href="#" class="city-link">Clervaux</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Moldova</a>
+    <ul>
+      <li><a href="#" class="city-link">Chisinau</a></li>
+      <li><a href="#" class="city-link">Tiraspol</a></li>
+      <li><a href="#" class="city-link">Bălți</a></li>
+      <li><a href="#" class="city-link">Bender</a></li>
+      <li><a href="#" class="city-link">Briceni</a></li>
+      <li><a href="#" class="city-link">Cahul</a></li>
+      <li><a href="#" class="city-link">Ungheni</a></li>
+      <li><a href="#" class="city-link">Soroca</a></li>
+      <li><a href="#" class="city-link">Orhei</a></li>
+      <li><a href="#" class="city-link">Florești</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Monaco</a>
+    <ul>
+      <li><a href="#" class="city-link">Monaco</a></li>
+      <li><a href="#" class="city-link">La Condamine</a></li>
+      <li><a href="#" class="city-link">Fontvieille</a></li>
+      <li><a href="#" class="city-link">Moneghetti</a></li>
+      <li><a href="#" class="city-link">Monte Carlo</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Montenegro</a>
+    <ul>
+      <li><a href="#" class="city-link">Podgorica</a></li>
+      <li><a href="#" class="city-link">Nikšić</a></li>
+      <li><a href="#" class="city-link">Herceg Novi</a></li>
+      <li><a href="#" class="city-link">Bijelo Polje</a></li>
+      <li><a href="#" class="city-link">Pljevlja</a></li>
+      <li><a href="#" class="city-link">Kotor</a></li>
+      <li><a href="#" class="city-link">Tivat</a></li>
+      <li><a href="#" class="city-link">Bar</a></li>
+      <li><a href="#" class="city-link">Cetinje</a></li>
+      <li><a href="#" class="city-link">Mojkovac</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Netherlands</a>
+    <ul>
+      <li><a href="#" class="city-link">Amsterdam</a></li>
+      <li><a href="#" class="city-link">Rotterdam</a></li>
+      <li><a href="#" class="city-link">The Hague</a></li>
+      <li><a href="#" class="city-link">Utrecht</a></li>
+      <li><a href="#" class="city-link">Eindhoven</a></li>
+      <li><a href="#" class="city-link">Groningen</a></li>
+      <li><a href="#" class="city-link">Almere</a></li>
+      <li><a href="#" class="city-link">Tilburg</a></li>
+      <li><a href="#" class="city-link">Breda</a></li>
+      <li><a href="#" class="city-link">Nijmegen</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">North Macedonia</a>
+    <ul>
+      <li><a href="#" class="city-link">Skopje</a></li>
+      <li><a href="#" class="city-link">Bitola</a></li>
+      <li><a href="#" class="city-link">Prilep</a></li>
+      <li><a href="#" class="city-link">Kumanovo</a></li>
+      <li><a href="#" class="city-link">Ohrid</a></li>
+      <li><a href="#" class="city-link">Tetovo</a></li>
+      <li><a href="#" class="city-link">Veles</a></li>
+      <li><a href="#" class="city-link">Strumica</a></li>
+      <li><a href="#" class="city-link">Kavadarci</a></li>
+      <li><a href="#" class="city-link">Gostivar</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Norway</a>
+    <ul>
+      <li><a href="#" class="city-link">Oslo</a></li>
+      <li><a href="#" class="city-link">Bergen</a></li>
+      <li><a href="#" class="city-link">Stavanger</a></li>
+      <li><a href="#" class="city-link">Drammen</a></li>
+      <li><a href="#" class="city-link">Kristiansand</a></li>
+      <li><a href="#" class="city-link">Dundee</a></li>
+      <li><a href="#" class="city-link">Tromsø</a></li>
+      <li><a href="#" class="city-link">Sandnes</a></li>
+      <li><a href="#" class="city-link">Sarpsborg</a></li>
+      <li><a href="#" class="city-link">Haugesund</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Poland</a>
+    <ul>
+      <li><a href="#" class="city-link">Warsaw</a></li>
+      <li><a href="#" class="city-link">Kraków</a></li>
+      <li><a href="#" class="city-link">Łódź</a></li>
+      <li><a href="#" class="city-link">Wrocław</a></li>
+      <li><a href="#" class="city-link">Poznań</a></li>
+      <li><a href="#" class="city-link">Gdańsk</a></li>
+      <li><a href="#" class="city-link">Szczecin</a></li>
+      <li><a href="#" class="city-link">Bydgoszcz</a></li>
+      <li><a href="#" class="city-link">Lublin</a></li>
+      <li><a href="#" class="city-link">Katowice</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Romania</a>
+    <ul>
+      <li><a href="#" class="city-link">Bucharest</a></li>
+      <li><a href="#" class="city-link">Cluj-Napoca</a></li>
+      <li><a href="#" class="city-link">Timișoara</a></li>
+      <li><a href="#" class="city-link">Iași</a></li>
+      <li><a href="#" class="city-link">Constanța</a></li>
+      <li><a href="#" class="city-link">Craiova</a></li>
+      <li><a href="#" class="city-link">Galați</a></li>
+      <li><a href="#" class="city-link">Ploiești</a></li>
+      <li><a href="#" class="city-link">Brăila</a></li>
+      <li><a href="#" class="city-link">Arad</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Serbia</a>
+    <ul>
+      <li><a href="#" class="city-link">Belgrade</a></li>
+      <li><a href="#" class="city-link">Novi Sad</a></li>
+      <li><a href="#" class="city-link">Niš</a></li>
+      <li><a href="#" class="city-link">Kragujevac</a></li>
+      <li><a href="#" class="city-link">Subotica</a></li>
+      <li><a href="#" class="city-link">Zrenjanin</a></li>
+      <li><a href="#" class="city-link">Kragujevac</a></li>
+      <li><a href="#" class="city-link">Novi Pazar</a></li>
+      <li><a href="#" class="city-link">Senta</a></li>
+      <li><a href="#" class="city-link">Pancevo</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Slovakia</a>
+    <ul>
+      <li><a href="#" class="city-link">Bratislava</a></li>
+      <li><a href="#" class="city-link">Košice</a></li>
+      <li><a href="#" class="city-link">Nitra</a></li>
+      <li><a href="#" class="city-link">Trnava</a></li>
+      <li><a href="#" class="city-link">Žilina</a></li>
+      <li><a href="#" class="city-link">Prešov</a></li>
+      <li><a href="#" class="city-link">Martin</a></li>
+      <li><a href="#" class="city-link">Trenčín</a></li>
+      <li><a href="#" class="city-link">Poprad</a></li>
+      <li><a href="#" class="city-link">Senec</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Slovenia</a>
+    <ul>
+      <li><a href="#" class="city-link">Ljubljana</a></li>
+      <li><a href="#" class="city-link">Maribor</a></li>
+      <li><a href="#" class="city-link">Celje</a></li>
+      <li><a href="#" class="city-link">Kranj</a></li>
+      <li><a href="#" class="city-link">Novo Mesto</a></li>
+      <li><a href="#" class="city-link">Koper</a></li>
+      <li><a href="#" class="city-link">Murska Sobota</a></li>
+      <li><a href="#" class="city-link">Ptujska</a></li>
+      <li><a href="#" class="city-link">Slovenske Konjice</a></li>
+      <li><a href="#" class="city-link">Velenje</a></li>
+    </ul>
+  </li>
+
+  <li><a href="#" class="country-link">Ukraine</a>
+    <ul>
+      <li><a href="#" class="city-link">Kyiv</a></li>
+      <li><a href="#" class="city-link">Kharkiv</a></li>
+      <li><a href="#" class="city-link">Odessa</a></li>
+      <li><a href="#" class="city-link">Dnipro</a></li>
+      <li><a href="#" class="city-link">Lviv</a></li>
+      <li><a href="#" class="city-link">Zaporizhzhia</a></li>
+      <li><a href="#" class="city-link">Mykolaiv</a></li>
+      <li><a href="#" class="city-link">Mariupol</a></li>
+      <li><a href="#" class="city-link">Chernihiv</a></li>
+      <li><a href="#" class="city-link">Vinnytsia</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</body>
+</html>
+
+

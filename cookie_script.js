@@ -1,0 +1,93 @@
+<div id="cookie-banner">
+    <div id="language-buttons">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('de')">Deutsch</button>
+    </div>
+    <p id="cookie-text">We use cookies to improve your experience. By accepting, you agree to our 
+        <a href="/privacy-policy" target="_blank">Privacy Policy</a> and <a href="/cookie-policy" target="_blank">Cookie Policy</a>.
+    </p>
+    <div class="cookie-buttons">
+        <button id="accept-cookies">Accept</button>
+        <button id="decline-cookies">Decline</button>
+    </div>
+</div>
+
+
+<style>
+    #cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        max-width: 90%;
+        text-align: center;
+    }
+
+    #language-buttons {
+        display: flex;
+        flex-start: left;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    #cookie-banner a {
+        color: #4CAF50;
+        text-decoration: underline;
+    }
+
+    .cookie-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    #accept-cookies, #decline-cookies, #language-buttons button {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    #decline-cookies {
+        background: #ff4444;
+    }
+
+    #accept-cookies:hover, #language-buttons button:hover {
+        background: #45a049;
+    }
+
+    #decline-cookies:hover {
+        background: #cc0000;
+    }
+</style>
+
+<script>
+    function setLanguage(lang) {
+        const textElement = document.getElementById("cookie-text");
+        const acceptButton = document.getElementById("accept-cookies");
+        const declineButton = document.getElementById("decline-cookies");
+
+        if (lang === 'de') {
+            textElement.innerHTML = 'Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch Akzeptieren stimmen Sie unserer <a href="/privacy-policy" target="_blank">Datenschutzrichtlinie</a> und <a href="/cookie-policy" target="_blank">Cookie-Richtlinie</a> zu.';
+            acceptButton.innerText = "Akzeptieren";
+            declineButton.innerText = "Ablehnen";
+        } else {
+            textElement.innerHTML = 'We use cookies to improve your experience. By accepting, you agree to our <a href="/privacy-policy" target="_blank">Privacy Policy</a> and <a href="/cookie-policy" target="_blank">Cookie Policy</a>.';
+            acceptButton.innerText = "Accept";
+            declineButton.innerText = "Decline";
+        }
+    }
+</script>

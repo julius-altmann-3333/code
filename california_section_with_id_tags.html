@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Cities & Areas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .us_container {
+            margin-bottom: 30px;
+            border: 1px solid black;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .us_state-title, .us_region-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .us_btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .us_btn {
+            padding: 10px 15px;
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            width: 250px;
+        }
+        .us_dropdown-toggle {
+            display: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+            cursor: pointer;
+            text-align: right;
+        }
+        .us_arrow {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        .us_collapsed .us_arrow {
+            transform: rotate(180deg);
+        }
+        .us_mobile-hide {
+            display: none;
+        }
+        .us_dropdown-content {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .us_btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .us_btn {
+                width: 80%;
+            }
+            .us_dropdown-toggle {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let dropdowns = document.querySelectorAll(".us_mobile-hide");
+            dropdowns.forEach(dropdown => dropdown.style.display = "none");
+        });
+
+        function us_toggleDropdown(id, label) {
+            let section = document.getElementById(id);
+            let toggle = document.getElementById(id + "-toggle");
+
+            if (section.style.display === "none" || section.style.display === "") {
+                section.style.display = "flex";
+                toggle.classList.add("us_collapsed");
+                toggle.innerHTML = `Less ${label} <span class="us_arrow">&#9650;</span>`;
+            } else {
+                section.style.display = "none";
+                toggle.classList.remove("us_collapsed");
+                toggle.innerHTML = `More ${label} <span class="us_arrow">&#9660;</span>`;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="us_container">
+        <h2 class="us_state-title">State: California</h2>
+        <div class="us_btn-container">
+            <button class="us_btn us_placeholder">Los Angeles</button>
+            <div class="us_btn-container us_dropdown-content us_mobile-hide" id="us_california-cities">
+                <button class="us_btn us_placeholder">San Francisco</button>
+                <button class="us_btn us_placeholder">San Diego</button>
+                <button class="us_btn us_placeholder">San Jose</button>
+                <button class="us_btn us_placeholder">Sacramento</button>
+            </div>
+        </div>
+        <div class="us_dropdown-toggle" id="us_california-cities-toggle" onclick="us_toggleDropdown('us_california-cities', 'cities')">
+            More cities <span class="us_arrow">&#9660;</span>
+        </div>
+
+        <h3 class="us_region-title">Region</h3>
+        <div class="us_btn-container">
+            <button class="us_btn us_placeholder">Bay Area</button>
+            <div class="us_btn-container us_dropdown-content us_mobile-hide" id="us_california-regions">
+                <button class="us_btn us_placeholder">Silicon Valley</button>
+                <button class="us_btn us_placeholder">Central Valley</button>
+            </div>
+        </div>
+        <div class="us_dropdown-toggle" id="us_california-regions-toggle" onclick="us_toggleDropdown('us_california-regions', 'regions')">
+            More regions <span class="us_arrow">&#9660;</span>
+        </div>
+    </div>
+
+    <div class="us_container">
+        <h2 class="us_state-title">State: Florida</h2>
+        <div class="us_btn-container">
+            <button class="us_btn us_placeholder">Miami</button>
+            <div class="us_btn-container us_dropdown-content us_mobile-hide" id="us_florida-cities">
+                <button class="us_btn us_placeholder">Orlando</button>
+                <button class="us_btn us_placeholder">Tampa</button>
+                <button class="us_btn us_placeholder">Jacksonville</button>
+                <button class="us_btn us_placeholder">Tallahassee</button>
+            </div>
+        </div>
+        <div class="us_dropdown-toggle" id="us_florida-cities-toggle" onclick="us_toggleDropdown('us_florida-cities', 'cities')">
+            More cities <span class="us_arrow">&#9660;</span>
+        </div>
+
+        <h3 class="us_region-title">Region</h3>
+        <div class="us_btn-container">
+            <button class="us_btn us_placeholder">South Florida</button>
+            <div class="us_btn-container us_dropdown-content us_mobile-hide" id="us_florida-regions">
+                <button class="us_btn us_placeholder">Central Florida</button>
+                <button class="us_btn us_placeholder">Panhandle</button>
+            </div>
+        </div>
+        <div class="us_dropdown-toggle" id="us_florida-regions-toggle" onclick="us_toggleDropdown('us_florida-regions', 'regions')">
+            More regions <span class="us_arrow">&#9660;</span>
+        </div>
+    </div>
+
+    <div class="us_container">
+        <h2 class="us_state-title">State: Texas</h2>
+        <div class="us_btn-container">
+            <button class="us_btn us_placeholder">Houston</button>
+            <div class="us_btn-container us_dropdown-content us_mobile-hide" id="us_texas-cities">
+                <button class="us_btn us_placeholder">Dallas</button>
+                <button class="us_btn us_placeholder">Austin</button>
+                <button class="us_btn us_placeholder">San Antonio</button>
+                <button class="us_btn us_placeholder">Fort Worth</button>
+            </div>
+        </div>
+        <div class="us_dropdown-toggle" id="us_texas-cities-toggle" onclick="us_toggleDropdown('us_texas-cities', 'cities')">
+            More cities <span class="us_arrow">&#9660;</span>
+        </div>
+
+        <h3 class="us_region-title">Region</h3>
+        <div class="us_btn-container">
+            <button class="us_btn us_placeholder">Hill Country</button>
+            <div class="us_btn-container us_dropdown-content us_mobile-hide" id="us_texas-regions">
+                <button class="us_btn us_placeholder">DFW Metroplex</button>
+                <button class="us_btn us_placeholder">Gulf Coast</button>
+            </div>
+        </div>
+        <div class="us_dropdown-toggle" id="us_texas-regions-toggle" onclick="us_toggleDropdown('us_texas-regions', 'regions')">
+            More regions <span class="us_arrow">&#9660;</span>
+        </div>
+    </div>
+
+</body>
+</html>

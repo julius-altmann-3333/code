@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Circular Image Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('https://source.unsplash.com/1600x900/?universe,space') no-repeat center center/cover;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            perspective: 1000px;
+        }
+
+        .slider-container {
+            width: 100vw;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .slider {
+            display: flex;
+            transform: translateX(0);
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .slide {
+            width: 70vw;
+            height: 50vh;
+            border: 3px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 255, 120, 0.1);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            text-align: center;
+            margin: 10px;
+            transform: rotateY(0deg) translateZ(0);
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: black;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1 px solid black;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            transition: 0.3s ease;
+        }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .left {
+            left: 10px;
+        }
+
+        .right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <button class="arrow left">&#10094;</button>
+        <div class="slider">
+            <!-- Generating 33 divs -->
+            <script>
+                for (let i = 1; i <= 33; i++) {
+                    document.write(`<div class="slide">Box ${i}</div>`);
+                }
+            </script>
+        </div>
+        <button class="arrow right">&#10095;</button>
+    </div>
+
+    <script>
+        let index = 0;
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        const slideWidth = slides[0].offsetWidth + 20; // including margin
+
+        document.querySelector(".right").addEventListener("click", () => {
+            if (index < totalSlides - 1) {
+                index++;
+            } else {
+                index = 0;
+            }
+            updateSlider();
+        });
+
+        document.querySelector(".left").addEventListener("click", () => {
+            if (index > 0) {
+                index--;
+            } else {
+                index = totalSlides - 1;
+            }
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const offset = -index * slideWidth;
+            slider.style.transform = `translateX(${offset}px) rotateY(${index * 5}deg)`;
+        }
+    </script>
+
+</body>
+</html>

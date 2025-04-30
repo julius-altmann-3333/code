@@ -1,0 +1,193 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+button {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+}
+
+/* Box Container Styles */
+#box_california {
+    width: 98%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    padding: 5px;
+    margin-bottom: 20px; /* Prevent overlapping with the last element */
+    clear: both; /* Prevent float issues */
+}
+
+/* Content Card */
+#content_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 5px;
+    min-height: 100px; /* Prevent content collapsing */
+}
+
+/* Links */
+.links_properties,
+.links_explore {
+    text-decoration: none;
+    color: black;
+}
+
+/* Box Data (Flex Container) */
+#box_data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Prevent unwanted stretching */
+    gap: 10px;
+}
+
+/* Property Data */
+.property_data {
+    float: none;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: lightgrey;
+    margin-right: 2px;
+    border-radius: 3px;
+}
+
+/* Property Headline */
+#property_headline {
+    width: 100%;
+}
+
+/* Clearfix for Float Issues */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* --------- Slider Styles --------- */
+
+/* Slider Container */
+.slider-container {
+    position: relative;
+    width: 600px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 3px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    transition: width 0.3s ease;
+}
+
+/* Main Slider */
+.slider-main {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.main-image {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Arrow Navigation */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Dots Navigation */
+.slider-dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .slider-container {
+        width: 300px;
+    }
+
+    .slider-main .main-image {
+        width: 300px;
+        height: 200px;
+    }
+}
+
+/* --------- End Slider Styles --------- */
+
+/* Box Florida */
+#box_florida {
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    padding: 10px;
+    display: none;
+}
+
+/* Explore Buttons */
+.box_explore_buttons {
+    width: 100%;
+    height: auto;
+}
+
+.buttons_explore {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Debugging Helper (Remove after testing) */
+/* * {
+    outline: 1px solid red;
+} */

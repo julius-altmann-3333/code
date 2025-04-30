@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        #task-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #task-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                <li><a href="#tasks" onclick="showPage('tasks')">Tasks</a></li>
+                <li><a href="#settings" onclick="showPage('settings')">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="home">
+        <h1>Welcome to the To-Do List App</h1>
+        <p>This is your simple to-do list manager. Stay organized!</p>
+        <a href="#tasks" onclick="showPage('tasks')">Go to Tasks</a>
+    </main>
+
+    <main id="tasks">
+        <h1>Your Tasks</h1>
+        <ul id="task-list">
+            <!-- Tasks will be populated here -->
+        </ul>
+        <input type="text" id="task-input" placeholder="Add new task" />
+        <button onclick="addTask()">Add Task</button>
+    </main>
+
+    <main id="settings">
+        <h1>Settings</h1>
+        <label for="theme">Select Theme:</label>
+        <select id="theme" onchange="changeTheme()">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 To-Do List App</p>
+    </footer>
+
+    <script>
+        // Show page based on the current URL hash
+        function showPage(page) {
+            // Hide all pages
+            const pages = document.querySelectorAll('main');
+            pages.forEach(p => p.style.display = 'none');
+            
+            // Show the selected page
+            const pageElement = document.getElementById(page);
+            if (pageElement) {
+                pageElement.style.display = 'block';
+            }
+        }
+
+        // Task Management
+        function addTask() {
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+            
+            if (taskText !== "") {
+                // Retrieve tasks from localStorage
+                const tasks = getTasksFromLocalStorage();
+
+                // Add the new task
+                tasks.push(taskText);
+
+                // Save tasks back to localStorage
+                saveTasksToLocalStorage(tasks);
+
+                // Clear the input field
+                taskInput.value = "";
+                
+                // Update the displayed task list
+                renderTaskList();
+            }
+        }
+
+        // Retrieve tasks from localStorage
+        function getTasksFromLocalStorage() {
+            const tasks = localStorage.getItem('tasks');
+            return tasks ? JSON.parse(tasks) : [];
+        }
+
+        // Save tasks to localStorage
+        function saveTasksToLocalStorage(tasks) {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        // Render the task list from localStorage
+        function renderTaskList() {
+            const tasks = getTasksFromLocalStorage();
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = ""; // Clear the current list
+
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.textContent = task;
+                taskList.appendChild(li);
+            });
+        }
+
+        // Theme Management
+        function changeTheme() {
+            const theme = document.getElementById('theme').value;
+            if (theme === "dark") {
+                document.body.style.backgroundColor = "#333";
+                document.body.style.color = "white";
+            } else {
+                document.body.style.backgroundColor = "#fff";
+                document.body.style.color = "black";
+            }
+        }
+
+        // Initialize the app to show the home page by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+
+            // Render the tasks on page load
+            renderTaskList();
+        });
+    </script>
+
+</body>
+</html>

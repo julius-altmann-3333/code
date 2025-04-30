@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Keyboard and Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Calculator Display -->
+        <div class="calculator-display">
+            <input type="text" id="calc-display" disabled />
+        </div>
+
+        <!-- CNC Keyboard -->
+        <div class="keyboard">
+            <div class="row">
+                <button class="key" data-action="moveX">Move X</button>
+                <button class="key" data-action="moveY">Move Y</button>
+                <button class="key" data-action="moveZ">Move Z</button>
+            </div>
+            <div class="row">
+                <button class="key" data-action="speedUp">Speed Up</button>
+                <button class="key" data-action="slowDown">Slow Down</button>
+                <button class="key" data-action="home">Home</button>
+            </div>
+            <div class="row">
+                <button class="key" data-action="reset">Reset</button>
+                <button class="key" data-action="emergencyStop">Emergency Stop</button>
+                <button class="key" data-action="calibrate">Calibrate</button>
+            </div>
+        </div>
+
+        <!-- Calculator Buttons -->
+        <div class="calculator-buttons">
+            <button class="calc-btn" onclick="appendToCalc(1)">1</button>
+            <button class="calc-btn" onclick="appendToCalc(2)">2</button>
+            <button class="calc-btn" onclick="appendToCalc(3)">3</button>
+            <button class="calc-btn" onclick="appendToCalc('+')">+</button>
+            <button class="calc-btn" onclick="appendToCalc(4)">4</button>
+            <button class="calc-btn" onclick="appendToCalc(5)">5</button>
+            <button class="calc-btn" onclick="appendToCalc(6)">6</button>
+            <button class="calc-btn" onclick="appendToCalc('-')">-</button>
+            <button class="calc-btn" onclick="appendToCalc(7)">7</button>
+            <button class="calc-btn" onclick="appendToCalc(8)">8</button>
+            <button class="calc-btn" onclick="appendToCalc(9)">9</button>
+            <button class="calc-btn" onclick="appendToCalc('*')">*</button>
+            <button class="calc-btn" onclick="appendToCalc(0)">0</button>
+            <button class="calc-btn" onclick="appendToCalc('.')">.</button>
+            <button class="calc-btn" onclick="clearCalc()">C</button>
+            <button class="calc-btn" onclick="appendToCalc('/')">/</button>
+            <button class="calc-btn" onclick="calculateResult()">=</button>
+        </div>
+
+        <!-- Result Display -->
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

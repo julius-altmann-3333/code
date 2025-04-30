@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Footer</title>
+  <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 10%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links,
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-links a,
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.social-icons a {
+  font-size: 18px;
+}
+
+.social-icons a:hover,
+.footer-links a:hover {
+  color: #00bcd4; /* Highlight color */
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.copyright {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links,
+  .social-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a,
+  .social-icons a {
+    margin: 5px 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="#link1">Link 1</a>
+        <a href="#link2">Link 2</a>
+        <a href="#link3">Link 3</a>
+        <a href="#link4">Link 4</a>
+        <a href="#link5">Link 5</a>
+        <a href="#link6">Link 6</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://www.youtube.com" target="_blank" aria-label="YouTube">YouTube</a>
+        <a href="https://www.pinterest.com" target="_blank" aria-label="Pinterest">Pinterest</a>
+        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">Facebook</a>
+        <a href="https://wa.me" target="_blank" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Franz Julius Altmann. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

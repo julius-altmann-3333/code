@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Text with Bold Headings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .drop-area {
+            width: 100%;
+            min-height: 300px;
+            border: 2px dashed #007BFF;
+            padding: 20px;
+            text-align: center;
+            background-color: #e9f7ff;
+            border-radius: 8px;
+        }
+        .drop-area.drag-over {
+            background-color: #cce7ff;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content div {
+            margin-bottom: 15px;
+        }
+        h2, p, ul {
+            margin-left: 20px;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .output {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Drag and Drop Text with Bold Headings</h1>
+    <div class="drop-area" id="dropArea" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
+        Drag your text here to process.
+    </div>
+
+    <div class="output" id="outputArea">
+        <h3>Processed Content</h3>
+        <div class="content" id="contentArea"></div>
+    </div>
+
+    <script>
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById("dropArea").classList.add("drag-over");
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById("dropArea").classList.remove("drag-over");
+
+            const data = event.dataTransfer.getData("text");
+            const droppedText = data.trim();
+
+            if (droppedText) {
+                processText(droppedText);
+            }
+        }
+
+        function processText(text) {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = ''; // Clear previous content
+
+            const lines = text.split('\n');
+            let currentElement = null;
+
+            lines.forEach(line => {
+                // If line is empty, skip it
+                if (line.trim() === '') return;
+
+                // Check if the line is a heading (starting with "##")
+                if (line.startsWith('#')) {
+                    const level = line.split(' ')[0].length; // Heading level based on the number of '#'
+                    const headingText = line.slice(level).trim();
+                    currentElement = document.createElement(`h${level}`);
+                    currentElement.innerHTML = `<b>${headingText}</b>`; // Make heading text bold
+                    contentArea.appendChild(currentElement);
+                }
+                // If line starts with bullet point (e.g., "-"), it's a list item
+                else if (line.startsWith('-') || line.startsWith('*')) {
+                    if (!currentElement || currentElement.tagName !== 'UL') {
+                        currentElement = document.createElement('ul');
+                        contentArea.appendChild(currentElement);
+                    }
+                    const listItem = document.createElement('li');
+                    listItem.textContent = line.slice(1).trim();
+                    currentElement.appendChild(listItem);
+                }
+                // Otherwise, treat it as a paragraph
+                else {
+                    currentElement = document.createElement('p');
+                    currentElement.textContent = line.trim();
+                    contentArea.appendChild(currentElement);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

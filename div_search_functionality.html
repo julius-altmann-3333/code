@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div Boxes with Inner Search</title>
+    <style>
+        /* Outer div styling */
+        .outer-box {
+            width: 250px;
+            height: auto;
+            border: 2px solid #000;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            display: none; /* Initially hidden */
+        }
+        /* Inner div styling (with different border colors) */
+        .inner-box {
+            width: 200px;
+            height: 80px;
+            margin: 10px;
+            text-align: center;
+            line-height: 80px;
+        }
+        .blue {
+            border: 2px solid blue;
+        }
+        .green {
+            border: 2px solid green;
+        }
+        .grey {
+            border: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Search for Border Color -->
+    <select id="borderColorSelect">
+        <option value="">Select Border Color</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="grey">Grey</option>
+    </select>
+    <button onclick="searchByBorderColor()">Search</button>
+
+    <!-- Clear Button -->
+    <button onclick="clearResults()">Clear Results</button>
+
+    <!-- Outer div boxes with inner divs having specific border colors -->
+    <div class="outer-box">
+        <h3>Box 1</h3>
+        <p>This is a description of Box 1</p>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="inner-box blue">Blue Border</div>
+    </div>
+
+    <div class="outer-box">
+        <h3>Box 2</h3>
+        <p>This is a description of Box 2</p>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="inner-box green">Green Border</div>
+    </div>
+
+    <div class="outer-box">
+        <h3>Box 3</h3>
+        <p>This is a description of Box 3</p>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="inner-box grey">Grey Border</div>
+    </div>
+
+    <div class="outer-box">
+        <h3>Box 4</h3>
+        <p>This is a description of Box 4</p>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="inner-box blue">Blue Border</div>
+    </div>
+
+    <div class="outer-box">
+        <h3>Box 5</h3>
+        <p>This is a description of Box 5</p>
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="inner-box green">Green Border</div>
+    </div>
+
+    <script>
+        function searchByBorderColor() {
+            // Get the selected border color
+            const selectedColor = document.getElementById('borderColorSelect').value.toLowerCase();
+
+            // Hide all outer boxes
+            const outerBoxes = document.querySelectorAll('.outer-box');
+            outerBoxes.forEach(box => box.style.display = 'none');
+
+            // If a color is selected, display the outer div containing the inner div with the matching border color
+            if (selectedColor) {
+                const matchingBoxes = document.querySelectorAll('.inner-box.' + selectedColor);
+                matchingBoxes.forEach(innerBox => {
+                    innerBox.closest('.outer-box').style.display = 'block';
+                });
+            }
+        }
+
+        function clearResults() {
+            // Hide all outer div boxes
+            const outerBoxes = document.querySelectorAll('.outer-box');
+            outerBoxes.forEach(box => box.style.display = 'none');
+
+            // Reset the select dropdown
+            document.getElementById('borderColorSelect').selectedIndex = 0;
+        }
+    </script>
+
+</body>
+</html>
