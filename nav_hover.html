@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Menu Example</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    /* Main Dropdown Menu */
+    .dropdown {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dropdown > li {
+      position: relative;
+    }
+
+    .dropdown a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Dropdown Hover Effect */
+    .dropdown > li:hover > a {
+      background-color: #575757;
+    }
+
+    /* Submenu (Hidden by Default) */
+    .submenu {
+      list-style: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      background-color: #333;
+      min-width: 200px;
+    }
+
+    .submenu li a {
+      padding: 10px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Show Submenu on Hover */
+    .dropdown-item:hover .submenu {
+      display: block;
+    }
+
+    /* Submenu Item Hover Effect */
+    .submenu li:hover > a {
+      background-color: #666;
+    }
+
+    .submenu li a:focus,
+    .submenu li a:hover {
+      background-color: #4CAF50; /* Bright green on hover/focus for accessibility */
+      outline: none; /* Remove the default focus outline */
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul class="dropdown">
+      <li><a href="#">Home</a></li>
+      <li class="dropdown-item">
+        <a href="#">Services</a>
+        <ul class="submenu">
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Development</a></li>
+          <li><a href="#">SEO</a></li>
+        </ul>
+      </li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>

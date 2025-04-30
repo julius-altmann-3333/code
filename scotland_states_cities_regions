@@ -1,0 +1,103 @@
+<ul>
+  <li><strong>Scotland</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Glasgow</li>
+          <li>Edinburgh (Capital)</li>
+          <li>Aberdeen</li>
+          <li>Dundee</li>
+          <li>Inverness</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li><strong>Central Belt</strong>
+            <ul>
+              <li>Glasgow</li>
+              <li>Edinburgh</li>
+              <li>Stirling</li>
+              <li>Falkirk</li>
+              <li>Livingston</li>
+            </ul>
+            <p><strong>Description:</strong> The Central Belt is Scotland's most populous and industrialized region, housing Scotland's largest cities, including the capital city, Edinburgh, and Glasgow, which is the country's largest city. It is a major cultural and economic hub.</p>
+          </li>
+          <li><strong>Highlands and Islands</strong>
+            <ul>
+              <li>Inverness</li>
+              <li>Skye (Isle of Skye)</li>
+              <li>Fort William</li>
+              <li>Oban</li>
+              <li>Thurso</li>
+            </ul>
+            <p><strong>Description:</strong> Known for its rugged terrain, mountains (including Ben Nevis, the highest peak in the UK), lochs (such as Loch Ness), and beautiful islands, including the Hebrides, Orkney, and Shetland. This region is sparsely populated and renowned for its natural beauty and outdoor activities.</p>
+          </li>
+          <li><strong>Lowlands</strong>
+            <ul>
+              <li>Dundee</li>
+              <li>Perth</li>
+              <li>Stirling</li>
+              <li>Falkirk</li>
+            </ul>
+            <p><strong>Description:</strong> The Lowlands, particularly in the south and east, are characterized by more fertile plains and valleys compared to the mountainous Highlands. This region is home to Scotland's second-largest city, Edinburgh, which is also its capital, and Dundee, known for its tech industry.</p>
+          </li>
+          <li><strong>Borders Region</strong>
+            <ul>
+              <li>Galashiels</li>
+              <li>Hawick</li>
+              <li>Peebles</li>
+              <li>Melrose</li>
+            </ul>
+            <p><strong>Description:</strong> The Scottish Borders are known for their rolling hills and historic towns. This region has a mix of farmland, forests, and rivers. It’s also famous for its rich history, including its connection to the wool industry.</p>
+          </li>
+          <li><strong>North-East Scotland</strong>
+            <ul>
+              <li>Aberdeen (known as the "Granite City")</li>
+              <li>Peterhead</li>
+              <li>Fraserburgh</li>
+              <li>Ellon</li>
+            </ul>
+            <p><strong>Description:</strong> The northeast is famous for its oil industry (particularly around Aberdeen) and stunning coastal landscapes. The region includes the Cairngorms National Park, with its mountainous scenery, and the picturesque coastline along the North Sea.</p>
+          </li>
+          <li><strong>Southern Uplands</strong>
+            <ul>
+              <li>Dumfries</li>
+              <li>Moffat</li>
+              <li>Langholm</li>
+            </ul>
+            <p><strong>Description:</strong> This region features rolling hills and deep valleys. It is less populated and primarily rural, known for its farming and natural beauty.</p>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Geographical Features of Scotland:</strong>
+        <ul>
+          <li><strong>Mountains:</strong>
+            <ul>
+              <li>Ben Nevis (highest peak in the UK)</li>
+              <li>Cairngorms</li>
+              <li>The Hebrides</li>
+              <li>Grampian Mountains</li>
+            </ul>
+          </li>
+          <li><strong>Islands:</strong>
+            <ul>
+              <li>Hebrides (both Inner and Outer Hebrides)</li>
+              <li>Orkney Islands</li>
+              <li>Shetland Islands</li>
+              <li>Isle of Skye</li>
+              <li>Isle of Mull</li>
+            </ul>
+          </li>
+          <li><strong>Lochs:</strong>
+            <ul>
+              <li>Loch Ness (famous for the Loch Ness Monster)</li>
+              <li>Loch Lomond</li>
+              <li>Loch Awe</li>
+              <li>Loch Fyne</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Document Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .upload-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .upload-container h2 {
+            text-align: center;
+        }
+        .upload-container input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .upload-container button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="upload-container">
+    <h2>Upload Property Documents</h2>
+    <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="propertyFile">Upload Property Documents (PDF, JPG, PNG, etc.):</label>
+        <input type="file" id="propertyFile" name="propertyFile" accept=".pdf, .jpg, .png, .jpeg" multiple><br><br>
+        
+        <label for="propertyDescription">Optional Description (e.g., property photos, legal documents):</label>
+        <textarea id="propertyDescription" name="propertyDescription" rows="4" cols="50" placeholder="Enter file description here"></textarea><br><br>
+
+        <button type="submit">Upload Documents</button>
+    </form>
+</div>
+
+</body>
+</html>

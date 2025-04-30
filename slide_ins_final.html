@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended Responsive Sliding Section</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* General Font-Stylings */
+        /* Default font size for body */
+        body {
+            font-size: 1rem; /* Standard base size (16px) */
+            line-height: 1.3; /* Improves readability */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Headings */
+        h1 {font-size: 2.25rem; font-weight: bold; } /* 36px */
+        h2 {font-size: 1.875rem; font-weight: bold; } /* 30px */
+        h3 {font-size: 1.5rem; font-weight: bold; } /* 24px */
+        h4 {font-size: 1.25rem; font-weight: bold; } /* 20px */
+        h5 {font-size: 1.125rem; font-weight: bold; } /* 18px */
+        h6 {font-size: 1rem; font-weight: bold; } /* 16px */
+
+        /* Paragraph and other text */
+        p {
+            font-size: 1rem; /* 16px */
+            font-weight: normal;
+        }
+
+        /* Responsive font sizes */
+        @media (max-width: 768px) { /* Tablets and mobile devices */
+            h1 {font-size: 1.75rem; } /* 28px */
+            h2 {font-size: 1.5rem; } /* 24px */
+            h3 {font-size: 1.25rem; } /* 20px */
+            h4 {font-size: 1.125rem; } /* 18px */
+            h5 {font-size: 1rem; } /* 16px */
+            h6 {font-size: 0.875rem; } /* 14px */
+            p {font-size: 0.875rem; } /* 14px */
+        }
+
+        .section_slide_ins {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 900px;
+            justify-content: center; /* Centers the boxes horizontally */
+            align-items: center; /* Fixes the typo and centers vertically */
+            margin: 0 auto; /* Centers the entire section on the page */
+        }
+
+        /* Unique Box Base */
+        .unique-box {
+            flex: 1;
+            min-width: calc(50% - 20px);
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* Image Box Styling */
+        .unique-image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Default animation positions */
+        .slide-in-left { transform: translateX(-100px); }
+        .slide-in-right { transform: translateX(100px); }
+        .slide-in-bottom { transform: translateY(100px); }
+
+        /* Visible State */
+        .visible {
+            opacity: 1 !important;
+            transform: translateX(0) translateY(0) !important;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .unique-box {
+                min-width: 100%;
+            }
+        }
+
+        .unique-box, .unique-image-box {
+            width: 50%; /* Each takes half the width */
+            height: 640px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Mobile: Stack elements */
+        @media (max-width: 568px) {
+            .unique-box, .unique-image-box {
+                width: 100%; /* Full width on small screens */
+            }
+        }
+
+        .unique-box.visible, .unique-image-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .unique-image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Mobile: Stack elements on top of each other */
+        @media (max-width: 768px) { /* Tablets & smaller screens */
+            .unique-box, .unique-image-box {
+                width: 100%; /* Each takes full width */
+            }
+        }
+
+        #headings_slide_ins {
+            font-weight: bold;
+            line-height: 1.1;
+            margin-top: 100px;
+        }
+
+        #subheadings_slide_ins {
+            font-weight: normal;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        #icons_slide_ins {
+            width: 80px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        #image-first-pair, #image-second-pair, #image-second-pair-mobile, #image-third-pair {
+            width: 100%; /* Full width of the container */
+            max-width: 25rem; /* 400px (400/16 = 25rem) */
+            height: auto; /* Maintain aspect ratio */
+            aspect-ratio: 2 / 3; /* Ensures 400:600 proportion */
+            display: block; /* Prevents extra space below inline images */
+            border-radius: 0.5rem; /* Optional: Slightly rounded corners */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) { /* Tablets and smaller screens */
+            #image-first-pair, #image-second-pair, #image-second-pair-mobile, #image-third-pair {
+                max-width: 18.75rem; /* 300px */
+            }
+        }
+
+        @media (max-width: 480px) { /* Mobile devices */
+            #image-first-pair, #image-second-pair, #image-second-pair-mobile, #image-third-pair {
+                max-width: 15rem; /* 240px */
+            }
+        }
+
+        /* Hide mobile version by default on larger screens */
+        #imagebox-second-pair-mobile,
+        #content-second-pair-mobile {
+            display: none;
+        }
+
+        /* Show mobile version for small screens */
+        @media (max-width: 500px) {
+            #content-second-pair {
+                display: none;
+            }
+
+            #imagebox-second-pair {
+                display: none;
+            }
+
+            #content-second-pair-mobile,
+            #imagebox-second-pair-mobile {
+                display: block;
+                min-width: 100%;
+            }
+        }
+
+      
+
+    </style>
+</head>
+<body>
+
+<section class="section_slide_ins">
+    <!-- First Pair -->
+    <div id="content-first-pair" class="unique-box">
+        <h1 id="headings_slide_ins">"Oceanfront Opulence: Luxury Living with Yacht Access"</h1>
+        <h3 id="subheadings_slide_ins">Embrace Coastal Elegance: Experience direct access to the ocean from your luxurious estate...</h3>
+        <a href="https://example.com" target="_blank">
+            <img id="icons_slide_ins" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c280473db80f31f53b823_home-icon.png">
+        </a>
+    </div>
+    <div id="imagebox-first-pair" class="unique-box unique-image-box">
+        <img id="image-first-pair" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280777d7bff2f961d52d4_1.png">
+    </div>
+
+    <!-- Second Pair (Desktop) -->
+    <div id="imagebox-second-pair" class="unique-box unique-image-box">
+        <img id="image-second-pair" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280777068b2f1ae280b75_2.png">
+    </div>
+    <div id="content-second-pair" class="unique-box">
+        <h1 id="headings_slide_ins">"Ultimate Aquatic Paradise: Discover the Megapool Oasis"</h1>
+        <h3 id="subheadings_slide_ins">Dive into Luxury: A wooden house nestled beside a sprawling megapool...</h3>
+        <a href="https://example.com" target="_blank">
+            <img id="icons_slide_ins" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c28cb1e6eded65fdbd590_nature-landscape-icon.png">
+        </a>
+    </div>
+
+    <!-- Second Pair (Mobile) -->
+    <div id="content-second-pair-mobile" class="unique-box">
+        <h1 id="headings_slide_ins">"Ultimate Aquatic Paradise: Discover the Megapool Oasis"</h1>
+        <h3 id="subheadings_slide_ins">Dive into Luxury: A wooden house nestled beside a sprawling megapool...</h3>
+        <a href="https://example.com" target="_blank">
+            <img id="icons_slide_ins" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c28cb1e6eded65fdbd590_nature-landscape-icon.png">
+        </a>
+    </div>
+    <div id="imagebox-second-pair-mobile" class="unique-box unique-image-box">
+        <img id="image-second-pair-mobile" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280777068b2f1ae280b75_2.png">
+    </div>
+
+    <!-- Third Pair -->
+    <div class="unique-box">
+        <h1 id="headings_slide_ins">"Country Estate Charm: Experience Timeless Elegance"</h1>
+        <h3 id="subheadings_slide_ins">Nestled in Los Angeles, this luxurious mansion embodies timeless elegance...</h3>
+        <a href="https://example.com" target="_blank">
+            <img id="icons_slide_ins" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c28cb1e6eded65fdbd590_nature-landscape-icon.png">
+        </a>
+    </div>
+    <div id="imagebox-third-pair" class="unique-box unique-image-box">
+        <img id="image-third-pair" src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280793f79957b7a54ab31_3.png">
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight - 100; // Adjust trigger point
+    }
+
+    function handleScrollAnimations() {
+        const elements = [
+            { id: 'content-first-pair', className: 'slide-in-left' },
+            { id: 'imagebox-first-pair', className: 'slide-in-bottom' },
+            { id: 'content-second-pair', className: 'slide-in-right' },
+            { id: 'imagebox-second-pair', className: 'slide-in-bottom' },
+            { id: 'content-second-pair-mobile', className: 'slide-in-right' },
+            { id: 'imagebox-second-pair-mobile', className: 'slide-in-bottom' },
+            { id: 'content-third-pair', className: 'slide-in-left' },
+            { id: 'imagebox-third-pair', className: 'slide-in-bottom' }
+        ];
+
+        elements.forEach(({ id, className }) => {
+            const element = document.getElementById(id);
+            if (element && isInViewport(element)) {
+                element.classList.add('visible');
+                element.classList.add(className);
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScrollAnimations);
+    handleScrollAnimations(); // Run once on load
+});
+
+
+
+</script>
+
+</body>
+</html>

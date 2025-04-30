@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar ul li {
+            padding: 10px;
+        }
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .menu {
+            display: flex;
+        }
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                background-color: #333;
+            }
+            .menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .menu li {
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+        <ul class="menu" id="menu">
+            <li><a href="javascript:void(0);" onclick="loadContent('buy_and_hold_investors.html')">Buy & Hold Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('commercial_real_estate_investors.html')">Commercial Real Estate Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('downsizers_empty_nesters.html')">Downsizers & Empty Nesters</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('first_time_buyers.html')">First Time Buyers</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('fix_and_flip_investors.html')">Fix & Flip Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('luxury_buyers.html')">Luxury Buyers</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('move_up_buyers.html')">Move Up Buyers</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('multifamily_real_estate_investors.html')">Multifamily Real Estate Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('multigenerational_buyers.html')">Multigenerational Buyers</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('real_estate_development_investors.html')">Real Estate Development Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('short_term_rental_investors_airbnb_vacation_rentals.html')">Short Term Rental Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('student_housing_investors.html')">Student Housing Investors</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('vacation_home_buyers.html')">Vacation Home Buyers</a></li>
+            <li><a href="javascript:void(0);" onclick="loadContent('vacation_property_investors_resorts_and_second_homes.html')">Vacation Property Investors / Resorts & Second Homes</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

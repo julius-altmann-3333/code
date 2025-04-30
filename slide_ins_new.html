@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sliding Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .section_slide_ins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .unique-box {
+            flex: 1;
+            min-width: 400px;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .unique-heading {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .unique-subheading {
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .unique-icon img {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        .unique-image-box img {
+            width: 400px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .slide-left, .slide-right, .slide-bottom {
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .slide-left {
+            transform: translateX(-30px);
+        }
+
+        .slide-right {
+            transform: translateX(30px);
+        }
+
+        .slide-bottom {
+            transform: translateY(30px);
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .unique-image-box img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section_slide_ins {
+                flex-direction: column;
+            }
+
+            .unique-box {
+                min-width: 100%;
+                max-width: 100%;
+            }
+
+            .second-pair { display: none; }
+            .second-pair-mobile { display: block; }
+        }
+
+        @media (min-width: 769px) {
+            .second-pair { display: flex; }
+            .second-pair-mobile { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="section_slide_ins">
+    <div class="unique-box slide-left">
+        <h1 class="unique-heading">"Oceanfront Opulence: Luxury Living with Yacht Access"</h1>
+        <h3 class="unique-subheading">Embrace Coastal Elegance...</h3>
+        <div class="unique-icon slide-left">
+            <img src="home-icon.png" alt="Home Icon">
+        </div>
+    </div>
+    <div class="unique-box unique-image-box slide-bottom">
+        <img src="oceanfront-image.png" alt="Oceanfront Image">
+    </div>
+
+    <!-- Second Pair Desktop/Tablet -->
+    <div class="second-pair unique-box unique-image-box slide-bottom">
+        <img src="aquatic-paradise-image.png" alt="Aquatic Paradise Image">
+    </div>
+    <div class="second-pair unique-box slide-right">
+        <h1 class="unique-heading">"Ultimate Aquatic Paradise"</h1>
+        <h3 class="unique-subheading">Dive into Luxury...</h3>
+        <div class="unique-icon slide-right">
+            <img src="nature-icon.png" alt="Nature Icon">
+        </div>
+    </div>
+
+    <!-- Second Pair Mobile -->
+    <div class="second-pair-mobile unique-box slide-right">
+        <h1 class="unique-heading">"Ultimate Aquatic Paradise"</h1>
+        <h3 class="unique-subheading">Dive into Luxury...</h3>
+        <div class="unique-icon slide-right">
+            <img src="nature-icon.png" alt="Nature Icon">
+        </div>
+    </div>
+    <div class="second-pair-mobile unique-box unique-image-box slide-bottom">
+        <img src="aquatic-paradise-image.png" alt="Aquatic Paradise Image">
+    </div>
+
+    <div class="unique-box slide-left">
+        <h1 class="unique-heading">"Country Estate Charm"</h1>
+        <h3 class="unique-subheading">Nestled in Los Angeles...</h3>
+        <div class="unique-icon slide-left">
+            <img src="home-care-icon.png" alt="Home Icon">
+        </div>
+    </div>
+    <div class="unique-box unique-image-box slide-bottom">
+        <img src="country-estate-image.png" alt="Country Estate Image">
+    </div>
+</section>
+
+<script>
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight - 100; // Triggers earlier
+    }
+
+    function handleScrollAnimations() {
+        document.querySelectorAll('.slide-left, .slide-right, .slide-bottom').forEach((element) => {
+            if (isInViewport(element)) {
+                element.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('load', handleScrollAnimations);
+</script>
+
+</body>
+</html>

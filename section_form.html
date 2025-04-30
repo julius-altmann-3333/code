@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Form Block</title>
+  <style>
+    /* General reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+
+    /* Address and map section */
+    .address-map {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .address-line {
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+
+    .google-map {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    /* Form Section */
+    .form-section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group select {
+      height: 40px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .recaptcha {
+      text-align: center;
+    }
+
+    .submit-button {
+      padding: 12px 30px;
+      background-color: white;
+      border: 2px solid #333;
+      color: #333;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+      margin: 0 auto;
+      display: block;
+      width: 200px;
+      transition: all 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #333;
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-section {
+        padding: 15px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="address-map">
+    <p class="address-line">123 Corporate Avenue, Business City, USA</p>
+    <a href="#" class="map-link">
+      <img src="https://via.placeholder.com/300x200" alt="Google Maps" class="google-map">
+    </a>
+  </section>
+
+  <section class="form-section">
+    <form action="#" method="POST" class="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="property">Property</label>
+        <select id="property" name="property" required>
+          <option value="" disabled selected>Select Property</option>
+          <option value="property1">Property 1</option>
+          <option value="property2">Property 2</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="reason">Reason for Inquiry</label>
+        <select id="reason" name="reason[]" multiple required>
+          <option value="sales">Sales</option>
+          <option value="support">Support</option>
+          <option value="feedback">Feedback</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <div class="form-group recaptcha">
+        <!-- Add your Google reCAPTCHA widget here -->
+        <p>[reCAPTCHA placeholder]</p>
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Two Column Scroll</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+
+    .column {
+      flex: 1;
+      height: auto;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .column:first-child {
+      background: #f9f9f9;
+      border-right: 1px solid #ddd;
+    }
+
+    .nav-item {
+      margin: 10px 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #007BFF;
+    }
+
+    .image-box {
+      height: 400px;
+      margin: 20px 0;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .image-box:hover {
+      transform: scale(1.05);
+    }
+
+    .image-box img {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .image-box h3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+    }
+
+    .full-page {
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      margin: 10px 0;
+    }
+
+    .full-page:nth-child(odd) {
+      background: #e8f5e9;
+    }
+
+    .full-page h2 {
+      font-size: 24px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Column 1: Navigation -->
+  <div class="column" id="nav-column">
+    <div class="nav-item"><a class="nav-link" href="#box1">Heading 1</a></div>
+    <div class="nav-item"><a class="nav-link" href="#box2">Heading 2</a></div>
+    <div class="nav-item"><a class="nav-link" href="#box3">Heading 3</a></div>
+    <div class="nav-item"><a class="nav-link" href="#box4">Heading 4</a></div>
+    <div class="nav-item"><a class="nav-link" href="#box5">Heading 5</a></div>
+    <div class="nav-item"><a class="nav-link" href="#box6">Heading 6</a></div>
+    <div class="nav-item"><a class="nav-link" href="#box7">Heading 7</a></div>
+  </div>
+
+  <!-- Column 2: Image Boxes -->
+  <div class="column" id="image-column">
+    <div class="image-box" id="box1">
+      <img src="https://via.placeholder.com/300" alt="Image 1">
+      <h3>Image 1</h3>
+    </div>
+    <div class="image-box" id="box2">
+      <img src="https://via.placeholder.com/300" alt="Image 2">
+      <h3>Image 2</h3>
+    </div>
+    <div class="image-box" id="box3">
+      <img src="https://via.placeholder.com/300" alt="Image 3">
+      <h3>Image 3</h3>
+    </div>
+    <div class="image-box" id="box4">
+      <img src="https://via.placeholder.com/300" alt="Image 4">
+      <h3>Image 4</h3>
+    </div>
+    <div class="image-box" id="box5">
+      <img src="https://via.placeholder.com/300" alt="Image 5">
+      <h3>Image 5</h3>
+    </div>
+    <div class="image-box" id="box6">
+      <img src="https://via.placeholder.com/300" alt="Image 6">
+      <h3>Image 6</h3>
+    </div>
+    <div class="image-box" id="box7">
+      <img src="https://via.placeholder.com/300" alt="Image 7">
+      <h3>Image 7</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Full Page Containers -->
+<div class="full-page" id="page1"><h2>Full Page 1</h2></div>
+<div class="full-page" id="page2"><h2>Full Page 2</h2></div>
+<div class="full-page" id="page3"><h2>Full Page 3</h2></div>
+<div class="full-page" id="page4"><h2>Full Page 4</h2></div>
+<div class="full-page" id="page5"><h2>Full Page 5</h2></div>
+<div class="full-page" id="page6"><h2>Full Page 6</h2></div>
+<div class="full-page" id="page7"><h2>Full Page 7</h2></div>
+
+<script>
+  // Add scroll effect for links
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Add click-to-scroll effect for image boxes
+  document.querySelectorAll('.image-box').forEach((box, index) => {
+    box.addEventListener('click', function() {
+      const fullPage = document.getElementById(`page${index + 1}`);
+      fullPage.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

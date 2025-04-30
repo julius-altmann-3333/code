@@ -1,0 +1,388 @@
+<ul>
+  <li><strong>Lazio</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Rome</li>
+          <li>Latina</li>
+          <li>Viterbo</li>
+          <li>Frosinone</li>
+          <li>Rieti</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Rome Metropolitan Area</li>
+          <li>Castelli Romani</li>
+          <li>Ciociaria</li>
+          <li>Sabina</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Lombardy (Lombardia)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Milan (Milano)</li>
+          <li>Brescia</li>
+          <li>Monza</li>
+          <li>Bergamo</li>
+          <li>Como</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Po Valley</li>
+          <li>Lake Como</li>
+          <li>Val Camonica</li>
+          <li>Valtellina</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Campania</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Naples (Napoli)</li>
+          <li>Salerno</li>
+          <li>Caserta</li>
+          <li>Torre del Greco</li>
+          <li>Nocera Inferiore</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Amalfi Coast</li>
+          <li>Sorrento Peninsula</li>
+          <li>Cilento</li>
+          <li>Mount Vesuvius</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Sicily (Sicilia)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Palermo</li>
+          <li>Catania</li>
+          <li>Messina</li>
+          <li>Syracuse</li>
+          <li>Trapani</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Mount Etna</li>
+          <li>Valley of the Temples (Valle dei Templi)</li>
+          <li>Madonie Mountains</li>
+          <li>Aeolian Islands</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Veneto</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Venice (Venezia)</li>
+          <li>Verona</li>
+          <li>Padua (Padova)</li>
+          <li>Vicenza</li>
+          <li>Treviso</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Venetian Lagoon</li>
+          <li>Prosecco Hills</li>
+          <li>Dolomites</li>
+          <li>Euganean Hills</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Tuscany (Toscana)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Florence (Firenze)</li>
+          <li>Pisa</li>
+          <li>Livorno</li>
+          <li>Arezzo</li>
+          <li>Prato</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Chianti</li>
+          <li>Val d'Orcia</li>
+          <li>Tuscan Archipelago</li>
+          <li>Mugello</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Emilia-Romagna</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Bologna</li>
+          <li>Modena</li>
+          <li>Parma</li>
+          <li>Reggio Emilia</li>
+          <li>Ravenna</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Po Valley</li>
+          <li>Romagna</li>
+          <li>Apennine Mountains</li>
+          <li>Adriatic Coast</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Piedmont (Piemonte)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Turin (Torino)</li>
+          <li>Alessandria</li>
+          <li>Novara</li>
+          <li>Asti</li>
+          <li>Cuneo</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Po River</li>
+          <li>Langhe and Roero</li>
+          <li>Susa Valley</li>
+          <li>Monviso</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Apulia (Puglia)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Bari</li>
+          <li>Taranto</li>
+          <li>Lecce</li>
+          <li>Foggia</li>
+          <li>Andria</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Salento</li>
+          <li>Gargano</li>
+          <li>Valle d'Itria</li>
+          <li>Trulli of Alberobello</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Liguria</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Genoa (Genova)</li>
+          <li>La Spezia</li>
+          <li>Savona</li>
+          <li>Imperia</li>
+          <li>Sanremo</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Italian Riviera</li>
+          <li>Cinque Terre</li>
+          <li>Gulf of Tigullio</li>
+          <li>Portofino</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Calabria</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Reggio Calabria</li>
+          <li>Catanzaro</li>
+          <li>Cosenza</li>
+          <li>Lamezia Terme</li>
+          <li>Vibo Valentia</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Aspromonte Mountains</li>
+          <li>Sila Plateau</li>
+          <li>Ionian Coast</li>
+          <li>Tyrrhenian Coast</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Abruzzo</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>L'Aquila</li>
+          <li>Pescara</li>
+          <li>Teramo</li>
+          <li>Chieti</li>
+          <li>Avezzano</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Gran Sasso</li>
+          <li>Majella National Park</li>
+          <li>Adriatic Coast</li>
+          <li>Campo Imperatore</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Molise</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Campobasso</li>
+          <li>Isernia</li>
+          <li>Termoli</li>
+          <li>Larino</li>
+          <li>Campomarino</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Apennine Mountains</li>
+          <li>Trigno Valley</li>
+          <li>Adriatic Coast</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Trentino-Alto Adige/Südtirol</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Trento</li>
+          <li>Bolzano (Bozen)</li>
+          <li>Merano</li>
+          <li>Rovereto</li>
+          <li>Bressanone</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Dolomites</li>
+          <li>South Tyrol</li>
+          <li>Val di Non</li>
+          <li>Lake Garda</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Friuli Venezia Giulia</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Trieste</li>
+          <li>Udine</li>
+          <li>Pordenone</li>
+          <li>Gorizia</li>
+          <li>Monfalcone</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Karst Plateau</li>
+          <li>Julian Alps</li>
+          <li>Friulian Plain</li>
+          <li>Friulian Dolomites</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Umbria</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Perugia</li>
+          <li>Terni</li>
+          <li>Foligno</li>
+          <li>Spoleto</li>
+          <li>Assisi</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Umbrian Valley</li>
+          <li>Subasio Mountains</li>
+          <li>Lake Trasimeno</li>
+          <li>Tiber River</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Sardinia (Sardegna)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Cagliari</li>
+          <li>Sassari</li>
+          <li>Olbia</li>
+          <li>Nuoro</li>
+          <li>Alghero</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Costa Smeralda</li>
+          <li>Barbagia</li>
+          <li>Maddalena Archipelago</li>
+          <li>Gennargentu Mountains</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li><strong>Aosta Valley (Valle d'Aosta)</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Aosta</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Mont Blanc</li>
+          <li>Gran Paradiso National Park</li>
+          <li>Matterhorn</li>
+          <li>Aosta Valley</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

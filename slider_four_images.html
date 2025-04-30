@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Slider</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px; /* Max width for the slider */
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Slider Wrapper (for sliding effect) */
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Slide Styling */
+        .slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 100%; /* Each slide takes up 100% of the container */
+            box-sizing: border-box;
+        }
+
+        /* Image Styling */
+        .slide img {
+            width: 250px;
+            height: 500px;
+            margin: 0 10px;
+            object-fit: cover;
+        }
+
+        /* Arrow Button Styling */
+        .arrow-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            font-size: 2rem;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        /* Media Query for Mobile */
+        @media (max-width: 768px) {
+            .slide {
+                min-width: 100%; /* One image per slide */
+                flex-direction: column;
+            }
+
+            .slide img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Image Slider -->
+<div class="slider-container" id="image-slider">
+    <div class="slider-wrapper">
+        <!-- Slide 1 -->
+        <div class="slide">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\1.png" alt="Image 1">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\2.png" alt="Image 2">
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\3.png" alt="Image 3">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\4.png" alt="Image 4">
+        </div>
+        <!-- Mobile Version (4 Slides) -->
+        <div class="slide">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\1.png" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\2.png" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\3.png" alt="Image 3">
+        </div>
+        <div class="slide">
+            <img src="C:\Users\a\Downloads\Design ohne Titel\4.png" alt="Image 4">
+        </div>
+    </div>
+
+    <!-- Left and Right Arrows -->
+    <button class="arrow-button arrow-left" id="prev-btn">&#10094;</button>
+    <button class="arrow-button arrow-right" id="next-btn">&#10095;</button>
+</div>
+
+<script>
+    // Slider functionality
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentIndex = 0;
+
+    // Total slides (on desktop version)
+    const totalSlides = 2;
+
+    // Total slides (on mobile version)
+    const totalMobileSlides = 4;
+
+    // Function to update slider position
+    function updateSlider() {
+        if (window.innerWidth <= 768) {
+            // For mobile, use the 4 slides layout
+            sliderWrapper.style.transform = `translateX(-${(currentIndex / totalMobileSlides) * 100}%)`;
+        } else {
+            // For desktop, use the 2 slides layout
+            sliderWrapper.style.transform = `translateX(-${(currentIndex / totalSlides) * 100}%)`;
+        }
+    }
+
+    // Next slide function
+    function nextSlide() {
+        if (window.innerWidth <= 768) {
+            // Move to the next slide in the 4-slide version (mobile)
+            currentIndex = (currentIndex + 1) % totalMobileSlides;
+        } else {
+            // Move to the next slide in the 2-slide version (desktop)
+            currentIndex = (currentIndex + 1) % totalSlides;
+        }
+        updateSlider();
+    }
+
+    // Previous slide function
+    function prevSlide() {
+        if (window.innerWidth <= 768) {
+            // Move to the previous slide in the 4-slide version (mobile)
+            currentIndex = (currentIndex - 1 + totalMobileSlides) % totalMobileSlides;
+        } else {
+            // Move to the previous slide in the 2-slide version (desktop)
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        }
+        updateSlider();
+    }
+
+    // Event listeners for arrow buttons
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Touch swipe functionality
+    let touchStartX = 0;
+
+    sliderWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    });
+
+    sliderWrapper.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        if (touchStartX - touchEndX > 50) {
+            nextSlide();
+        } else if (touchEndX - touchStartX > 50) {
+            prevSlide();
+        }
+    });
+
+    // Initialize the slider position
+    updateSlider();
+
+    // Ensure slider updates on window resize
+    window.addEventListener('resize', updateSlider);
+</script>
+
+</body>
+</html>

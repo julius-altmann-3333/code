@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tag Scanner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .file-input {
+            margin-bottom: 20px;
+        }
+        .output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        .error {
+            color: red;
+        }
+        .tag {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML Tag Scanner</h1>
+    <p>Upload your HTML file and we will check for open and closing tags that are missing.</p>
+    
+    <input type="file" id="fileInput" class="file-input">
+    <div class="output" id="output"></div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', handleFileUpload);
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const htmlContent = e.target.result;
+                    scanHtmlTags(htmlContent);
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function scanHtmlTags(htmlContent) {
+            const lines = htmlContent.split('\n');
+            const missingTags = [];
+            const tagStack = [];
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = ''; // Clear previous output
+
+            lines.forEach((line, index) => {
+                const lineNumber = index + 1;
+                const openTagMatches = line.match(/<([a-zA-Z0-9-]+)([^>]*)>/g);
+                const closeTagMatches = line.match(/<\/([a-zA-Z0-9-]+)>/g);
+
+                if (openTagMatches) {
+                    openTagMatches.forEach(tag => {
+                        const tagName = tag.match(/<([a-zA-Z0-9-]+)/)[1];
+                        tagStack.push({ tag: tagName, line: lineNumber });
+                    });
+                }
+
+                if (closeTagMatches) {
+                    closeTagMatches.forEach(tag => {
+                        const tagName = tag.match(/<\/([a-zA-Z0-9-]+)/)[1];
+                        const lastOpenedTag = tagStack.pop();
+                        if (lastOpenedTag && lastOpenedTag.tag !== tagName) {
+                            missingTags.push(`Missing closing tag for <${lastOpenedTag.tag}> on line ${lastOpenedTag.line}`);
+                        }
+                    });
+                }
+
+                // Check for missing closing tags
+                while (tagStack.length > 0) {
+                    const unclosedTag = tagStack.pop();
+                    missingTags.push(`Missing closing tag for <${unclosedTag.tag}> on line ${unclosedTag.line}`);
+                }
+            });
+
+            if (missingTags.length > 0) {
+                missingTags.forEach(tag => {
+                    const errorElement = document.createElement('div');
+                    errorElement.classList.add('error');
+                    errorElement.textContent = tag;
+                    outputDiv.appendChild(errorElement);
+                });
+            } else {
+                const successMessage = document.createElement('div');
+                successMessage.classList.add('tag');
+                successMessage.textContent = 'No missing tags found!';
+                outputDiv.appendChild(successMessage);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector Menu and Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        select, input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Selector Menu and Search</h1>
+        
+        <!-- Selector Menu -->
+        <label for="menu">Select an Option:</label>
+        <select id="menu">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+        </select>
+        
+        <!-- Search by Text -->
+        <label for="searchText">Search Text:</label>
+        <input type="text" id="searchText" placeholder="Search...">
+        
+        <!-- Search Results -->
+        <div id="results">Results will appear here...</div>
+    </div>
+
+    <script>
+        // Elements
+        const menu = document.getElementById('menu');
+        const searchText = document.getElementById('searchText');
+        const resultsDiv = document.getElementById('results');
+        
+        // Function to display search results based on text input
+        function displayResults() {
+            const searchQuery = searchText.value.toLowerCase();
+            const selectedOption = menu.value;
+
+            let results = '';
+            
+            // Sample data based on selected option
+            if (selectedOption === 'option1') {
+                results = ['Apple', 'Banana', 'Cherry', 'Grape'];
+            } else if (selectedOption === 'option2') {
+                results = ['Dog', 'Cat', 'Rabbit', 'Hamster'];
+            }
+
+            // Filter results based on search query
+            const filteredResults = results.filter(item => item.toLowerCase().includes(searchQuery));
+
+            // Display filtered results
+            if (filteredResults.length > 0) {
+                resultsDiv.innerHTML = filteredResults.join('<br>');
+            } else {
+                resultsDiv.innerHTML = 'No results found.';
+            }
+        }
+
+        // Event listener to trigger the displayResults function when text is typed
+        searchText.addEventListener('input', displayResults);
+
+        // Initial call to display results based on the initial input
+        displayResults();
+    </script>
+
+</body>
+</html>

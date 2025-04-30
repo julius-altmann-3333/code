@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Altmann Real Estate</title>
+    <link rel="stylesheet" text="text/css" href=".css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://julius-altmann-3333.github.io/altmann-investments/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://julius.altmann-3333.github.io/altmann-investments/script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navigation*/
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            position: relative;
+        }
+
+        .logo {
+            width: 240px;
+            height: 80px;
+        }
+
+        /* Navigation Links */
+        #nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .link {
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Hamburger menu (visible only on small screens) */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            /* Hide nav links on mobile */
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #333;
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            #nav-links.open {
+                display: flex;
+            }
+
+            /* Show hamburger */
+            .hamburger {
+                display: block;
+                color: white;
+            }
+        }
+
+        /* Hero Section */
+        #hero_section {
+            background-image: url('background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            background-color: #555;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        /* Tablet View (768px and below) */
+        @media (max-width: 768px) {
+            #hero_section {
+                height: 400px; /* Reduce height for smaller screens */
+            }
+        }
+
+        /* Smartphone View (480px and below) */
+        @media (max-width: 480px) {
+            #hero_section {
+                height: 300px; /* Reduce height further for small screens */
+            }
+        }
+
+        /* Explore Button */
+        .explore-button {
+            width: 50%;
+            padding: 15px 0;
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid black;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .explore-button:hover {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* Centering the button */
+        .button-container {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 40px; /* Padding towards the background */
+        }
+
+        /* Responsive Button */
+        @media (max-width: 768px) {
+            .explore-button {
+                width: 50%; /* For tablet devices */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-button {
+                width: 75%; /* For mobile devices */
+            }
+        }
+
+        /* Scroll Container */
+        #scroll_container {
+          display: flex;
+          flex-direction: row;
+          height: 80vh;
+        }
+
+        @media (max-width: 768px) {
+          .scroll_container {
+            flex-direction: column;
+          }
+        }
+
+        .column {
+          flex: 1;
+          height: auto;
+          overflow-y: auto;
+          padding: 10px;
+        }
+
+        .column:first-child {
+          background: #f9f9f9;
+          border-right: 1px solid #ddd;
+        }
+
+        .nav-item {
+          margin: 10px 0;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+          cursor: pointer;
+          transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+          color: #007BFF;
+        }
+
+        .image-box {
+          height: 400px;
+          margin: 20px 0;
+          position: relative;
+          cursor: pointer;
+          transition: transform 0.3s;
+          border: 1px solid black;
+        }
+
+        .image-box:hover {
+          transform: scale(1.05);
+        }
+
+        .image-box img {
+          width: 100%;
+          height: auto;
+          max-width: 300px;
+          display: block;
+          margin: 0 auto;
+        }
+
+        .image-box h3 {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: 0;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.7);
+          color: white;
+          text-align: center;
+        }
+
+        
+        /* Tabs Sections */
+
+        body {
+          margin: 20px;
+        }
+
+        .section {
+          width: 100%;
+          height: auto;
+          padding: 10px;
+          box-sizing: border-box;
+          transition: margin-top 0.5s ease;
+        }
+
+        #section1, #section2, #section3, #section4, #section5, #section6, #section7 {
+          background-color: #f4f4f4;
+          height: auto;
+          padding-bottom: 20px; /* Adding extra padding for better spacing */
+        }
+
+        /* Dropdown Headings */
+        #toggleHeading1, #toggleHeading2, #toggleHeading3, #toggleHeading4, #toggleHeading5, #toggleHeading6 {
+          cursor: pointer;
+        }
+
+       /* Toggle Box */
+        .toggleBox {
+          width: 100%;
+          height: 0; /* Start with a height of 0 */
+          background-color: white;
+          margin: 10px auto;
+          overflow: hidden;
+          transition: height 0.5s ease; /* Transitioning the height */
+          box-sizing: border-box; /* Ensure padding/border is considered in total size */
+        }
+
+        .toggleBox.open {
+          height: auto; /* Allow height to expand with content */
+        }
+
+        /* Styles for the primary tabs */
+        .tabs {
+          display: flex;
+          flex-wrap: wrap;
+          cursor: pointer;
+          border-bottom: 2px solid #ccc;
+          width: 100%; /* Ensure the width is 100% */
+          height: auto;
+        }
+
+        .tab {
+          height: auto;
+          padding: 10px 20px;
+          border: 1px solid #ccc;
+          border-bottom: none;
+          margin-right: 5px;
+          background-color: #f1f1f1;
+          transition: background-color 0.3s;
+          text-align: center;
+        }
+
+        .tab.active {
+          height: auto;
+          background-color: #fff;
+          border-top: 2px solid #007BFF;
+          border-left: 2px solid #007BFF;
+          border-right: 2px solid #007BFF;
+          color: #007BFF;
+        }
+
+        .tab:hover {
+          background-color: #ddd;
+        }
+
+        .tab-content {
+          border: 2px solid #007BFF;
+          padding: 20px;
+          margin-top: -1px;
+          display: none;
+          height: auto;  /* Auto height for dynamic sizing */
+        }
+
+        .tab-content.active {
+          display: block;
+          height: auto;
+        }
+
+        /* Styles for the nested tabs */
+        .nested-tabs .tabs {
+          margin-top: 20px;
+          height: auto;
+          border-bottom: 1px solid #aaa;
+          display: flex;
+          flex-wrap: wrap;  /* Ensures responsive layout for nested tabs */
+        }
+
+        .nested-tabs .tab {
+          background-color: #e9e9e9;
+          height: auto;
+          padding: 10px;
+          text-align: center;
+        }
+
+        .nested-tabs .tab.active {
+          background-color: #fff;
+          height: auto;
+          border-top: 2px solid #28a745;
+          border-left: 2px solid #28a745;
+          border-right: 2px solid #28a745;
+          color: #28a745;
+        }
+
+        .nested-tabs .tab-content {
+          border: 2px solid #28a745;
+          height: auto;
+          padding: 20px;
+          height: auto;  /* Auto height for dynamic sizing */
+          margin-top: 10px;
+        }
+
+        /* Listing Cards */
+        .container_property_cards {
+          display: flex;
+          height: auto;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: space-between;
+        }
+
+        .card {
+          width: 360px;
+          max-width: 100%;
+          height: 240px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-bottom: 1px solid black;
+        }
+
+        .card-content {
+          padding: 10px;
+          text-align: center;
+        }
+
+        .card-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin: 5px 0;
+        }
+
+        .card-subheading {
+          font-size: 14px;
+          color: #555;
+        }
+
+        /* Button styles */
+        .explore-more {
+          display: block;
+          margin-top: 20px;
+          margin-left: auto;
+          padding: 10px 20px;
+          font-size: 16px;
+          color: #fff;
+          background-color: #007BFF;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+        }
+
+        .explore-more:hover {
+          background-color: #0056b3;
+        }
+
+        /* Responsive design */
+
+        /* Tablet and smaller devices */
+        @media (max-width: 1024px) {
+          .tabs {
+            flex-wrap: wrap;
+            height: auto;
+          }
+
+          .tab {
+            flex: 1 1 auto;
+            text-align: center;
+            padding: 12px;
+            height: auto;
+          }
+
+          .container_property_cards {
+            justify-content: center;
+            gap: 15px;
+            height: auto;
+          }
+
+          .card {
+            max-width: 320px;
+          }
+
+          .tab-content {
+            padding: 10px; /* Adjusting padding */
+            height: auto;
+          }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 768px) {
+          .tabs {
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+          }
+
+          .tab {
+            margin-right: 0;
+            margin-bottom: 5px;
+            text-align: center;
+            padding: 15px;
+            height: auto;
+          }
+
+          .container_property_cards {
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+          }
+
+          .card {
+            width: 100%;
+            max-width: 300px;
+          }
+
+          .explore-more {
+            margin: 20px auto 0 auto;
+          }
+
+          .tab-content {
+            padding: 15px; /* Adjust padding */
+            margin-top: 10px; /* Ensure spacing between tab content */
+            height: auto;
+          }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+          .card-title {
+            font-size: 14px;
+          }
+
+          .card-subheading {
+            font-size: 12px;
+          }
+
+          .explore-more {
+            padding: 8px 16px;
+            font-size: 14px;
+          }
+        }
+
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+
+        footer {
+          background-color: #333;
+          color: #fff;
+          padding: 20px 10%;
+        }
+
+        .footer-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .footer-links,
+        .social-icons {
+          display: flex;
+          gap: 15px;
+        }
+
+        .footer-links a,
+        .social-icons a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 14px;
+        }
+
+        .social-icons a {
+          font-size: 18px;
+        }
+
+        .social-icons a:hover,
+        .footer-links a:hover {
+          color: #00bcd4; /* Highlight color */
+        }
+
+        .social-icons a {
+          display: flex;
+          align-items: center;
+        }
+
+        .social-icons i {
+          margin-right: 8px; /* Space between icon and text */
+        }
+
+        .copyright {
+          margin-top: 20px;
+          text-align: center;
+          font-size: 12px;
+          color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .footer-container {
+            flex-direction: column;
+            text-align: center;
+          }
+
+          .footer-links,
+          .social-icons {
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+
+          .footer-links a,
+          .social-icons a {
+            margin: 5px 0;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav Section -->
+<div class="container" id="nav">
+    <img src="placeholder-image.jpg" alt="Logo" class="logo">
+    <div id="nav-links">
+        <div class="link">Cars</div>
+        <div class="link">Real Estate</div>
+        <div class="link">Yachts</div>
+        <div class="link">Planes</div>
+        <div class="link">Investments</div>
+    </div>
+    <div class="hamburger" id="hamburger">
+        &#9776;
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero_section" id="hero_section">
+    <div class="button-container">
+        <button class="explore-button" onclick="scrollToSection()">Explore</button>
+    </div>
+</section>
+
+<!-- Scrollables Section -->
+<section id="section_scrollables" class="section_scrollables">
+    <div class="container" id="scroll_container">
+
+        <!-- Column 1: Navigation -->
+          <div class="column" id="nav-column">
+            <div class="nav-item"><a class="nav-link" href="#box1">United States</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box2">Europe</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box3">South America</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box4">Central America</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box5">Australia</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box6">New Zealand</a></div>
+          </div>
+
+        <!-- Column 2: Image Boxes -->
+          <div class="column" id="image-column">
+            <div class="image-box" id="box1" onclick="scrollToTarget('section1')">
+              <img src="https://via.placeholder.com/300" alt="Image 1">
+              <h3>United States</h3>
+            </div>
+            <div class="image-box" id="box2" onclick="scrollToTarget('section2')">
+              <img src="https://via.placeholder.com/300" alt="Image 2">
+              <h3>Europe</h3>
+            </div>
+            <div class="image-box" id="box3" onclick="scrollToTarget('section3')">
+              <img src="https://via.placeholder.com/300" alt="Image 3">
+              <h3>South America</h3>
+            </div>
+            <div class="image-box" id="box4" onclick="scrollToTarget('section4')">
+              <img src="https://via.placeholder.com/300" alt="Image 4">
+              <h3>Central America</h3>
+            </div>
+            <div class="image-box" id="box5" onclick="scrollToTarget('section5')">
+              <img src="https://via.placeholder.com/300" alt="Image 5">
+              <h3>Australia</h3>
+            </div>
+            <div class="image-box" id="box6" onclick="scrollToTarget('section6')">
+              <img src="https://via.placeholder.com/300" alt="Image 6">
+              <h3>New Zealand</h3>
+            </div>
+          </div>
+    </div>
+</section>
+
+
+<!-- United States -->  
+<div id="section1" class="section">
+
+  <h1 id="toggleHeading1">United States</h1>
+  
+  <div class="toggleBox" id="toggleBox1">
+    <div class="tabs">
+      <div class="tab active" data-tab="tab1">California</div>
+      <div class="tab" data-tab="tab2">Florida</div>
+      <div class="tab" data-tab="tab3">Texas</div>
+      <div class="tab" data-tab="tab4">Nevada</div>
+      <div class="tab" data-tab="tab5">Arizona</div>
+      <div class="tab" data-tab="tab6">New York</div>
+      <div class="tab" data-tab="tab7">Washington</div>
+      <div class="tab" data-tab="tab8">Pennsylvania</div>
+    </div>
+    
+    <div class="tab-content active" id="tab1">
+      <h2>California Content</h2>
+      <p>This is the content for California.</p>
+
+      <div class="nested-tabs">
+        <h3>California</h3>
+        <div class="tabs">
+          <div class="tab active" data-tab="nested-tab1">Los Angeles</div>
+          <div class="tab" data-tab="nested-tab2">San Franciso</div>
+          <div class="tab" data-tab="nested-tab3">San Diego</div>
+        </div>
+        
+        <div class="tab-content active" id="nested-tab1">
+          <h1>Los Angeles Listings</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="nested-tab2">
+          <h1>San Francisco Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+
+        <div class="tab-content" id="nested-tab3">
+          <h1>San Diego Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab2">
+      <h2>Florida Content</h2>
+      <p>This is the content for Florida.</p>
+
+      <div class="nested-tabs">
+        <h3>Florida</h3>
+        <div class="tabs">
+          <div class="tab active" data-tab="nested-tab1">Miami</div>
+          <div class="tab" data-tab="nested-tab2">Fort Lauderdale</div>
+          <div class="tab" data-tab="nested-tab3">Florida Keys</div>
+          <div class="tab" data-tab="nested-tab4">Tampa</div>
+        </div>
+        <div class="tab-content active" id="nested-tab1">
+          <h1>Miami Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+        <div class="tab-content" id="nested-tab2">
+          <h1>Fort Lauderdale Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+        <div class="tab-content" id="nested-tab3">
+          <h1>Florida Keys Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+        <div class="tab-content" id="nested-tab4">
+          <h1>Tampa Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 1 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 1">
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 2">
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 3">
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 4">
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 5">
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 6">
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 7">
+                <div class="card-content">
+                  <div class="card-title">Property Name 7</div>
+                  <div class="card-subheading">Property Subheading 7</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <img src="https://via.placeholder.com/280x200" alt="Property 8">
+                <div class="card-content">
+                  <div class="card-title">Property Name 8</div>
+                  <div class="card-subheading">Property Subheading 8</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="#link1">Home</a>
+        <a href="#link2">Real Estate</a>
+        <a href="#link3">Cars</a>
+        <a href="#link4">Yachts</a>
+        <a href="#link5">Planes</a>
+        <a href="#link6">Investments</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank" aria-label="">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.youtube.com" target="_blank" aria-label="">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a href="https://www.pinterest.com" target="_blank" aria-label="">
+            <i class="fab fa-pinterest"></i> Pinterest
+        </a>
+        <a href="https://www.facebook.com" target="_blank" aria-label="">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://wa.me" target="_blank" aria-label="">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Your Company. All Rights Reserved.
+    </div>
+  </footer>
+
+
+<script>
+
+    // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+    // Function to scroll to the next section
+        function scrollToSection() {
+            document.getElementById('section_scrollables').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+    // Add scroll effect for links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+    // Function to scroll to the corresponding section by ID
+        function scrollToTarget(targetName) {
+          // Get the target element by ID directly
+          const target = document.getElementById(targetName);
+
+          // Debugging: Ensure target is found
+          console.log(target);
+
+          // Scroll smoothly to the target, if found
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+            });
+          } else {
+            console.error(`Element with ID '${targetName}' not found.`);
+          }
+        }
+
+    // Dropdown United States
+    (function() {
+      const toggleHeading1 = document.getElementById('toggleHeading1');
+      const toggleBox1 = document.getElementById('toggleBox1');
+      const section2 = document.getElementById('section2');
+      let isDropdown1Open = false;
+
+      if (toggleHeading1) {
+        toggleHeading1.addEventListener('click', () => {
+          const boxHeight = toggleBox1.scrollHeight;
+          if (!isDropdown1Open) {
+            toggleBox1.classList.add('open');
+            section2.style.marginTop = `${boxHeight}px`;
+          } else {
+            toggleBox1.classList.remove('open');
+            section2.style.marginTop = '0';
+          }
+          isDropdown1Open = !isDropdown1Open;
+        });
+      }
+    })();
+
+    // Functionality for primary tabs (United States set)
+    const mainTabs = document.querySelectorAll('.tabs > .tab:not(.nested-tabs .tab)');
+    const mainContents = document.querySelectorAll('.tab-content:not(.nested-tabs .tab-content)');
+
+    mainTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        mainTabs.forEach(t => t.classList.remove('active'));
+        mainContents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Functionality for nested tabs (United States set)
+    const nestedTabSets = document.querySelectorAll('.nested-tabs');
+    nestedTabSets.forEach(set => {
+      const tabs = set.querySelectorAll('.tabs > .tab');
+      const contents = set.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+
+          tab.classList.add('active');
+          set.querySelector(`#${tab.dataset.tab}`).classList.add('active');
+        });
+      });
+    });
+
+</script>
+
+</body>
+</html>

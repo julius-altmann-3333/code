@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Toggle Example</title>
+    <style>
+        .language-container {
+            margin: 20px;
+        }
+        .language-button {
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .language-button:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="language-container">
+    <button class="language-button" onclick="switchLanguage('en')">English</button>
+    <button class="language-button" onclick="switchLanguage('de')">Deutsch</button>
+    <button class="language-button" onclick="switchLanguage('fr')">Français</button>
+</div>
+
+<div id="content" class="content">
+    <p id="content-en" class="language-content" style="display: none;">
+        Hello! Welcome to our website. How can we assist you today?
+    </p>
+    <p id="content-de" class="language-content" style="display: none;">
+        Hallo! Willkommen auf unserer Website. Wie können wir Ihnen helfen?
+    </p>
+    <p id="content-fr" class="language-content" style="display: none;">
+        Bonjour! Bienvenue sur notre site. Comment pouvons-nous vous aider aujourd'hui?
+    </p>
+</div>
+
+<script>
+    // Function to switch content based on the selected language
+    function switchLanguage(language) {
+        // Hide all language content
+        const contents = document.querySelectorAll('.language-content');
+        contents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+
+        // Show the selected language content
+        const selectedContent = document.getElementById('content-' + language);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+    }
+
+    // Set the default language (optional)
+    window.onload = function() {
+        switchLanguage('en');
+    };
+</script>
+
+</body>
+</html>

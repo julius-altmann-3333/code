@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Scroll to Heading Div Blocks</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 2000px; /* Give the page enough height for scrolling */
+        }
+
+        /* Image Styling */
+        .scroll-image {
+            width: 100px;
+            height: auto;
+            margin: 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* The heading div blocks that will be scrolled to */
+        .headings {
+            background-color: black;
+            color: white;
+            height: 400px;
+            width: 100%;
+            text-align: center;
+            line-height: 400px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Images that will trigger scrolling to different heading div blocks -->
+    <div>
+        <img class="scroll-image" src="https://via.placeholder.com/100" alt="Image United States" onclick="scrollToTarget('united_states')">
+        <img class="scroll-image" src="https://via.placeholder.com/100" alt="Image Canada" onclick="scrollToTarget('canada')">
+        <img class="scroll-image" src="https://via.placeholder.com/100" alt="Image Mexico" onclick="scrollToTarget('mexico')">
+        <img class="scroll-image" src="https://via.placeholder.com/100" alt="Image Brazil" onclick="scrollToTarget('brazil')">
+    </div>
+
+    <!-- Four heading div blocks located below each other -->
+    <div id="heading_united_states" class="headings">
+        United States
+    </div>
+    <div id="heading_canada" class="headings">
+        Canada
+    </div>
+    <div id="heading_mexico" class="headings">
+        Mexico
+    </div>
+    <div id="heading_brazil" class="headings">
+        Brazil
+    </div>
+
+    <script>
+        // Function to scroll to the corresponding heading div block based on the clicked image
+        function scrollToTarget(targetName) {
+            // Get the target block by its ID using the passed text name
+            const target = document.getElementById('heading_' + targetName);
+
+            // Scroll to the target element with smooth behavior
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+</body>
+</html>

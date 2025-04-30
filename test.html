@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fully responsive HTML template">
+    <meta name="author" content="Your Name">
+    <title>Responsive Template</title>
+    
+    <!-- External CSS Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Placeholder for custom CSS -->
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-gray-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Brand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('about')">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('services')">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('contact')">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="text-center p-5 bg-primary text-white">
+        <h1>Welcome to Responsive Template</h1>
+        <p>Fully responsive and modern web template</p>
+    </header>
+    
+    <main class="container my-5">
+        <div id="about" class="content-section">
+            <h2>About Us</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div id="services" class="content-section" style="display: none;">
+            <h2>Services</h2>
+            <p>We offer amazing services to make your life easier.</p>
+        </div>
+        <div id="contact" class="content-section" style="display: none;">
+            <h2>Contact</h2>
+            <p>Get in touch with us for more details.</p>
+            <h3>German Regions</h3>
+            <ul>
+                <li>Baden-Württemberg
+                    <ul>
+                        <li><strong>Cities:</strong>
+                            <ul>
+                                <li><a href="#">Stuttgart</a></li>
+                                <li><a href="#">Mannheim</a></li>
+                                <li><a href="#">Karlsruhe</a></li>
+                                <li><a href="#">Freiburg</a></li>
+                                <li><a href="#">Heidelberg</a></li>
+                                <li><a href="#">Ulm</a></li>
+                                <li><a href="#">Heilbronn</a></li>
+                                <li><a href="#">Pforzheim</a></li>
+                                <li><a href="#">Reutlingen</a></li>
+                                <li><a href="#">Esslingen</a></li>
+                            </ul>
+                        </li>
+                        <li><strong>Main Areas:</strong>
+                            <ul>
+                                <li><a href="#">Black Forest</a></li>
+                                <li><a href="#">Swabian Jura</a></li>
+                                <li><a href="#">Lake Constance</a></li>
+                                <li><a href="#">Rhine Valley</a></li>
+                                <li><a href="#">Upper Rhine Plain</a></li>
+                                <li><a href="#">Kraichgau</a></li>
+                                <li><a href="#">Tauber Valley</a></li>
+                                <li><a href="#">Stuttgart Region</a></li>
+                                <li><a href="#">Neckar Valley</a></li>
+                                <li><a href="#">Danube Valley</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>Bavaria
+                    <ul>
+                        <li><strong>Cities:</strong>
+                            <ul>
+                                <li><a href="#">Munich</a></li>
+                                <li><a href="#">Nuremberg</a></li>
+                                <li><a href="#">Augsburg</a></li>
+                                <li><a href="#">Regensburg</a></li>
+                                <li><a href="#">Ingolstadt</a></li>
+                                <li><a href="#">Würzburg</a></li>
+                                <li><a href="#">Fürth</a></li>
+                                <li><a href="#">Erlangen</a></li>
+                                <li><a href="#">Bayreuth</a></li>
+                                <li><a href="#">Bamberg</a></li>
+                            </ul>
+                        </li>
+                        <li><strong>Main Areas:</strong>
+                            <ul>
+                                <li><a href="#">Bavarian Alps</a></li>
+                                <li><a href="#">Franconian Switzerland</a></li>
+                                <li><a href="#">Upper Bavaria</a></li>
+                                <li><a href="#">Allgäu</a></li>
+                                <li><a href="#">Lower Bavaria</a></li>
+                                <li><a href="#">Upper Palatinate</a></li>
+                                <li><a href="#">Franconian Lake District</a></li>
+                                <li><a href="#">Berchtesgadener Land</a></li>
+                                <li><a href="#">Danube Valley</a></li>
+                                <li><a href="#">Main River Valley</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>For a complete list of German cities, districts, and villages, refer to detailed resources.</p>
+        </div>
+    </main>
+    
+    <footer class="text-center p-4 bg-dark text-white">
+        <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+        <a href="https://github.com/yourgithub" class="text-white"><i class="fab fa-github"></i> GitHub</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Toggle Form Example</title>
+    <style>
+        .language-container {
+            margin: 20px;
+        }
+        .language-button {
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .language-button:hover {
+            background-color: #0056b3;
+        }
+        .content, .form-container {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .form-container label, .form-container input {
+            display: block;
+            margin: 10px 0;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="language-container">
+    <button class="language-button" onclick="switchLanguage('en')">English</button>
+    <button class="language-button" onclick="switchLanguage('de')">Deutsch</button>
+    <button class="language-button" onclick="switchLanguage('fr')">Français</button>
+</div>
+
+<div id="content" class="content">
+    <!-- Static content for different languages -->
+    <p id="content-en" class="language-content" style="display: none;">
+        Hello! Welcome to our website. How can we assist you today?
+    </p>
+    <p id="content-de" class="language-content" style="display: none;">
+        Hallo! Willkommen auf unserer Website. Wie können wir Ihnen helfen?
+    </p>
+    <p id="content-fr" class="language-content" style="display: none;">
+        Bonjour! Bienvenue sur notre site. Comment pouvons-nous vous aider aujourd'hui?
+    </p>
+</div>
+
+<div class="form-container">
+    <!-- Form labels and input fields for different languages -->
+
+    <!-- English -->
+    <div id="form-en" class="language-content" style="display: none;">
+        <h3>1. General Property Information</h3>
+        <label for="propertyAddress">Property Address:</label>
+        <input type="text" id="propertyAddress" placeholder="Full legal address">
+        
+        <label for="propertyType">Property Type:</label>
+        <input type="text" id="propertyType" placeholder="Residential, commercial, land, etc.">
+        
+        <label for="yearBuilt">Year Built:</label>
+        <input type="text" id="yearBuilt" placeholder="Year property was built">
+        
+        <label for="lotSize">Lot Size:</label>
+        <input type="text" id="lotSize" placeholder="Square footage or acreage">
+        
+        <label for="buildingSize">Building Size:</label>
+        <input type="text" id="buildingSize" placeholder="Total square footage of livable space">
+        
+        <label for="zoning">Zoning Classification:</label>
+        <input type="text" id="zoning" placeholder="Residential, commercial, industrial, mixed-use">
+        
+        <label for="legalDescription">Legal Description:</label>
+        <input type="text" id="legalDescription" placeholder="As recorded in public records">
+
+        <h3>2. Ownership & Legal Details</h3>
+        <label for="currentOwner">Current Owner(s):</label>
+        <input type="text" id="currentOwner" placeholder="Individual, LLC, trust, etc.">
+        
+        <label for="titleStatus">Property Title Status:</label>
+        <input type="text" id="titleStatus" placeholder="Clear title or any encumbrances">
+        
+        <label for="liensMortgages">Outstanding Liens or Mortgages:</label>
+        <input type="text" id="liensMortgages" placeholder="Any debts attached to the property">
+        
+        <label for="easements">Easements & Rights of Way:</label>
+        <input type="text" id="easements" placeholder="Access for utilities, shared driveways, etc.">
+        
+        <label for="hoaRules">HOA Rules & Fees (if applicable):</label>
+        <input type="text" id="hoaRules" placeholder="Homeowners Association regulations">
+
+        <h3>3. Physical Condition & Structure</h3>
+        <label for="foundationType">Foundation Type & Condition:</label>
+        <input type="text" id="foundationType" placeholder="Slab, basement, crawl space">
+        
+        <label for="roofCondition">Roof Age & Condition:</label>
+        <input type="text" id="roofCondition" placeholder="Material, last replacement date">
+        
+        <label for="plumbing">Plumbing System:</label>
+        <input type="text" id="plumbing" placeholder="Type of pipes (copper, PVC, lead), water pressure">
+        
+        <label for="electricalSystem">Electrical System:</label>
+        <input type="text" id="electricalSystem" placeholder="Amperage, last update, breaker/fuse type">
+        
+        <label for="hvac">Heating & Cooling System (HVAC):</label>
+        <input type="text" id="hvac" placeholder="Age, type, last service date">
+        
+        <label for="windows">Windows & Insulation:</label>
+        <input type="text" id="windows" placeholder="Energy efficiency, double-pane, drafts">
+        
+        <label for="structuralIssues">Structural Issues:</label>
+        <input type="text" id="structuralIssues" placeholder="Past repairs, cracks, leaks, settlement">
+
+        <h3>4. Utilities & Services</h3>
+        <label for="waterSupply">Water Supply:</label>
+        <input type="text" id="waterSupply" placeholder="City water, well, septic system">
+        
+        <label for="sewerSystem">Sewer System:</label>
+        <input type="text" id="sewerSystem" placeholder="City sewer, septic, maintenance needs">
+        
+        <label for="electricProvider">Electric Provider:</label>
+        <input type="text" id="electricProvider" placeholder="Local utility company">
+        
+        <label for="gasProvider">Gas Provider:</label>
+        <input type="text" id="gasProvider" placeholder="Natural gas, propane, or electric-only">
+        
+        <label for="internetAvailability">Internet & Cable Availability:</label>
+        <input type="text" id="internetAvailability" placeholder="Providers and speeds available">
+
+        <h3>5. Property Valuation & Financials</h3>
+        <label for="askingPrice">Asking Price & Recent Sales Comparables:</label>
+        <input type="text" id="askingPrice" placeholder="Market analysis of similar properties">
+        
+        <label for="taxAssessedValue">Recent Tax Assessed Value:</label>
+        <input type="text" id="taxAssessedValue" placeholder="Property tax details">
+        
+        <label for="annualTaxes">Annual Property Taxes:</label>
+        <input type="text" id="annualTaxes" placeholder="Last year’s tax amount">
+        
+        <label for="homeInsurance">Homeowners Insurance Estimate:</label>
+        <input type="text" id="homeInsurance" placeholder="Monthly/annual costs">
+        
+        <label for="utilityCosts">Estimated Utility Costs:</label>
+        <input type="text" id="utilityCosts" placeholder="Average monthly bills for electricity, water, gas">
+        
+        <label for="rentalIncome">Rental Income Potential (if applicable):</label>
+        <input type="text" id="rentalIncome" placeholder="Market rental rates">
+
+        <h3>6. Inspection & Environmental Factors</h3>
+        <label for="pestInspection">Pest Inspection Report:</label>
+        <input type="text" id="pestInspection" placeholder="Termites, rodents, other infestations">
+        
+        <label for="radonMoldTesting">Radon & Mold Testing:</label>
+        <input type="text" id="radonMoldTesting" placeholder="If tested previously, results available?">
+        
+        <label for="floodZone">Flood Zone Status:</label>
+        <input type="text" id="floodZone" placeholder="FEMA flood map, insurance requirements">
+        
+        <label for="soilStability">Soil & Foundation Stability:</label>
+        <input type="text" id="soilStability" placeholder="Reports on erosion, sinkholes, etc.">
+        
+        <label for="leadAsbestos">Lead Paint & Asbestos Disclosure:</label>
+        <input type="text" id="leadAsbestos" placeholder="For homes built before 1978">
+
+        <h3>7. Neighborhood & Location Factors</h3>
+        <label for="crimeRate">Crime Rate & Safety:</label>
+        <input type="text" id="crimeRate" placeholder="Local crime statistics">
+        
+        <label for="schoolDistrict">School District Ratings:</label>
+        <input type="text" id="schoolDistrict" placeholder="Nearby elementary, middle, high schools">
+        
+        <label for="transportationAccess">Public Transportation Access:</label>
+        <input type="text" id="transportationAccess" placeholder="Bus routes, subway, train stations nearby">
+        
+        <label for="amenitiesProximity">Proximity to Amenities:</label>
+        <input type="text" id="amenitiesProximity" placeholder="Grocery stores, restaurants, shopping, hospitals">
+        
+        <label for="futureDevelopment">Future Development Plans:</label>
+        <input type="text" id="futureDevelopment" placeholder="Any upcoming city or commercial projects nearby">
+
+        <h3>8. Sale & Closing Process Information</h3>
+        <label for="closingCosts">Closing Costs Estimate:</label>
+        <input type="text" id="closingCosts" placeholder="Buyer/seller responsibilities">
+        
+        <label for="contingencies">Contingencies in Sale Contract:</label>
+        <input type="text" id="contingencies" placeholder="Inspection, financing, appraisal contingencies">
+        
+        <label for="sellerDisclosures">Seller Disclosures:</label>
+        <input type="text" id="sellerDisclosures" placeholder="Any known defects, repairs, or past issues">
+    </div>
+
+    <!-- German -->
+    <div id="form-de" class="language-content" style="display: none;">
+        <h3>1. Allgemeine Immobilieninformationen</h3>
+        <label for="propertyAddress">Immobilienadresse:</label>
+        <input type="text" id="propertyAddress" placeholder="Vollständige rechtliche Adresse">
+        
+        <label for="propertyType">Immobilienart:</label>
+        <input type="text" id="propertyType" placeholder="Wohngebäude, Gewerbe, Grundstück, etc.">
+        
+        <label for="yearBuilt">Baujahr:</label>
+        <input type="text" id="yearBuilt" placeholder="Baujahr der Immobilie">
+        
+        <label for="lotSize">Grundstücksgröße:</label>
+        <input type="text" id="lotSize" placeholder="Quadratmeter oder Hektar">
+        
+        <label for="buildingSize">Gebäudegroße:</label>
+        <input type="text" id="buildingSize" placeholder="Gesamtfläche des bewohnbaren Raums">
+        
+        <label for="zoning">Zoneneinteilung:</label>
+        <input type="text" id="zoning" placeholder="Wohn-, Gewerbe-, Industrie-, Mischgebiet">
+        
+        <label for="legalDescription">Rechtliche Beschreibung:</label>
+        <input type="text" id="legalDescription" placeholder="Wie im öffentlichen Register eingetragen">
+
+        <h3>2. Eigentum & Rechtsdetails</h3>
+        <label for="currentOwner">Aktueller Eigentümer:</label>
+        <input type="text" id="currentOwner" placeholder="Einzelperson, LLC, Treuhand, etc.">
+        
+        <label for="titleStatus">Immobilientitelstatus:</label>
+        <input type="text" id="titleStatus" placeholder="Klarer Titel oder Belastungen">
+        
+        <label for="liensMortgages">Ausstehende Belastungen oder Hypotheken:</label>
+        <input type="text" id="liensMortgages" placeholder="Verpflichtungen an der Immobilie">
+        
+        <label for="easements">Dienstbarkeiten & Wegerechte:</label>
+        <input type="text" id="easements" placeholder="Zugang für Versorgungsunternehmen, geteilte Zufahrten, etc.">
+        
+        <label for="hoaRules">Hausbesitzer-Vereinigung Regeln & Gebühren (falls zutreffend):</label>
+        <input type="text" id="hoaRules" placeholder="Regeln der Hausbesitzervereinigung">
+
+        <h3>3. Physische Bedingungen & Struktur</h3>
+        <label for="foundationType">Fundamenttyp & Zustand:</label>
+        <input type="text" id="foundationType" placeholder="Platte, Keller, Kriechkeller">
+        
+        <label for="roofCondition">Dachalter & Zustand:</label>
+        <input type="text" id="roofCondition" placeholder="Material, letzte Erneuerung">
+        
+        <label for="plumbing">Sanitärsystem:</label>
+        <input type="text" id="plumbing" placeholder="Art der Rohre (Kupfer, PVC, Blei), Wasser-Druck">
+        
+        <label for="electricalSystem">Elektrisches System:</label>
+        <input type="text" id="electricalSystem" placeholder="Amperage, letzte Aktualisierung, Sicherungsart">
+        
+        <label for="hvac">Heizungs- & Klimaanlage (HVAC):</label>
+        <input type="text" id="hvac" placeholder="Alter, Typ, letztes Wartungsdatum">
+        
+        <label for="windows">Fenster & Isolierung:</label>
+        <input type="text" id="windows" placeholder="Energieeffizienz, Doppelverglasung, Zugluft">
+        
+        <label for="structuralIssues">Strukturelle Probleme:</label>
+        <input type="text" id="structuralIssues" placeholder="Frühere Reparaturen, Risse, Lecks, Setzungen">
+
+        <h3>4. Versorgungsleistungen & Services</h3>
+        <label for="waterSupply">Wasserversorgung:</label>
+        <input type="text" id="waterSupply" placeholder="Stadtwasser, Brunnen, Septische Anlage">
+        
+        <label for="sewerSystem">Abwassersystem:</label>
+        <input type="text" id="sewerSystem" placeholder="Stadt-Abwasser, Septisch, Wartungsbedarf">
+        
+        <label for="electricProvider">Stromanbieter:</label>
+        <input type="text" id="electricProvider" placeholder="Lokales Versorgungsunternehmen">
+        
+        <label for="gasProvider">Gaslieferant:</label>
+        <input type="text" id="gasProvider" placeholder="Erdgas, Propan oder nur Strom">
+        
+        <label for="internetAvailability">Internetzugang & Kabelverfügbarkeit:</label>
+        <input type="text" id="internetAvailability" placeholder="Anbieter und Geschwindigkeiten verfügbar">
+
+        <h3>5. Immobilienbewertung & Finanzen</h3>
+        <label for="askingPrice">Fragepreis & Vergleichbare Verkaufswerte:</label>
+        <input type="text" id="askingPrice" placeholder="Marktanalyse von ähnlichen Immobilien">
+        
+        <label for="taxAssessedValue">Steuerlich bewerteter Wert:</label>
+        <input type="text" id="taxAssessedValue" placeholder="Details zur Grundsteuer">
+        
+        <label for="annualTaxes">Jährliche Grundsteuern:</label>
+        <input type="text" id="annualTaxes" placeholder="Steuerbetrag des letzten Jahres">
+        
+        <label for="homeInsurance">Versicherungsschätzung für Hausbesitzer:</label>
+        <input type="text" id="homeInsurance" placeholder="Monatliche/Jährliche Kosten">
+        
+        <label for="utilityCosts">Geschätzte Nebenkosten:</label>
+        <input type="text" id="utilityCosts" placeholder="Durchschnittliche monatliche Rechnungen für Strom, Wasser, Gas">
+        
+        <label for="rentalIncome">Mietpotenzial (falls zutreffend):</label>
+        <input type="text" id="rentalIncome" placeholder="Marktmieten">
+
+        <h3>6. Inspektion & Umweltfaktoren</h3>
+        <label for="pestInspection">Schädlingsinspektion:</label>
+        <input type="text" id="pestInspection" placeholder="Termiten, Nagetiere, andere Befallarten">
+        
+        <label for="radonMoldTesting">Radon- & Schimmeltests:</label>
+        <input type="text" id="radonMoldTesting" placeholder="Falls getestet, Ergebnisse verfügbar?">
+        
+        <label for="floodZone">Überschwemmungszonenstatus:</label>
+        <input type="text" id="floodZone" placeholder="FEMA-Überschwemmungskarten, Versicherungsanforderungen">
+        
+        <label for="soilStability">Boden- & Fundamentstabilität:</label>
+        <input type="text" id="soilStability" placeholder="Berichte über Erosion, Erdfälle, etc.">
+        
+        <label for="leadAsbestos">Bleifarbe & Asbestoffenlegung:</label>
+        <input type="text" id="leadAsbestos" placeholder="Für Häuser, die vor 1978 gebaut wurden">
+
+        <h3>7. Nachbarschaft & Standortfaktoren</h3>
+        <label for="crimeRate">Kriminalitätsrate & Sicherheit:</label>
+        <input type="text" id="crimeRate" placeholder="Lokale Kriminalstatistiken">
+        
+        <label for="schoolDistrict">Bewertungen der Schulbezirke:</label>
+        <input type="text" id="schoolDistrict" placeholder="Nahegelegene Grund-, Mittel-, und Oberschulen">
+        
+        <label for="transportationAccess">Zugang zu öffentlichem Verkehr:</label>
+        <input type="text" id="transportationAccess" placeholder="Buslinien, U-Bahn, Bahnhöfe in der Nähe">
+        
+        <label for="amenitiesProximity">Nähe zu Annehmlichkeiten:</label>
+        <input type="text" id="amenitiesProximity" placeholder="Supermärkte, Restaurants, Einkaufszentren, Krankenhäuser">
+        
+        <label for="futureDevelopment">Zukünftige Entwicklungspläne:</label>
+        <input type="text" id="futureDevelopment" placeholder="Geplante Stadt- oder Gewerbeprojekte in der Nähe">
+
+        <h3>8. Verkaufs- & Abschlussprozessinformationen</h3>
+        <label for="closingCosts">Schätzung der Abschlusskosten:</label>
+        <input type="text" id="closingCosts" placeholder="Verantwortlichkeiten von Käufer/Verkäufer">
+        
+        <label for="contingencies">Bedingungen im Kaufvertrag:</label>
+        <input type="text" id="contingencies" placeholder="Inspektion, Finanzierung, Bewertungsbedingungen">
+        
+        <label for="sellerDisclosures">Verkäuferoffenlegungen:</label>
+        <input type="text" id="sellerDisclosures" placeholder="Bekannte Mängel, Reparaturen oder vergangene Probleme">
+    </div>
+
+    <!-- French would be similar but is not included here -->
+</div>
+
+<script>
+    // Function to switch content and form fields based on selected language
+    function switchLanguage(language) {
+        // Hide all content and forms
+        const contents = document.querySelectorAll('.language-content');
+        contents.forEach(function(content) {
+            content.style.display = 'none';
+        });
+
+        // Show the selected content and form
+        const selectedContent = document.getElementById('content-' + language);
+        const selectedForm = document.getElementById('form-' + language);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+        if (selectedForm) {
+            selectedForm.style.display = 'block';
+        }
+    }
+
+    // Set the default language (optional)
+    window.onload = function() {
+        switchLanguage('en');
+    };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to HTML Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #output-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            min-height: 150px;
+        }
+        .hidden {
+            display: none;
+        }
+        .upload-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        canvas {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>Image to HTML Code Converter</h1>
+    
+    <!-- Image Upload Section -->
+    <input type="file" id="image-upload" accept="image/*">
+    <button class="upload-btn" id="upload-button">Scan and Transform</button>
+    
+    <!-- Canvas for preview -->
+    <canvas id="canvas" class="hidden"></canvas>
+
+    <div id="output-box" class="hidden">
+        <h2>Result:</h2>
+        <div id="html-code">
+            <h3>Generated HTML Code:</h3>
+            <pre id="html-output"></pre>
+        </div>
+        <div id="visual-output">
+            <h3>Visual HTML Preview:</h3>
+            <div id="html-preview"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Tesseract.js for OCR -->
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.3/dist/tesseract.min.js"></script>
+
+<script>
+    document.getElementById('upload-button').addEventListener('click', function () {
+        const fileInput = document.getElementById('image-upload');
+        const file = fileInput.files[0];
+        if (!file) {
+            alert("Please upload an image.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                // Display the image on a canvas (for preview purposes)
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                // Use Tesseract.js to perform OCR
+                Tesseract.recognize(
+                    img,
+                    'eng', // English language for OCR
+                    {
+                        logger: (m) => console.log(m), // Optionally log progress
+                    }
+                ).then(({ data: { text } }) => {
+                    console.log(text); // Log the OCR result
+
+                    // Simulate more complex layout detection
+                    const htmlCode = generateHTMLFromImage(img, text);
+
+                    // Show the result in HTML code format
+                    document.getElementById('output-box').classList.remove('hidden');
+                    document.getElementById('html-output').textContent = htmlCode;
+
+                    // Display visual HTML preview
+                    document.getElementById('html-preview').innerHTML = htmlCode;
+                }).catch(err => {
+                    console.error(err);
+                });
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Function to detect shapes and text inside an image
+    function generateHTMLFromImage(image, ocrText) {
+        // Example: Detect simple rectangles and text
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const htmlElements = [];
+        const color = 'rgba(0, 0, 255, 0.5)';
+        
+        // Example of adding a div
+        const text = ocrText.trim().split('\n');
+        
+        // Basic HTML structure based on OCR results and simple shape detection
+        htmlElements.push(`
+            <div class="container">
+                <h1>Generated from Image</h1>
+                <div class="row">
+                    <div class="square">
+                        <p>${text[0] || "Square 1"}</p>
+                    </div>
+                    <div class="square">
+                        <p>${text[1] || "Square 2"}</p>
+                    </div>
+                </div>
+                <div class="button">
+                    <button>${text[2] || "Button Text"}</button>
+                </div>
+            </div>
+        `);
+        
+        // Optionally, draw rectangles over shapes (like buttons or squares)
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 3;
+
+        // Simulate detecting a rectangle (example hardcoded)
+        ctx.strokeRect(50, 50, 150, 100); // Example square
+        ctx.strokeRect(220, 50, 150, 100); // Another example square
+        ctx.strokeRect(50, 200, 150, 50);  // Example button
+
+        // Return the HTML structure
+        return htmlElements.join("\n");
+    }
+</script>
+
+</body>
+</html>

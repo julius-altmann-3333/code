@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>States and Industries</title>
+    <style>
+        .state-container { display: none; border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+        .industry-container { border: 1px solid #aaa; padding: 10px; margin-top: 10px; display: none; }
+        .button { padding: 5px 10px; margin: 5px; cursor: pointer; border: 1px solid #000; background: #f0f0f0; }
+        .button:hover { background: #ddd; }
+    </style>
+    <script>
+        function showState(stateId) {
+            document.querySelectorAll('.state-container').forEach(el => el.style.display = 'none');
+            document.getElementById(stateId).style.display = 'block';
+        }
+        
+        function showIndustry(industryId) {
+            document.querySelectorAll('.industry-container').forEach(el => el.style.display = 'none');
+            document.getElementById(industryId).style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <h1>Select a Region</h1>
+    
+    <h2>German States</h2>
+    <div>
+        <button class="button" onclick="showState('baden-wurttemberg')">Baden-Württemberg</button>
+        <button class="button" onclick="showState('bavaria')">Bavaria</button>
+        <button class="button" onclick="showState('berlin')">Berlin</button>
+        <button class="button" onclick="showState('brandenburg')">Brandenburg</button>
+        <button class="button" onclick="showState('bremen')">Bremen</button>
+        <button class="button" onclick="showState('hamburg')">Hamburg</button>
+        <button class="button" onclick="showState('hesse')">Hesse</button>
+        <button class="button" onclick="showState('mecklenburg-vorpommern')">Mecklenburg-Vorpommern</button>
+        <button class="button" onclick="showState('lower-saxony')">Lower Saxony</button>
+        <button class="button" onclick="showState('north-rhine-westphalia')">North Rhine-Westphalia</button>
+        <button class="button" onclick="showState('rhineland-palatinate')">Rhineland-Palatinate</button>
+        <button class="button" onclick="showState('saarland')">Saarland</button>
+        <button class="button" onclick="showState('saxony')">Saxony</button>
+        <button class="button" onclick="showState('saxony-anhalt')">Saxony-Anhalt</button>
+        <button class="button" onclick="showState('schleswig-holstein')">Schleswig-Holstein</button>
+        <button class="button" onclick="showState('thuringia')">Thuringia</button>
+    </div>
+    
+    <h2>European Union States</h2>
+    <div>
+        <button class="button" onclick="showState('austria')">Austria</button>
+        <button class="button" onclick="showState('belgium')">Belgium</button>
+        <button class="button" onclick="showState('bulgaria')">Bulgaria</button>
+        <button class="button" onclick="showState('croatia')">Croatia</button>
+        <button class="button" onclick="showState('cyprus')">Cyprus</button>
+        <button class="button" onclick="showState('czech-republic')">Czech Republic</button>
+        <button class="button" onclick="showState('denmark')">Denmark</button>
+        <button class="button" onclick="showState('estonia')">Estonia</button>
+        <button class="button" onclick="showState('finland')">Finland</button>
+        <button class="button" onclick="showState('france')">France</button>
+        <button class="button" onclick="showState('germany')">Germany</button>
+        <button class="button" onclick="showState('greece')">Greece</button>
+        <button class="button" onclick="showState('hungary')">Hungary</button>
+        <button class="button" onclick="showState('ireland')">Ireland</button>
+        <button class="button" onclick="showState('italy')">Italy</button>
+        <button class="button" onclick="showState('latvia')">Latvia</button>
+        <button class="button" onclick="showState('lithuania')">Lithuania</button>
+        <button class="button" onclick="showState('luxembourg')">Luxembourg</button>
+        <button class="button" onclick="showState('malta')">Malta</button>
+        <button class="button" onclick="showState('netherlands')">Netherlands</button>
+        <button class="button" onclick="showState('poland')">Poland</button>
+        <button class="button" onclick="showState('portugal')">Portugal</button>
+        <button class="button" onclick="showState('romania')">Romania</button>
+        <button class="button" onclick="showState('slovakia')">Slovakia</button>
+        <button class="button" onclick="showState('slovenia')">Slovenia</button>
+        <button class="button" onclick="showState('spain')">Spain</button>
+        <button class="button" onclick="showState('sweden')">Sweden</button>
+    </div>
+</body>
+</html>

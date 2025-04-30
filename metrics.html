@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Div Boxes</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .section_metrics {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .box {
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: calc(25% - 20px);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .box h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .box p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .box {
+                width: calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="section_metrics">
+    <div class="container">
+        <div class="box">
+            <h2>Heading 1</h2>
+            <p>Subheading 1</p>
+        </div>
+        <div class="box">
+            <h2>Heading 2</h2>
+            <p>Subheading 2</p>
+        </div>
+        <div class="box">
+            <h2>Heading 3</h2>
+            <p>Subheading 3</p>
+        </div>
+        <div class="box">
+            <h2>Heading 4</h2>
+            <p>Subheading 4</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

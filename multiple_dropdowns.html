@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Independent Dropdowns</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .section {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    #section1, #section3, #section5 {
+      height: 300px;
+      background-color: #f4f4f4;
+    }
+    #section2, #section4 {
+      background-color: #ddd;
+      padding-bottom: 10px;
+    }
+    .toggleBox {
+      width: 500px;
+      max-height: 0;
+      background-color: #ffc;
+      margin: 10px auto;
+      overflow: hidden;
+      transition: max-height 0.8s cubic-bezier(0.4, 0.0, 0.2, 1), padding 0.5s ease;
+      padding: 0 20px;
+    }
+    .toggleBox.open {
+      max-height: 1000px; /* Large enough to accommodate the content */
+      padding: 20px 20px; /* Add padding for smooth appearance */
+    }
+    h2 {
+      cursor: pointer;
+      text-align: center;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="section1" class="section">Section 1</div>
+  <div id="section2" class="section">
+    Section 2
+    <h2 id="toggleHeading1">Click Here to Toggle Box 1</h2>
+    <div id="toggleBox1" class="toggleBox">
+      <p>This is the dropdown box in Section 2. Add any content here!</p>
+    </div>
+  </div>
+  <div id="section3" class="section">Section 3</div>
+  <div id="section4" class="section">
+    Section 4
+    <h2 id="toggleHeading2">Click Here to Toggle Box 2</h2>
+    <div id="toggleBox2" class="toggleBox">
+      <p>This is the dropdown box in Section 4. It works independently!</p>
+    </div>
+  </div>
+  <div id="section5" class="section">Section 5</div>
+
+  <script>
+    // Dropdown 1
+    const toggleHeading1 = document.getElementById('toggleHeading1');
+    const toggleBox1 = document.getElementById('toggleBox1');
+    const section3 = document.getElementById('section3');
+    let isDropdown1Open = false;
+
+    toggleHeading1.addEventListener('click', () => {
+      const boxHeight = toggleBox1.scrollHeight; // Natural height of the content
+      if (!isDropdown1Open) {
+        toggleBox1.classList.add('open'); // Expand the box
+        section3.style.marginTop = `${boxHeight}px`; // Push section 3 down
+      } else {
+        toggleBox1.classList.remove('open'); // Collapse the box
+        section3.style.marginTop = '0'; // Reset margin
+      }
+      isDropdown1Open = !isDropdown1Open;
+    });
+
+    // Dropdown 2
+    const toggleHeading2 = document.getElementById('toggleHeading2');
+    const toggleBox2 = document.getElementById('toggleBox2');
+    const section5 = document.getElementById('section5');
+    let isDropdown2Open = false;
+
+    toggleHeading2.addEventListener('click', () => {
+      const boxHeight = toggleBox2.scrollHeight; // Natural height of the content
+      if (!isDropdown2Open) {
+        toggleBox2.classList.add('open'); // Expand the box
+        section5.style.marginTop = `${boxHeight}px`; // Push section 5 down
+      } else {
+        toggleBox2.classList.remove('open'); // Collapse the box
+        section5.style.marginTop = '0'; // Reset margin
+      }
+      isDropdown2Open = !isDropdown2Open;
+    });
+  </script>
+</body>
+</html>

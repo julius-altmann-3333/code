@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Acquisition Guide</title>
+    <script>
+        function switchLanguage(language) {
+            const englishContent = document.querySelectorAll('.en');
+            const germanContent = document.querySelectorAll('.de');
+
+            if (language === 'en') {
+                englishContent.forEach(element => element.style.display = 'block');
+                germanContent.forEach(element => element.style.display = 'none');
+            } else if (language === 'de') {
+                englishContent.forEach(element => element.style.display = 'none');
+                germanContent.forEach(element => element.style.display = 'block');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="language-container">
+        <button onclick="switchLanguage('en')">English</button>
+        <button onclick="switchLanguage('de')">Deutsch</button>
+    </div>
+
+    <div id="content">
+        <div class="en">
+            <h2>Key Factors to Consider When Acquiring Real Estate Property</h2>
+            <h3>1. Location</h3>
+            <ul>
+                <li>Proximity to essential services (schools, hospitals, shopping centers, etc.)</li>
+                <li>Neighborhood safety and crime rates</li>
+                <li>Future development plans in the area</li>
+                <li>Accessibility (public transport, highways, etc.)</li>
+            </ul>
+            <h3>2. Property Condition & Structure</h3>
+            <ul>
+                <li>Age of the property and structural integrity</li>
+                <li>Inspection for damages (roof, foundation, plumbing, electrical, etc.)</li>
+                <li>Renovation costs and potential improvements</li>
+                <li>Compliance with zoning and building codes</li>
+            </ul>
+            <h3>3. Market Trends & Valuation</h3>
+            <ul>
+                <li>Comparative market analysis (CMA) to assess property value</li>
+                <li>Price trends in the area (historical appreciation or depreciation)</li>
+                <li>Rental demand if purchasing as an investment</li>
+                <li>Return on investment (ROI) potential</li>
+            </ul>
+            <h3>4. Financial Considerations</h3>
+            <ul>
+                <li>Mortgage options, interest rates, and loan terms</li>
+                <li>Property taxes and insurance costs</li>
+                <li>Maintenance and HOA fees (if applicable)</li>
+                <li>Closing costs and additional fees</li>
+            </ul>
+            <h3>5. Legal Aspects</h3>
+            <ul>
+                <li>Property title and ownership verification</li>
+                <li>Easements, liens, or encumbrances on the property</li>
+                <li>Compliance with zoning laws and restrictions</li>
+                <li>Necessary permits for renovations or modifications</li>
+            </ul>
+            <h3>6. Investment Strategy (if applicable)</h3>
+            <ul>
+                <li>Fix-and-flip potential</li>
+                <li>Buy-and-hold for rental income</li>
+                <li>Short-term rental opportunities (Airbnb, vacation homes)</li>
+                <li>Commercial vs. residential investment strategy</li>
+            </ul>
+        </div>
+
+        <div class="de" style="display: none;">
+            <h2>Wichtige Faktoren bei der Immobilienakquisition</h2>
+            <h3>1. Lage</h3>
+            <ul>
+                <li>Nähe zu wichtigen Einrichtungen (Schulen, Krankenhäuser, Einkaufszentren, usw.)</li>
+                <li>Nachbarschaftssicherheit und Kriminalitätsraten</li>
+                <li>Zukünftige Entwicklungspläne in der Gegend</li>
+                <li>Zugangsmöglichkeiten (öffentliche Verkehrsmittel, Autobahnen, usw.)</li>
+            </ul>
+            <h3>2. Zustand & Struktur der Immobilie</h3>
+            <ul>
+                <li>Alter der Immobilie und strukturelle Integrität</li>
+                <li>Inspektion auf Schäden (Dach, Fundament, Sanitär, Elektrik, usw.)</li>
+                <li>Renovierungskosten und mögliche Verbesserungen</li>
+                <li>Übereinstimmung mit Zonen- und Bauvorschriften</li>
+            </ul>
+            <h3>3. Markttrends & Bewertung</h3>
+            <ul>
+                <li>Vergleichende Marktanalyse (CMA) zur Bewertung des Immobilienwerts</li>
+                <li>Preistrends in der Region (historische Wertsteigerung oder -minderung)</li>
+                <li>Nachfragerentabilität bei Investitionskäufen</li>
+                <li>Renditepotenzial (ROI)</li>
+            </ul>
+            <h3>4. Finanzielle Überlegungen</h3>
+            <ul>
+                <li>Hypothekenoptionen, Zinssätze und Kreditbedingungen</li>
+                <li>Grundsteuer- und Versicherungskosten</li>
+                <li>Wartungs- und HOA-Gebühren (falls zutreffend)</li>
+                <li>Abschlusskosten und zusätzliche Gebühren</li>
+            </ul>
+            <h3>5. Rechtliche Aspekte</h3>
+            <ul>
+                <li>Überprüfung des Eigentumstitels und der Besitzverhältnisse</li>
+                <li>Grunddienstbarkeiten, Pfandrechte oder Belastungen auf der Immobilie</li>
+                <li>Übereinstimmung mit Bebauungsplänen und Beschränkungen</li>
+                <li>Erforderliche Genehmigungen für Renovierungen oder Änderungen</li>
+            </ul>
+            <h3>6. Investitionsstrategie (falls zutreffend)</h3>
+            <ul>
+                <li>Fix-and-Flip-Potenzial</li>
+                <li>Kauf und Halten für Mieteinnahmen</li>
+                <li>Kurzfristige Mietmöglichkeiten (Airbnb, Ferienhäuser)</li>
+                <li>Kommerzielle vs. Wohnimmobilien-Investitionsstrategie</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

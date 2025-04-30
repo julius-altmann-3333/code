@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altmann Real Estate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Default Styles (Desktop) */
+        
+        /* Navigation*/
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            position: relative;
+        }
+
+        .logo {
+            width: 240px;
+            height: 80px;
+        }
+
+        /* Navigation Links */
+        #nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .link {
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Hamburger menu (visible only on small screens) */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            /* Hide nav links on mobile */
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #333;
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            #nav-links.open {
+                display: flex;
+            }
+
+            /* Show hamburger */
+            .hamburger {
+                display: block;
+                color: white;
+            }
+        }
+
+        /* Hero Section */
+        #hero_section {
+            background-image: url('background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            background-color: #555;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: relative;
+        }
+
+        /* Tablet View (768px and below) */
+        @media (max-width: 768px) {
+            #hero_section {
+                height: 400px; /* Reduce height for smaller screens */
+            }
+        }
+
+        /* Smartphone View (480px and below) */
+        @media (max-width: 480px) {
+            #hero_section {
+                height: 300px; /* Reduce height further for small screens */
+            }
+        }
+
+        /* Explore Button */
+        .explore-button {
+            width: 50%;
+            padding: 15px 0;
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid black;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .explore-button:hover {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* Centering the button */
+        .button-container {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 40px; /* Padding towards the background */
+        }
+
+        /* Responsive Button */
+        @media (max-width: 768px) {
+            .explore-button {
+                width: 50%; /* For tablet devices */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-button {
+                width: 75%; /* For mobile devices */
+            }
+        }
+
+        /* Scroll Container */
+        #scroll_container {
+          display: flex;
+          flex-direction: row;
+          height: 80vh;
+        }
+
+        @media (max-width: 768px) {
+          .scroll_container {
+            flex-direction: column;
+          }
+        }
+
+        .column {
+          flex: 1;
+          height: auto;
+          overflow-y: auto;
+          padding: 10px;
+        }
+
+        .column:first-child {
+          background: #f9f9f9;
+          border-right: 1px solid #ddd;
+        }
+
+        .nav-item {
+          margin: 10px 0;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+          cursor: pointer;
+          transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+          color: #007BFF;
+        }
+
+        .image-box {
+          height: 400px;
+          margin: 20px 0;
+          position: relative;
+          cursor: pointer;
+          transition: transform 0.3s;
+          border: 1px solid black;
+        }
+
+        .image-box:hover {
+          transform: scale(1.05);
+        }
+
+        .image-box img {
+          width: 100%;
+          height: auto;
+          max-width: 300px;
+          display: block;
+          margin: 0 auto;
+        }
+
+        .image-box h3 {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: 0;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.7);
+          color: white;
+          text-align: center;
+        }
+
+        /* Tabs */
+        .headings {
+            background-color: lightgrey;
+            color: black;
+            height: 150px;
+            width: 100%;
+            text-align: center;
+            line-height: 150px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border-bottom: 2px solid #ccc;
+        }
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #eaeaea;
+        }
+        .tab.active {
+            background: white;
+            font-weight: bold;
+        }
+        .panel {
+            display: none;
+            padding: 20px;
+        }
+        .panel.active {
+            display: block;
+        }
+        .grid {
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+        }
+        .box {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 30%;
+            background-color: #f9f9f9;
+        }
+        .box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .box h3 {
+            margin: 10px 0 0;
+        }
+        .container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav Section -->
+<div class="container" id="nav">
+    <img src="placeholder-image.jpg" alt="Logo" class="logo">
+    <div id="nav-links">
+        <div class="link">Cars</div>
+        <div class="link">Real Estate</div>
+        <div class="link">Yachts</div>
+        <div class="link">Planes</div>
+        <div class="link">Investments</div>
+    </div>
+    <div class="hamburger" id="hamburger">
+        &#9776;
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero_section" id="hero_section">
+    <div class="button-container">
+        <button class="explore-button" onclick="scrollToSection()">Explore</button>
+    </div>
+</section>
+
+<!-- Scrollables Section -->
+<section id="section_scrollables" class="section_scrollables">
+    <div class="container" id="scroll_container">
+
+        <!-- Column 1: Navigation -->
+          <div class="column" id="nav-column">
+            <div class="nav-item"><a class="nav-link" href="#box1">United States</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box2">Europe</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box3">South America</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box4">Central America</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box5">Australia</a></div>
+            <div class="nav-item"><a class="nav-link" href="#box6">New Zealand</a></div>
+          </div>
+
+        <!-- Column 2: Image Boxes -->
+          <div class="column" id="image-column">
+            <div class="image-box" id="box1" onclick="scrollToTarget('united_states')">
+              <img src="https://via.placeholder.com/300" alt="Image 1">
+              <h3>United States</h3>
+            </div>
+            <div class="image-box" id="box2" onclick="scrollToTarget('europe')">
+              <img src="https://via.placeholder.com/300" alt="Image 2">
+              <h3>Europe</h3>
+            </div>
+            <div class="image-box" id="box3" onclick="scrollToTarget('south_america')">
+              <img src="https://via.placeholder.com/300" alt="Image 3">
+              <h3>South America</h3>
+            </div>
+            <div class="image-box" id="box4" onclick="scrollToTarget('central_america')">
+              <img src="https://via.placeholder.com/300" alt="Image 4">
+              <h3>Central America</h3>
+            </div>
+            <div class="image-box" id="box5" onclick="scrollToTarget('australia')">
+              <img src="https://via.placeholder.com/300" alt="Image 5">
+              <h3>Australia</h3>
+            </div>
+            <div class="image-box" id="box6" onclick="scrollToTarget('new_zealand')">
+              <img src="https://via.placeholder.com/300" alt="Image 6">
+              <h3>New Zealand</h3>
+            </div>
+          </div>
+    </div>
+</section>
+
+<!-- Section Tabs -->
+<section id="section_tabs" class="section_tabs">
+    <div class="container" id="container1">
+        <div id="heading_united_states" class="headings">
+            United States
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-panel="panel1-1">California</div>
+            <div class="tab" data-panel="panel1-2">Florida</div>
+            <div class="tab" data-panel="panel1-3">New York</div>
+            <div class="tab" data-panel="panel1-4">Texas</div>
+            <div class="tab" data-panel="panel1-5">Arizona</div>
+            <div class="tab" data-panel="panel1-6">Nevada</div>
+            <div class="tab" data-panel="panel1-7">Washington</div>
+            <div class="tab" data-panel="panel1-8">Pennsylvania</div>
+        </div>
+        <div id="panel1-1" class="panel active">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>California</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Florida</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>New York</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel1-2" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading A</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading B</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading C</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel1-3" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading Z</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel1-4" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading 1X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading 1Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Heading 1Z</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" id="container2">
+        <div id="heading_europe" class="headings">
+            Europe
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-panel="panel2-1">Germany</div>
+            <div class="tab" data-panel="panel2-2">Italy</div>
+            <div class="tab" data-panel="panel2-3">Spain</div>
+            <div class="tab" data-panel="panel2-4">France</div>
+            <div class="tab" data-panel="panel2-5">Switzerland</div>
+            <div class="tab" data-panel="panel2-6">Portugal</div>
+            <div class="tab" data-panel="panel2-7">Belgium</div>
+            <div class="tab" data-panel="panel2-8">Netherlands</div>
+            <div class="tab" data-panel="panel2-9">Austria</div>
+            <div class="tab" data-panel="panel2-10">Croatia</div>
+        </div>
+
+        <div id="panel2-1" class="panel active">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 1</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 2</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel2-2" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading A</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading B</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading C</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel2-3" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Z</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="container3">
+        <div id="heading_south_america" class="headings">
+            South America
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-panel="panel3-1">Argentina</div>
+            <div class="tab" data-panel="panel3-2">Brazil</div>
+            <div class="tab" data-panel="panel3-3">Chile</div>
+            <div class="tab" data-panel="panel3-4">Uruguay</div>
+            <div class="tab" data-panel="panel3-5">Ecuador</div>
+            <div class="tab" data-panel="panel3-6">Peru</div>
+            <div class="tab" data-panel="panel3-7">Paraguay</div>
+        </div>
+
+        <div id="panel3-1" class="panel active">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 1</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 2</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel3-2" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading A</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading B</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading C</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel3-3" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Z</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="container4">
+        <div id="heading_central_america" class="headings">
+            Central America
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-panel="panel4-1">Costa Rica</div>
+            <div class="tab" data-panel="panel4-2">Mexico</div>
+            <div class="tab" data-panel="panel4-3">Panama</div>
+            <div class="tab" data-panel="panel4-4">Cuba</div>
+            <div class="tab" data-panel="panel4-5">Panama</div>
+            <div class="tab" data-panel="panel4-6">Puerto Rico</div>
+            <div class="tab" data-panel="panel4-7">Jamaica</div>
+            <div class="tab" data-panel="panel4-7">Islands</div>
+        </div>
+
+        <div id="panel4-1" class="panel active">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 1</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 2</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel4-2" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading A</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading B</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading C</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel4-3" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Z</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="container5">
+        <div id="heading_australia" class="headings">
+            Australia
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-panel="panel5-1">Melbourne</div>
+            <div class="tab" data-panel="panel5-2">Sydney</div>
+            <div class="tab" data-panel="panel5-3">Adelaide</div>
+            <div class="tab" data-panel="panel5-4">Perth</div>
+            <div class="tab" data-panel="panel5-5">Brisbane</div>
+            <div class="tab" data-panel="panel5-6">Gold Coast</div>
+            <div class="tab" data-panel="panel5-7">Sunshine Coast</div>
+            <div class="tab" data-panel="panel5-7">Cairns</div>
+        </div>
+
+        <div id="panel5-1" class="panel active">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 1</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 2</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel5-2" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading A</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading B</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading C</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel5-3" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Z</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="container6">
+        <div id="heading_new_zealand" class="headings">
+            New Zealand
+        </div>
+        <div class="tabs">
+            <div class="tab active" data-panel="panel6-1">Auckland</div>
+            <div class="tab" data-panel="panel6-2">Wellington</div>
+            <div class="tab" data-panel="panel6-3">Christchurch</div>
+            <div class="tab" data-panel="panel6-4">Nelson</div>
+            <div class="tab" data-panel="panel6-5">Queenstown</div>
+            <div class="tab" data-panel="panel6-6">Hamilton</div>
+            <div class="tab" data-panel="panel6-7">Rotorua</div>
+            <div class="tab" data-panel="panel6-8">Whangarei</div>
+            <div class="tab" data-panel="panel6-9">Dunedin</div>
+            <div class="tab" data-panel="panel6-10">Gisborne</div>
+        </div>
+
+        <div id="panel6-1" class="panel active">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 1</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 2</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading 3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel6-2" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading A</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading B</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading C</h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="panel6-3" class="panel">
+            <div class="grid">
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading X</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Y</h3>
+                </div>
+                <div class="box">
+                    <img src="https://via.placeholder.com/150" alt="Placeholder">
+                    <h3>Subheading Z</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+    // Function to scroll to the next section
+        function scrollToSection() {
+            document.getElementById('section_scrollables').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+    // Add scroll effect for links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+    // Function to scroll to the corresponding heading div block based on the clicked image
+        function scrollToTarget(targetName) {
+            // Get the target block by its ID using the passed text name
+            const target = document.getElementById('heading_' + targetName);
+
+            // Scroll to the target element with smooth behavior
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+    //Outer Tabs Setup Function
+    function setupTabs(containerId) {
+        const container = document.getElementById(containerId);
+        const tabs = container.querySelectorAll('.tab');
+        const panels = container.querySelectorAll('.panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                container.querySelector(`#${tab.dataset.panel}`).classList.add('active');
+            });
+        });
+    }
+
+    // Inner Tab Setup Function
+    function setupInnerTabs(containerId, tabsId) {
+    const container = document.getElementById(containerId);
+    const tabs = container.querySelectorAll(`#${tabsId} .tab`);
+    const panels = container.querySelectorAll(`#${tabsId} ~ .panel`);
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+
+            tab.classList.add('active');
+            container.querySelector(`#${tab.dataset.panel}`).classList.add('active');
+        });
+    });
+}
+
+    setupTabs('container1');
+    setupTabs('container2');
+    setupTabs('container3');
+    setupTabs('container4');
+    setupTabs('container5');
+    setupTabs('container6');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Div Boxes</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Container holds the two boxes */
+    .container_section_third {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    /* Default (Web) Layout: 70% and 30% */
+    .box_fourth {
+      padding: 20px;
+      border: 1px solid #ccc;
+      height: auto;
+    }
+
+    .box1 {
+      width: 70%;
+    }
+
+    .box2 {
+      width: 30%;
+    }
+
+    /* Mobile Layout: Stack the boxes */
+    @media (max-width: 500px) {
+      .box1, .box2 {
+        width: 100%;
+      }
+    }
+
+    /* Style for the clickable image */
+    .box2 img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container_section_third">
+    <div class="box_fourth box1">
+      <p>Nestled in a prime location, this luxury mansion exudes opulence with its grandiose architecture and meticulously landscaped gardens. Boasting over 20,000 square feet of living space, the mansion features a gourmet kitchen, a state-of-the-art home theater, and an indoor pool with a retractable glass roof. The master suite offers a private terrace with breathtaking views, a spa-like bathroom, and an expansive walk-in closet.</p>
+    </div>
+    <div class="box_fourth box2">
+      <a href="https://example.com">
+        <img src="C:\Users\a\Downloads\Attachments-(No Subject)\maps_image.png">
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Real Estate</title>
+    <style>
+        /* Section Slide Ins */
+        .section_slide_ins {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: stretch;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* General Box Styling */
+        .unique-box {
+            flex: 1;
+            min-width: calc(50% - 20px);
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Headings & Text */
+        .unique-heading {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .unique-subheading {
+            font-size: 1.2rem;
+            font-weight: normal;
+            line-height: 1.5;
+        }
+
+        /* Icon Styling */
+        .unique-icon img {
+            width: 50px;
+            height: 50px;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Slide-in Animations */
+        .unique-box,
+        .unique-image-box {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .unique-box.visible,
+        .unique-image-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Styling */
+        .unique-image-box img {
+            width: 100%;
+            height: 600px;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Responsive Scaling */
+        @media (max-width: 900px) {
+            .unique-box {
+                min-width: 48%;
+            }
+            .unique-heading {
+                font-size: 1.8rem;
+            }
+            .unique-subheading {
+                font-size: 1.1rem;
+            }
+            .unique-image-box img {
+                height: 500px;
+            }
+        }
+
+        /* Mobile View - Stack Correctly */
+        @media (max-width: 600px) {
+            .section_slide_ins {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .unique-box {
+                width: 100%;
+            }
+
+            .unique-heading {
+                font-size: 1.5rem;
+            }
+
+            .unique-subheading {
+                font-size: 1rem;
+            }
+
+            .unique-image-box img {
+                height: 300px;
+            }
+
+            /* Ensure correct stacking order */
+            .unique-box:nth-child(odd) {
+                order: 1;
+            }
+
+            .unique-box:nth-child(even) {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section_slide_ins">
+        <!-- 1st Pair -->
+        <div class="unique-box">
+            <h1 class="unique-heading">"Oceanfront Opulence: Luxury Living with Yacht Access"</h1>
+            <h3 class="unique-subheading">
+                Embrace Coastal Elegance: Experience direct access to the ocean from your luxurious estate, 
+                complete with a private dock for seamless yacht embarkation.
+            </h3>
+            <div class="unique-icon">
+                <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c280473db80f31f53b823_home-icon.png" alt="Home Icon">
+            </div>
+        </div>
+        <div class="unique-box unique-image-box">
+            <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280777d7bff2f961d52d4_1.png">
+        </div>
+
+        <!-- 2nd Pair -->
+        <div class="unique-box">
+            <h1 class="unique-heading">"Ultimate Aquatic Paradise: Discover the Megapool Oasis"</h1>
+            <h3 class="unique-subheading">
+                Dive into Luxury: A wooden house beside a sprawling megapool, complete with exhilarating waterslides 
+                and serene waterfall features.
+            </h3>
+            <div class="unique-icon">
+                <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c28cb1e6eded65fdbd590_nature-landscape-icon.png" alt="Nature Icon">
+            </div>
+        </div>
+        <div class="unique-box unique-image-box">
+            <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280777068b2f1ae280b75_2.png">
+        </div>
+
+        <!-- 3rd Pair -->
+        <div class="unique-box">
+            <h1 class="unique-heading">"Country Estate Charm: Experience Timeless Elegance"</h1>
+            <h3 class="unique-subheading">
+                Nestled in Los Angeles, this luxurious mansion embodies timeless elegance with 20,000 square feet of 
+                meticulously designed space.
+            </h3>
+            <div class="unique-icon">
+                <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c28049b218a71a182d8f1_home-care-icon.png" alt="Estate Icon">
+            </div>
+        </div>
+        <div class="unique-box unique-image-box">
+            <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280793f79957b7a54ab31_3.png">
+        </div>
+
+        <!-- 4th Pair -->
+        <div class="unique-box">
+            <h1 class="unique-heading">"Modern City Skyline Penthouse"</h1>
+            <h3 class="unique-subheading">
+                This ultra-modern penthouse offers panoramic views of the city skyline with luxurious amenities 
+                including a rooftop infinity pool.
+            </h3>
+            <div class="unique-icon">
+                <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/667c28049b218a71a182d8f1_home-care-icon.png" alt="Penthouse Icon">
+            </div>
+        </div>
+        <div class="unique-box unique-image-box">
+            <img src="https://cdn.prod.website-files.com/6664e156c599e40c08d5bc88/668280793f79957b7a54ab31_4.png">
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll(".unique-box, .unique-image-box");
+
+            function checkScroll() {
+                elements.forEach((el) => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (elementTop < windowHeight * 0.85) {
+                        el.classList.add("visible");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", checkScroll);
+            checkScroll(); // Run on page load
+        });
+    </script>
+
+</body>
+</html>

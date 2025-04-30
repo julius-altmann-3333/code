@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Main Tabbed Interfaces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #headings {
+            height: 80px;
+            text-align:center;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border-bottom: 2px solid #ccc;
+        }
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #eaeaea;
+        }
+        .tab.active {
+            background: white;
+            font-weight: bold;
+        }
+        .panel {
+            display: none;
+            padding: 20px;
+        }
+        .panel.active {
+            display: block;
+        }
+        .grid {
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+        }
+        .box {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 30%;
+            background-color: #f9f9f9;
+        }
+        .box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .box h3 {
+            margin: 10px 0 0;
+        }
+        .container {
+            margin: 20px 0;
+        }
+        .inner-tab-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .inner-tab-content h3 {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+        .inner-tab-content p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="headings">
+    United States
+</div>
+<!-- Outer Tabbed Interface 1 -->
+<div class="container" id="outer-container-1">
+    <div class="tabs" id="outer-tabs-1">
+        <div class="tab active" data-panel="outer-panel-1-1">California</div>
+        <div class="tab" data-panel="outer-panel-1-2">Florida</div>
+        <div class="tab" data-panel="outer-panel-1-3">New York</div>
+        <div class="tab" data-panel="outer-panel-1-4">Texas</div>
+        <div class="tab" data-panel="outer-panel-1-5">Arizona</div>
+        <div class="tab" data-panel="outer-panel-1-6">Nevada</div>
+        <div class="tab" data-panel="outer-panel-1-7">Washington</div>
+        <div class="tab" data-panel="outer-panel-1-8">Pennsylvania</div>
+    </div>
+
+    
+
+    <div id="outer-panel-1-1" class="panel active">
+
+        <!-- Inner Tab Menu for Tab 1 -->
+        <div class="tabs" id="inner-tabs-1">
+            <div class="tab active" data-panel="inner-panel-1-1">Los Angeles</div>
+            <div class="tab" data-panel="inner-panel-1-2">San Francisco</div>
+            <div class="tab" data-panel="inner-panel-1-3">San Diego</div>
+            <div class="tab" data-panel="inner-panel-1-4">Sacramento</div>
+            <div class="tab" data-panel="inner-panel-1-5">San Jose</div>
+        </div>
+
+        <!-- Inner Tab Content -->
+        <div id="inner-panel-1-1" class="panel active inner-tab-content">
+            <h3>Los Angeles Content</h3>
+            <p>This is the content for Inner Tab 1. You can add any text here!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 1">
+        </div>
+        <div id="inner-panel-1-2" class="panel inner-tab-content">
+            <h3>San Francisco Content</h3>
+            <p>This is the content for Inner Tab 2. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 2">
+        </div>
+        <div id="inner-panel-1-3" class="panel inner-tab-content">
+            <h3>San Diego Content</h3>
+            <p>This is the content for Inner Tab 3. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 3">
+        </div>
+        <div id="inner-panel-1-4" class="panel inner-tab-content">
+            <h3>Sacramento Content</h3>
+            <p>This is the content for Inner Tab 4. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 3">
+        </div>
+        <div id="inner-panel-1-5" class="panel inner-tab-content">
+            <h3>San Jose Content</h3>
+            <p>This is the content for Inner Tab 5. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 3">
+        </div>
+
+    </div>
+
+    <div id="outer-panel-1-2" class="panel">
+
+        <!-- Inner Tab Menu for Tab 2 -->
+        <div class="tabs" id="inner-tabs-2">
+            <div class="tab active" data-panel="inner-panel-1-6">Miami</div>
+            <div class="tab" data-panel="inner-panel-1-7">Fort Lauderdale</div>
+            <div class="tab" data-panel="inner-panel-1-8">Tampa</div>
+            <div class="tab" data-panel="inner-panel-1-9">Key West</div>
+            <div class="tab" data-panel="inner-panel-1-10">Florida Keys</div>
+        </div>
+
+        <!-- Inner Tab Content -->
+        <div id="inner-panel-1-6" class="panel active inner-tab-content">
+            <h3>Miami Content</h3>
+            <p>This is the content for Inner Tab 6. You can add any text here!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 1">
+        </div>
+        <div id="inner-panel-1-7" class="panel inner-tab-content">
+            <h3>Fort Lauderdale Content</h3>
+            <p>This is the content for Inner Tab 7. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 2">
+        </div>
+        <div id="inner-panel-1-8" class="panel inner-tab-content">
+            <h3>Tampa Content</h3>
+            <p>This is the content for Inner Tab 8. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 3">
+        </div>
+        <div id="inner-panel-1-9" class="panel inner-tab-content">
+            <h3>Key West Content</h3>
+            <p>This is the content for Inner Tab 9. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 3">
+        </div>
+        <div id="inner-panel-1-10" class="panel inner-tab-content">
+            <h3>Florida Keys Content</h3>
+            <p>This is the content for Inner Tab 10. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image 3">
+        </div>
+    </div>
+
+    <div id="outer-panel-1-3" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading X</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading Y</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading Z</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="headings">
+    Europe
+</div>
+<!-- Outer Tabbed Interface 2 -->
+<div class="container" id="outer-container-2">
+    <div class="tabs" id="outer-tabs-2">
+        <div class="tab active" data-panel="outer-panel-2-1">Tab A</div>
+        <div class="tab" data-panel="outer-panel-2-2">Tab B</div>
+        <div class="tab" data-panel="outer-panel-2-3">Tab C</div>
+    </div>
+
+    <div id="outer-panel-2-1" class="panel active">
+        <!-- Inner Tab Menu for Tab A -->
+        <div class="tabs" id="inner-tabs-2">
+            <div class="tab active" data-panel="inner-panel-2-1">Inner Tab A</div>
+            <div class="tab" data-panel="inner-panel-2-2">Inner Tab B</div>
+        </div>
+        <!-- Inner Tab Content -->
+        <div id="inner-panel-2-1" class="panel active inner-tab-content">
+            <h3>Inner Tab A Content</h3>
+            <p>This is the content for Inner Tab A. You can add any text here!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image A">
+        </div>
+        <div id="inner-panel-2-2" class="panel inner-tab-content">
+            <h3>Inner Tab B Content</h3>
+            <p>This is the content for Inner Tab B. You can add any text here too!</p>
+            <img src="https://via.placeholder.com/300" alt="Inner Image B">
+        </div>
+    </div>
+
+    <div id="outer-panel-2-2" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading A1</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading B1</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading C1</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="outer-panel-2-3" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading X1</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading Y1</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading Z1</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Outer Tab Setup Function
+function setupOuterTabs(containerId, tabsId) {
+    const container = document.getElementById(containerId);
+    const tabs = container.querySelectorAll(`#${tabsId} .tab`);
+    const panels = container.querySelectorAll(`#${tabsId} ~ .panel`);
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+
+            tab.classList.add('active');
+            container.querySelector(`#${tab.dataset.panel}`).classList.add('active');
+        });
+    });
+}
+
+// Inner Tab Setup Function
+function setupInnerTabs(containerId, tabsId) {
+    const container = document.getElementById(containerId);
+    const tabs = container.querySelectorAll(`#${tabsId} .tab`);
+    const panels = container.querySelectorAll(`#${tabsId} ~ .panel`);
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+
+            tab.classList.add('active');
+            container.querySelector(`#${tab.dataset.panel}`).classList.add('active');
+        });
+    });
+}
+
+// Initialize outer and inner tabs for all containers
+setupOuterTabs('outer-container-1', 'outer-tabs-1');
+setupOuterTabs('outer-container-2', 'outer-tabs-2');
+setupInnerTabs('outer-panel-1-1', 'inner-tabs-1');
+setupInnerTabs('outer-panel-2-1', 'inner-tabs-2');
+</script>
+
+</body>
+</html>

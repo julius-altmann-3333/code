@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Interfaces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border-bottom: 2px solid #ccc;
+        }
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #eaeaea;
+        }
+        .tab.active {
+            background: white;
+            font-weight: bold;
+        }
+        .panel {
+            display: none;
+            padding: 20px;
+        }
+        .panel.active {
+            display: block;
+        }
+        .grid {
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+        }
+        .box {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 30%;
+            background-color: #f9f9f9;
+        }
+        .box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .box h3 {
+            margin: 10px 0 0;
+        }
+        .container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="container1">
+    <div class="tabs">
+        <div class="tab active" data-panel="panel1-1">Tab 1</div>
+        <div class="tab" data-panel="panel1-2">Tab 2</div>
+        <div class="tab" data-panel="panel1-3">Tab 3</div>
+    </div>
+
+    <div id="panel1-1" class="panel active">
+        <div class="grid">
+            <div class="box">
+                <div id="panel1-1" class="panel active">
+                    <div class="grid">
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading 1</h3>
+                        </div>
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading 2</h3>
+                        </div>
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading 3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel1-2" class="panel">
+                    <div class="grid">
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading A</h3>
+                        </div>
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading B</h3>
+                        </div>
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading C</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="panel1-3" class="panel">
+                    <div class="grid">
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading X</h3>
+                        </div>
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading Y</h3>
+                        </div>
+                        <div class="box">
+                            <img src="https://via.placeholder.com/150" alt="Placeholder">
+                            <h3>Heading Z</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                
+            </div>
+            <div class="box">
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="panel1-2" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading A</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading B</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading C</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel1-3" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading X</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading Y</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Heading Z</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="container2">
+    <div class="tabs">
+        <div class="tab active" data-panel="panel2-1">Tab A</div>
+        <div class="tab" data-panel="panel2-2">Tab B</div>
+        <div class="tab" data-panel="panel2-3">Tab C</div>
+    </div>
+
+    <div id="panel2-1" class="panel active">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading 1</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading 2</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading 3</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel2-2" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading A</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading B</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading C</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel2-3" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading X</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading Y</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Placeholder">
+                <h3>Subheading Z</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="container3">
+    <div class="tabs">
+        <div class="tab active" data-panel="panel3-1">Inner Tab 1</div>
+        <div class="tab" data-panel="panel3-2">Inner Tab 2</div>
+    </div>
+
+    <div id="panel3-1" class="panel active">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Inner Image 1">
+                <h3>Inner Image 1</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Inner Image 2">
+                <h3>Inner Image 2</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel3-2" class="panel">
+        <div class="grid">
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Inner Image A">
+                <h3>Inner Image A</h3>
+            </div>
+            <div class="box">
+                <img src="https://via.placeholder.com/150" alt="Inner Image B">
+                <h3>Inner Image B</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setupTabs(containerId) {
+        const container = document.getElementById(containerId);
+        const tabs = container.querySelectorAll('.tab');
+        const panels = container.querySelectorAll('.panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                container.querySelector(`#${tab.dataset.panel}`).classList.add('active');
+            });
+        });
+    }
+
+    // Initialize all tabbed interfaces
+    setupTabs('container1');
+    setupTabs('container2');
+    setupTabs('container3');
+</script>
+
+</body>
+</html>

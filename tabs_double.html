@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nested Tabbed Interface</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    /* Styles for the primary tabs */
+    .tabs-europe {
+      display: flex;
+      cursor: pointer;
+      border-bottom: 2px solid #ccc;
+    }
+    .tab-europe {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      margin-right: 5px;
+      background-color: #f1f1f1;
+      transition: background-color 0.3s;
+    }
+    .tab-europe.active {
+      background-color: #fff;
+      border-top: 2px solid #007BFF;
+      border-left: 2px solid #007BFF;
+      border-right: 2px solid #007BFF;
+      color: #007BFF;
+    }
+    .tab-europe:hover {
+      background-color: #ddd;
+    }
+    .tab-content-europe {
+      border: 2px solid #007BFF;
+      padding: 20px;
+      margin-top: -1px;
+      display: none;
+    }
+    .tab-content-europe.active {
+      display: block;
+    }
+
+    /* Styles for the nested tabs */
+    .nested-tabs-europe .tabs-europe {
+      margin-top: 20px;
+      border-bottom: 1px solid #aaa;
+    }
+    .nested-tabs-europe .tab-europe {
+      background-color: #e9e9e9;
+    }
+    .nested-tabs-europe .tab-europe.active {
+      background-color: #fff;
+      border-top: 2px solid #28a745;
+      border-left: 2px solid #28a745;
+      border-right: 2px solid #28a745;
+      color: #28a745;
+    }
+    .nested-tabs-europe .tab-content-europe {
+      border: 2px solid #28a745;
+    }
+
+    /* Listing Cards */
+    .container_property_cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .card {
+      width: 360px;
+      height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid black;
+    }
+
+    .card-content {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .card-subheading {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Button styles */
+    .explore-more {
+      display: block;
+      margin-top: 20px;
+      margin-left: auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .explore-more:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .explore-more {
+        margin: 20px auto 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Europe</h1>
+  <div class="tabs-europe">
+      <div class="tab-europe active" data-tab="tab1">Germany</div>
+      <div class="tab-europe" data-tab="tab2">Italy</div>
+      <div class="tab-europe" data-tab="tab3">Spain</div>
+      <div class="tab-europe" data-tab="tab4">France</div>
+      <div class="tab-europe" data-tab="tab5">Switzerland</div>
+      <div class="tab-europe" data-tab="tab6">Portugal</div>
+      <div class="tab-europe" data-tab="tab7">Austria</div>
+      <div class="tab-europe" data-tab="tab8">Croatia</div>
+  </div>
+
+  <div class="tab-content-europe active" id="tab1">
+    <h2>Germany Content</h2>
+    <p>This is the content for Germany.</p>
+
+    <div class="nested-tabs-europe">
+      <h3>Germany</h3>
+      <div class="tabs-europe">
+        <div class="tab-europe active" data-tab="nested-tab1">Berlin</div>
+        <div class="tab-europe" data-tab="nested-tab2">München</div>
+        <div class="tab-europe" data-tab="nested-tab3">Hamburg</div>
+        <div class="tab-europe" data-tab="nested-tab4">Dresden</div>
+        <div class="tab-europe" data-tab="nested-tab5">Leipzig</div>
+      </div>
+      
+      <div class="tab-content-europe active" id="nested-tab1">
+        <h1>Berlin Listings</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+
+      <div class="tab-content-europe" id="nested-tab2">
+        <h1>München Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+
+      <div class="tab-content-europe" id="nested-tab3">
+        <h1>Hamburg Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab4">
+        <h1>Dresden Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab5">
+        <h1>Leipzig Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content-europe" id="tab2">
+    <h2>Italy Content</h2>
+    <p>This is the content for Italy.</p>
+
+    <div class="nested-tabs-europe">
+      <h3>Italy</h3>
+      <div class="tabs-europe">
+        <div class="tab-europe active" data-tab="nested-tab1">Rome</div>
+        <div class="tab-europe" data-tab="nested-tab2">Florence</div>
+        <div class="tab-europe" data-tab="nested-tab3">Milan</div>
+        <div class="tab-europe" data-tab="nested-tab4">Modena</div>
+      </div>
+      <div class="tab-content-europe active" id="nested-tab1">
+        <h1>Rome</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab2">
+        <h1>Fort Lauderdale Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab3">
+        <h1>Florida Keys Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab4">
+        <h1>Tampa Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content-europe" id="tab3">
+    <h2>Spain Content</h2>
+    <p>This is the content for Spain.</p>
+
+    <div class="nested-tabs-europe">
+      <h3>Spain</h3>
+      <div class="tabs-europe">
+        <div class="tab-europe active" data-tab="nested-tab1">Barcelona</div>
+        <div class="tab-europe" data-tab="nested-tab2">Madrid</div>
+        <div class="tab-europe" data-tab="nested-tab3">Marbella</div>
+      </div>
+      <div class="tab-content-europe active" id="nested-tab1">
+        <h1>Houston Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab2">
+        <h1>Austin Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+      <div class="tab-content-europe" id="nested-tab3">
+        <h1>Dallas Property</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 1">
+              <div class="card-content">
+                <div class="card-title">Property Name 1</div>
+                <div class="card-subheading">Property Subheading 1</div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 2">
+              <div class="card-content">
+                <div class="card-title">Property Name 2</div>
+                <div class="card-subheading">Property Subheading 2</div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 3">
+              <div class="card-content">
+                <div class="card-title">Property Name 3</div>
+                <div class="card-subheading">Property Subheading 3</div>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 4">
+              <div class="card-content">
+                <div class="card-title">Property Name 4</div>
+                <div class="card-subheading">Property Subheading 4</div>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 5">
+              <div class="card-content">
+                <div class="card-title">Property Name 5</div>
+                <div class="card-subheading">Property Subheading 5</div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 6">
+              <div class="card-content">
+                <div class="card-title">Property Name 6</div>
+                <div class="card-subheading">Property Subheading 6</div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 7">
+              <div class="card-content">
+                <div class="card-title">Property Name 7</div>
+                <div class="card-subheading">Property Subheading 7</div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="card">
+              <img src="https://via.placeholder.com/280x200" alt="Property 8">
+              <div class="card-content">
+                <div class="card-title">Property Name 8</div>
+                <div class="card-subheading">Property Subheading 8</div>
+              </div>
+            </div>
+        </div>
+        <!-- Explore More Button -->
+        <div>
+          <button class="explore-more">Explore More</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+    // Functionality for primary tabs
+    const mainTabs = document.querySelectorAll('.tabs-europe > .tab-europe:not(.nested-tabs-europe .tab-europe)');
+    const mainContents = document.querySelectorAll('.tab-content-europe:not(.nested-tabs-europe .tab-content-europe)');
+
+    mainTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        mainTabs.forEach(t => t.classList.remove('active'));
+        mainContents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Functionality for nested tabs
+    const nestedTabSets = document.querySelectorAll('.nested-tabs-europe');
+    nestedTabSets.forEach(set => {
+      const tabs = set.querySelectorAll('.tabs-europe > .tab-europe');
+      const contents = set.querySelectorAll('.tab-content-europe');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+
+          tab.classList.add('active');
+          set.querySelector(`#${tab.dataset.tab}`).classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

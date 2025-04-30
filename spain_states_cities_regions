@@ -1,0 +1,355 @@
+<ul>
+  <li><strong>Andalusia (Andalucía)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Seville (Sevilla)</li>
+          <li>Málaga</li>
+          <li>Córdoba</li>
+          <li>Granada</li>
+          <li>Cádiz</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Costa del Sol</li>
+          <li>Sierra Nevada</li>
+          <li>Guadalquivir Valley</li>
+          <li>Alpujarras Mountains</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Catalonia (Catalunya)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Barcelona</li>
+          <li>Tarragona</li>
+          <li>Girona</li>
+          <li>Lleida</li>
+          <li>Badalona</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Costa Brava</li>
+          <li>Pyrenees</li>
+          <li>Penedès</li>
+          <li>Ebro River Delta</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Madrid</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Madrid (city-state)</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Madrid Metropolitan Area</li>
+          <li>Sierra de Guadarrama</li>
+          <li>La Mancha</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Valencia (Comunidad Valenciana)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Valencia</li>
+          <li>Alicante</li>
+          <li>Castellón de la Plana</li>
+          <li>Elche</li>
+          <li>Gandía</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Costa Blanca</li>
+          <li>Valencian Community</li>
+          <li>Albufera Lagoon</li>
+          <li>Mediterranean Coast</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Basque Country (País Vasco)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Bilbao</li>
+          <li>Vitoria-Gasteiz</li>
+          <li>San Sebastián (Donostia)</li>
+          <li>Barakaldo</li>
+          <li>Getxo</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Basque Coast</li>
+          <li>Rioja Alavesa</li>
+          <li>Bidasoa River</li>
+          <li>Urdaibai Biosphere Reserve</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Galicia</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Vigo</li>
+          <li>A Coruña</li>
+          <li>Santiago de Compostela</li>
+          <li>Ourense</li>
+          <li>Lugo</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Costa da Morte</li>
+          <li>Rías Baixas</li>
+          <li>Galician Highlands</li>
+          <li>Finisterre</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Castile and León (Castilla y León)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Valladolid</li>
+          <li>Salamanca</li>
+          <li>León</li>
+          <li>Burgos</li>
+          <li>Ávila</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Castilian Plateau</li>
+          <li>Sierra de la Demanda</li>
+          <li>Duero River Valley</li>
+          <li>Picos de Europa</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Castile-La Mancha (Castilla-La Mancha)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Toledo</li>
+          <li>Albacete</li>
+          <li>Ciudad Real</li>
+          <li>Guadalajara</li>
+          <li>Cuenca</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>La Mancha</li>
+          <li>Central Plateau</li>
+          <li>Alcaraz Mountains</li>
+          <li>Montes de Toledo</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Aragon (Aragón)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Zaragoza</li>
+          <li>Huesca</li>
+          <li>Teruel</li>
+          <li>Jaca</li>
+          <li>Ejea de los Caballeros</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Pyrenees</li>
+          <li>Monegros Desert</li>
+          <li>Moncayo Mountains</li>
+          <li>Zaragoza Plain</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Canary Islands (Islas Canarias)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Las Palmas de Gran Canaria</li>
+          <li>Santa Cruz de Tenerife</li>
+          <li>La Laguna</li>
+          <li>San Cristóbal de La Laguna</li>
+          <li>Arrecife</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Tenerife</li>
+          <li>Gran Canaria</li>
+          <li>Lanzarote</li>
+          <li>Fuerteventura</li>
+          <li>La Palma</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Asturias</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Oviedo</li>
+          <li>Gijón</li>
+          <li>Avilés</li>
+          <li>Langreo</li>
+          <li>Siero</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Picos de Europa</li>
+          <li>Cantabrian Coast</li>
+          <li>Somiedo Natural Park</li>
+          <li>Nalón River Valley</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Cantabria</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Santander</li>
+          <li>Torrelavega</li>
+          <li>Castro Urdiales</li>
+          <li>Laredo</li>
+          <li>Camargo</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Picos de Europa</li>
+          <li>Cantabrian Coast</li>
+          <li>Cabárceno Nature Park</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Murcia</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Murcia</li>
+          <li>Cartagena</li>
+          <li>Lorca</li>
+          <li>Molina de Segura</li>
+          <li>Alcantarilla</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Mar Menor</li>
+          <li>Guadalentín Valley</li>
+          <li>Mediterranean Coast</li>
+          <li>Sierra Espuña</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Balearic Islands (Islas Baleares)</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Palma de Mallorca</li>
+          <li>Ibiza</li>
+          <li>Mahón</li>
+          <li>Manacor</li>
+          <li>Inca</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Mallorca</li>
+          <li>Ibiza</li>
+          <li>Menorca</li>
+          <li>Formentera</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Extremadura</strong>
+    <ul>
+      <li><strong>Largest Cities:</strong>
+        <ul>
+          <li>Badajoz</li>
+          <li>Cáceres</li>
+          <li>Mérida</li>
+          <li>Plasencia</li>
+          <li>Don Benito</li>
+        </ul>
+      </li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Monfragüe National Park</li>
+          <li>Sierra de Gata</li>
+          <li>Los Barruecos</li>
+          <li>Tajo River</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>La Rioja</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Logroño</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Rioja Wine Region</li>
+          <li>Ebro River</li>
+          <li>Sierra de la Demanda</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Navarre (Navarra)</strong>
+    <ul>
+      <li><strong>Largest City:</strong> Pamplona (Iruña)</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Pyrenees</li>
+          <li>Bardenas Reales</li>
+          <li>Ribera</li>
+          <li>Navarra Plain</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Ceuta</strong> (Autonomous city)
+    <ul>
+      <li><strong>Largest City:</strong> Ceuta (city-state)</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Mediterranean Coast</li>
+          <li>Mount Hacho</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Melilla</strong> (Autonomous city)
+    <ul>
+      <li><strong>Largest City:</strong> Melilla (city-state)</li>
+      <li><strong>Major Areas:</strong>
+        <ul>
+          <li>Mediterranean Coast</li>
+          <li>Sierra de los Lobos</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>

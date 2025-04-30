@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+    main {
+      padding: 20px;
+      text-align: center;
+      display: none;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+    }
+    button {
+      padding: 10px;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #finished-container {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      background: #ddd;
+      border-radius: 5px;
+    }
+    .subtask-ul {
+      margin-left: 30px;
+      font-size: 0.9em;
+    }
+    .note-btn {
+      margin-left: 10px;
+    }
+    .modal-bg {
+      position: fixed;
+      top: 15%;
+      left: 15%;
+      width: 70vw;
+      height: 70vh;
+      background-color: white;
+      border: 1px solid #333;
+      display: none;
+      padding: 10px;
+      z-index: 10;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 5;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="#home" onclick="showPage('home')">Home</a></li>
+      <li><a href="#tasks" onclick="showPage('tasks')">Tasks</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="home">
+  <h1>Welcome to the To-Do List App</h1>
+  <a href="#tasks" onclick="showPage('tasks')">Go to Tasks</a>
+</main>
+
+<main id="tasks">
+  <h1>Your Tasks</h1>
+
+  <!-- Checklist Selector -->
+  <select id="checklist-type">
+    <option value="real-estate">Real Estate Project</option>
+    <option value="materials">Materials & Tools</option>
+    <option value="people">Workforce / People’s Skills</option>
+  </select>
+
+  <ul id="task-list"></ul>
+  <input type="text" id="task-input" placeholder="Add new task" />
+  <button onclick="addTask()">Add Task</button>
+  <button onclick="toggleFinishedTasks()">Show/Hide Finished Tasks</button>
+
+  <!-- Finished Tasks -->
+  <div id="finished-container">
+    <h2>Finished Tasks</h2>
+    <ul id="finished-tasks"></ul>
+  </div>
+
+  <!-- 📐 Material Calculator -->
+  <h2>Material Quantity Calculator</h2>
+  <select id="material-type">
+    <option value="bricks">Bricks</option>
+    <option value="cement">Cement</option>
+    <option value="wood">Wood</option>
+  </select>
+  <input type="number" id="material-qty" placeholder="Enter quantity" />
+  <button onclick="calculateMaterial()">Calculate</button>
+  <p id="material-result"></p>
+
+  <!-- 👷 Workforce Calculator -->
+  <h2>Workforce Calculator</h2>
+  <select id="workforce-role">
+    <option value="engineers">Engineers</option>
+    <option value="electricians">Electricians</option>
+    <option value="carpenters">Carpenters</option>
+  </select>
+  <input type="number" id="workforce-qty" placeholder="Number of People" />
+  <button onclick="storeWorkforce()">Add Workforce</button>
+  <p id="workforce-result"></p>
+
+  <!-- 📊 Total Calculation Summary -->
+  <h2>Project Summary</h2>
+  <button onclick="showSummary()">Show Summary</button>
+  <pre id="summary-box"></pre>
+</main>
+
+<!-- Note Modal -->
+<div class="overlay" id="overlay" onclick="closeNoteModal()"></div>
+<div class="modal-bg" id="note-modal">
+  <textarea id="note-input" style="width:100%; height:80%;"></textarea>
+  <br>
+  <button onclick="saveNote()">Save Note</button>
+</div>
+
+<footer>
+  <p>&copy; 2025 To-Do List App</p>
+</footer>
+
+<script>
+  let currentNoteTaskIndex = null;
+
+  function showPage(page) {
+    document.querySelectorAll('main').forEach(p => p.style.display = 'none');
+    document.getElementById(page).style.display = 'block';
+  }
+
+  function getTasksFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+  }
+
+  function saveTasksToLocalStorage(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  function addTask() {
+    const input = document.getElementById('task-input');
+    const type = document.getElementById('checklist-type').value;
+    const task = input.value.trim();
+    if (task !== "") {
+      const tasks = getTasksFromLocalStorage();
+      tasks.push({ text: task, checklist: type, notes: [], subtasks: [] });
+      saveTasksToLocalStorage(tasks);
+      input.value = "";
+      renderTaskList();
+    }
+  }
+
+  function renderTaskList() {
+    const list = document.getElementById('task-list');
+    const tasks = getTasksFromLocalStorage();
+    list.innerHTML = "";
+    tasks.forEach((t, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<input type="checkbox" onclick="completeTask(${i})"> ${t.text}`;
+
+      // Notes
+      const noteBtn = document.createElement('button');
+      noteBtn.textContent = "📝";
+      noteBtn.classList.add('note-btn');
+      noteBtn.onclick = () => openNoteModal(i);
+      li.appendChild(noteBtn);
+
+      // Subtasks & Notes Display
+      const subUl = document.createElement('ul');
+      subUl.classList.add('subtask-ul');
+      t.notes.forEach(n => {
+        const noteLi = document.createElement('li');
+        noteLi.textContent = `🗒️ ${n}`;
+        subUl.appendChild(noteLi);
+      });
+
+      li.appendChild(subUl);
+      list.appendChild(li);
+    });
+  }
+
+  function completeTask(index) {
+    const tasks = getTasksFromLocalStorage();
+    const finished = JSON.parse(localStorage.getItem('finishedTasks')) || [];
+    finished.push(tasks.splice(index, 1)[0]);
+    localStorage.setItem('finishedTasks', JSON.stringify(finished));
+    saveTasksToLocalStorage(tasks);
+    renderTaskList();
+    renderFinishedTasks();
+  }
+
+  function renderFinishedTasks() {
+    const list = document.getElementById('finished-tasks');
+    const finished = JSON.parse(localStorage.getItem('finishedTasks')) || [];
+    list.innerHTML = "";
+    finished.forEach(t => {
+      const li = document.createElement('li');
+      li.textContent = t.text;
+      list.appendChild(li);
+    });
+  }
+
+  function toggleFinishedTasks() {
+    const c = document.getElementById('finished-container');
+    c.style.display = c.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function openNoteModal(index) {
+    currentNoteTaskIndex = index;
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('note-modal').style.display = 'block';
+    document.getElementById('note-input').value = "";
+  }
+
+  function closeNoteModal() {
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('note-modal').style.display = 'none';
+  }
+
+  function saveNote() {
+    const note = document.getElementById('note-input').value.trim();
+    if (note && currentNoteTaskIndex !== null) {
+      const tasks = getTasksFromLocalStorage();
+      tasks[currentNoteTaskIndex].notes.push(note);
+      saveTasksToLocalStorage(tasks);
+      closeNoteModal();
+      renderTaskList();
+    }
+  }
+
+  function calculateMaterial() {
+    const qty = Number(document.getElementById('material-qty').value);
+    const mat = document.getElementById('material-type').value;
+    document.getElementById('material-result').textContent = `Total ${mat}: ${qty * 1}`;
+  }
+
+  function storeWorkforce() {
+    const qty = Number(document.getElementById('workforce-qty').value);
+    const role = document.getElementById('workforce-role').value;
+    let stored = JSON.parse(localStorage.getItem('workforceData')) || {};
+    stored[role] = (stored[role] || 0) + qty;
+    localStorage.setItem('workforceData', JSON.stringify(stored));
+    document.getElementById('workforce-result').textContent = `Stored ${role}: ${stored[role]}`;
+  }
+
+  function showSummary() {
+    const material = document.getElementById('material-result').textContent;
+    const workforce = JSON.stringify(JSON.parse(localStorage.getItem('workforceData')) || {}, null, 2);
+    const tasks = JSON.stringify(getTasksFromLocalStorage(), null, 2);
+    document.getElementById('summary-box').textContent = `Materials:\n${material}\n\nWorkforce:\n${workforce}\n\nTasks:\n${tasks}`;
+  }
+
+  document.getElementById('task-input').addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') addTask();
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    showPage(window.location.hash.slice(1) || 'home');
+    renderTaskList();
+    renderFinishedTasks();
+  });
+</script>
+
+</body>
+</html>

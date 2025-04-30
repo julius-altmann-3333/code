@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Full-Width Section</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth; /* Smooth scrolling for section transitions */
+        }
+
+        /* Full-Width Image Section */
+        .full-width-section {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background-image: url('https://images.unsplash.com/photo-1501594907354-9e7b6f706126?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjcwMHwwfDF8c2VhY2h8Mnx8Zm9vZGVyJTIwbG9uZGJvYXJkfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080'); /* Default Image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Responsive Background Images */
+        @media (max-width: 1800px) {
+            .full-width-section {
+                background-image: url('C:/Users/a/Downloads/Attachments-(No Subject)/LA_full_width.png');
+            }
+        }
+
+        @media (max-width: 768px) {
+            .full-width-section {
+                background-image: url('https://images.unsplash.com/photo-1517361456019-dc0be87f77b2?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg3NzN8MHx8Zm9vZGVyJTIwbG9uZGJvYXJkfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080');
+            }
+        }
+
+        @media (max-width: 350px) {
+            .full-width-section {
+                background-image: url('https://images.unsplash.com/photo-1517361456019-dc0be87f77b2?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg3NzN8MHx8Zm9vZGVyJTIwbG9uZGJvYXJkfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080');
+            }
+        }
+
+        /* Button Styling */
+        .full-width-section .center-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .full-width-section .center-button:hover {
+            background-color: #0056b3;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* Target Section */
+        .target-section {
+            padding: 100px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+            margin-top: 500px; /* 500px further below */
+        }
+
+        /* Just some additional styling for the content */
+        .target-section h1 {
+            margin-bottom: 20px;
+        }
+
+        .target-section p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Full-Width Section -->
+<section class="full-width-section">
+    <button class="center-button" onclick="scrollToTarget()">Contact Us</button>
+</section>
+
+<!-- Target Section (500px below the first section) -->
+<section class="target-section" id="contact-section">
+    <h1>Contact Us</h1>
+    <p>Welcome to the contact section of our website! Feel free to reach out to us anytime.</p>
+</section>
+
+<script>
+    // Scroll to the target section when button is clicked
+    function scrollToTarget() {
+        const targetSection = document.getElementById('contact-section');
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

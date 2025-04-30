@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Code Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        input, button, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        #codeDisplay, #htmlOutput {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #htmlOutput {
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GitHub Code Search</h1>
+
+    <input type="text" id="urlInput" placeholder="Enter GitHub Raw URL (e.g., https://raw.githubusercontent.com/user/repo/main/file.html)">
+    <button onclick="fetchGitHubCode()">Fetch Code</button>
+
+    <textarea id="codeArea" placeholder="Code from GitHub will appear here..." readonly></textarea>
+
+    <input type="text" id="searchBox" placeholder="Enter element, class, id, or text to search">
+    <button onclick="searchCode()">Search</button>
+
+    <h3>Search Results (Code Format)</h3>
+    <textarea id="codeDisplay" readonly></textarea>
+
+    <h3>Rendered HTML Output</h3>
+    <div id="htmlOutput"></div>
+
+    <script>
+        async function fetchGitHubCode() {
+            const url = document.getElementById("urlInput").value;
+            if (!url.startsWith("https://raw.githubusercontent.com")) {
+                alert("Please enter a valid GitHub Raw URL.");
+                return;
+            }
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Failed to fetch file.");
+                
+                const code = await response.text();
+                document.getElementById("codeArea").value = code;
+            } catch (error) {
+                alert("Error fetching file: " + error.message);
+            }
+        }
+
+        function searchCode() {
+            const searchQuery = document.getElementById("searchBox").value.trim();
+            const code = document.getElementById("codeArea").value;
+            if (!searchQuery || !code) {
+                alert("Please fetch code and enter a search term.");
+                return;
+            }
+
+            const regex = new RegExp(searchQuery, 'gi');
+            const matches = [...code.matchAll(regex)];
+            const resultHTML = matches.map(match => match[0]).join("\n");
+
+            // Display results in Code Format
+            document.getElementById("codeDisplay").value = resultHTML;
+
+            // Display results in Rendered Format
+            document.getElementById("htmlOutput").innerHTML = resultHTML || "<p>No results found.</p>";
+        }
+    </script>
+
+</body>
+</html>

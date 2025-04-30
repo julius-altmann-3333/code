@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            color: white;
+        }
+
+        /* First Row: Brand and Menu Toggle */
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Second Row: Dropdown Menus */
+        .nav-bottom {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        .dropdown-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 10px;
+        }
+
+        .dropdown {
+            position: relative;
+            background-color: #555;
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dropdown:hover {
+            background-color: #666;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            color: black;
+            min-width: 150px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show dropdown on hover (Desktop) */
+        @media (min-width: 768px) {
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .dropdown-container {
+                grid-template-columns: 1fr;
+                display: none; /* Hidden by default, toggled via JS */
+            }
+
+            .dropdown {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- First Row -->
+        <div class="nav-top">
+            <div class="brand">Brand</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+
+        <!-- Second Row -->
+        <div class="nav-bottom">
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    Menu 1
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 2
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 3
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 4
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 5
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 6
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 7
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    Menu 8
+                    <div class="dropdown-menu">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Toggle menu for mobile view
+        function toggleMenu() {
+            const menu = document.querySelector(".dropdown-container");
+            if (menu.style.display === "grid") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "grid";
+            }
+        }
+
+        // Add click event to dropdowns on mobile
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function (e) {
+                // Prevent the event from bubbling to parent elements
+                e.stopPropagation();
+
+                // Toggle the visibility of the dropdown menu
+                const dropdownMenu = this.querySelector('.dropdown-menu');
+                const isVisible = dropdownMenu.style.display === 'block';
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+                
+                // Toggle this dropdown
+                dropdownMenu.style.display = isVisible ? 'none' : 'block';
+            });
+        });
+
+        // Close all dropdowns if user clicks outside
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.style.display = 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiselect Image Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .image-box {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+        }
+        .heading-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .image-heading {
+        font-size: 16px;
+        margin-top: 5px;
+        text-align: center;
+        width: 280px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+    </style>
+</head>
+<body>
+    <select id="imageSelect" multiple>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+        <option value="option4">Option 4</option>
+        <option value="option5">Option 5</option>
+        <option value="option6">Option 6</option>
+        <option value="option7">Option 7</option>
+        <option value="option8">Option 8</option>
+        <option value="option9">Option 9</option>
+    </select>
+
+    <div class="image-container" id="imageContainer"></div>
+
+    <div class="heading-container" id="headingContainer"></div>
+
+
+    <script>
+        const images = {
+            option1: "https://via.placeholder.com/300/FF0000/FFFFFF?text=Image+1",
+            option2: "https://via.placeholder.com/300/00FF00/FFFFFF?text=Image+2",
+            option3: "https://via.placeholder.com/300/0000FF/FFFFFF?text=Image+3",
+            option4: "https://via.placeholder.com/300/FFFF00/FFFFFF?text=Image+4",
+            option5: "https://via.placeholder.com/300/FF00FF/FFFFFF?text=Image+5",
+            option6: "https://via.placeholder.com/300/00FFFF/FFFFFF?text=Image+6",
+            option7: "https://via.placeholder.com/300/000000/FFFFFF?text=Image+7",
+            option8: "https://via.placeholder.com/300/888888/FFFFFF?text=Image+8",
+            option9: "https://via.placeholder.com/300/FFFFFF/000000?text=Image+9",
+        };
+
+        const customHeadings = {
+            option1: "Custom Heading 1",
+            option2: "Custom Heading 2",
+            option3: "Custom Heading 3",
+            option4: "Custom Heading 4",
+            option5: "Custom Heading 5",
+            option6: "Custom Heading 6",
+            option7: "Custom Heading 7",
+            option8: "Custom Heading 8",
+            option9: "Custom Heading 9"
+        };
+
+        document.getElementById("imageSelect").addEventListener("change", function() {
+            const container = document.getElementById("imageContainer");
+            const headingContainer = document.getElementById("headingContainer");
+            container.innerHTML = ""; // Clear previous images
+            headingContainer.innerHTML = ""; // Clear previous headings
+
+            Array.from(this.selectedOptions).forEach(option => {
+                const imgBox = document.createElement("div");
+                imgBox.classList.add("image-box");
+
+                const img = document.createElement("img");
+                img.src = images[option.value];
+                img.width = 300;
+                img.height = 300;
+
+                imgBox.appendChild(img);
+                container.appendChild(imgBox);
+
+                // Create and append manually adjustable heading
+                const heading = document.createElement("input");
+                heading.type = "text";
+                heading.value = customHeadings[option.value] || option.text;
+                heading.classList.add("image-heading");
+                heading.dataset.option = option.value; // Store option value for reference
+                heading.addEventListener("input", function() {
+                    customHeadings[this.dataset.option] = this.value; // Update heading dynamically
+                });
+
+                headingContainer.appendChild(heading);
+            });
+        });
+
+
+    </script>
+</body>
+</html>

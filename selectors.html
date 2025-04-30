@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europe Selectors</title>
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/yourusername/your-repo/main/styles.css">
+    <script type="text/javascript"></script>
+<style>
+
+/* General Container */
+#container_nested_tabs {
+    padding: 5px;
+}
+
+/* Nested Tabs */
+.nested-tabs .tabs {
+    margin-top: 20px;
+    height: auto;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nested-tabs .tab {
+    background-color: #e9e9e9;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.nested-tabs .tab.active {
+    background-color: #fff;
+    height: auto;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    color: black;
+}
+
+.nested-tabs .tab-content {
+    border: 2px solid black;
+    padding: 20px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Property Cards */
+.container_property_cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.card {
+    width: 360px;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid black;
+}
+
+.card-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0; /* Remove or reduce the margin to eliminate space above the title */
+    padding-top: 5px; /* Optional: add some padding if you need small space at the top */
+}
+
+.card-subheading {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Button Styles */
+.explore-more {
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.explore-more:hover {
+    background-color: #0056b3;
+}
+
+/* Sliders */
+.sliders-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Slider Container */
+.image-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    border: 3px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    margin-bottom: 20px; /* Add some spacing */
+}
+
+/* Main Slider */
+.slider-main {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 300%; /* Makes sure three images fit */
+}
+
+.main-image {
+    width: 33.33%; /* Adjust for three images in the slider */
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Arrow Navigation */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}
+
+/* Thumbnail Adjustments */
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.thumbnail {
+    max-width: 100px;
+    max-height: 70px; /* Added height for thumbnails */
+    object-fit: contain; /* Maintain aspect ratio */
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail:hover {
+    opacity: 1;
+}
+
+/* Responsive Design */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .tabs {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .tab {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 12px;
+        height: auto;
+    }
+
+    .container_property_cards {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .card {
+        max-width: 320px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tab {
+        margin-right: 0;
+        margin-bottom: 5px;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .container_property_cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .explore-more {
+        margin: 20px auto 0 auto;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .card-title {
+        font-size: 14px;
+    }
+
+    .card-subheading {
+        font-size: 12px;
+    }
+
+    .explore-more {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    /* Adjust Main Slider on Small Screens */
+    .main-image {
+        width: 100%;
+        height: 250px; /* Smaller images */
+    }
+
+    .thumbnail {
+        max-width: 80px;
+        max-height: 55px; /* Smaller thumbnails */
+    }
+}
+</style>
+</head>      
+<body>
+    <div id="container_nested_tabs">  
+      <h2>California Content</h2>
+            <p>This is the content for California.</p>
+            <div class="nested-tabs">
+              <h3>California</h3>
+              <div class="tabs">
+                <div class="tab active" data-tab="nested-tab1">Los Angeles</div>
+                <div class="tab" data-tab="nested-tab2">San Franciso</div>
+                <div class="tab" data-tab="nested-tab3">San Diego</div>
+              </div>
+
+      <div class="tab-content active" id="nested-tab1">
+        <h1>Los Angeles Listings</h1>
+        <div class="container_property_cards">
+            <!-- Card 1 -->
+              <div class="card">
+                  <div class="image-slider-container" id="slider1-container">
+                      <div class="slider-main" id="slider1">
+                          <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 1" class="main-image">
+                          <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                          <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 3" class="main-image">
+                      </div>
+                      <button class="slider-arrow left" onclick="moveSlide(-1, 'slider1')">&#10094;</button>
+                      <button class="slider-arrow right" onclick="moveSlide(1, 'slider1')">&#10095;</button>
+                      <div class="thumbnail-container">
+                          <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider1')">
+                          <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider1')">
+                          <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider1')">
+                      </div>
+                  </div>
+                  <div class="card-content">
+                      <div class="card-title">Property Name 1</div>
+                      <div class="card-subheading">Property Subheading 1</div>
+                  </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider2-container">
+                  <div class="slider-main" id="slider2">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider2')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider2')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider2')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider2')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider2')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider3-container">
+                  <div class="slider-main" id="slider3">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider3')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider3')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider3')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider3')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider3')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider4-container">
+                  <div class="slider-main" id="slider4">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider4')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider4')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider4')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider4')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider4')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider5-container">
+                  <div class="slider-main" id="slider5">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider5')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider5')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider5')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider5')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider5')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 6 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider6-container">
+                  <div class="slider-main" id="slider6">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider6')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider6')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider6')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider6')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider6')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+      </div>
+
+      <div class="tab-content" id="nested-tab2">
+          <h1>San Francisco Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 7 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider7-container">
+                  <div class="slider-main" id="slider7">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider7')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider7')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider7')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider7')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider7')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider8-container">
+                  <div class="slider-main" id="slider8">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider8')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider8')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider8')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider8')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider8')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 9 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider9-container">
+                  <div class="slider-main" id="slider9">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider9')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider9')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider9')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider9')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider9')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 10 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider10-container">
+                  <div class="slider-main" id="slider10">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider10')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider10')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider10')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider10')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider10')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 11 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider11-container">
+                  <div class="slider-main" id="slider11">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider11')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider11')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider11')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider11')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider11')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 12 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider12-container">
+                  <div class="slider-main" id="slider12">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider12')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider12')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider12')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider12')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider12')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+      </div>
+
+      <div class="tab-content" id="nested-tab3">
+          <h1>San Diego Property</h1>
+          <div class="container_property_cards">
+              <!-- Card 13 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider13-container">
+                  <div class="slider-main" id="slider13">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider13')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider13')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider13')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider13')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider13')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 1</div>
+                  <div class="card-subheading">Property Subheading 1</div>
+                </div>
+              </div>
+              <!-- Card 14 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider14-container">
+                  <div class="slider-main" id="slider14">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider14')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider14')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider14')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider14')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider14')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 2</div>
+                  <div class="card-subheading">Property Subheading 2</div>
+                </div>
+              </div>
+              <!-- Card 15 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider15-container">
+                  <div class="slider-main" id="slider15">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider15')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider15')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider15')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider15')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider15')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 3</div>
+                  <div class="card-subheading">Property Subheading 3</div>
+                </div>
+              </div>
+              <!-- Card 16 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider16-container">
+                  <div class="slider-main" id="slider16">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider16')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider16')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider16')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider16')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider16')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 4</div>
+                  <div class="card-subheading">Property Subheading 4</div>
+                </div>
+              </div>
+              <!-- Card 17 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider17-container">
+                  <div class="slider-main" id="slider17">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider17')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider17')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider17')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider17')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider17')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 5</div>
+                  <div class="card-subheading">Property Subheading 5</div>
+                </div>
+              </div>
+              <!-- Card 18 -->
+              <div class="card">
+                <div class="image-slider-container" id="slider18-container">
+                  <div class="slider-main" id="slider18">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" alt="Image 3" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" alt="Image 2" class="main-image">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" alt="Image 1" class="main-image">
+                  </div>
+                  <button class="slider-arrow left" onclick="moveSlide(-1, 'slider18')">&#10094;</button>
+                  <button class="slider-arrow right" onclick="moveSlide(1, 'slider18')">&#10095;</button>
+                  <div class="thumbnail-container">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/1.png" class="thumbnail" onclick="changeSlide(0, 'slider18')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/2.png" class="thumbnail" onclick="changeSlide(1, 'slider18')">
+                      <img src="https://julius-altmann-3333.github.io/images_webflow/3.png" class="thumbnail" onclick="changeSlide(2, 'slider18')">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title">Property Name 6</div>
+                  <div class="card-subheading">Property Subheading 6</div>
+                </div>
+              </div>
+          </div>
+          <!-- Explore More Button -->
+          <div>
+            <button class="explore-more">Explore More</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  
+// Functionality for nested tabs (United States set)
+    const nestedTabSets = document.querySelectorAll('.nested-tabs');
+    nestedTabSets.forEach(set => {
+      const tabs = set.querySelectorAll('.tabs > .tab');
+      const contents = set.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+
+          tab.classList.add('active');
+          set.querySelector(`#${tab.dataset.tab}`).classList.add('active');
+        });
+      });
+    });
+// Image Siders
+let currentIndexes = {
+        slider1: 0,
+        slider2: 0,
+        slider3: 0,
+        slider4: 0,
+        slider5: 0,
+        slider6: 0,
+        slider7: 0,
+        slider8: 0,
+        slider9: 0,
+        slider10: 0,
+        slider11: 0,
+        slider12: 0,
+        slider13: 0,
+        slider14: 0,
+        slider15: 0,
+        slider16: 0,
+        slider17: 0,
+        slider18: 0
+    };
+
+    function moveSlide(direction, sliderId) {
+        const images = document.querySelectorAll(`#${sliderId} .main-image`);
+        const totalImages = images.length;
+
+        currentIndexes[sliderId] += direction;
+        if (currentIndexes[sliderId] < 0) {
+            currentIndexes[sliderId] = totalImages - 1;
+        } else if (currentIndexes[sliderId] >= totalImages) {
+            currentIndexes[sliderId] = 0;
+        }
+
+        updateSlider(sliderId);
+    }
+
+    function changeSlide(index, sliderId) {
+        currentIndexes[sliderId] = index;
+        updateSlider(sliderId);
+    }
+
+    function updateSlider(sliderId) {
+        const slider = document.getElementById(sliderId);
+        const images = slider.querySelectorAll('.main-image');
+        slider.style.transform = `translateX(-${currentIndexes[sliderId] * images[0].offsetWidth}px)`;
+
+        // Highlight active thumbnail
+        const thumbnails = document.querySelectorAll(`#${sliderId}-container .thumbnail`);
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.style.opacity = index === currentIndexes[sliderId] ? '1' : '0.7';
+        });
+    }
+</script>
+</body>
+</html>

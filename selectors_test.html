@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Select Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            margin-bottom: 20px;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <label>Select 1:</label>
+            <select id="select1">
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+                <option value="A3">A3</option>
+            </select>
+            
+            <label>Select 2:</label>
+            <select id="select2">
+                <option value="B1">B1</option>
+                <option value="B2">B2</option>
+                <option value="B3">B3</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div>
+            <label>Select 3:</label>
+            <select id="select3">
+                <option value="C1">C1</option>
+                <option value="C2">C2</option>
+                <option value="C3">C3</option>
+            </select>
+            
+            <label>Select 4:</label>
+            <select id="select4">
+                <option value="D1">D1</option>
+                <option value="D2">D2</option>
+                <option value="D3">D3</option>
+            </select>
+            
+            <label>Select 5:</label>
+            <select id="select5">
+                <option value="E1">E1</option>
+                <option value="E2">E2</option>
+                <option value="E3">E3</option>
+            </select>
+        </div>
+    </div>
+    
+    <button onclick="searchResults()">Search</button>
+    
+    <div class="results" id="results">
+        <strong>Results:</strong>
+    </div>
+    
+    <script>
+        function searchResults() {
+            let selectedValues = [];
+            for (let i = 1; i <= 5; i++) {
+                selectedValues.push(document.getElementById('select' + i).value);
+            }
+            
+            document.getElementById('results').innerHTML = "<strong>Results:</strong> " + selectedValues.join(', ');
+        }
+    </script>
+</body>
+</html>

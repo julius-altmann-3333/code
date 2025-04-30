@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown-like Expandable Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Styling for the headings */
+        .headings {
+            background-color: black;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .headings:hover {
+            background-color: #333;
+        }
+
+        /* Container for the tabbed interface */
+        .tabbed-interface {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            display: none; /* Initially hidden */
+            margin: 0 20px 20px 20px;
+            transition: max-height 0.3s ease-in-out;
+            overflow: hidden;
+            max-height: 0; /* Start with zero height */
+        }
+
+        /* Tabbed interface content */
+        .tab-content {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .tab-content > div {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+        }
+
+        .tab-content > div:hover {
+            background-color: #ddd;
+        }
+
+        /* Optional: Styling for smooth visibility transition */
+        .tabbed-interface.show {
+            display: block;
+            max-height: 500px; /* Adjust this value as per content */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Heading 1 with tabbed interface -->
+    <div class="headings" onclick="toggleTab('unitedStates')">United States</div>
+    <div id="unitedStates" class="tabbed-interface">
+        <div class="tab-content">
+            <div>Tab 1 - US</div>
+            <div>Tab 2 - US</div>
+            <div>Tab 3 - US</div>
+        </div>
+    </div>
+
+    <!-- Heading 2 with tabbed interface -->
+    <div class="headings" onclick="toggleTab('canada')">Canada</div>
+    <div id="canada" class="tabbed-interface">
+        <div class="tab-content">
+            <div>Tab 1 - Canada</div>
+            <div>Tab 2 - Canada</div>
+            <div>Tab 3 - Canada</div>
+        </div>
+    </div>
+
+    <!-- Heading 3 with tabbed interface -->
+    <div class="headings" onclick="toggleTab('mexico')">Mexico</div>
+    <div id="mexico" class="tabbed-interface">
+        <div class="tab-content">
+            <div>Tab 1 - Mexico</div>
+            <div>Tab 2 - Mexico</div>
+            <div>Tab 3 - Mexico</div>
+        </div>
+    </div>
+
+    <!-- Heading 4 with tabbed interface -->
+    <div class="headings" onclick="toggleTab('brazil')">Brazil</div>
+    <div id="brazil" class="tabbed-interface">
+        <div class="tab-content">
+            <div>Tab 1 - Brazil</div>
+            <div>Tab 2 - Brazil</div>
+            <div>Tab 3 - Brazil</div>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle the tabbed interface for each heading
+        function toggleTab(id) {
+            const targetTab = document.getElementById(id);
+            
+            // Check if the target tab is currently expanded
+            if (targetTab.classList.contains('show')) {
+                // If it's expanded, collapse it
+                targetTab.classList.remove('show');
+                targetTab.style.maxHeight = '0'; // Collapse height
+            } else {
+                // If it's collapsed, expand it
+                targetTab.classList.add('show');
+                targetTab.style.maxHeight = '500px'; // Adjust for content size
+            }
+        }
+    </script>
+
+</body>
+</html>

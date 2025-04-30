@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Image Text Extractor</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            border: 2px dashed #ddd;
+            padding: 40px;
+            width: 60%;
+            background-color: white;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        }
+        .drop-zone {
+            border: 2px dashed #0088cc;
+            padding: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #0088cc;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border: 1px solid #ddd;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="drop-zone" id="drop-zone">
+        Drag and drop an image here to extract text
+    </div>
+
+    <div id="results">
+        <!-- Extracted text will be displayed here -->
+    </div>
+</div>
+
+<script>
+    // Get the drop zone element and the results div
+    const dropZone = document.getElementById('drop-zone');
+    const resultsDiv = document.getElementById('results');
+
+    // Handle the drop event
+    dropZone.addEventListener('dragover', function(event) {
+        event.preventDefault();  // Allow the drop
+        dropZone.style.backgroundColor = '#e0f7fa';
+    });
+
+    dropZone.addEventListener('dragleave', function(event) {
+        dropZone.style.backgroundColor = 'transparent';
+    });
+
+    dropZone.addEventListener('drop', function(event) {
+        event.preventDefault();
+        dropZone.style.backgroundColor = 'transparent';
+
+        const files = event.dataTransfer.files;
+
+        // Check if a file was dropped
+        if (files.length > 0) {
+            const file = files[0];
+            extractTextFromImage(file);
+        }
+    });
+
+    // Extract text from the image using Tesseract.js
+    function extractTextFromImage(image) {
+        resultsDiv.innerHTML = 'Processing...';
+
+        Tesseract.recognize(
+            image,
+            'eng', // Language - you can change it to other languages if needed
+            {
+                logger: function (m) {
+                    console.log(m);
+                }
+            }
+        ).then(({ data: { text } }) => {
+            resultsDiv.innerHTML = 'Extracted Text:\n\n' + text;
+        }).catch(err => {
+            resultsDiv.innerHTML = 'Error extracting text from the image.';
+            console.error(err);
+        });
+    }
+</script>
+
+</body>
+</html>

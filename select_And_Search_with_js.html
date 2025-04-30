@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Divs by Multiple Classes</title>
+    <style>
+        .hidden { display: none; }
+        .container { margin-top: 20px; }
+        .output { border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+        .red { background-color: red; color: white; padding: 10px; }
+        .blue { background-color: blue; color: white; padding: 10px; }
+        .green { background-color: green; color: white; padding: 10px; }
+        .bold { font-weight: bold; }
+        .italic { font-style: italic; }
+        .underline { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <label for="colorSelect">Choose a color class:</label>
+    <select id="colorSelect" multiple>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+    </select>
+    
+    <label for="styleSelect">Choose a style class:</label>
+    <select id="styleSelect" multiple>
+        <option value="bold">Bold</option>
+        <option value="italic">Italic</option>
+        <option value="underline">Underline</option>
+    </select>
+    
+    <button onclick="filterDivs()">Search</button>
+    
+    <div class="container" id="output"></div>
+
+    <script>
+        // Create multiple div elements dynamically
+        const divs = [
+            createDiv(["red", "bold"], "This is a red bold div"),
+            createDiv(["blue", "italic"], "This is a blue italic div"),
+            createDiv(["green", "underline"], "This is a green underline div"),
+            createDiv(["red", "italic"], "Another red italic div"),
+            createDiv(["blue", "bold"], "Another blue bold div"),
+            createDiv(["green", "bold", "italic"], "A green bold italic div")
+        ];
+
+        function createDiv(classes, content) {
+            const div = document.createElement("div");
+            div.classList.add(...classes);
+            div.textContent = content;
+            div.classList.add("output", "hidden"); // Hide initially
+            document.body.appendChild(div);
+            return div;
+        }
+
+        function filterDivs() {
+            const selectedColors = Array.from(document.getElementById("colorSelect").selectedOptions).map(opt => opt.value);
+            const selectedStyles = Array.from(document.getElementById("styleSelect").selectedOptions).map(opt => opt.value);
+            const outputContainer = document.getElementById("output");
+            outputContainer.innerHTML = ""; // Clear previous results
+            
+            divs.forEach(div => {
+                const hasColor = selectedColors.some(cls => div.classList.contains(cls));
+                const hasStyle = selectedStyles.some(cls => div.classList.contains(cls));
+                
+                if (hasColor && hasStyle) {
+                    const clone = div.cloneNode(true);
+                    clone.classList.remove("hidden");
+                    outputContainer.appendChild(clone);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
