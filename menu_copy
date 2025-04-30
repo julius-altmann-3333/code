@@ -1,0 +1,186 @@
+<style>
+    /* General styling */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    select {
+        padding: 8px;
+        width: 100%; /* Full width for mobile devices */
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+
+    #box_country_city_filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #country_selector, #citySelector {
+        width: 48%; /* Slightly less than 50% width for two columns */
+    }
+
+    #resultContainer {
+        margin: 20px 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin-left: 5px;
+    }
+
+    #box_buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    #searchBtn, #refreshBtn, #reset, #filterButton {
+        padding: 10px 20px;
+        font-size: 14px;
+        border: none;
+        background-color: #f1f1f1;
+        color: black;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    /* Styling for buttons */
+    #searchBtn:hover, #refreshBtn:hover, #reset:hover, #filterButton:hover {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    .result-item {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .result-item img {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .result-item .title {
+        font-size: 1.4em;
+        color: #333;
+        margin-top: 10px;
+    }
+
+    .result-item .price {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007BFF;
+        margin-top: 5px;
+    }
+
+    /* Filters */
+    #filters {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .filter {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .filter select {
+        width: 100%;
+    }
+
+    .view-details-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .view-details-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Pagination */
+    #paginationControls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    #paginationNumbers {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        #country_selector, #citySelector {
+            width: 100%; /* Full width on smaller screens */
+        }
+
+        .result-item {
+            width: 100%; /* Ensure the result item takes full width */
+        }
+
+        #box_buttons {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #searchBtn, #refreshBtn, #reset {
+            width: 100%; /* Full width buttons for smaller screens */
+            margin-bottom: 10px;
+        }
+
+        .filter {
+            width: 100%; /* Full width for filter selects */
+        }
+
+        .filter-button {
+            width: 100%; /* Full width filter button */
+        }
+
+        #paginationControls {
+            flex-direction: column; /* Stack pagination controls */
+            align-items: center;
+        }
+    }
+
+    /* Smaller devices like mobile phones */
+    @media (max-width: 480px) {
+        #searchBtn, #refreshBtn, #reset {
+            padding: 12px 10px; /* Larger touch areas for buttons */
+            font-size: 16px;
+        }
+
+        .result-item img {
+            height: 150px; /* Smaller images on mobile */
+        }
+
+        .view-details-btn {
+            width: 100%; /* Full width button for mobile */
+            padding: 12px;
+        }
+
+        .filter select {
+            font-size: 14px;
+        }
+    }
+</style>

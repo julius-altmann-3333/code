@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulting Landing Page</title>
+  <style>
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-links a:hover {
+      color: #f39c12;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+    }
+
+    /* Left Slide-In Menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Hidden off-screen by default */
+      width: 250px;
+      height: 100%;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 60px;
+      transition: left 0.3s ease-in-out;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      margin: 1rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #f39c12;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;      
+    }
+    header, section, footer {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      margin: 1rem 0;
+      font-size: 1.25rem;
+    }
+    .cta-button {
+      padding: 0.75rem 1.5rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .services, .results, .testimonials, .about, .clients-slider {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #666;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+
+/* Services Tab Container */
+
+    .tab-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .tab {
+      width: auto;
+      height: 50px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      cursor: pointer;
+      transition: background 0.3s;
+      border: 1px solid black;
+    }
+    .tab:nth-child(1) { background-color: white; }
+    .tab:nth-child(2) { background-color: white; }
+    .tab:nth-child(3) { background-color: white; }
+    .tab:nth-child(4) { background-color: white; }
+
+    .tab-content {
+      display: none;
+      width: 100%;
+      height: 400px;
+      padding: 2rem;
+      box-sizing: border-box;
+      border-top: 4px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      color: black;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    #tab-0 { background-color: white; }
+    #tab-1 { background-color: white; }
+    #tab-2 { background-color: white; }
+    #tab-3 { background-color: white; }
+
+    @media (max-width: 768px) {
+      .tab {
+        width: 100%;
+      }
+    }
+
+
+    /* Testimonial Slider*/
+
+    .testimonials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider {
+      max-width: 600px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonial-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial {
+      flex: 0 0 100%;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .testimonial img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .testimonial p.title {
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial p.quote {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .nav-buttons button {
+      background: #1f2937;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .nav-buttons button:hover {
+      background: #374151;
+    }
+
+    @media (max-width: 600px) {
+      .testimonial {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Logo Slider */
+
+    .logo-slider {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      padding: 2rem 0;
+    }
+
+    .logo-track {
+      display: flex;
+      width: calc(250px * 10);
+      animation: scroll 30s linear infinite;
+    }
+
+    .logo-slide {
+      height: 100px;
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      filter: grayscale(100%);
+      opacity: 0.8;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-slide:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .logo-slide img {
+      max-height: 60px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Duplicate logos for seamless scroll */
+    .logo-track::after {
+      content: '';
+      display: block;
+      width: 0;
+    }
+
+    /* About Section */
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      gap: 2rem;
+    }
+
+    .about-text {
+      flex: 1 1 500px;
+      padding: 1rem;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .about-text button {
+      padding: 0.75rem 1.5rem;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .about-text button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text button {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+
+    /* FAQ-Section */
+
+    .faq {
+      max-width: auto;
+      width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-header:after {
+      content: '+';
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active:after {
+      content: '-';
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .accordion-content.open {
+      padding: 0.5rem 0 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<section class="navbar">
+    <a href="#section1" class="logo">Logo</a>
+    <div class="navbar-links">
+      <a href="#section1">Home</a>
+      <a href="#section2">About</a>
+      <a href="#section3">Services</a>
+      <a href="#section4">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+</section>
+
+
+<section class="hero">
+    <h1>Helping SaaS Companies Grow MRR</h1>
+    <p>Data-driven marketing strategies to scale your business</p>
+    <button class="cta-button">Book a Free Discovery Call</button>
+</section>
+
+<section class="services">
+    <h2>Our Services</h2>
+      <div class="tab-container">
+        <div class="tab" onclick="showTab(0)">Funnel Optimization</div>
+        <div class="tab" onclick="showTab(1)">Email Marketing Automation</div>
+        <div class="tab" onclick="showTab(2)">Paid Ad Management</div>
+        <div class="tab" onclick="showTab(3)">Customer Journey Mapping</div>
+      </div>
+
+      <div id="tab-0" class="tab-content active">
+        <h2>Content for Tab 1</h2>
+        <p>This is the content box for the first tab.</p>
+      </div>
+      <div id="tab-1" class="tab-content">
+        <h2>Content for Tab 2</h2>
+        <p>This is the content box for the second tab.</p>
+      </div>
+      <div id="tab-2" class="tab-content">
+        <h2>Content for Tab 3</h2>
+        <p>This is the content box for the third tab.</p>
+      </div>
+      <div id="tab-3" class="tab-content">
+        <h2>Content for Tab 4</h2>
+        <p>This is the content box for the third tab.</p>
+      </div>
+</section>
+
+<section class="results">
+    <h2>Client Results</h2>
+    <p>Helped XYZ SaaS increase conversions by 40% in 3 months.</p>
+    <p>Boosted ARR for ABC Inc. by $500k using targeted ads.</p>
+</section>
+
+<section class="testimonials">
+    <div class="slider">
+      <div class="testimonial-container" id="testimonialContainer">
+        <div class="testimonial">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Doe" />
+          <h3>Jane Doe</h3>
+          <p class="title">Marketing Manager</p>
+          <p class="quote">"This service has completely changed the way I work. It's intuitive, reliable, and efficient."</p>
+        </div>
+        <div class="testimonial">
+          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="John Smith" />
+          <h3>John Smith</h3>
+          <p class="title">Product Designer</p>
+          <p class="quote">"Incredible experience from start to finish. The support team is always available and helpful."</p>
+        </div>
+        <div class="testimonial">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rose" />
+          <h3>Emily Rose</h3>
+          <p class="title">Developer</p>
+          <p class="quote">"Highly recommend! Everything works flawlessly, and it helped boost our team's productivity."</p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button onclick="prevTestimonial()">← Prev</button>
+        <button onclick="nextTestimonial()">Next →</button>
+      </div>
+    </div>
+</section>
+
+<section class="clients-slider">
+    <div class="logo-slider">
+      <div class="logo-track">
+        <!-- Repeat logos twice for infinite loop effect -->
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png" alt="Apple"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Google_2015_logo.svg" alt="Google"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Nike_logo.svg" alt="Nike"></div>
+
+        <!-- Duplicate for seamless loop -->
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png" alt="Apple"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Google_2015_logo.svg" alt="Google"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram"></div>
+        <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Nike_logo.svg" alt="Nike"></div>
+      </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        We are a passionate team committed to delivering top-notch solutions that empower businesses to grow, innovate, and lead. Our mission is to simplify technology and put people at the heart of everything we build.
+      </p>
+      <button>Learn More</button>
+    </div>
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5" alt="About Us Team" />
+    </div>
+</section>
+
+<section class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="accordion-item">
+      <button class="accordion-header">What is your return policy?</button>
+      <div class="accordion-content">
+        <p>We offer a 30-day return policy with no questions asked. Just contact our support team to initiate a return.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Do you offer international shipping?</button>
+      <div class="accordion-content">
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">How can I track my order?</button>
+      <div class="accordion-content">
+        <p>Once your order is shipped, we’ll email you a tracking link. You can use it to check the delivery status anytime.</p>
+      </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2025 Morgan Consulting. All rights reserved. | Privacy Policy | Terms</p>
+    <p>Contact: hello@morganconsulting.com | LinkedIn</p>
+</footer>
+
+<script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+
+    hamburger.addEventListener("click", () => {
+      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+    });
+
+    // Smooth Scroll Behavior
+    const links = document.querySelectorAll(".navbar-links a, .sidebar a");
+
+    links.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        window.scrollTo({
+          top: target.offsetTop - 60, // Offsets navbar height
+          behavior: "smooth"
+        });
+        // Close sidebar after clicking (for mobile)
+        if (sidebar.style.left === "0px") {
+          sidebar.style.left = "-250px";
+        }
+      });
+    });
+</script>  
+<script>
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const content = header.nextElementSibling;
+        const isOpen = content.classList.contains("open");
+
+        document.querySelectorAll(".accordion-content").forEach(c => {
+          c.classList.remove("open");
+          c.style.maxHeight = null;
+        });
+
+        document.querySelectorAll(".accordion-header").forEach(h => {
+          h.classList.remove("active");
+        });
+
+        if (!isOpen) {
+          header.classList.add("active");
+          content.classList.add("open");
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+</script>  
+<script>
+    function showTab(index) {
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+    }
+</script>
+<script>
+    const container = document.getElementById("testimonialContainer");
+    const total = container.children.length;
+    let index = 0;
+
+    function updateSlider() {
+      container.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextTestimonial() {
+      index = (index + 1) % total;
+      updateSlider();
+    }
+
+    function prevTestimonial() {
+      index = (index - 1 + total) % total;
+      updateSlider();
+    }
+
+    // Optional: Auto-slide every 7 seconds
+    setInterval(nextTestimonial, 7000);
+</script>
+
+</body>
+</html>

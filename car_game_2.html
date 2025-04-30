@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2D Box Race Game</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(20, 40px);
+      grid-template-rows: repeat(15, 40px);
+      gap: 2px;
+    }
+
+    .cell {
+      width: 40px;
+      height: 40px;
+      background: #222;
+    }
+
+    .wall {
+      background: #555;
+    }
+
+    .player {
+      background: #0f0;
+      transition: background 0.1s;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-board"></div>
+
+  <script>
+    const board = document.getElementById('game-board');
+    const width = 20;
+    const height = 15;
+
+    const layout = [
+      // 20 cells per row × 15 rows = 300 total items
+      // 1 = wall, 0 = path
+      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+      1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,1,
+      1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,1,0,1,1,
+      1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,1,0,0,1,
+      1,0,1,0,1,1,1,0,1,1,1,1,1,0,1,0,1,1,0,1,
+      1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,1,0,1,
+      1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,1,0,1,0,1,
+      1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,1,0,0,0,1,
+      1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,0,1,
+      1,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0,1,
+      1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
+      1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,
+      1,1,0,1,0,10,10,10,10,10,10,10,10,11,1,
+      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+    ];
+
+    let playerPos = 11;
+
+    function drawBoard() {
+      board.innerHTML = '';
+      layout.forEach((cell, index) => {
+        const div = document.createElement('div');
+        div.classList.add('cell');
+        if (cell === 1) div.classList.add('wall');
+        if (index === playerPos) div.classList.add('player');
+        board.appendChild(div);
+      });
+    }
+
+    function movePlayer(e) {
+      let newPos = playerPos;
+
+      if (e.key === 'ArrowUp') newPos -= width;
+      else if (e.key === 'ArrowDown') newPos += width;
+      else if (e.key === 'ArrowLeft') newPos -= 1;
+      else if (e.key === 'ArrowRight') newPos += 1;
+
+      if (layout[newPos] === 0) {
+        playerPos = newPos;
+        drawBoard();
+      }
+    }
+
+    document.addEventListener('keydown', movePlayer);
+    drawBoard();
+  </script>
+</body>
+</html>

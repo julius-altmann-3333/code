@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10000x10000 Grid</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(1000, 10px);
+      grid-template-rows: repeat(1000, 10px);
+      width: 10000px;
+      height: 10000px;
+    }
+    .cell {
+      width: 10px;
+      height: 10px;
+      box-sizing: border-box;
+      border: 0.5px solid #eee;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div id="grid"></div>
+
+  <script>
+    const grid = document.getElementById("grid");
+    const totalCells = 1000 * 1000;
+
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < totalCells; i++) {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      fragment.appendChild(cell);
+    }
+    grid.appendChild(fragment);
+  </script>
+</body>
+</html>

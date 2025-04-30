@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Preview + Lightbox</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    .instagram-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .instagram-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .insta-img {
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .insta-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .insta-img:hover img {
+      transform: scale(1.08);
+    }
+
+    .insta-button {
+      background-color: #E1306C;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .insta-button:hover {
+      background-color: #c5285c;
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 12px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="instagram-section">
+    <h2>Instagram Preview</h2>
+
+    <div class="instagram-grid" id="instaFeed">
+      <!-- Posts will be inserted here -->
+    </div>
+
+    <button class="insta-button" onclick="window.open('https://www.instagram.com/', '_blank')">
+      Follow us on Instagram
+    </button>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img src="" alt="Preview" id="lightboxImg"/>
+  </div>
+
+  <script>
+    const images = [
+      "https://source.unsplash.com/600x600/?office",
+      "https://source.unsplash.com/600x600/?meeting",
+      "https://source.unsplash.com/600x600/?consulting",
+      "https://source.unsplash.com/600x600/?business",
+      "https://source.unsplash.com/600x600/?startup",
+      "https://source.unsplash.com/600x600/?teamwork"
+    ];
+
+    const feed = document.getElementById('instaFeed');
+
+    images.forEach(url => {
+      const anchor = document.createElement('a');
+      anchor.className = 'insta-img';
+      anchor.href = '#';
+      anchor.onclick = (e) => {
+        e.preventDefault();
+        openLightbox(url);
+      };
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = "Instagram Preview";
+
+      anchor.appendChild(img);
+      feed.appendChild(anchor);
+    });
+
+    function openLightbox(imgSrc) {
+      const lightbox = document.getElementById("lightbox");
+      const img = document.getElementById("lightboxImg");
+      img.src = imgSrc;
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+  </script>
+
+</body>
+</html>

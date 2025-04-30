@@ -1,0 +1,137 @@
+<style>
+   
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+        background-color: #333;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .logo img {
+        max-width: 150px;
+    }
+
+    /* Hamburger Menu Styles */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .hamburger .bar {
+        width: 30px;
+        height: 4px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    /* Navbar Links */
+    .nav-links {
+        display: flex;
+        list-style-type: none;
+    }
+
+    .nav-links li {
+        margin: 0 20px;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #444;
+        border-radius: 5px;
+        list-style-type: none;
+        padding: 10px 0;
+    }
+
+    .dropdown-menu li {
+        padding: 8px 20px;
+    }
+
+    .dropdown-menu a {
+        color: white;
+        font-size: 14px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            background-color: #333;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links li {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .dropdown-menu {
+            position: relative;
+            top: 0;
+            background-color: #333;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+    }
+</style>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+</script>

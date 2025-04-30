@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Services Section</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .services-section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      background-color: #fff;
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Responsive grid */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-toggle {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+      }
+
+      .dropdown-btn {
+        padding: 0.75rem 1.25rem;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .dropdown-btn:after {
+        content: ' +';
+        font-size: 1.25rem;
+      }
+
+      .dropdown-btn.open:after {
+        content: ' −';
+      }
+
+      .mobile-hidden {
+        display: none;
+      }
+
+      .mobile-hidden.show {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="services-section">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">Web Design</div>
+        <div class="service-desc">Modern and responsive website designs that attract and engage users.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">SEO Optimization</div>
+        <div class="service-desc">Boost your visibility on search engines with expert SEO strategies.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">E-commerce Solutions</div>
+        <div class="service-desc">Custom online stores with seamless shopping and checkout experiences.</div>
+      </div>
+
+      <!-- These 3 cards are hidden on mobile initially -->
+      <div class="service-card mobile-hidden">
+        <div class="service-title">Digital Marketing</div>
+        <div class="service-desc">Social media, PPC, and email campaigns that drive measurable growth.</div>
+      </div>
+      <div class="service-card mobile-hidden">
+        <div class="service-title">App Development</div>
+        <div class="service-desc">Cross-platform mobile apps tailored to your business goals.</div>
+      </div>
+      <div class="service-card mobile-hidden">
+        <div class="service-title">Branding</div>
+        <div class="service-desc">Crafting unique brand identities that resonate with your audience.</div>
+      </div>
+    </div>
+
+    <!-- Dropdown Toggle Button for Mobile -->
+    <div class="mobile-toggle">
+      <button class="dropdown-btn" onclick="toggleMobileCards(this)">Show More</button>
+    </div>
+  </section>
+
+  <script>
+    function toggleMobileCards(btn) {
+      const hiddenCards = document.querySelectorAll('.mobile-hidden');
+      hiddenCards.forEach(card => card.classList.toggle('show'));
+      btn.classList.toggle('open');
+      btn.textContent = btn.classList.contains('open') ? 'Show Less' : 'Show More';
+    }
+  </script>
+
+</body>
+</html>

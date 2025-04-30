@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Pricing Section</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      padding: 2rem;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .toggle-switch {
+      display: inline-flex;
+      align-items: center;
+      background: #e0e0e0;
+      border-radius: 25px;
+      padding: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .toggle-switch span {
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch .active {
+      background: #007bff;
+      color: white;
+    }
+
+    .pricing-section {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-card {
+      width: 300px;
+      max-height: 500px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: all 0.4s ease;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pricing-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-price {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .pricing-features li {
+      margin-bottom: 0.75rem;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .pricing-features li i {
+      margin-right: 0.5rem;
+      color: #007bff;
+    }
+
+    .pricing-button {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .pricing-button button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pricing-card {
+        max-height: 250px;
+        height: auto;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        position: relative;
+      }
+
+      .pricing-card.expanded {
+        max-height: 500px;
+      }
+
+      .pricing-card::after {
+        content: '▼';
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.25rem;
+        color: #777;
+        pointer-events: none;
+        transition: transform 0.3s ease;
+      }
+
+      .pricing-card.expanded::after {
+        transform: translateX(-50%) rotate(180deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pricing-header">
+    <h2>Choose Your Plan</h2>
+    <div class="toggle-switch" onclick="toggleBilling()">
+      <span id="monthly" class="active">Monthly</span>
+      <span id="yearly">Yearly</span>
+    </div>
+  </div>
+
+  <section class="pricing-section">
+    <div class="pricing-card" onclick="toggleCard(this)">
+      <div>
+        <div class="pricing-title">Basic Plan</div>
+        <div class="pricing-price" data-monthly="29" data-yearly="290">$29/mo</div>
+        <div class="pricing-features">
+          <ul>
+            <li><i class="fas fa-user"></i>1 User</li>
+            <li><i class="fas fa-folder"></i>5 Projects</li>
+            <li><i class="fas fa-headset"></i>Basic Support</li>
+            <li><i class="fas fa-chart-line"></i>Limited Analytics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-button">
+        <button>Select</button>
+      </div>
+    </div>
+
+    <div class="pricing-card" onclick="toggleCard(this)">
+      <div>
+        <div class="pricing-title">Pro Plan</div>
+        <div class="pricing-price" data-monthly="59" data-yearly="590">$59/mo</div>
+        <div class="pricing-features">
+          <ul>
+            <li><i class="fas fa-users"></i>5 Users</li>
+            <li><i class="fas fa-infinity"></i>Unlimited Projects</li>
+            <li><i class="fas fa-headset"></i>Priority Support</li>
+            <li><i class="fas fa-chart-pie"></i>Full Analytics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-button">
+        <button>Select</button>
+      </div>
+    </div>
+
+    <div class="pricing-card" onclick="toggleCard(this)">
+      <div>
+        <div class="pricing-title">Enterprise</div>
+        <div class="pricing-price" data-monthly="99" data-yearly="990">$99/mo</div>
+        <div class="pricing-features">
+          <ul>
+            <li><i class="fas fa-user-shield"></i>Unlimited Users</li>
+            <li><i class="fas fa-user-tie"></i>Dedicated Manager</li>
+            <li><i class="fas fa-plug"></i>Custom Integrations</li>
+            <li><i class="fas fa-phone-volume"></i>24/7 Support</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-button">
+        <button>Select</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleCard(card) {
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll('.pricing-card').forEach(c => {
+          if (c !== card) c.classList.remove('expanded');
+        });
+        card.classList.toggle('expanded');
+      }
+    }
+
+    function toggleBilling() {
+      const monthly = document.getElementById('monthly');
+      const yearly = document.getElementById('yearly');
+      const isMonthly = monthly.classList.contains('active');
+      const prices = document.querySelectorAll('.pricing-price');
+
+      prices.forEach(price => {
+        const monthlyPrice = price.getAttribute('data-monthly');
+        const yearlyPrice = price.getAttribute('data-yearly');
+        if (isMonthly) {
+          price.textContent = `$${yearlyPrice}/yr`;
+        } else {
+          price.textContent = `$${monthlyPrice}/mo`;
+        }
+      });
+
+      monthly.classList.toggle('active');
+      yearly.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

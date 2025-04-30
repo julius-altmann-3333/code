@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ Accordion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .faq {
+      max-width: 700px;
+      width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-header:after {
+      content: '+';
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active:after {
+      content: '-';
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .accordion-content.open {
+      padding: 0.5rem 0 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="accordion-item">
+      <button class="accordion-header">What is your return policy?</button>
+      <div class="accordion-content">
+        <p>We offer a 30-day return policy with no questions asked. Just contact our support team to initiate a return.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">Do you offer international shipping?</button>
+      <div class="accordion-content">
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+        <p>Yes, we ship worldwide. Shipping rates and delivery times vary depending on your location.</p><br>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header">How can I track my order?</button>
+      <div class="accordion-content">
+        <p>Once your order is shipped, we’ll email you a tracking link. You can use it to check the delivery status anytime.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach(header => {
+      header.addEventListener("click", () => {
+        const content = header.nextElementSibling;
+        const isOpen = content.classList.contains("open");
+
+        document.querySelectorAll(".accordion-content").forEach(c => {
+          c.classList.remove("open");
+          c.style.maxHeight = null;
+        });
+
+        document.querySelectorAll(".accordion-header").forEach(h => {
+          h.classList.remove("active");
+        });
+
+        if (!isOpen) {
+          header.classList.add("active");
+          content.classList.add("open");
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

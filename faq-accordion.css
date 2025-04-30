@@ -1,0 +1,72 @@
+/* Overall section styling */
+.section_medical_faq {
+    background-color: #f7f7f7; /* Light grey background for the FAQ section */
+    padding: 30px;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading style */
+.faq-section h2 {
+    text-align: center;
+    color: #333; /* Dark grey text for the title */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* FAQ item container */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Each FAQ item (question-answer box) */
+.faq-item {
+    background-color: #fff; /* White background for the FAQ item */
+    border: 1px solid #ddd; /* Light grey border for the FAQ item */
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect for FAQ items */
+.faq-item:hover {
+    background-color: #f1f1f1; /* Light grey when hovered */
+    border-color: #bbb; /* Slightly darker border on hover */
+}
+
+/* FAQ question style */
+.faq-question {
+    font-size: 18px;
+    color: #333; /* Dark grey text for the question */
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* FAQ answer style (hidden by default) */
+.faq-answer {
+    font-size: 16px;
+    color: #666; /* Light grey text for the answer */
+    display: none;
+    margin-top: 10px;
+}
+
+/* Button icon styling */
+.faq-question .toggle-icon {
+    font-size: 20px;
+    color: #333; /* Dark grey icon */
+    transition: transform 0.3s ease;
+}
+
+/* Opened state styling */
+.faq-item.open .faq-answer {
+    display: block; /* Show answer when FAQ item is open */
+}
+
+.faq-item.open .toggle-icon {
+    transform: rotate(45deg); /* Rotate the + icon to - when open */
+}

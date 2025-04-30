@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Construction Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .language-switch {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .language-switch button {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .language-switch button:hover {
+            background-color: #555;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .material-selection {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .material-item {
+            text-align: center;
+            cursor: pointer;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 150px;
+        }
+        .material-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .material-item.selected {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+        .material-item p {
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Villa Construction Guide</h1>
+    </header>
+
+    <div class="language-switch">
+        <button onclick="switchLanguage('en')">English</button>
+        <button onclick="switchLanguage('de')">Deutsch</button>
+    </div>
+
+    <div class="content">
+        <div id="content-en">
+            <h2>1. Construction Materials for a 5-Story Villa</h2>
+
+            <h3>Foundation & Structural Materials</h3>
+            <div class="material-selection">
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/concrete.jpg" alt="Concrete">
+                    <p>Concrete</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/rebar.jpg" alt="Rebar">
+                    <p>Rebar</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/precast_concrete.jpg" alt="Precast Concrete">
+                    <p>Precast Concrete</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/masonry.jpg" alt="Masonry">
+                    <p>Masonry</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/gravel_sand.jpg" alt="Gravel/Sand">
+                    <p>Gravel/Sand</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/cement.jpg" alt="Cement">
+                    <p>Cement</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/waterproofing_membranes.jpg" alt="Waterproofing Membranes">
+                    <p>Waterproofing Membranes</p>
+                </div>
+                <div class="material-item" onclick="selectMaterial(this)">
+                    <img src="images/piles.jpg" alt="Piles">
+                    <p>Piles</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-de" style="display: none;">
+            <!-- You can add similar structure in German as required -->
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(language) {
+            if (language === 'en') {
+                document.getElementById('content-en').style.display = 'block';
+                document.getElementById('content-de').style.display = 'none';
+            } else if (language === 'de') {
+                document.getElementById('content-en').style.display = 'none';
+                document.getElementById('content-de').style.display = 'block';
+            }
+        }
+
+        function selectMaterial(element) {
+            // Deselect all other materials
+            const items = document.querySelectorAll('.material-item');
+            items.forEach(item => item.classList.remove('selected'));
+
+            // Select the clicked material
+            element.classList.add('selected');
+        }
+    </script>
+
+</body>
+</html>

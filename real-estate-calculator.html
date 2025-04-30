@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Project Calculator</title>
+    <link rel="stylesheet" href="real-estate-calculator.css">
+</head>
+<body>
+
+    <h1>Real Estate Project Calculator</h1>
+
+    <!-- Value Calculator Section -->
+    <div class="section" id="valueCalculator">
+        <h2>Value Calculator</h2>
+        <div class="input-group">
+            <label for="numApartments">Number of Apartments:</label>
+            <input type="number" id="numApartments" placeholder="Number of Apartments">
+        </div>
+        <div class="input-group">
+            <label for="rentPerApartment">Rent per Apartment:</label>
+            <input type="number" id="rentPerApartment" placeholder="Monthly Rent">
+        </div>
+        <div class="input-group">
+            <label for="multiplier">Multiplier (Yearly Rent):</label>
+            <input type="number" id="multiplier" placeholder="Multiplier for Yearly Rent">
+        </div>
+        <div class="output">
+            <label>Total Yearly Rent:</label>
+            <span id="totalYearlyRent">0</span>
+        </div>
+        <div class="input-group">
+            <label for="acquisitionPrice">Acquisition Price:</label>
+            <input type="number" id="acquisitionPrice" placeholder="Acquisition Price">
+        </div>
+        <div class="output">
+            <label>Total Acquisition Price:</label>
+            <span id="totalAcquisitionPrice">0</span>
+        </div>
+        <div class="input-group">
+            <label for="loanPayment">Loan Payment:</label>
+            <input type="number" id="loanPayment" placeholder="Loan Payment">
+        </div>
+        <div class="output">
+            <label>Total Loan Payment:</label>
+            <span id="totalLoanPayment">0</span>
+        </div>
+    </div>
+
+    <!-- Acquisition Cost Section -->
+    <div class="section" id="acquisitionCost">
+        <h2>Acquisition Cost</h2>
+        <div class="input-group">
+            <label for="input1a">Value 1:</label>
+            <input type="number" id="input1a" class="calc-input" />
+        </div>
+        <div class="input-group">
+            <label for="input1b">Value 2:</label>
+            <input type="number" id="input1b" class="calc-input" />
+        </div>
+        <div class="input-group">
+            <label for="input1c">Value 3:</label>
+            <input type="number" id="input1c" class="calc-input" />
+        </div>
+        <div class="output" id="output1">
+            <label>Sum:</label>
+            <span id="sumResult1">0</span><br>
+            <label>Product:</label>
+            <span id="productResult1">1</span>
+        </div>
+    </div>
+
+    <!-- Renovation Main Section -->
+    <div class="section" id="renovationMain">
+        <h2>Renovation / Adjustments / Improvements for Main Structure and Exterior</h2>
+        <div class="input-group">
+            <label for="input2a">Value 1:</label>
+            <input type="number" id="input2a" class="calc-input2" />
+        </div>
+        <div class="input-group">
+            <label for="input2b">Value 2:</label>
+            <input type="number" id="input2b" class="calc-input2" />
+        </div>
+        <div class="input-group">
+            <label for="input2c">Value 3:</label>
+            <input type="number" id="input2c" class="calc-input2" />
+        </div>
+        <div class="output" id="output2">
+            <label>Sum:</label>
+            <span id="sumResult2">0</span><br>
+            <label>Product:</label>
+            <span id="productResult2">1</span>
+        </div>
+    </div>
+
+    <!-- Renovation Interior Section -->
+    <div class="section" id="renovationInterior">
+        <h2>Renovation / Adjustments / Development for Interior</h2>
+        <div class="input-group">
+            <label for="input3a">Value 1:</label>
+            <input type="number" id="input3a" class="calc-input3" />
+        </div>
+        <div class="input-group">
+            <label for="input3b">Value 2:</label>
+            <input type="number" id="input3b" class="calc-input3" />
+        </div>
+        <div class="input-group">
+            <label for="input3c">Value 3:</label>
+            <input type="number" id="input3c" class="calc-input3" />
+        </div>
+        <div class="output" id="output3">
+            <label>Sum:</label>
+            <span id="sumResult3">0</span><br>
+            <label>Product:</label>
+            <span id="productResult3">1</span>
+        </div>
+    </div>
+
+    <!-- Material Price Calculator Section -->
+    <div class="section" id="materialCalculator">
+        <h2>Material Price Calculator</h2>
+        <div class="input-group">
+            <label for="materialSelect">Select Material:</label>
+            <select id="materialSelect">
+                <option value="material1">Material 1</option>
+                <option value="material2">Material 2</option>
+                <option value="material3">Material 3</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="materialMultiplier">Multiplier (Required Quantity):</label>
+            <input type="number" id="materialMultiplier" placeholder="Multiplier">
+        </div>
+        <div class="output" id="materialOutput">
+            <label>Selected Material Price:</label>
+            <span id="materialPriceOutput">0</span>
+        </div>
+    </div>
+
+    <script src="functions.js"></script>
+    <script src="calculations.js"></script>
+</body>
+</html>

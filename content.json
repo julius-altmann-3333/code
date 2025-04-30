@@ -1,0 +1,14 @@
+{
+  "1": {
+    "img": "https://via.placeholder.com/300x200?text=Image+1",
+    "text": "This is the content for result 1."
+  },
+  "2": {
+    "img": "https://via.placeholder.com/300x200?text=Image+2",
+    "text": "Here is the second result with different info."
+  },
+  "3": {
+    "img": "https://via.placeholder.com/300x200?text=Image+3",
+    "text": "Finally, this is the third result shown."
+  }
+}

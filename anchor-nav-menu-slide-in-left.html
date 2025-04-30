@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Nav Menu (Slide-in from Left)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-top: 60px; /* To offset navbar height */
+      background-color: #f4f6f8;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar-links a:hover {
+      color: #f39c12;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+    }
+
+    /* Left Slide-In Menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Hidden off-screen by default */
+      width: 250px;
+      height: 100%;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 60px;
+      transition: left 0.3s ease-in-out;
+      z-index: 999;
+    }
+
+    .sidebar a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      margin: 1rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #f39c12;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Page Sections */
+    section {
+      padding: 60px 20px;
+      height: 100vh;
+      color: white;
+    }
+
+    #section1 { background-color: #3498db; }
+    #section2 { background-color: #e74c3c; }
+    #section3 { background-color: #2ecc71; }
+    #section4 { background-color: #9b59b6; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="#section1" class="logo">Logo</a>
+    <div class="navbar-links">
+      <a href="#section1">Home</a>
+      <a href="#section2">About</a>
+      <a href="#section3">Services</a>
+      <a href="#section4">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <!-- Sidebar (Slide-in Menu) -->
+  <div class="sidebar" id="sidebar">
+    <a href="#section1">Home</a>
+    <a href="#section2">About</a>
+    <a href="#section3">Services</a>
+    <a href="#section4">Contact</a>
+  </div>
+
+  <!-- Sections -->
+  <section id="section1">
+    <h2>Home Section</h2>
+    <p>Content for Home.</p>
+  </section>
+  
+  <section id="section2">
+    <h2>About Section</h2>
+    <p>Content for About.</p>
+  </section>
+
+  <section id="section3">
+    <h2>Services Section</h2>
+    <p>Content for Services.</p>
+  </section>
+
+  <section id="section4">
+    <h2>Contact Section</h2>
+    <p>Content for Contact.</p>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+
+    hamburger.addEventListener("click", () => {
+      sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+    });
+
+    // Smooth Scroll Behavior
+    const links = document.querySelectorAll(".navbar-links a, .sidebar a");
+
+    links.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        window.scrollTo({
+          top: target.offsetTop - 60, // Offsets navbar height
+          behavior: "smooth"
+        });
+        // Close sidebar after clicking (for mobile)
+        if (sidebar.style.left === "0px") {
+          sidebar.style.left = "-250px";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

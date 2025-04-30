@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jetpack Game</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: black; }
+    canvas { display: block; background: #222; }
+    #fuelBar {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 200px;
+      height: 20px;
+      background: gray;
+    }
+    #fuelFill {
+      height: 100%;
+      background: lime;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="fuelBar"><div id="fuelFill"></div></div>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const fuelFill = document.getElementById('fuelFill');
+
+    const gravity = 0.5;
+    const jetPower = -0.8;
+    let level = 0;
+
+    const player = {
+      x: 100,
+      y: 300,
+      width: 30,
+      height: 30,
+      vx: 0,
+      vy: 0,
+      jetpackOn: false,
+      fuel: 100
+    };
+
+    const keys = {};
+    document.addEventListener('keydown', e => keys[e.code] = true);
+    document.addEventListener('keyup', e => keys[e.code] = false);
+
+    const platforms = [
+      { x: 50, y: 500, width: 200, height: 20 },
+      { x: 300, y: 400, width: 200, height: 20 },
+      { x: 600, y: 300, width: 150, height: 20 }
+    ];
+
+    const fuels = [
+      { x: 320, y: 370, collected: false },
+      { x: 620, y: 270, collected: false }
+    ];
+
+    const enemies = [
+      { x: 450, y: 580, width: 30, height: 10 }
+    ];
+
+    const exit = { x: 740, y: 250, width: 40, height: 60 };
+
+    function update() {
+      player.jetpackOn = keys['Space'] && player.fuel > 0;
+
+      if (player.jetpackOn) {
+        player.vy += jetPower;
+        player.fuel = Math.max(0, player.fuel - 0.5);
+      }
+
+      player.vy += gravity;
+      player.y += player.vy;
+
+      // Collision with platforms
+      for (let p of platforms) {
+        if (player.x < p.x + p.width &&
+            player.x + player.width > p.x &&
+            player.y + player.height > p.y &&
+            player.y + player.height < p.y + p.height + 10 &&
+            player.vy > 0) {
+          player.y = p.y - player.height;
+          player.vy = 0;
+        }
+      }
+
+      // Ground collision
+      if (player.y + player.height > canvas.height) {
+        player.y = canvas.height - player.height;
+        player.vy = 0;
+      }
+
+      if (player.y < 0) {
+        player.y = 0;
+        player.vy = 0;
+      }
+
+      // Collect fuel pickups
+      for (let f of fuels) {
+        if (!f.collected && player.x < f.x + 20 && player.x + player.width > f.x &&
+            player.y < f.y + 20 && player.y + player.height > f.y) {
+          f.collected = true;
+          player.fuel = Math.min(100, player.fuel + 40);
+        }
+      }
+
+      // Check enemy collision
+      for (let e of enemies) {
+        if (player.x < e.x + e.width && player.x + player.width > e.x &&
+            player.y < e.y + e.height && player.y + player.height > e.y) {
+          alert('Game Over!');
+          window.location.reload();
+        }
+      }
+
+      // Check for level exit
+      if (player.x < exit.x + exit.width && player.x + player.width > exit.x &&
+          player.y < exit.y + exit.height && player.y + player.height > exit.y) {
+        alert('Level Complete!');
+        window.location.reload();
+      }
+
+      // Update fuel bar
+      fuelFill.style.width = player.fuel + '%';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw platforms
+      ctx.fillStyle = 'brown';
+      for (let p of platforms) {
+        ctx.fillRect(p.x, p.y, p.width, p.height);
+      }
+
+      // Draw fuels
+      ctx.fillStyle = 'yellow';
+      for (let f of fuels) {
+        if (!f.collected) ctx.fillRect(f.x, f.y, 20, 20);
+      }
+
+      // Draw enemies
+      ctx.fillStyle = 'red';
+      for (let e of enemies) {
+        ctx.fillRect(e.x, e.y, e.width, e.height);
+      }
+
+      // Draw exit
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(exit.x, exit.y, exit.width, exit.height);
+
+      // Draw player
+      ctx.fillStyle = 'lime';
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+
+      if (player.jetpackOn) {
+        ctx.fillStyle = 'orange';
+        ctx.fillRect(player.x + 10, player.y + player.height, 10, 15);
+      }
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+  </script>
+</body>
+</html>

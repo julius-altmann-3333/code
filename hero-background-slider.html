@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consulting Hero Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero-slider {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slide-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      padding: 0 1rem;
+      max-width: 800px;
+    }
+
+    .slide-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .slide-content p {
+      font-size: 1.25rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .dot.active {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    @media (max-width: 768px) {
+      .slide-content h1 {
+        font-size: 2rem;
+      }
+
+      .slide-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-slider">
+    <div class="slide active" style="background-image: url('https://source.unsplash.com/1600x900/?consulting,team');">
+      <div class="slide-content">
+        <h1>Strategic Consulting</h1>
+        <p>Empowering your business with expert-driven insights and actionable strategy.</p>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?business,planning');">
+      <div class="slide-content">
+        <h1>Innovative Solutions</h1>
+        <p>We transform challenges into opportunities with tailored business solutions.</p>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?handshake,partners');">
+      <div class="slide-content">
+        <h1>Trusted Partnerships</h1>
+        <p>Building long-term relationships grounded in trust, transparency, and results.</p>
+      </div>
+    </div>
+
+    <div class="slider-dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    let slideInterval = setInterval(nextSlide, 7000);
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      let next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 7000);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Logo Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .logo-slider {
+      width: 100%;
+      min-height: 150px;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px 10px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo-item {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: transform 0.7s ease, opacity 0.7s ease;
+    }
+
+    .logo-item img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .logo-text {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .logo-item {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .logo-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo-item {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="logo-slider">
+  <div class="logo-container">
+    <div class="logo-item"><img src="https://via.placeholder.com/80?text=Logo+1" alt="Logo 1"><div class="logo-text">Company A</div></div>
+    <div class="logo-item"><img src="https://via.placeholder.com/80?text=Logo+2" alt="Logo 2"><div class="logo-text">Company B</div></div>
+    <div class="logo-item"><img src="https://via.placeholder.com/80?text=Logo+3" alt="Logo 3"><div class="logo-text">Company C</div></div>
+    <div class="logo-item"><img src="https://via.placeholder.com/80?text=Logo+4" alt="Logo 4"><div class="logo-text">Company D</div></div>
+    <div class="logo-item"><img src="https://via.placeholder.com/80?text=Logo+5" alt="Logo 5"><div class="logo-text">Company E</div></div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', () => {
+    const logos = document.querySelectorAll('.logo-item');
+    const isMobile = window.innerWidth <= 500;
+
+    if (isMobile) {
+      // Fade logos 1 to 5 in sequence (top to bottom)
+      logos.forEach((logo, index) => {
+        setTimeout(() => {
+          logo.style.opacity = '1';
+          logo.style.transform = 'scale(1)';
+        }, index * 150);
+      });
+    } else {
+      // Fade logos in order: 1 & 5 ➝ 2 & 4 ➝ 3 (outside to center)
+      setTimeout(() => {
+        logos[0].style.opacity = '1';
+        logos[0].style.transform = 'scale(1)';
+        logos[4].style.opacity = '1';
+        logos[4].style.transform = 'scale(1)';
+      }, 100);
+      setTimeout(() => {
+        logos[1].style.opacity = '1';
+        logos[1].style.transform = 'scale(0.95)';
+        logos[3].style.opacity = '1';
+        logos[3].style.transform = 'scale(0.95)';
+      }, 250);
+      setTimeout(() => {
+        logos[2].style.opacity = '1';
+        logos[2].style.transform = 'scale(1)';
+      }, 400);
+    }
+  });
+</script>
+
+</body>
+</html>

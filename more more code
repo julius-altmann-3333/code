@@ -1,0 +1,515 @@
+<script src="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate/cityData.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate/realEstateDataEurope.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate/main.js"></script>
+<style>
+			  select {
+            padding: 8px;
+            width: 200px;
+            float: left;
+            margin: 10px 10px;
+        }
+
+        #box_country_city_filters {
+            width: 100%;
+            float: left;
+        }
+
+        #country_selector {
+            width: 300px;
+            height: auto;
+        }
+
+        #citySelector {
+        		width: 300px;            
+        }
+
+        #resultContainer {
+        		float: left;
+            width: 100%;
+            margin: 10px 10px;
+        }
+        
+        h3 {
+        		margin-left: 5px;
+            }
+
+        #box_buttons {
+            float: left;
+            width: 100%;
+            height: 50px;
+        }
+
+        #searchBtn, #refreshBtn, #reset {
+            margin: 10px 10px;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s, color 0.3s; 
+            color: black; 
+            border: none; 
+            padding: 8px 12px; 
+            font-size: 14px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background 0.3s;
+            float: left;
+        }
+
+        /* Basic styling for results */
+        .result-item {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .result-item img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .result-item div {
+            
+        }
+
+        .result-item .title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .result-item .city {
+            all: unset;
+            
+        }
+        
+        .result-item .country {
+        	all: unset;
+        }
+        
+        
+        .result-item .type,
+        .result-item .bedrooms,
+        .result-item .bathrooms,
+        .result-item .size {
+        		width: auto;
+            float: left;
+            margin-top: 0;
+            margin-right: 5px;
+            padding: 5px;
+            background-color: #e0e0e0;
+            color: black;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .result-item .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        .view-details-btn {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #filterButton {
+            margin: 10px 10px;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s, color 0.3s; 
+            color: black; 
+            border: none; 
+            padding: 8px 12px; 
+            font-size: 14px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background 0.3s;
+            float: left;
+        }
+
+        #filters {
+            display: none;
+            float: left;
+        }
+
+        .filter {
+            float: left;
+        }
+
+        .filter-button {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            display: none; /* Initially hidden */
+        }
+
+        .filter-button.show {
+            display: inline-block; /* Make visible if 'show' class is added */
+        }
+
+        .filter-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .filter-button.selected {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .filter-button:active {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .filter-button:focus {
+            outline: none;
+        }
+</style>
+<body>
+    <div id="box_country_city_filters">
+        <div id="country_selector">
+            <select id="countrySelect">
+                <option value="">Select Country</option>
+                <option value="Albania">Albania</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Austria">Austria</option>
+                <option value="Belarus">Belarus</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                <option value="Bulgaria">Bulgaria</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Czech Republic">Czech Republic</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Estonia">Estonia</option>
+                <option value="Finland">Finland</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Greece">Greece</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Iceland">Iceland</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Italy">Italy</option>
+                <option value="Kosovo">Kosovo</option>
+                <option value="Latvia">Latvia</option>
+                <option value="Liechtenstein">Liechtenstein</option>
+                <option value="Lithuania">Lithuania</option>
+                <option value="Luxembourg">Luxembourg</option>
+                <option value="Malta">Malta</option>
+                <option value="Moldova">Moldova</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Montenegro">Montenegro</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="North Macedonia">North Macedonia</option>
+                <option value="Norway">Norway</option>
+                <option value="Poland">Poland</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Romania">Romania</option>
+                <option value="Russia">Russia</option>
+                <option value="San Marino">San Marino</option>
+                <option value="Serbia">Serbia</option>
+                <option value="Slovakia">Slovakia</option>
+                <option value="Slovenia">Slovenia</option>
+                <option value="Spain">Spain</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Vatican City">Vatican City</option>
+            </select>
+        </div>
+
+        <div id="citySelector">
+             <select id="citySelect" disabled>
+                <option value="">Select City</option>
+              </select>
+        </div>
+    </div>
+    
+    <div id="filterButton">More Filters</div>
+    
+    <div id="filters">
+        <div class="filter">
+            <select id="propertyTypeSelect">
+                <option value="">Select Property Type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="Condo">Condo</option>
+            </select>
+        </div>
+        <div class="filter">
+            <select id="bedroomsSelect">
+                <option value="">Select Bedrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+            </select>
+        </div>
+        <div class="filter">
+            <select id="bathroomsSelect">
+                <option value="">Select Bathrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="priceRangeSelect">
+                <option value="">Select Price Range</option>
+                <option value="0-100000">Up to 100,000</option>
+                <option value="100000-200000">100,000 - 200,000</option>
+                <option value="200000-300000">200,000 - 300,000</option>
+                <option value="300000-500000">300,000 - 500,000</option>
+                <option value="500000-1000000">500,000 - 1,000,000</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="squareFeetSelect">
+                <option value="">Select Square Feet</option>
+                <option value="0-1000">Up to 1000 sq ft</option>
+                <option value="1000-2000">1000 - 2000 sq ft</option>
+                <option value="2000-3000">2000 - 3000 sq ft</option>
+                <option value="3000-5000">3000 - 5000 sq ft</option>
+                <option value="5000+">5000+ sq ft</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="yearBuiltSelect">
+                <option value="">Year Built</option>
+                <option value="Before 2000">Before 2000</option>
+                <option value="2000-2010">2000 - 2010</option>
+                <option value="2011-2020">2011 - 2020</option>
+                <option value="2021+">2021+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="parkingSelect">
+                <option value="">Parking Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="gardenSelect">
+                <option value="">Garden</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="flooringSelect">
+                <option value="">Flooring Type</option>
+                <option value="Wood">Wood</option>
+                <option value="Tile">Tile</option>
+                <option value="Carpet">Carpet</option>
+                <option value="Marble">Marble</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="publicTransportSelect">
+                <option value="">Proximity to Public Transport</option>
+                <option value="Close">Close</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="elevatorSelect">
+                <option value="">Elevator Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="furnishingSelect">
+                <option value="">Furnishing Status</option>
+                <option value="Furnished">Furnished</option>
+                <option value="Unfurnished">Unfurnished</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="viewSelect">
+                <option value="">View Type</option>
+                <option value="Sea">Sea</option>
+                <option value="Mountain">Mountain</option>
+                <option value="City">City</option>
+                <option value="Park">Park</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="airConditioningSelect">
+                <option value="">Air Conditioning</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="heatingSelect">
+                <option value="">Heating Type</option>
+                <option value="Central">Central</option>
+                <option value="Individual">Individual</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="poolSelect">
+                <option value="">Pool Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="balconySelect">
+                <option value="">Balcony Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="roofSelect">
+                <option value="">Roof Type</option>
+                <option value="Flat">Flat</option>
+                <option value="Sloped">Sloped</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="securitySelect">
+                <option value="">Security System</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="schoolsSelect">
+                <option value="">Nearby Schools</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="internetSelect">
+                <option value="">Internet Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="gymSelect">
+                <option value="">Gym Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="storageSelect">
+                <option value="">Storage Space</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="shoppingSelect">
+                <option value="">Proximity to Shopping Malls</option>
+                <option value="Close">Close</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="hospitalSelect">
+                <option value="">Nearby Hospitals</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="parkSelect">
+                <option value="">Nearby Parks</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="beachSelect">
+                <option value="">Proximity to Beach</option>
+                <option value="Close">Close</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="box_buttons">
+        <button id="searchBtn">Search</button>
+        <button id="refreshBtn">Refresh Results</button>
+        <button id="reset">Reset Selections</button>
+    </div>
+
+    <div id="resultContainer">
+        <h3>Selected Properties:</h3>
+        <div id="resultItems"></div>
+        <div id="paginationControls">
+          <button id="prevPageBtn">Previous</button>
+          <button id="nextPageBtn">Next</button>
+      	</div>
+        <div id="paginationNumbers" class="pagination-numbers"></div>
+    </div>
+
+<script>
+    // Initially hide the dropdown (filters)
+document.getElementById("filters").style.display = "none";
+
+// Add event listener to the button
+document.getElementById("filterButton").addEventListener("click", function() {
+    var filters = document.getElementById("filters");
+    
+    // Toggle the display state of the dropdown
+    filters.style.display = filters.style.display === "none" ? "block" : "none";
+});
+
+</script>
+</body>

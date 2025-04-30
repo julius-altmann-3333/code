@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Button Content Loader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .button-container button {
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .button-container button:hover {
+      background-color: #0056b3;
+    }
+    #result-box {
+      width: 80%;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="button-container">
+    <button onclick="showResult(1)">Button 1</button>
+    <button onclick="showResult(2)">Button 2</button>
+    <button onclick="showResult(3)">Button 3</button>
+    <button onclick="showResult(4)">Button 4</button>
+    <button onclick="showResult(5)">Button 5</button>
+    <button onclick="showResult(6)">Button 6</button>
+    <button onclick="showResult(7)">Button 7</button>
+  </div>
+
+  <div id="result-box">
+    <div id="result-content">Click a button to see the results here.</div>
+  </div>
+
+  <script>
+    function showResult(buttonId) {
+      const resultBox = document.getElementById("result-box");
+      const resultContent = document.getElementById("result-content");
+
+      resultBox.style.display = "block";
+      resultContent.innerHTML = "Loading...";
+
+      fetch(`content/button${buttonId}.html`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`File button${buttonId}.html not found`);
+          }
+          return response.text();
+        })
+        .then(html => {
+          resultContent.innerHTML = html;
+        })
+        .catch(error => {
+          console.error(error);
+          resultContent.innerHTML = "Error loading content. Please try again.";
+        });
+    }
+  </script>
+
+</body>
+</html>

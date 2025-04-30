@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logo Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .logo-slider {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      padding: 2rem 0;
+    }
+
+    .logo-track {
+      display: flex;
+      width: calc(250px * 10);
+      animation: scroll 30s linear infinite;
+    }
+
+    .logo-slide {
+      height: 100px;
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      filter: grayscale(100%);
+      opacity: 0.8;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-slide:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .logo-slide img {
+      max-height: 60px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Duplicate logos for seamless scroll */
+    .logo-track::after {
+      content: '';
+      display: block;
+      width: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-slider">
+    <div class="logo-track">
+      <!-- Repeat logos twice for infinite loop effect -->
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png" alt="Apple"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Google_2015_logo.svg" alt="Google"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Nike_logo.svg" alt="Nike"></div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png" alt="Apple"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Google_2015_logo.svg" alt="Google"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Instagram.svg" alt="Instagram"></div>
+      <div class="logo-slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Nike_logo.svg" alt="Nike"></div>
+    </div>
+  </div>
+
+</body>
+</html>

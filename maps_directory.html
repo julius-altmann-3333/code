@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps with Location Pins</title>
+  <style>
+    /* Set size of the Google Map */
+    #map {
+      width: 700px;
+      height: 500px;
+    }
+    
+    /* Style for the location details box */
+    #info-box {
+      width: 300px;
+      height: 400px;
+      background-color: #f0f0f0;
+      position: fixed;
+      top: 20px;
+      right: -320px;
+      padding: 20px;
+      transition: right 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #info-box.open {
+      right: 20px;
+    }
+
+    #info-box h3 {
+      margin: 0;
+    }
+
+    #info-box p {
+      margin: 10px 0;
+    }
+
+    .input-form {
+      margin-bottom: 10px;
+    }
+
+    .input-form input {
+      margin: 5px;
+    }
+
+    .add-location {
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .add-location:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Google Maps with Location Pins</h1>
+
+  <!-- Form to add new locations -->
+  <div class="input-form">
+    <label for="location-name">Location Name: </label>
+    <input type="text" id="location-name">
+    <label for="location-address">Address: </label>
+    <input type="text" id="location-address">
+    <label for="location-web">Website: </label>
+    <input type="url" id="location-web">
+    <button class="add-location" onclick="addLocation()">Add Location</button>
+  </div>
+
+  <!-- Google Map -->
+  <div id="map"></div>
+
+  <!-- Info Box -->
+  <div id="info-box">
+    <h3 id="location-name-display"></h3>
+    <p id="location-address-display"></p>
+    <a id="location-web-display" href="" target="_blank">Visit Website</a>
+  </div>
+
+  <!-- Add your Google Maps API key here -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap&v=weekly" async></script>
+  
+  <script>
+    let map;
+    let markers = [];
+    let locations = JSON.parse(localStorage.getItem('locations')) || [];
+
+    // Initialize the Google Map
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 37.7749, lng: -122.4194 }, // Default location (San Francisco)
+        zoom: 12,
+      });
+
+      // Load stored locations
+      loadStoredLocations();
+
+      // Event listener for clicking the map to add a new marker
+      google.maps.event.addListener(map, 'click', function(event) {
+        const lat = event.latLng.lat();
+        const lng = event.latLng.lng();
+        const locationName = prompt("Enter a name for this location:");
+
+        if (locationName) {
+          addMarker({ name: locationName, lat, lng });
+        }
+      });
+    }
+
+    // Add a location to the map and store it
+    function addLocation() {
+      const name = document.getElementById('location-name').value;
+      const address = document.getElementById('location-address').value;
+      const web = document.getElementById('location-web').value;
+
+      if (name && address && web) {
+        const newLocation = { name, address, web, lat: 37.7749, lng: -122.4194 }; // Use geocoding to get lat/lng based on address
+        locations.push(newLocation);
+        localStorage.setItem('locations', JSON.stringify(locations));
+        addMarker(newLocation);
+      } else {
+        alert("Please fill out all fields.");
+      }
+    }
+
+    // Add a marker on the map
+    function addMarker(location) {
+      const marker = new google.maps.Marker({
+        position: { lat: location.lat, lng: location.lng },
+        map: map,
+        title: location.name,
+      });
+
+      // Set up the info window
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<div><strong>${location.name}</strong><br>${location.address}<br><a href="${location.web}" target="_blank">Website</a></div>`,
+      });
+
+      marker.addListener('click', function() {
+        document.getElementById('location-name-display').textContent = location.name;
+        document.getElementById('location-address-display').textContent = location.address;
+        document.getElementById('location-web-display').href = location.web;
+        document.getElementById('info-box').classList.add('open');
+      });
+
+      markers.push(marker);
+    }
+
+    // Load stored locations (if any)
+    function loadStoredLocations() {
+      locations.forEach(location => {
+        addMarker(location);
+      });
+    }
+  </script>
+
+</body>
+</html>

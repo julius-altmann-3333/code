@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ferrari Steering with Dynamic Grid and Boxes</title>
+  <style>
+    body {
+      margin: 0;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Large centered div container */
+    .wrapper {
+      position: relative;
+      width: 1000px; /* 100 grid units (10px each) */
+      height: 600px; /* 60 grid units (10px each) */
+      background-color: white;
+      border: 2px solid black;
+      display: grid;
+      grid-template-columns: repeat(100, 10px); /* 100 units horizontally (10px each) */
+      grid-template-rows: repeat(60, 10px); /* 60 units vertically (10px each) */
+      position: relative;
+    }
+
+    /* The car */
+    #min {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      z-index: 10;
+      transition: top 0.05s, left 0.05s;
+    }
+
+    /* Custom boxes that can be added dynamically */
+    .box {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: rgba(0, 255, 0, 0.5); /* Green boxes */
+      border: 2px solid green;
+      z-index: 5;
+    }
+
+    /* Grid Background - 10px x 10px units */
+    .grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right, #ddd 1px, transparent 1px),
+                        linear-gradient(to bottom, #ddd 1px, transparent 1px);
+      background-size: 10px 10px;
+      pointer-events: none; /* Allow clicking through the grid */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper" id="zoneWrapper">
+    <div class="grid"></div> <!-- Grid background -->
+    <!-- Ferrari Image -->
+    <img id="min" src="Aperta.jpg" alt="Ferrari" />
+  </div>
+
+  <script>
+    const wrapper = document.getElementById("zoneWrapper");
+    const min = document.getElementById("min");
+
+    // Ferrari's initial position in grid units
+    const step = 10;  // 10px per grid unit
+    const size = 50;  // Ferrari image size in px (50px x 50px)
+    let x = 50;  // Starting x position in grid units (centered)
+    let y = 25;  // Starting y position in grid units (centered)
+
+    // Function to update the Ferrari's position based on grid units
+    function updatePosition() {
+      const xPos = x * step;
+      const yPos = y * step;
+      min.style.left = `${xPos}px`;
+      min.style.top = `${yPos}px`;
+    }
+
+    // Function to add new boxes at specific x, y positions in the grid
+    function addBox(xPos, yPos) {
+      const box = document.createElement('div');
+      box.classList.add('box');
+      box.style.left = `${xPos * step}px`; // Convert grid x position to px
+      box.style.top = `${yPos * step}px`;  // Convert grid y position to px
+      wrapper.appendChild(box);
+    }
+
+    // Example: Adding boxes dynamically by specifying x and y positions
+    addBox(20, 10); // Example box at (x=20, y=10)
+    addBox(40, 20); // Example box at (x=40, y=20)
+    addBox(60, 30); // Example box at (x=60, y=30)
+
+    // Listen for arrow key movements
+    document.addEventListener("keydown", (e) => {
+      let newX = x, newY = y;
+
+      // Arrow keys to move Ferrari
+      switch (e.key) {
+        case "ArrowUp": 
+          // Prevent moving beyond top edge (top edge is at y=0)
+          if (y > 0) {
+            newY = y - 1;
+          }
+          break;
+
+        case "ArrowDown": 
+          // Prevent moving beyond bottom edge (bottom edge is at y=59)
+          // Allow stopping at y = 59 (bottom edge), so y = 60 would be beyond the grid.
+          if (y < 59) {
+            newY = y + 1;
+          }
+          break;
+
+        case "ArrowLeft": 
+          // Prevent moving beyond left edge (left edge is at x=0)
+          // Ensure the left edge of Ferrari (x*step) does not go beyond left.
+          if (x > 0) {
+            newX = x - 1;
+          }
+          break;
+
+        case "ArrowRight": 
+          // Prevent moving beyond right edge (right edge is at x=99)
+          // Ensure the right edge of Ferrari (x*step + size) does not go beyond right.
+          if (x < 99) {
+            newX = x + 1;
+          }
+          break;
+      }
+
+      // Update the Ferrari's position if the new position is valid
+      x = newX;
+      y = newY;
+      updatePosition();
+    });
+
+    // Initial position update
+    updatePosition();
+
+    // Function to dynamically add more boxes (you can call this with new positions)
+    function addMoreBoxes() {
+      addBox(30, 15); // Example box at (x=30, y=15)
+      addBox(70, 35); // Example box at (x=70, y=35)
+    }
+
+    // Uncomment the following line to add more boxes dynamically
+    // addMoreBoxes();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sidebar */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15vw;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+#sidebar p {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#sidebar p.active {
+  background-color: #00ccff;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Main Content Area */
+.main {
+  width: 84vw;
+  margin-left: 15vw;
+}
+
+section {
+  height: 100vh;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Scroll Progress Bar */
+#vertical-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 1vw;
+  height: 0%;
+  background: linear-gradient(to bottom, #00ccff, #ff6600);
+  transition: height 0.1s ease-in-out;
+  z-index: 100;
+}
+
+/* Landing Page Container Consulting*/
+.landingpage-container-consulting {
+  position: relative;
+  width: 800px;
+  min-height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.landingpage-container-consulting.expanded-consulting {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+}
+
+/* Expand Button */
+.expand-btn-consulting {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn-consulting svg {
+  width: 100%;
+  height: 100%;
+  fill: #808080;
+  transition: fill 0.3s ease;
+}
+
+.expand-btn-consulting:hover svg {
+  fill: #b0b0b0;
+}
+
+/* Landing Page Container Medical */
+.landingpage-container-medical {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.landingpage-container-medical.expanded-medical {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+}
+
+/* Expand Button */
+.expand-btn-medical {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn-medical svg {
+  width: 100%;
+  height: 100%;
+  fill: #808080;
+  transition: fill 0.3s ease;
+}
+
+.expand-btn-medical:hover svg {
+  fill: #b0b0b0;
+}
+
+/* Landing Page Real Estate */
+.landingpage-container-real-estate {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.landingpage-container-real-estate.expanded-real-estate {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+}
+
+/* Expand Button */
+.expand-btn-real-estate {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn-real-estate svg {
+  width: 100%;
+  height: 100%;
+  fill: #808080;
+  transition: fill 0.3s ease;
+}
+
+.expand-btn-real-estate:hover svg {
+  fill: #b0b0b0;
+}
+
+/* Landing Page Container Cars*/
+.landingpage-container-cars {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.landingpage-container-cars.expanded-cars {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+}
+
+/* Expand Button */
+.expand-btn-cars {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn-cars svg {
+  width: 100%;
+  height: 100%;
+  fill: #808080;
+  transition: fill 0.3s ease;
+}
+
+.expand-btn-cars:hover svg {
+  fill: #b0b0b0;
+}
+
+/* Landing Page Container Agency*/
+.landingpage-container-agency {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.landingpage-container-agency.expanded-agency {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+}
+
+/* Expand Button */
+.expand-btn-agency {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn-agency svg {
+  width: 100%;
+  height: 100%;
+  fill: #808080;
+  transition: fill 0.3s ease;
+}
+
+.expand-btn-agency:hover svg {
+  fill: #b0b0b0;
+}
+
+/* Landing Page Container Portfolio*/
+.landingpage-container-portfolio {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.landingpage-container-portfolio.expanded-portfolio {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  height: 90vh;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+  transform: translate(-50%, -50%);
+}
+
+/* Expand Button */
+.expand-btn-portfolio {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn-portfolio svg {
+  width: 100%;
+  height: 100%;
+  fill: #808080;
+  transition: fill 0.3s ease;
+}
+
+.expand-btn-portfolio:hover svg {
+  fill: #b0b0b0;
+}
+
+/* Section One Layout */
+.section_one {
+  width: 100%;
+}
+
+.upper_box,
+.lower_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upper_box {
+  height: 500px;
+}
+
+.lower_box {
+  height: 100px;
+}
+
+.cards {
+  width: 33%;
+  height: 400px;
+  float: left;
+}
+
+img {
+  width: 200px;
+  height: 100px;
+}
+
+/* Auto-Scroll Cards */
+
+    .preview-card {
+      width: 300px;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 1px solid #ddd;
+      background: #fff;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+
+    .template-preview {
+      width: 100%;
+      height: 1000px; /* The full length of the landing page */
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      transition: transform 5s ease-out; /* Slower and smoother transition */
+    }
+
+    .preview-card:hover .template-preview {
+      transform: translateY(-500px); /* Moves up with a slower effect */
+    }
+
+    .landing-page-content {
+      height: 100%;
+      overflow-y: auto;
+      padding: 20px;
+      background: linear-gradient(to bottom, #f0f2f5, #fff);
+    }
+
+    /* Sample content of landing page for preview */
+    .landing-page-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .landing-page-content p {
+      margin-bottom: 15px;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 768px) {
+      .preview-card {
+        width: 250px;
+        height: 400px;
+      }
+    }

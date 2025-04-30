@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consulting Selectors</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    .selector-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .selector-left {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .selector-heading {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .selector-description {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .selector-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .selector-item {
+      padding: 8px 12px;
+      font-size: 1rem;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #333;
+      transition: all 0.2s ease;
+    }
+
+    .selector-item:hover,
+    .selector-item.active {
+      border-left: 3px solid #0a66c2;
+      background: rgba(10, 102, 194, 0.05);
+      font-weight: bold;
+    }
+
+    .selector-item::before {
+      content: "➤";
+      color: #999;
+      transition: color 0.2s;
+    }
+
+    .selector-item.active::before {
+      color: #0a66c2;
+    }
+
+    .selector-right {
+      flex: 1;
+      min-width: 320px;
+      min-height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .selector-image {
+      display: none;
+      width: 400px;
+      height: 600px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .selector-image.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .selector-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .selector-image {
+        width: 90%;
+        height: auto;
+        max-height: 500px;
+        position: static;
+      }
+
+      .selector-right {
+        min-height: auto;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="selector-section">
+  <div class="selector-left">
+    <div class="selector-heading">Our Consulting Services</div>
+    <div class="selector-description">Select a focus area to learn more about our tailored solutions for growth and transformation.</div>
+    <ul class="selector-list">
+      <li class="selector-item active" onclick="showImage(0)">Business Strategy</li>
+      <li class="selector-item" onclick="showImage(1)">Digital Transformation</li>
+      <li class="selector-item" onclick="showImage(2)">Financial Advisory</li>
+      <li class="selector-item" onclick="showImage(3)">Risk Management</li>
+      <li class="selector-item" onclick="showImage(4)">Operations Optimization</li>
+      <li class="selector-item" onclick="showImage(5)">Human Capital Consulting</li>
+      <li class="selector-item" onclick="showImage(6)">Market Entry Strategy</li>
+      <li class="selector-item" onclick="showImage(7)">Mergers & Acquisitions</li>
+      <li class="selector-item" onclick="showImage(8)">Sustainability Planning</li>
+      <li class="selector-item" onclick="showImage(9)">Leadership Development</li>
+    </ul>
+  </div>
+
+  <div class="selector-right">
+    <img src="https://via.placeholder.com/400x600?text=Strategy" class="selector-image active" />
+    <img src="https://via.placeholder.com/400x600?text=Digital" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=Finance" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=Risk" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=Operations" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=HR" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=Market+Entry" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=M%26A" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=Sustainability" class="selector-image" />
+    <img src="https://via.placeholder.com/400x600?text=Leadership" class="selector-image" />
+  </div>
+</div>
+
+<script>
+  function showImage(index) {
+    const items = document.querySelectorAll('.selector-item');
+    const images = document.querySelectorAll('.selector-image');
+
+    items.forEach(item => item.classList.remove('active'));
+    images.forEach(img => img.classList.remove('active'));
+
+    items[index].classList.add('active');
+    images[index].classList.add('active');
+  }
+</script>
+
+</body>
+</html>

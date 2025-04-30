@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Project Calculator</title>
+    <style>
+        .section {
+            margin-bottom: 20px;
+        }
+        .output {
+            margin-top: 10px;
+        }
+        .slider-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            display: none;
+        }
+        .slider-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slider-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: inline-block;
+            width: 150px;
+        }
+        .input-group input,
+        .input-group select {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Real Estate Project Calculator</h1>
+
+    <!-- Shopping Section -->
+    <div class="section" id="shoppingSection">
+        <h2>Shopping Section</h2>
+
+        <div class="input-group">
+            <label for="shoppingSelect">Select Product:</label>
+            <select id="shoppingSelect">
+                <option value="product1">Product 1</option>
+                <option value="product2">Product 2</option>
+                <option value="product3">Product 3</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="shoppingQuantity">Quantity:</label>
+            <input type="number" id="shoppingQuantity" placeholder="Enter Quantity">
+        </div>
+
+        <div class="output">
+            <label>Total Price:</label>
+            <span id="totalPrice">0</span>
+        </div>
+    </div>
+
+    <!-- Value Calculator Section -->
+    <div class="section" id="valueCalculator">
+        <h2>Value Calculator</h2>
+
+        <div class="input-group">
+            <label for="numApartments">Number of Apartments:</label>
+            <input type="number" id="numApartments" placeholder="Number of Apartments">
+        </div>
+
+        <div class="input-group">
+            <label for="rentPerApartment">Rent per Apartment:</label>
+            <input type="number" id="rentPerApartment" placeholder="Monthly Rent">
+        </div>
+
+        <div class="input-group">
+            <label for="multiplier">Multiplier (Yearly Rent):</label>
+            <input type="number" id="multiplier" placeholder="Multiplier for Yearly Rent">
+        </div>
+
+        <div class="output">
+            <label>Total Yearly Rent:</label>
+            <span id="totalYearlyRent">0</span>
+        </div>
+        
+        <div class="input-group">
+            <label for="acquisitionPrice">Acquisition Price:</label>
+            <input type="number" id="acquisitionPrice" placeholder="Acquisition Price">
+        </div>
+
+        <div class="output">
+            <label>Total Acquisition Price:</label>
+            <span id="totalAcquisitionPrice">0</span>
+        </div>
+        
+        <div class="input-group">
+            <label for="loanPayment">Loan Payment:</label>
+            <input type="number" id="loanPayment" placeholder="Loan Payment">
+        </div>
+
+        <div class="output">
+            <label>Total Loan Payment:</label>
+            <span id="totalLoanPayment">0</span>
+        </div>
+    </div>
+
+    <!-- Exterior Material Selection Section -->
+    <div class="section" id="exteriorMaterialSelection">
+        <h2>Select Exterior Material</h2>
+        <div class="input-group">
+            <label for="materialSelectExterior">Select Material for Exterior:</label>
+            <select id="materialSelectExterior">
+                <option value="wood">Wood</option>
+                <option value="stone">Stone</option>
+                <option value="steel">Steel</option>
+            </select>
+            <img id="materialImageExterior" src="" alt="Material" style="width: 50px; height: 50px;">
+        </div>
+        <div class="output">
+            <label>Selected Exterior Material:</label>
+            <span id="selectedMaterialExterior"></span><br>
+            <img id="finalImageExterior" src="" alt="Material Image" style="width: 100px; height: 100px;">
+        </div>
+    </div>
+
+    <!-- Interior Material Selection Section -->
+    <div class="section" id="interiorMaterialSelection">
+        <h2>Select Interior Material</h2>
+        <div class="input-group">
+            <label for="materialSelectInterior">Select Material for Interior:</label>
+            <select id="materialSelectInterior">
+                <option value="wood">Wood</option>
+                <option value="stone">Stone</option>
+                <option value="steel">Steel</option>
+            </select>
+            <img id="materialImageInterior" src="" alt="Material" style="width: 50px; height: 50px;">
+        </div>
+        <div class="output">
+            <label>Selected Interior Material:</label>
+            <span id="selectedMaterialInterior"></span><br>
+            <img id="finalImageInterior" src="" alt="Material Image" style="width: 100px; height: 100px;">
+        </div>
+    </div>
+
+    <script>
+        // Material Selection with Images and Output
+        document.getElementById('materialSelectExterior').addEventListener('change', function() {
+            const selectedMaterial = this.value;
+            const materialImage = document.getElementById('materialImageExterior');
+            const finalImage = document.getElementById('finalImageExterior');
+            const selectedMaterialText = document.getElementById('selectedMaterialExterior');
+
+            if (selectedMaterial === 'wood') {
+                materialImage.src = 'wood-image.jpg';
+                finalImage.src = 'wood-image.jpg';
+                selectedMaterialText.textContent = 'Wood';
+            } else if (selectedMaterial === 'stone') {
+                materialImage.src = 'stone-image.jpg';
+                finalImage.src = 'stone-image.jpg';
+                selectedMaterialText.textContent = 'Stone';
+            } else if (selectedMaterial === 'steel') {
+                materialImage.src = 'steel-image.jpg';
+                finalImage.src = 'steel-image.jpg';
+                selectedMaterialText.textContent = 'Steel';
+            }
+        });
+
+        document.getElementById('materialSelectInterior').addEventListener('change', function() {
+            const selectedMaterial = this.value;
+            const materialImage = document.getElementById('materialImageInterior');
+            const finalImage = document.getElementById('finalImageInterior');
+            const selectedMaterialText = document.getElementById('selectedMaterialInterior');
+
+            if (selectedMaterial === 'wood') {
+                materialImage.src = 'wood-image.jpg';
+                finalImage.src = 'wood-image.jpg';
+                selectedMaterialText.textContent = 'Wood';
+            } else if (selectedMaterial === 'stone') {
+                materialImage.src = 'stone-image.jpg';
+                finalImage.src = 'stone-image.jpg';
+                selectedMaterialText.textContent = 'Stone';
+            } else if (selectedMaterial === 'steel') {
+                materialImage.src = 'steel-image.jpg';
+                finalImage.src = 'steel-image.jpg';
+                selectedMaterialText.textContent = 'Steel';
+            }
+        });
+        
+        // Shopping Section Price Calculation
+        document.getElementById('shoppingSelect').addEventListener('change', calculateShoppingPrice);
+        document.getElementById('shoppingQuantity').addEventListener('input', calculateShoppingPrice);
+
+        function calculateShoppingPrice() {
+            const productPrices = {
+                product1: 50,
+                product2: 100,
+                product3: 150
+            };
+
+            const selectedProduct = document.getElementById('shoppingSelect').value;
+            const quantity = parseFloat(document.getElementById('shoppingQuantity').value);
+
+            const totalPrice = productPrices[selectedProduct] * (isNaN(quantity) ? 0 : quantity);
+
+            document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+        }
+
+    </script>
+
+</body>
+</html>

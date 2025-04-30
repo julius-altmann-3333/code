@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latest Blog Posts</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+
+    .blog-section {
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .blog-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .blog-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-align: left;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .blog-card-content {
+      padding: 1rem;
+    }
+
+    .blog-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .blog-excerpt {
+      font-size: 0.95rem;
+      color: #666;
+    }
+
+    .blog-button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .blog-button:hover {
+      background-color: #0056b3;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .blog-card img {
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="blog-section">
+    <h2>Latest Blog Posts</h2>
+    
+    <div class="blog-grid" id="blogGrid">
+      <!-- Visible Posts -->
+      <a href="blog-post-1.html" class="blog-card">
+        <img src="https://source.unsplash.com/600x400/?business,consulting" alt="Blog 1" />
+        <div class="blog-card-content">
+          <div class="blog-title">5 Ways to Boost Productivity</div>
+          <div class="blog-excerpt">Discover simple habits that drive efficiency in your daily workflow.</div>
+        </div>
+      </a>
+      <a href="blog-post-2.html" class="blog-card">
+        <img src="https://source.unsplash.com/600x400/?strategy,teamwork" alt="Blog 2" />
+        <div class="blog-card-content">
+          <div class="blog-title">Strategic Planning for 2025</div>
+          <div class="blog-excerpt">Learn how to set long-term business goals that are realistic and impactful.</div>
+        </div>
+      </a>
+
+      <!-- Hidden Posts -->
+      <a href="blog-post-3.html" class="blog-card hidden">
+        <img src="https://source.unsplash.com/600x400/?growth,analytics" alt="Blog 3" />
+        <div class="blog-card-content">
+          <div class="blog-title">Understanding Market Trends</div>
+          <div class="blog-excerpt">Analyze data like a pro and anticipate where your industry is headed.</div>
+        </div>
+      </a>
+      <a href="blog-post-4.html" class="blog-card hidden">
+        <img src="https://source.unsplash.com/600x400/?meeting,business" alt="Blog 4" />
+        <div class="blog-card-content">
+          <div class="blog-title">Top Communication Skills for Leaders</div>
+          <div class="blog-excerpt">Master the art of clear and persuasive leadership communication.</div>
+        </div>
+      </a>
+    </div>
+
+    <button class="blog-button" onclick="toggleMorePosts()">View More Posts</button>
+  </section>
+
+  <script>
+    function toggleMorePosts() {
+      const hiddenPosts = document.querySelectorAll('.blog-card.hidden');
+      const button = document.querySelector('.blog-button');
+      hiddenPosts.forEach(post => post.classList.remove('hidden'));
+      button.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

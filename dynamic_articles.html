@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Results Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .links a {
+      margin-right: 15px;
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+    .results-container {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 300px;
+      border-radius: 8px;
+    }
+    .result-box img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .result-box p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="links">
+    <a onclick="showResult(1)">Show Result 1</a>
+    <a onclick="showResult(2)">Show Result 2</a>
+    <a onclick="showResult(3)">Show Result 3</a>
+  </div>
+
+  <div class="results-container" id="resultsContainer">
+    <!-- Result content will appear here -->
+  </div>
+
+  <script>
+  let contentData = {};
+
+  // Load JSON on page load
+  fetch('content.json')
+    .then(response => response.json())
+    .then(data => {
+      contentData = data;
+    })
+    .catch(error => console.error('Error loading content:', error));
+
+  function showResult(num) {
+    const result = contentData[num];
+    if (!result) return;
+
+    const container = document.getElementById("resultsContainer");
+    container.innerHTML = `
+      <div class="result-box">
+        <img src="${result.img}" alt="Result ${num}">
+        <p>${result.text}</p>
+      </div>
+    `;
+  }
+</script>
+
+
+</body>
+</html>

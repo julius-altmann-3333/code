@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Results Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .links a {
+      margin-right: 15px;
+      cursor: pointer;
+      text-decoration: underline;
+      color: blue;
+    }
+    .results-container {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      width: 300px;
+      border-radius: 8px;
+    }
+    .result-box img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .result-box p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="links">
+    <a onclick="showResult(1)">Show Result 1</a>
+    <a onclick="showResult(2)">Show Result 2</a>
+    <a onclick="showResult(3)">Show Result 3</a>
+  </div>
+
+  <div class="results-container" id="resultsContainer">
+    <!-- Result content will appear here -->
+  </div>
+
+  <script>
+    function showResult(num) {
+      const content = {
+        1: {
+          img: "https://via.placeholder.com/300x200?text=Image+1",
+          text: "This is the content for result 1."
+        },
+        2: {
+          img: "https://via.placeholder.com/300x200?text=Image+2",
+          text: "Here is the second result with different info."
+        },
+        3: {
+          img: "https://via.placeholder.com/300x200?text=Image+3",
+          text: "Finally, this is the third result shown."
+        }
+      };
+
+      const result = content[num];
+      const container = document.getElementById("resultsContainer");
+      container.innerHTML = `
+        <div class="result-box">
+          <img src="${result.img}" alt="Result ${num}">
+          <p>${result.text}</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

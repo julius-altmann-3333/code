@@ -1,0 +1,59 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .logo-slider {
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      padding: 2rem 0;
+    }
+
+    .logo-track {
+      display: flex;
+      width: calc(250px * 10);
+      animation: scroll 30s linear infinite;
+    }
+
+    .logo-slide {
+      height: 100px;
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      filter: grayscale(100%);
+      opacity: 0.8;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .logo-slide:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .logo-slide img {
+      max-height: 60px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Duplicate logos for seamless scroll */
+    .logo-track::after {
+      content: '';
+      display: block;
+      width: 0;
+    }

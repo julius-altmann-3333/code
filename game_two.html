@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Grid Navigation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .scene {
+      perspective: 800px;
+    }
+    .grid {
+      width: 1000px;
+      height: 1000px;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(100, 10px);
+      grid-template-rows: repeat(100, 10px);
+      transform: rotateX(60deg) rotateZ(45deg);
+      transform-style: preserve-3d;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    .cell {
+      width: 10px;
+      height: 10px;
+      box-sizing: border-box;
+      border: 1px solid black;
+    }
+    .player {
+      width: 10px;
+      height: 10px;
+      background: red;
+      border: 1px solid black;
+      position: absolute;
+      z-index: 10;
+      transition: left 0.1s, top 0.1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="grid" id="grid"></div>
+    <div class="player" id="player"></div>
+  </div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const player = document.getElementById('player');
+    const gridSize = 100;
+    const cellSize = 10;
+
+    // Fill grid with cells
+    for (let i = 0; i < gridSize * gridSize; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      grid.appendChild(cell);
+    }
+
+    let posX = 0;
+    let posY = 0;
+
+    function updatePlayerPosition() {
+      player.style.left = `${posX * cellSize}px`;
+      player.style.top = `${posY * cellSize}px`;
+    }
+
+    updatePlayerPosition();
+
+    document.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'ArrowUp':
+          if (posY > 0) posY--;
+          break;
+        case 'ArrowDown':
+          if (posY < gridSize - 1) posY++;
+          break;
+        case 'ArrowLeft':
+          if (posX > 0) posX--;
+          break;
+        case 'ArrowRight':
+          if (posX < gridSize - 1) posX++;
+          break;
+      }
+      updatePlayerPosition();
+    });
+  </script>
+</body>
+</html>

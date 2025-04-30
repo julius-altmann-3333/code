@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Grid with Obstacles</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+    #viewport {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      perspective: 800px;
+    }
+    .layer {
+      position: absolute;
+      width: 1000px;
+      height: 1000px;
+      display: grid;
+      grid-template-columns: repeat(100, 10px);
+      grid-template-rows: repeat(100, 10px);
+      transform-style: preserve-3d;
+    }
+    .cell {
+      width: 10px;
+      height: 10px;
+      box-sizing: border-box;
+      border: 0.5px solid #999;
+      background-color: transparent;
+    }
+    .car {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border: 1px solid black;
+      z-index: 10;
+    }
+    .obstacle {
+      position: absolute;
+      width: 10px;
+      height: 50px;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport"></div>
+
+  <script>
+    const viewport = document.getElementById("viewport");
+    const gridSize = 100;
+    const cellSize = 10;
+    const numLayers = 5;
+
+    const obstacles = [
+      { x: 100, y: 100, width: 10, height: 50, z: 1 },
+      { x: 250, y: 300, width: 10, height: 50, z: 2 },
+      { x: 400, y: 600, width: 10, height: 50, z: 3 },
+      { x: 750, y: 800, width: 10, height: 50, z: 4 }
+    ];
+
+    // Create layers and fill with cells
+    const layers = [];
+    for (let z = 0; z < numLayers; z++) {
+      const layer = document.createElement("div");
+      layer.className = "layer";
+      layer.style.transform = `translateZ(${z * 10}px)`;
+      for (let i = 0; i < gridSize * gridSize; i++) {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        layer.appendChild(cell);
+      }
+      viewport.appendChild(layer);
+      layers.push(layer);
+    }
+
+    // Add obstacles to correct layers
+    obstacles.forEach(ob => {
+      const obs = document.createElement("div");
+      obs.className = "obstacle";
+      obs.style.left = `${ob.x}px`;
+      obs.style.top = `${ob.y}px`;
+      obs.style.transform = `translateZ(${ob.z * 10}px)`;
+      viewport.appendChild(obs);
+    });
+
+    // Create and add car
+    const car = document.createElement("div");
+    car.className = "car";
+    viewport.appendChild(car);
+
+    let carX = 0;
+    let carY = 0;
+    let carZ = 0;
+
+    function isBlocked(x, y, z) {
+      return obstacles.some(ob => ob.z === z &&
+        x < ob.x + ob.width && x + 10 > ob.x &&
+        y < ob.y + ob.height && y + 10 > ob.y);
+    }
+
+    function updateCarPosition() {
+      car.style.left = `${carX}px`;
+      car.style.top = `${carY}px`;
+      car.style.transform = `translateZ(${carZ * 10}px)`;
+    }
+
+    function tryMove(dx, dy, dz = 0) {
+      const newX = carX + dx;
+      const newY = carY + dy;
+      const newZ = Math.max(0, Math.min(numLayers - 1, carZ + dz));
+
+      if (newX < 0 || newY < 0 || newX > 990 || newY > 990) return;
+
+      if (!isBlocked(newX, newY, newZ)) {
+        carX = newX;
+        carY = newY;
+        carZ = newZ;
+        updateCarPosition();
+      }
+    }
+
+    document.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "ArrowUp": tryMove(0, -cellSize); break;
+        case "ArrowDown": tryMove(0, cellSize); break;
+        case "ArrowLeft": tryMove(-cellSize, 0); break;
+        case "ArrowRight": tryMove(cellSize, 0); break;
+        case "PageUp": tryMove(0, 0, 1); break;
+        case "PageDown": tryMove(0, 0, -1); break;
+      }
+    });
+
+    updateCarPosition();
+  </script>
+</body>
+</html>

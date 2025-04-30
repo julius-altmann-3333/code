@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Diagrams with Percentage Fill</title>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    /* Diagram Section */
+    .diagram-section {
+      width: 100%;
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Diagrams Container */
+    .diagram-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    /* Common Diagram Line Styles */
+    .diagram-line {
+      position: relative;
+      width: 100%;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .diagram-line .fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      width: 0%;
+      transition: width 2s ease-in-out;
+    }
+
+    /* Selectors on the Line */
+    .selector {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ff5722;
+      transition: all 0.3s ease;
+    }
+
+    .selector::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 10px;
+      background-color: #ff5722;
+    }
+
+    /* Large Line Height and Width (for the first 3 lines) */
+    .large-line {
+      height: 40px;
+    }
+
+    /* Small Line Height and Width (for the last 2 lines) */
+    .small-line {
+      height: 20px;
+      width: 80%;
+    }
+
+    /* Scroll Trigger (for animation) */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-in-out;
+    }
+
+    .animate-on-scroll.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+
+      .selector {
+        width: 18px;
+        height: 18px;
+      }
+
+      .large-line {
+        height: 35px;
+      }
+
+      .small-line {
+        height: 18px;
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .diagram-line {
+        width: 100%;
+      }
+
+      .small-line {
+        height: 15px;
+        width: 95%;
+      }
+
+      .selector {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Diagram Section -->
+  <div class="diagram-section">
+    <h2>Percentage Diagrams</h2>
+    <p>Scroll down to see the diagrams fill with colors based on percentages. Each diagram represents a set of 6 selectors showing percentage values.</p>
+
+    <div class="diagram-container">
+      <!-- Diagram Line 1 (Large) -->
+      <div class="diagram-line large-line animate-on-scroll" data-fill="80">
+        <div class="fill"></div>
+        <div class="selector" style="left: 0%"></div>
+        <div class="selector" style="left: 20%"></div>
+        <div class="selector" style="left: 40%"></div>
+        <div class="selector" style="left: 60%"></div>
+        <div class="selector" style="left: 80%"></div>
+        <div class="selector" style="left: 100%"></div>
+      </div>
+
+      <!-- Diagram Line 2 (Large) -->
+      <div class="diagram-line large-line animate-on-scroll" data-fill="50">
+        <div class="fill"></div>
+        <div class="selector" style="left: 0%"></div>
+        <div class="selector" style="left: 20%"></div>
+        <div class="selector" style="left: 40%"></div>
+        <div class="selector" style="left: 60%"></div>
+        <div class="selector" style="left: 80%"></div>
+        <div class="selector" style="left: 100%"></div>
+      </div>
+
+      <!-- Diagram Line 3 (Large) -->
+      <div class="diagram-line large-line animate-on-scroll" data-fill="95">
+        <div class="fill"></div>
+        <div class="selector" style="left: 0%"></div>
+        <div class="selector" style="left: 20%"></div>
+        <div class="selector" style="left: 40%"></div>
+        <div class="selector" style="left: 60%"></div>
+        <div class="selector" style="left: 80%"></div>
+        <div class="selector" style="left: 100%"></div>
+      </div>
+
+      <!-- Diagram Line 4 (Small) -->
+      <div class="diagram-line small-line animate-on-scroll" data-fill="40">
+        <div class="fill"></div>
+        <div class="selector" style="left: 0%"></div>
+        <div class="selector" style="left: 20%"></div>
+        <div class="selector" style="left: 40%"></div>
+        <div class="selector" style="left: 60%"></div>
+        <div class="selector" style="left: 80%"></div>
+        <div class="selector" style="left: 100%"></div>
+      </div>
+
+      <!-- Diagram Line 5 (Small) -->
+      <div class="diagram-line small-line animate-on-scroll" data-fill="70">
+        <div class="fill"></div>
+        <div class="selector" style="left: 0%"></div>
+        <div class="selector" style="left: 20%"></div>
+        <div class="selector" style="left: 40%"></div>
+        <div class="selector" style="left: 60%"></div>
+        <div class="selector" style="left: 80%"></div>
+        <div class="selector" style="left: 100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Detect when a section is in the viewport to trigger animation
+    const diagrams = document.querySelectorAll('.animate-on-scroll');
+
+    const checkInView = () => {
+      diagrams.forEach(diagram => {
+        const rect = diagram.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        if (rect.top < windowHeight * 0.8 && rect.bottom >= 0) {
+          diagram.classList.add('active');
+          const fillWidth = diagram.getAttribute('data-fill');
+          const fillElement = diagram.querySelector('.fill');
+          fillElement.style.width = fillWidth + '%';
+        }
+      });
+    };
+
+    // Event listener to check when the user scrolls
+    window.addEventListener('scroll', checkInView);
+
+    // Initial check for any sections already in view when page loads
+    checkInView();
+  </script>
+</body>
+</html>
