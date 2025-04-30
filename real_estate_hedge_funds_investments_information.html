@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Hedge Fund Strategies</title>
+    <style>
+        .box {
+            background-color: #fff;
+            padding: 20px;
+        }
+        .box h2 {
+            color: #444;
+        }
+        .box ul {
+            padding-left: 20px;
+        }
+
+        .information_box {
+            float: left;
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        .data_box {
+            border: 1px solid black;
+            width: 250px;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 10px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .content_box {
+            display: none; 
+            border: 1px solid black; 
+            width: 100%; 
+            height: 70vh; 
+            float: left; 
+            background-color: lightgray; 
+            overflow-y: scroll;
+        }
+
+        .section_box {
+            display: none; 
+            border: 1px solid black; 
+            width: 100%; 
+            height: 70vh; 
+            float: left; 
+            background-color: lightgray; 
+            overflow-y: scroll;
+        }
+
+        .main-title {
+            color: #444;
+            font-size: 36px;
+            text-align: center;
+        }
+        .subheading {
+            color: #555;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .paragraph {
+            color: #333;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+        <div class="box">
+            <div class="information_box">
+                <h2>1. Property Acquisitions</h2>
+                <p>Directly purchasing real estate properties to generate income or appreciation.</p>
+                <h3>Types:</h3>
+            </div>
+            <div class="information_box">
+                <div class="data_box" onclick="showDiv(1)">
+                        <strong>Residential Real Estate</strong><br>Single-family homes, apartment buildings, and condominiums.
+                </div>
+                <div class="data_box" onclick="showDiv(2)">
+                        <strong>Commercial Real Estate</strong><br>Office buildings, retail centers, industrial warehouses, and hotels.
+                </div>
+                <div class="data_box" onclick="showDiv(3)">
+                        <strong>Mixed-Use Developments</strong><br>Properties that combine residential, retail, and office spaces.
+                </div>
+                <div class="data_box" onclick="showDiv(4)">
+                        <strong>Raw Land Investments</strong><br>Buying land for future development or appreciation.
+                </div>
+            </div>
+            <div id="div1" class="content_box">
+                <h1 class="main-title">Residential Real Estate</h1>
+                <p class="paragraph">This type of real estate involves properties used primarily for living purposes. It includes various types, such as single-family homes, apartment buildings, and condominiums. Residential properties are typically sought after for their potential for both rental income and capital appreciation.</p>
+
+                <h2 class="subheading">Single-Family Homes</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Standalone properties designed for a single family.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Popular for their potential for appreciation, offering more control over the property and a wide market for buying and selling.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Often rented out to tenants, providing steady income.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Vacancy rates and market volatility can affect income and value.</p>
+
+                <h2 class="subheading">Apartment Buildings</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Multi-unit buildings designed to accommodate multiple tenants in separate apartments.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Offer diversified income streams from various tenants, lowering risk compared to single-unit properties.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Managed by property firms, ideal for investors looking for passive income from multiple tenants.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Requires high upfront investment and managing tenant relationships.</p>
+            </div>
+            <div id="div2" class="content_box">
+                <h1 class="main-title">Commercial Real Estate</h1>
+                <p class="paragraph">This type of real estate involves properties used for commercial purposes, including office buildings, retail centers, industrial warehouses, and hotels. These properties are often considered lucrative investments due to the potential for high rental income and long-term appreciation.</p>
+
+                <h2 class="subheading">Office Buildings</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Buildings designed for business use, typically housing office spaces for companies and organizations.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Office buildings are attractive investments due to stable demand in urban areas, especially in business hubs, and can provide long-term rental income.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Office buildings often attract corporate tenants, which can lead to steady cash flow and long-term leases.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Demand for office space can fluctuate based on economic conditions, and vacancies can become a concern if the local market is oversupplied with office space.</p>
+
+                <h2 class="subheading">Retail Centers</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Commercial properties designed for retail businesses, typically consisting of multiple storefronts.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Retail centers in high-traffic locations can offer attractive returns through long-term leases and the potential for value appreciation.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Retail centers are often leased to multiple tenants, offering the opportunity for diverse income streams. However, success depends on consumer demand in the area.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Retail properties can face risks from changing consumer behaviors, such as the shift toward online shopping, potentially leading to increased vacancy rates.</p>
+
+                <h2 class="subheading">Industrial Warehouses</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Properties used for industrial storage, distribution, or manufacturing purposes, including warehouses and logistics centers.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Industrial warehouses are increasingly in demand, driven by e-commerce growth and the need for distribution centers. They tend to have lower management costs and long-term tenants.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Industrial warehouses are often leased to logistics and manufacturing companies, offering stable, long-term rental income.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> While industrial properties tend to have high demand, their value can be tied to shifts in the manufacturing and logistics industries. Market fluctuations can affect rental demand.</p>
+
+                <h2 class="subheading">Hotels</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Commercial properties designed to provide temporary lodging to guests.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Hotels offer the potential for high returns, especially in tourist-heavy areas or business districts, as they can generate substantial rental income per room.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Hotels provide short-term rentals with frequent turnover, which can lead to higher rental rates and profits compared to traditional long-term leases.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> The hotel industry can be highly sensitive to economic cycles, with demand often fluctuating based on tourism trends, seasonal factors, and market conditions.</p>
+            </div>
+            <div id="div3" class="content_box">
+                <h1 class="main-title">Mixed-Use Developments</h1>
+                <p class="paragraph">Mixed-use developments combine different types of real estate, typically residential, commercial, and sometimes industrial, in one property or complex. These properties are often located in urban areas and designed to offer convenience, integrating living, working, and recreational spaces.</p>
+
+                <h2 class="subheading">Residential Component</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> Part of the development dedicated to residential units, such as apartments or condominiums.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Attracts residents who seek the convenience of living close to work and retail, which can lead to higher demand and appreciation.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> High demand for mixed-use spaces in prime urban areas often leads to steady rental income.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Market downturns or changes in demand for residential living in urban centers can impact rental income and property value.</p>
+
+                <h2 class="subheading">Commercial Component</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> The commercial area of the development, which typically includes retail stores, offices, and restaurants.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Commercial spaces benefit from the built-in customer base of residents and commuters, offering steady income through long-term leases.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Retail and office spaces often generate steady, long-term lease income, especially if the development is in a high-demand urban area.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Vacancy rates can be affected by economic shifts, changes in consumer behavior, and oversupply of commercial spaces in the area.</p>
+            </div>
+            <div id="div4" class="content_box">
+                <h1 class="main-title">Raw Land Developments</h1>
+                <p class="paragraph">Raw land developments involve purchasing undeveloped land for future construction or investment purposes. This can include residential, commercial, or industrial developments, with the goal of appreciating the land's value over time or through improvements.</p>
+
+                <h2 class="subheading">Land Acquisition</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> The process of purchasing undeveloped land, often in strategic locations with potential for future growth.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Raw land is often acquired at a lower cost and can appreciate significantly as the area develops or zoning laws change.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Raw land typically does not generate rental income unless it is leased for farming, parking, or other short-term uses.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Raw land can be a long-term investment with significant holding costs, and its value is highly dependent on external factors like local development, zoning regulations, and infrastructure projects.</p>
+
+                <h2 class="subheading">Land Development</h2>
+                <p class="paragraph"><span class="strong-text">Definition:</span> The process of improving raw land through zoning, clearing, and preparing it for construction of residential, commercial, or industrial buildings.</p>
+                <p class="paragraph"><span class="strong-text">Investment Appeal:</span> Land development offers high potential for appreciation once improvements are made, such as adding utilities or subdividing the property.</p>
+                <p class="paragraph"><span class="strong-text">Renting Potential:</span> Raw land itself generally does not generate rent, but once developed, it can be leased or sold for a profit.</p>
+                <p class="paragraph"><span class="strong-text">Risks:</span> Land development can be risky due to zoning restrictions, environmental challenges, and construction costs, and the timeline for return on investment can be lengthy.</p>
+            </div>
+            <div class="information_box">
+                <h3>Strategies:</h3>
+            </div>
+            <div class="information_box">
+                <div class="data_box" onclick="showSection(1)">
+                        <strong>Value-Add</strong><br>Purchasing underperforming properties, renovating them, and increasing their value.
+                </div>
+                <div class="data_box" onclick="showSection(2)">
+                        <strong>Core Investments</strong><br>Acquiring high-quality, stable properties in prime locations for long-term returns.
+                </div>
+                <div class="data_box" onclick="showSection(3)">
+                        <strong>Core-Plus</strong><br>A mix of stable assets with potential for moderate improvements.
+                </div>
+                <div class="data_box" onclick="showSection(4)">
+                        <strong>Opportunistic Investing</strong><br>Taking high-risk, high-reward bets on developing properties or emerging markets.
+                </div>
+            </div>
+            <div id="section-1" class="section_box">
+
+            </div>
+            <div id="section-2" class="section_box">
+
+            </div>
+            <div id="section-3" class="section_box">
+
+            </div>
+            <div id="section-4" class="section_box">
+
+            </div>
+        </div>
+        <div class="box">
+            <div class="information_box">
+                <h2>2. Real Estate Securities</h2>
+                <p>Instead of owning physical properties, funds invest in financial instruments related to real estate.</p>
+                <h3>Types:</h3>
+            </div>
+            <div class="information_box">
+                <div class="data_box">
+                        <strong>Real Estate Investment Trusts (REITs)</strong><br>Publicly traded or private companies that own and manage income-producing properties.
+                </div>
+                <div class="data_box">
+                        <strong>Mortgage-Backed Securities (MBS)</strong><br>Bundled mortgage loans sold as securities, providing exposure to real estate lending.
+                </div>
+                <div class="data_box">
+                        <strong> Estate Mutual Funds & ETFs</strong><br>Funds that invest in a diversified portfolio of real estate stocks and REITs.
+                </div>
+                <div class="data_box">
+                        <strong>Real Estate Corporate Bonds</strong><br>Debt instruments issued by property developers and real estate firms.
+                </div>
+            </div>
+            <div class="information_box">
+                <h3>Strategies:</h3>
+            </div>
+            <div class="information_box">
+                <div class="data_box">
+                        <strong>Long-Short Strategy</strong><br>Taking long positions in undervalued securities and shorting overvalued ones.
+                </div>
+                <div class="data_box">
+                        <strong>Yield Arbitrage</strong><br>Exploiting differences in interest rates and dividend yields.
+                </div>
+                <div class="data_box">
+                        <strong>Event-Driven Investing</strong><br>Capitalizing on mergers, acquisitions, or bankruptcies in real estate firms.
+                </div>
+            </div>
+        </div>
+        
+        <div class="box">
+            <div class="information_box">
+                <h2>3. Distressed Property Investments</h2>
+                <p>This strategy involves buying properties facing financial distress, often at a discount, with the goal of turning them around.</p>
+                <h3>Types:</h3>
+            </div>
+            <div class="information_box">
+                <div class="data_box">
+                        <strong>Foreclosed Properties</strong><br>Acquiring properties that banks repossess due to mortgage defaults.
+                </div>
+                <div class="data_box">
+                        <strong>Short Sales</strong><br>Buying properties from owners who owe more than their home’s value to avoid foreclosure.
+                </div>
+                <div class="data_box">
+                        <strong>Bank-Owned (REO) Properties</strong><br>Properties that lenders have taken over after unsuccessful foreclosure sales.
+                </div>
+                <div class="data_box">
+                        <strong>Distressed Commercial Properties</strong><br>Office buildings, hotels, or shopping centers with high vacancy rates or financial struggles.
+                </div>
+            </div>
+            <div class="information_box">
+                <h3>Strategies:</h3>
+            </div>
+            <div class="information_box">
+                <div class="data_box">
+                        <strong>Fix & Flip</strong><br>Renovating and reselling properties for a profit.
+                </div>
+                <div class="data_box">
+                        <strong>Debt Restructuring</strong><br>Acquiring properties with defaulted loans and negotiating better terms.
+                </div>
+                <div class="data_box">
+                        <strong>Bulk Purchases</strong><br>Buying multiple distressed assets in a package deal to reduce costs.
+                </div>
+                <div class="data_box">
+                        <strong>Lease-Up Strategy</strong><br>Acquiring properties with high vacancy rates, improving occupancy, and selling at a profit.
+                </div>
+            </div>
+        </div>
+        <script>
+            // Function to show the correct div
+            function showDiv(divIndex) {
+                // Select all content divs
+                const contentDivs = document.querySelectorAll('.content_box');
+                
+                // Hide all content divs
+                contentDivs.forEach(div => div.style.display = 'none');
+                
+                // Display the div corresponding to the button clicked
+                const divToShow = document.getElementById('div' + divIndex);
+                divToShow.style.display = 'block';
+            }
+
+            // Function to show the correct section div based on the clicked button
+function showSection(sectionIndex) {
+    // Select all section divs using the class 'section-box'
+    const sectionBoxes = document.querySelectorAll('.section_box');
+    
+    // Hide all section divs and set opacity back to 70% (not visible)
+    sectionBoxes.forEach(box => {
+        box.style.display = 'none';
+        box.style.opacity = '0.7'; // Set opacity to 70% when hidden
+    });
+    
+    // Display the section corresponding to the index passed (sectionIndex)
+    const sectionToShow = document.getElementById('section-' + sectionIndex);
+    sectionToShow.style.display = 'block';
+    
+    // Fade in the section by setting opacity to 100% with a smooth transition
+    setTimeout(() => {
+        sectionToShow.style.transition = 'opacity 1s ease-in'; // 1-second fade-in transition
+        sectionToShow.style.opacity = '1'; // Set opacity to 100%
+    }, 10); // Adding a small delay to ensure the section is displayed before the fade-in
+}
+
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Hedge Fund Strategies</title>
+    <style>
+        .box {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .box h2 {
+            color: #444;
+        }
+        .box ul {
+            padding-left: 20px;
+        }
+
+        .information_box {
+            float: left;
+            width: 100%;
+            height: auto;
+            margin-top: 30px;
+        }
+        .data_box {
+            border: 1px solid black;
+            width: 250px;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 10px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .content_box {
+            display: none; 
+            border: 1px solid black; 
+            width: 50vw; 
+            height: 70vh; 
+            float: left; 
+            background-color: gray; 
+            overflow-y: scroll;
+        }
+
+        .main-title {
+            color: #444;
+            font-size: 36px;
+            text-align: center;
+        }
+        .subheading {
+            color: #555;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .paragraph {
+            color: #333;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Real Estate Hedge Fund Strategies Section -->
+    <div class="box">
+        <h2>1. Property Acquisitions</h2>
+        <p>Directly purchasing real estate properties to generate income or appreciation.</p>
+        <h3>Types:</h3>
+        <div class="information_box">
+            <div class="data_box" onclick="showDiv(1, 'real_estate')">
+                    <strong>Residential Real Estate</strong><br>Single-family homes, apartment buildings, and condominiums.
+            </div>
+            <div class="data_box" onclick="showDiv(2, 'real_estate')">
+                    <strong>Commercial Real Estate</strong><br>Office buildings, retail centers, industrial warehouses, and hotels.
+            </div>
+            <div class="data_box" onclick="showDiv(3, 'real_estate')">
+                    <strong>Mixed-Use Developments</strong><br>Properties that combine residential, retail, and office spaces.
+            </div>
+            <div class="data_box" onclick="showDiv(4, 'real_estate')">
+                    <strong>Raw Land Investments</strong><br>Buying land for future development or appreciation.
+            </div>
+        </div>
+        <div id="div1_real_estate" class="content_box">
+            <h1 class="main-title">Residential Real Estate</h1>
+            <p class="paragraph">This type of real estate involves properties used primarily for living purposes...</p>
+        </div>
+        <div id="div2_real_estate" class="content_box">
+            <h1 class="main-title">Commercial Real Estate</h1>
+            <p class="paragraph">This type of real estate involves properties used for commercial purposes...</p>
+        </div>
+        <div id="div3_real_estate" class="content_box">
+            <h1 class="main-title">Mixed-Use Developments</h1>
+            <p class="paragraph">Mixed-use developments combine different types of real estate...</p>
+        </div>
+        <div id="div4_real_estate" class="content_box">
+            <h1 class="main-title">Raw Land Developments</h1>
+            <p class="paragraph">Raw land developments involve purchasing undeveloped land for future construction...</p>
+        </div>
+    </div>
+
+    <!-- Real Estate Securities & Distressed Property Investments Section -->
+    <div class="box">
+        <h2>2. Real Estate Securities</h2>
+        <p>Instead of owning physical properties, funds invest in financial instruments related to real estate.</p>
+        <h3>Types:</h3>
+        <div class="information_box">
+            <div class="data_box" onclick="showDiv(1, 'securities')">
+                    <strong>Real Estate Investment Trusts (REITs)</strong><br>Publicly traded or private companies that own and manage income-producing properties.
+            </div>
+            <div class="data_box" onclick="showDiv(2, 'securities')">
+                    <strong>Mortgage-Backed Securities (MBS)</strong><br>Bundled mortgage loans sold as securities, providing exposure to real estate lending.
+            </div>
+            <div class="data_box" onclick="showDiv(3, 'securities')">
+                    <strong>Estate Mutual Funds & ETFs</strong><br>Funds that invest in a diversified portfolio of real estate stocks and REITs.
+            </div>
+            <div class="data_box" onclick="showDiv(4, 'securities')">
+                    <strong>Real Estate Corporate Bonds</strong><br>Debt instruments issued by property developers and real estate firms.
+            </div>
+        </div>
+        <div id="div1_securities" class="content_box">
+            <h1 class="main-title">Real Estate Investment Trusts (REITs)</h1>
+            <p class="paragraph">REITs are companies that own or finance real estate that produces income...</p>
+        </div>
+        <div id="div2_securities" class="content_box">
+            <h1 class="main-title">Mortgage-Backed Securities (MBS)</h1>
+            <p class="paragraph">Mortgage-backed securities are investments backed by a bundle of mortgages...</p>
+        </div>
+        <div id="div3_securities" class="content_box">
+            <h1 class="main-title">Estate Mutual Funds & ETFs</h1>
+            <p class="paragraph">These funds invest in a diversified portfolio of real estate companies...</p>
+        </div>
+        <div id="div4_securities" class="content_box">
+            <h1 class="main-title">Real Estate Corporate Bonds</h1>
+            <p class="paragraph">These are bonds issued by property developers and real estate firms...</p>
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>3. Distressed Property Investments</h2>
+        <p>This strategy involves buying properties facing financial distress, often at a discount...</p>
+        <h3>Types:</h3>
+        <div class="information_box">
+            <div class="data_box" onclick="showDiv(1, 'distressed')">
+                    <strong>Foreclosed Properties</strong><br>Acquiring properties that banks repossess due to mortgage defaults.
+            </div>
+            <div class="data_box" onclick="showDiv(2, 'distressed')">
+                    <strong>Short Sales</strong><br>Buying properties from owners who owe more than their home’s value.
+            </div>
+            <div class="data_box" onclick="showDiv(3, 'distressed')">
+                    <strong>Bank-Owned (REO) Properties</strong><br>Properties that lenders have taken over after unsuccessful foreclosure sales.
+            </div>
+            <div class="data_box" onclick="showDiv(4, 'distressed')">
+                    <strong>Distressed Commercial Properties</strong><br>Office buildings, hotels, or shopping centers with financial struggles.
+            </div>
+        </div>
+        <div id="div1_distressed" class="content_box">
+            <h1 class="main-title">Foreclosed Properties</h1>
+            <p class="paragraph">Acquiring properties that banks repossess due to mortgage defaults...</p>
+        </div>
+        <div id="div2_distressed" class="content_box">
+            <h1 class="main-title">Short Sales</h1>
+            <p class="paragraph">Buying properties from owners who owe more than their home’s value...</p>
+        </div>
+        <div id="div3_distressed" class="content_box">
+            <h1 class="main-title">Bank-Owned (REO) Properties</h1>
+            <p class="paragraph">Properties that lenders have taken over after unsuccessful foreclosure sales...</p>
+        </div>
+        <div id="div4_distressed" class="content_box">
+            <h1 class="main-title">Distressed Commercial Properties</h1>
+            <p class="paragraph">Office buildings, hotels, or shopping centers with financial struggles...</p>
+        </div>
+    </div>
+
+    <script>
+        // Show the corresponding div for each section
+        function showDiv(index, section) {
+            // Hide all content divs in the section
+            const contentDivs = document.querySelectorAll(`#${section} .content_box`);
+            contentDivs.forEach(div => div.style.display = 'none');
+
+            // Show the div corresponding to the clicked button
+            document.getElementById(`div${index}_${section}`).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

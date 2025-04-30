@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Buying Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-container input, .form-container select, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .result-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .result-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: calc(33% - 20px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .result-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .result-item h3 {
+            color: #3498db;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Real Estate Buying Guide</h1>
+    <p>Find your dream property with the right information at every step</p>
+</header>
+
+<div class="container">
+
+    <!-- Step 1: Landing Page -->
+    <section id="step-1">
+        <h2>Start Your Journey to Buying a Property</h2>
+        <p>Ready to buy? Get your personalized real estate buying guide now!</p>
+        <div class="form-container">
+            <h3>Fill out the form below to receive your personalized guide:</h3>
+            <form id="step1-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <select id="property-type" required>
+                    <option value="">Select Property Type</option>
+                    <option value="house">House</option>
+                    <option value="condo">Condo</option>
+                    <option value="investment">Investment</option>
+                    <option value="land">Land</option>
+                </select>
+                <input type="number" id="budget-min" placeholder="Min Budget" required>
+                <input type="number" id="budget-max" placeholder="Max Budget" required>
+                <input type="text" id="location" placeholder="Preferred Location" required>
+                <select id="timeframe" required>
+                    <option value="">Timeframe</option>
+                    <option value="asap">ASAP</option>
+                    <option value="3-6 months">3-6 months</option>
+                    <option value="6-12 months">6-12 months</option>
+                </select>
+                <button type="submit" class="button">Submit and Get Guide</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Step 2: Email after form submission (demo) -->
+    <section id="step-2">
+        <h2>Your Personalized Guide is on the Way!</h2>
+        <p>Check your inbox for a detailed guide to help you through the process. Meanwhile, here are some insights:</p>
+        <ul>
+            <li>The best neighborhoods for your budget</li>
+            <li>Property types that fit your needs</li>
+            <li>Financing options and how to get pre-approved</li>
+            <li>Key things to look for when viewing properties</li>
+        </ul>
+        <a href="#step-3" class="button">Continue to Detailed Information</a>
+    </section>
+
+    <!-- Step 3: Detailed Information Website -->
+    <section id="step-3">
+        <h2>Complete Your Real Estate Journey</h2>
+        <p>Now let's dive deeper into the crucial steps for purchasing real estate:</p>
+        <h3>Financing & Budgeting</h3>
+        <p>Learn how to calculate your mortgage payments, get pre-approved, and plan your budget.</p>
+        <h3>Legal Considerations</h3>
+        <p>Ensure the property has clear titles, complies with zoning laws, and has no liens.</p>
+        <h3>Property Inspections</h3>
+        <p>Learn the importance of property inspections and what to look for during walkthroughs.</p>
+        <a href="#step-4" class="button">Find Your Dream Property</a>
+    </section>
+
+    <!-- Step 4: Property Listings -->
+    <section id="step-4">
+        <h2>Browse Available Properties Based on Your Criteria</h2>
+        <div class="form-container">
+            <h3>Filter Properties</h3>
+            <form id="search-form">
+                <input type="text" id="search-location" placeholder="Enter Location" required>
+                <select id="search-type">
+                    <option value="house">House</option>
+                    <option value="condo">Condo</option>
+                    <option value="investment">Investment</option>
+                    <option value="land">Land</option>
+                </select>
+                <input type="number" id="search-budget-min" placeholder="Min Budget" required>
+                <input type="number" id="search-budget-max" placeholder="Max Budget" required>
+                <button type="submit" class="button">Search Properties</button>
+            </form>
+        </div>
+        <div class="result-grid" id="results"></div>
+    </section>
+
+</div>
+
+<script>
+    document.getElementById('step1-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Simulate sending an email and redirecting user
+        alert('Thank you for submitting! A guide has been sent to your email.');
+        window.location.href = "#step-2";
+    });
+
+    document.getElementById('search-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Simulating property search results
+        const resultsContainer = document.getElementById('results');
+        const location = document.getElementById('search-location').value;
+        const type = document.getElementById('search-type').value;
+        const minBudget = document.getElementById('search-budget-min').value;
+        const maxBudget = document.getElementById('search-budget-max').value;
+
+        resultsContainer.innerHTML = `
+            <div class="result-item">
+                <img src="https://via.placeholder.com/300" alt="Property">
+                <h3>Property 1</h3>
+                <p>Location: ${location} | Type: ${type} | Price: $${minBudget} - $${maxBudget}</p>
+            </div>
+            <div class="result-item">
+                <img src="https://via.placeholder.com/300" alt="Property">
+                <h3>Property 2</h3>
+                <p>Location: ${location} | Type: ${type} | Price: $${minBudget} - $${maxBudget}</p>
+            </div>
+            <div class="result-item">
+                <img src="https://via.placeholder.com/300" alt="Property">
+                <h3>Property 3</h3>
+                <p>Location: ${location} | Type: ${type} | Price: $${minBudget} - $${maxBudget}</p>
+            </div>
+        `;
+    });
+</script>
+
+</body>
+</html>
