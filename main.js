@@ -1,43 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Get references to the select elements and other necessary elements
-    const manufacturerSelect = document.getElementById("manufacturerSelect");
-    const modelSelect = document.getElementById("modelSelect");
+    const countrySelect = document.getElementById("countrySelect");
+    const citySelect = document.getElementById("citySelect");
     const searchBtn = document.getElementById("searchBtn");
     const resetBtn = document.getElementById("reset");
     const resultContainer = document.getElementById("resultContainer");
     const resultItems = document.getElementById("resultItems");
 
-    // Function to update city options based on selected manufacturer
-    function updateModels(manufacturer) {
+    // Function to update city options based on selected country
+    function updateCities(country) {
         // Clear previous city options
-        modelSelect.innerHTML = '<option value="">Select Model</option>';
+        citySelect.innerHTML = '<option value="">Select City</option>';
         
-        if (manufacturer) {
+        if (country) {
             // Enable city selector and populate cities
-            modelSelect.disabled = false;
-            const models = modelsData[manufacturer] || [];
-            models.forEach(model => {
+            citySelect.disabled = false;
+            const cities = cityData[country] || [];
+            cities.forEach(city => {
                 const option = document.createElement("option");
-                option.value = model;
-                option.textContent = model;
-                modelSelect.appendChild(option);
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
             });
         } else {
-            modelSelect.disabled = true;
+            citySelect.disabled = true;
         }
     }
 
     // Event listener for country selection
-    manufacturerSelect.addEventListener("change", () => {
-        const selectedManufacturer = manufacturerSelect.value;
-        updateModels(selectedManufacturer);
+    countrySelect.addEventListener("change", () => {
+        const selectedCountry = countrySelect.value;
+        updateCities(selectedCountry);
     });
 
     // Event listener for the reset button
     resetBtn.addEventListener("click", () => {
         // Reset all select menus
         document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
-        modelSelect.disabled = true;
+        citySelect.disabled = true;
         resultItems.innerHTML = ''; // Clear previous results
     });
 
@@ -152,14 +152,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 resultItem.innerHTML = `
                     <img src="${property.imageUrl}" alt="Property Image">
                     <div>
-                        <h4 class="title">${property.title}</h4>
-                        <p class="country">Country: ${property.country}</p>
-                        <p class="city">City: ${property.city}</p>
-                        <p class="price">Price: $${property.price}</p>
-                        <p class="type">Type: ${property.propertyType}</p>
-                        <p class="bedrooms">Bedrooms: ${property.bedrooms}</p>
-                        <p class="bathrooms">Bathrooms: ${property.bathrooms}</p>
-                        <p class="size">Size: ${property.squareFeet} sq ft</p>
+                        <h4>${property.title}</h4>
+                        <p>Country: ${property.country}</p>
+                        <p>City: ${property.city}</p>
+                        <p>Price: $${property.price}</p>
+                        <p>Type: ${property.propertyType}</p>
+                        <p>Bedrooms: ${property.bedrooms}</p>
+                        <p>Bathrooms: ${property.bathrooms}</p>
+                        <p>Size: ${property.squareFeet} sq ft</p>
                         <button class="filter-button" data-filter="internet">Internet: ${property.internet}</button>
                         <button class="filter-button" data-filter="parking">Parking: ${property.parking}</button>
                         <button class="filter-button" data-filter="garden">Garden: ${property.garden}</button>

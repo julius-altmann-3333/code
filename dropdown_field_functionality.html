@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Div Toggle</title>
+    <style>
+        /* Style for the button */
+        #toggleButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #toggleButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for the dropdown div box */
+        #dropdownDiv {
+            display: none;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+            max-height: 0;
+        }
+
+        /* When the dropdown is visible */
+        #dropdownDiv.show {
+            display: block;
+            opacity: 1;
+            max-height: 300px; /* Adjust max-height based on your content */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="toggleButton">Toggle Div Box</button>
+
+    <div id="dropdownDiv">
+        <h2>Dropdown Content</h2>
+        <p>This content appears when the button is clicked. You can add any HTML content inside.</p>
+        <p>Click the button again to close this box.</p>
+    </div>
+
+    <script>
+        // Get references to the button and the dropdown div
+        const toggleButton = document.getElementById("toggleButton");
+        const dropdownDiv = document.getElementById("dropdownDiv");
+
+        // Add event listener for the button to toggle the visibility of the dropdown div
+        toggleButton.addEventListener("click", function() {
+            dropdownDiv.classList.toggle("show"); // Toggle the 'show' class to open/close the dropdown
+        });
+    </script>
+
+</body>
+</html>

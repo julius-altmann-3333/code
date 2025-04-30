@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Investment Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        .result { margin-top: 20px; padding: 10px; border: 1px solid #000; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Real Estate Investment Calculator</h2>
+        <label>Property Price ($): <input type="number" id="price" /></label><br/><br/>
+        <label>Renovation Costs ($): <input type="number" id="renovation" /></label><br/><br/>
+        <label>Closing Costs ($): <input type="number" id="closing" /></label><br/><br/>
+        <label>Annual Rental Income ($): <input type="number" id="rent" /></label><br/><br/>
+        <label>Estimated Sale Price ($): <input type="number" id="sale" /></label><br/><br/>
+        <button onclick="calculateInvestment()">Calculate</button>
+        
+        <div class="result" id="output"></div>
+    </div>
+
+    <script>
+        function calculateInvestment() {
+            let price = parseFloat(document.getElementById('price').value) || 0;
+            let renovation = parseFloat(document.getElementById('renovation').value) || 0;
+            let closing = parseFloat(document.getElementById('closing').value) || 0;
+            let rent = parseFloat(document.getElementById('rent').value) || 0;
+            let sale = parseFloat(document.getElementById('sale').value) || 0;
+            
+            let totalInvestment = price + renovation + closing;
+            let rentalROI = rent > 0 ? ((rent * 12) / totalInvestment * 100).toFixed(2) : "N/A";
+            let saleProfit = sale - totalInvestment;
+            let saleROI = sale > 0 ? ((saleProfit / totalInvestment) * 100).toFixed(2) : "N/A";
+            
+            document.getElementById('output').innerHTML = `
+                <p>Total Investment: $${totalInvestment.toFixed(2)}</p>
+                <p>Annual Rental ROI: ${rentalROI}%</p>
+                <p>Potential Sale Profit: $${saleProfit.toFixed(2)}</p>
+                <p>Sale ROI: ${saleROI}%</p>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -3,473 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Search</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-
-        select, button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-            width: 200px;
-        }
-
-        .output {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .car-box {
-            border: 2px solid #ccc;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #f8f8f8;
-            text-align: center;
-            width: 200px;
-            margin: 10px;
-        }
-
-        .car-box img {
-            width: 100%;
-            height: auto;
-        }
-
-        .select-container {
-            margin-bottom: 20px;
-        }
-    </style>
+    <title>Real Estate Property Form</title>
+    <link rel="stylesheet" type="text/css" href="C:\Users\Julius\Desktop\Real Estate\property_form_with_pdf_download\style.css">
+    <script src="C:\Users\Julius\Desktop\Real Estate\property_form_with_pdf_download\script.js"></script>
 </head>
 <body>
-    <h1>Search Cars</h1>
 
-    <!-- Filter section -->
-    <div class="select-container">
-        <select id="manufacturerSelect">
-            <option value="">Select Manufacturer</option>
-            <option value="audi">Audi</option>
-            <option value="alfa-romeo">Alfa Romeo</option>
-            <option value="aston-martin">Aston Martin</option>
-            <option value="bmw">BMW</option>
-            <option value="bentley">Bentley</option>
-            <option value="bugatti">Bugatti</option>
-            <option value="chevrolet">Chevrolet</option>
-            <option value="chrysler">Chrysler</option>
-            <option value="dodge">Dodge</option>
-            <option value="fiat">Fiat</option>
-            <option value="ford">Ford</option>
-            <option value="honda">Honda</option>
-            <option value="hyundai">Hyundai</option>
-            <option value="jaguar">Jaguar</option>
-            <option value="jeep">Jeep</option>
-            <option value="kia">Kia</option>
-            <option value="land-rover">Land Rover</option>
-            <option value="lamborghini">Lamborghini</option>
-            <option value="mazda">Mazda</option>
-            <option value="mclaren">McLaren</option>
-            <option value="maserati">Maserati</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="mercedes-benz">Mercedes-Benz</option>
-            <option value="nissan">Nissan</option>
-            <option value="peugeot">Peugeot</option>
-            <option value="porsche">Porsche</option>
-            <option value="ram">Ram</option>
-            <option value="rolls-royce">Rolls-Royce</option>
-            <option value="subaru">Subaru</option>
-            <option value="tesla">Tesla</option>
-            <option value="toyota">Toyota</option>
-            <option value="volkswagen">Volkswagen</option>
-            <option value="volvo">Volvo</option>
+<h1>Real Estate Property Listing Form</h1>
+
+<div class="form-container">
+    <form id="propertyForm">
+        <label for="title">Property Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="price">Listing Price ($):</label>
+        <input type="number" id="price" name="price" required>
+
+        <label for="address">Property Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="yearBuilt">Year Built:</label>
+        <input type="number" id="yearBuilt" name="yearBuilt" required>
+
+        <label for="lotSize">Lot Size (sq ft):</label>
+        <input type="number" id="lotSize" name="lotSize" required>
+
+        <label for="squareFootage">Square Footage (sq ft):</label>
+        <input type="number" id="squareFootage" name="squareFootage" required>
+
+        <label for="bedrooms">Number of Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required>
+
+        <label for="bathrooms">Number of Bathrooms:</label>
+        <input type="number" id="bathrooms" name="bathrooms" required>
+
+        <label for="flooring">Flooring Type:</label>
+        <input type="text" id="flooring" name="flooring">
+
+        <label for="appliances">Appliances Included:</label>
+        <input type="text" id="appliances" name="appliances">
+
+        <label for="pool">Pool/Hot Tub:</label>
+        <select id="pool" name="pool">
+            <option value="None">None</option>
+            <option value="Pool">Pool</option>
+            <option value="Hot Tub">Hot Tub</option>
+            <option value="Both">Both</option>
         </select>
 
-        <select id="modelSelect" disabled>
-            <option value="">Select Model</option>
-        </select>
+        <label for="hoa">HOA Fees (per month):</label>
+        <input type="number" id="hoa" name="hoa">
 
-        <select id="kilometerstandSelect">
-            <option value="">Select Kilometerstand</option>
-            <option value="70000-80000">70,000 - 80,000 km</option>
-            <option value="80000-90000">80,000 - 90,000 km</option>
-            <option value="90000-100000">90,000 - 100,000 km</option>
-        </select>
+        <label for="description">Property Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
 
-        <select id="leistungSelect">
-            <option value="">Select Leistung</option>
-            <option value="400kW">400 kW / 600 PS</option>
-            <option value="350kW">350 kW / 500 PS</option>
-            <option value="300kW">300 kW / 400 PS</option>
-        </select>
+        <button type="button" onclick="displayResults()">Submit</button>
+    </form>
+</div>
 
-        <select id="erstzulassungSelect">
-            <option value="">Select Erstzulassung</option>
-            <option value="01/2020">01/2020</option>
-            <option value="01/2021">01/2021</option>
-            <option value="01/2019">01/2019</option>
-        </select>
+<div id="results" style="display:none;">
+    <h2>Property Details</h2>
+    <p><strong>Property Title:</strong> <span id="resultTitle"></span></p>
+    <p><strong>Listing Price:</strong> $<span id="resultPrice"></span></p>
+    <p><strong>Address:</strong> <span id="resultAddress"></span></p>
+    <p><strong>Year Built:</strong> <span id="resultYearBuilt"></span></p>
+    <p><strong>Lot Size:</strong> <span id="resultLotSize"></span> sq ft</p>
+    <p><strong>Square Footage:</strong> <span id="resultSquareFootage"></span> sq ft</p>
+    <p><strong>Bedrooms:</strong> <span id="resultBedrooms"></span></p>
+    <p><strong>Bathrooms:</strong> <span id="resultBathrooms"></span></p>
+    <p><strong>Flooring:</strong> <span id="resultFlooring"></span></p>
+    <p><strong>Appliances:</strong> <span id="resultAppliances"></span></p>
+    <p><strong>Pool/Hot Tub:</strong> <span id="resultPool"></span></p>
+    <p><strong>HOA Fees:</strong> $<span id="resultHOA"></span></p>
+    <p><strong>Description:</strong> <span id="resultDescription"></span></p>
 
-        <select id="motorSelect">
-            <option value="">Select Motor</option>
-            <option value="V8">V8</option>
-            <option value="I4">I4</option>
-            <option value="I6">I6</option>
-            <option value="V6">V6</option>
-        </select>
+    <button id="downloadBtn" onclick="generatePDF()">Download PDF</button>
+</div>
 
-        <select id="matchingNumbersSelect">
-            <option value="">Select Matching Numbers</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select>
+<!-- Include jsPDF library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-        <select id="typSelect">
-            <option value="">Select Typ</option>
-            <option value="sedan">Sedan</option>
-            <option value="suv">SUV</option>
-            <option value="sports-car">Sports Car</option>
-        </select>
-
-        <select id="fahrzeughalterSelect">
-            <option value="">Select Fahrzeughalter</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-
-        <select id="kraftstoffartSelect">
-            <option value="">Select Kraftstoffart</option>
-            <option value="gasoline">Gasoline</option>
-            <option value="diesel">Diesel</option>
-            <option value="hybrid">Hybrid</option>
-        </select>
-
-        <select id="verbrauchSelect">
-            <option value="">Select Verbrauch</option>
-            <option value="urban-7.0">7.0</option>
-            <option value="urban-8.0">8.0</option>
-            <option value="urban-10.0">10.0</option>
-        </select>
-
-        <select id="energieeffizienzklasseSelect">
-            <option value="">Select Energieeffizienzklasse</option>
-            <option value="A++">A++</option>
-            <option value="A+">A+</option>
-            <option value="A">A</option>
-        </select>
-
-        <select id="getriebeSelect">
-            <option value="">Select Getriebe</option>
-            <option value="manual">Manual</option>
-            <option value="automatic">Automatic</option>
-            <option value="dual-clutch">Dual-Clutch</option>
-        </select>
-
-        <select id="klimatisierungSelect">
-            <option value="">Select Klimatisierung</option>
-            <option value="air-conditioning">Air Conditioning</option>
-            <option value="automatic-climate-control">Automatic Climate Control</option>
-            <option value="sunroof">Sunroof</option>
-        </select>
-
-        <select id="farbeSelect">
-            <option value="">Select Farbe</option>
-            <option value="black">Black</option>
-            <option value="blue">Blue</option>
-            <option value="red">Red</option>
-            <option value="yellow">Yellow</option>
-            <option value="white">White</option>
-            <option value="silver">Silver</option>
-        </select>
-
-        <select id="innenausstattungSelect">
-            <option value="">Select Innenausstattung</option>
-            <option value="leather">Leather</option>
-            <option value="vinyl">Vinyl</option>
-            <option value="fabric">Fabric</option>
-            <option value="alcantara">Alcantara</option>
-            <option value="suede">Suede</option>
-        </select>
-
-        <button id="searchBtn">Search</button>
-    </div>
-
-    <!-- Output Section -->
-    <div id="output" class="output"></div>
-
-    <script>
-        document.getElementById('searchBtn').addEventListener('click', searchCars);
-
-const carData = [
-    { 
-        manufacturer: 'audi', model: 'A4', kilometerstand: '75000', leistung: '400kW', image: 'https://via.placeholder.com/200x150?text=Audi+A4',
-        erstzulassung: '01/2020', motor: 'I4', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-7.0', energieeffizienzklasse: 'A+', getriebe: 'manual', klimatisierung: 'air-conditioning', farbe: 'black', innenausstattung: 'leather'
-    },
-    { 
-        manufacturer: 'audi', model: 'Q5', kilometerstand: '78000', leistung: '400kW', image: 'https://via.placeholder.com/200x150?text=Audi+Q5',
-        erstzulassung: '01/2019', motor: 'V6', matchingNumbers: 'no', typ: 'suv', fahrzeughalter: '2', kraftstoffart: 'diesel',
-        verbrauch: 'urban-8.0', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'automatic-climate-control', farbe: 'blue', innenausstattung: 'fabric'
-    },
-    { 
-        manufacturer: 'bmw', model: 'X5', kilometerstand: '80000', leistung: '350kW', image: 'https://via.placeholder.com/200x150?text=BMW+X5',
-        erstzulassung: '01/2020', motor: 'V8', matchingNumbers: 'yes', typ: 'suv', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-9.0', energieeffizienzklasse: 'B', getriebe: 'dual-clutch', klimatisierung: 'sunroof', farbe: 'silver', innenausstattung: 'alcantara'
-    },
-    { 
-        manufacturer: 'bmw', model: '3 Series', kilometerstand: '85000', leistung: '350kW', image: 'https://via.placeholder.com/200x150?text=BMW+3+Series',
-        erstzulassung: '01/2021', motor: 'I6', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'diesel',
-        verbrauch: 'urban-7.5', energieeffizienzklasse: 'A+', getriebe: 'manual', klimatisierung: 'dual-zone-climate-control', farbe: 'red', innenausstattung: 'vinyl'
-    },
-    { 
-        manufacturer: 'mercedes', model: 'AMG GT', kilometerstand: '20000', leistung: '400kW', image: 'https://via.placeholder.com/200x150?text=Mercedes+AMG+GT',
-        erstzulassung: '01/2021', motor: 'V8', matchingNumbers: 'yes', typ: 'sports-car', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-10.0', energieeffizienzklasse: 'A++', getriebe: 'dual-clutch', klimatisierung: 'sunroof', farbe: 'yellow', innenausstattung: 'suede'
-    },
-    { 
-        manufacturer: 'mercedes', model: 'C-Class', kilometerstand: '95000', leistung: '300kW', image: 'https://via.placeholder.com/200x150?text=Mercedes+C-Class',
-        erstzulassung: '01/2018', motor: 'I4', matchingNumbers: 'no', typ: 'sedan', fahrzeughalter: '2', kraftstoffart: 'hybrid',
-        verbrauch: 'urban-6.5', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'automatic-climate-control', farbe: 'white', innenausstattung: 'fabric'
-    }
-];
-
-const modelData = {
-    "audi": ['A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Q3', 'Q5', 'Q7', 'Q8', 'Q2', 'R8', 'TT', 'e-tron'],
-    "bmw": ['1 Series', '2 Series', '3 Series', '4 Series', '5 Series', '6 Series', '7 Series', '8 Series', 'X1', 'X3', 'X4', 'X5', 'X6', 'X7', 'i3', 'i4', 'iX', 'Z4'],
-    "mercedes": ['A-Class', 'B-Class', 'C-Class', 'E-Class', 'S-Class', 'CLA', 'CLS', 'GLA', 'GLC', 'GLE', 'GLS', 'G-Class', 'EQC', 'AMG GT'],
-    "alfa-romeo": ['Giulia', 'Stelvio', 'Spider', 'MiTo', '4C', 'GTV', 'Tonale', 'Giulietta', 'Brera', '159'],
-    "aston-martin": ['Vantage', 'DB11', 'DBX', 'Rapide', 'One-77', 'Lagonda', 'DBS Superleggera', 'Vanquish', 'Cygnet', 'Aston Martin DB5'],
-    "bentley": ['Continental GT', 'Flying Spur', 'Bentayga', 'Mulsanne', 'Continental GT Speed', 'Bentley Speed 8', 'EXP 9 F', 'Arnage', 'Brooklands', 'Turbo R'],
-    "bugatti": ['Chiron', 'Veyron', 'Divo', 'La Voiture Noire', 'Chiron Sport', 'Bugatti Veyron 16.4', 'Centodieci', 'Bolide', 'EB110', 'Chiron Pur Sport'],
-    "chevrolet": ['Malibu', 'Camaro', 'Equinox', 'Traverse', 'Impala', 'Cruze', 'Silverado', 'Tahoe', 'Suburban', 'Sonic'],
-    "chrysler": ['Pacifica', 'Voyager', '300', 'Aspen', 'Dodge Challenger', 'Chrysler Aspen', 'Chrysler Crossfire', 'Chrysler Imperial', 'Chrysler New Yorker', 'Chrysler Saratoga'],
-    "dodge": ['Challenger', 'Charger', 'Durango', 'Viper', 'Ram 1500', 'Journey', 'Grand Caravan', 'Dakota', 'SRT Demon', 'SRT Hellcat'],
-    "fiat": ['500', 'Panda', 'Tipo', 'Doblo', '500X', '500L', 'Punto', 'Linea', 'Freemont', 'Panda Cross'],
-    "ford": ['Fiesta', 'Focus', 'Mustang', 'Explorer', 'F-150', 'Fusion', 'Edge', 'Expedition', 'Escape', 'Ranger'],
-    "honda": ['Civic', 'Accord', 'CR-V', 'Pilot', 'Fit', 'Odyssey', 'Ridgeline', 'Insight', 'HR-V', 'Passport'],
-    "hyundai": ['Elantra', 'Tucson', 'Santa Fe', 'Kona', 'Sonata', 'Nexo', 'Palisade', 'Ioniq', 'Veloster', 'Kona Electric'],
-    "jaguar": ['F-Type', 'XE', 'XF', 'XJ', 'E-Pace', 'F-Pace', 'I-Pace', 'S-Type', 'X-Type', 'XK'],
-    "jeep": ['Wrangler', 'Cherokee', 'Grand Cherokee', 'Renegade', 'Compass', 'Gladiator', 'Liberty', 'Commander', 'Patriot', ' Wagoneer'],
-    "kia": ['Seltos', 'Sportage', 'Telluride', 'Forte', 'Optima', 'Soul', 'Niro', 'Cadenza', 'Stinger', 'Rio'],
-    "land-rover": ['Defender', 'Range Rover', 'Discovery', 'Discovery Sport', 'Range Rover Evoque', 'Range Rover Velar', 'Defender 130', 'Freelander', 'Range Rover Sport', 'Range Rover Classic'],
-    "lamborghini": ['Huracan', 'Aventador', 'Urus', 'Gallardo', 'Diablo', 'Murcielago', 'Reventon', 'Sian', 'Centenario', 'Veneno'],
-    "mazda": ['Mazda3', 'Mazda6', 'MX-5 Miata', 'CX-5', 'CX-30', 'CX-9', 'Mazda2', 'CX-50', 'Mazda RX-8', 'Mazda CX-7'],
-    "mclaren": ['720S', '570S', '540C', '650S', 'P1', 'Artura', 'McLaren Speedtail', 'Senna', '675LT', 'McLaren 12C'],
-    "maserati": ['Ghibli', 'Quattroporte', 'Levante', 'GranTurismo', 'GranCabrio', 'Alfieri', 'MC20', 'Maserati Spyder', 'Maserati GranSport', 'Maserati Khamsin'],
-    "nissan": ['Altima', 'Maxima', '370Z', 'Juke', 'Sentra', 'Murano', 'Rogue', 'Titan', 'Pathfinder', 'Leaf'],
-    "peugeot": ['208', '3008', '5008', '508', '2008', '3008 Hybrid', '4007', 'Partner', 'RCZ', 'Expert'],
-    "porsche": ['911', 'Cayenne', 'Macan', 'Panamera', 'Taycan', 'Boxster', 'Cayman', '924', 'Carrera GT', 'Porsche 718'],
-    "ram": ['Ram 1500', 'Ram 2500', 'Ram 3500', 'Ram ProMaster', 'Ram ProMaster City', 'Ram 4500', 'Ram 5500', 'Ram 3500 Heavy Duty', 'Ram Rebel', 'Ram Limited'],
-    "rolls-royce": ['Phantom', 'Cullinan', 'Wraith', 'Dawn', 'Ghost', 'Silver Shadow', 'Silver Spirit', 'Silver Spur', 'Corniche', 'Aqua'],
-    "subaru": ['Outback', 'Forester', 'Impreza', 'Crosstrek', 'Legacy', 'Ascent', 'WRX', 'BRZ', 'XV', 'Tribeca'],
-    "tesla": ['Model S', 'Model 3', 'Model X', 'Model Y', 'Cybertruck', 'Roadster', 'Semi', 'Model S Plaid', 'Model 3 Performance', 'Model X Plaid'],
-    "toyota": ['Camry', 'Corolla', 'RAV4', 'Highlander', 'Prius', 'Tacoma', 'Land Cruiser', 'Avalon', 'Sequoia', 'Sienna'],
-    "volkswagen": ['Golf', 'Passat', 'Tiguan', 'Jetta', 'Arteon', 'Touareg', 'Beetle', 'ID.4', 'ID.3', 'Polo'],
-    "volvo": ['XC60', 'XC90', 'V60', 'V90', 'S60', 'S90', 'XC40', 'XC70', 'S40', 'V50']
-};
-
-// Enable/Disable the model select menu based on the manufacturer selection
-document.getElementById('manufacturerSelect').addEventListener('change', function() {
-    const manufacturer = this.value;
-    const modelSelect = document.getElementById('modelSelect');
-    modelSelect.innerHTML = '<option value="">Select Model</option>';
-    if (manufacturer) {
-        modelData[manufacturer].forEach(model => {
-            const option = document.createElement('option');
-            option.value = model;
-            option.textContent = model;
-            modelSelect.appendChild(option);
-        });
-        modelSelect.disabled = false;
-    } else {
-        modelSelect.disabled = true;
-    }
-});
-
-function searchCars() {
-    const manufacturer = document.getElementById('manufacturerSelect').value;
-    const model = document.getElementById('modelSelect').value;
-    const kilometerstand = document.getElementById('kilometerstandSelect').value;
-    const leistung = document.getElementById('leistungSelect').value;
-    const erstzulassung = document.getElementById('erstzulassungSelect').value;
-    const motor = document.getElementById('motorSelect').value;
-    const matchingNumbers = document.getElementById('matchingNumbersSelect').value;
-    const typ = document.getElementById('typSelect').value;
-    const fahrzeughalter = document.getElementById('fahrzeughalterSelect').value;
-    const kraftstoffart = document.getElementById('kraftstoffartSelect').value;
-    const verbrauch = document.getElementById('verbrauchSelect').value;
-    const energieeffizienzklasse = document.getElementById('energieeffizienzklasseSelect').value;
-    const getriebe = document.getElementById('getriebeSelect').value;
-    const klimatisierung = document.getElementById('klimatisierungSelect').value;
-    const farbe = document.getElementById('farbeSelect').value;
-    const innenausstattung = document.getElementById('innenausstattungSelect').value;
-
-    const filteredCars = carData.filter(car => {
-        const matchesManufacturer = manufacturer ? car.manufacturer === manufacturer : true;
-        const matchesModel = model ? car.model === model : true;
-        const matchesKilometerstand = kilometerstand ? isKilometerstandInRange(car.kilometerstand, kilometerstand) : true;
-        const matchesLeistung = leistung ? car.leistung === leistung : true;
-        const matchesErstzulassung = erstzulassung ? car.erstzulassung === erstzulassung : true;
-        const matchesMotor = motor ? car.motor === motor : true;
-        const matchesMatchingNumbers = matchingNumbers ? car.matchingNumbers === matchingNumbers : true;
-        const matchesTyp = typ ? car.typ === typ : true;
-        const matchesFahrzeughalter = fahrzeughalter ? car.fahrzeughalter === fahrzeughalter : true;
-        const matchesKraftstoffart = kraftstoffart ? car.kraftstoffart === kraftstoffart : true;
-        const matchesVerbrauch = verbrauch ? car.verbrauch === verbrauch : true;
-        const matchesEnergieeffizienzklasse = energieeffizienzklasse ? car.energieeffizienzklasse === energieeffizienzklasse : true;
-        const matchesGetriebe = getriebe ? car.getriebe === getriebe : true;
-        const matchesKlimatisierung = klimatisierung ? car.klimatisierung === klimatisierung : true;
-        const matchesFarbe = farbe ? car.farbe === farbe : true;
-        const matchesInnenausstattung = innenausstattung ? car.innenausstattung === innenausstattung : true;
-
-        return matchesManufacturer && matchesModel && matchesKilometerstand && matchesLeistung &&
-            matchesErstzulassung && matchesMotor && matchesMatchingNumbers && matchesTyp &&
-            matchesFahrzeughalter && matchesKraftstoffart && matchesVerbrauch &&
-            matchesEnergieeffizienzklasse && matchesGetriebe && matchesKlimatisierung &&
-            matchesFarbe && matchesInnenausstattung;
-    });
-
-    displayCars(filteredCars);
-}
-
-function isKilometerstandInRange(carKm, range) {
-    const [min, max] = range.split('-').map(val => parseInt(val));
-    const carKmValue = parseInt(carKm);
-    return carKmValue >= min && carKmValue <= max;
-}
-
-function applyMediaQueries() {
-    // Get the width of the screen
-    const screenWidth = window.innerWidth;
-
-    // Find all the car-box elements to apply styles dynamically
-    const carBoxes = document.querySelectorAll('.car-box');
-
-    carBoxes.forEach(carDiv => {
-        const carImg = carDiv.querySelector('img');
-
-        if (screenWidth < 600) {
-            // Mobile styles
-            carDiv.style.flexDirection = 'column';
-            carDiv.style.alignItems = 'center';
-            carDiv.style.padding = '10px';
-
-            carImg.style.maxWidth = '150px';
-            carImg.style.maxHeight = '100px';
-            carImg.style.marginRight = '0';
-            carImg.style.marginBottom = '15px';  // Space below the image
-
-            carDiv.style.border = 'none';  // Remove border for mobile
-            carDiv.style.margin = '10px 0';
-        } else if (screenWidth >= 600 && screenWidth < 1024) {
-            // Tablet styles
-            carDiv.style.flexDirection = 'row';
-            carDiv.style.alignItems = 'center';
-            carDiv.style.padding = '15px';
-
-            carImg.style.maxWidth = '180px';
-            carImg.style.maxHeight = '120px';
-            carImg.style.marginRight = '15px';
-        } else {
-            // Desktop styles (default)
-            carDiv.style.flexDirection = 'row';
-            carDiv.style.alignItems = 'center';
-            carDiv.style.padding = '20px';
-
-            carImg.style.maxWidth = '200px';
-            carImg.style.maxHeight = '150px';
-            carImg.style.marginRight = '20px';
-        }
-    });
-}
-
-function displayCars(cars) {
-    const output = document.getElementById('output');
-    output.innerHTML = '';  // Clear previous results
-
-    if (cars.length === 0) {
-        output.innerHTML = '<p>No cars match your criteria.</p>';
-    }
-
-    cars.forEach(car => {
-        const carDiv = document.createElement('div');
-        carDiv.classList.add('car-box');
-
-        // Default inline styles for the car-box div (desktop view)
-        carDiv.style.border = '1px solid #ccc';
-        carDiv.style.padding = '20px';
-        carDiv.style.margin = '15px 0';
-        carDiv.style.backgroundColor = '#f9f9f9';
-        carDiv.style.display = 'flex';
-        carDiv.style.flexWrap = 'wrap';
-        carDiv.style.justifyContent = 'space-between';
-        carDiv.style.borderRadius = '8px';
-
-        const carImg = document.createElement('img');
-        carImg.src = car.image;
-        carImg.alt = `${car.manufacturer} ${car.model}`;
-
-        // Default inline styles for the car image
-        carImg.style.maxWidth = '200px';
-        carImg.style.maxHeight = '150px';
-        carImg.style.objectFit = 'cover';
-        carImg.style.marginRight = '20px';
-
-        carDiv.appendChild(carImg);
-
-        // Add car details as before
-        const details = [
-            `Manufacturer: ${car.manufacturer}`,
-            `Model: ${car.model}`,
-            `Kilometerstand: ${car.kilometerstand} km`,
-            `Leistung: ${car.leistung}`,
-            `First Registration: ${car.erstzulassung}`,
-            `Engine: ${car.motor}`,
-            `Matching Numbers: ${car.matchingNumbers}`,
-            `Type: ${car.typ}`,
-            `Previous Owners: ${car.fahrzeughalter}`,
-            `Fuel Type: ${car.kraftstoffart}`,
-            `Fuel Consumption: ${car.verbrauch}`,
-            `Energy Efficiency: ${car.energieeffizienzklasse}`,
-            `Transmission: ${car.getriebe}`,
-            `Climate Control: ${car.klimatisierung}`,
-            `Color: ${car.farbe}`,
-            `Interior: ${car.innenausstattung}`
-        ];
-
-        details.forEach(detail => {
-            const p = document.createElement('p');
-            p.textContent = detail;
-
-            // Inline styles for the paragraphs
-            p.style.fontSize = '14px';
-            p.style.margin = '5px 0';
-            p.style.lineHeight = '1.6';
-
-            const strong = document.createElement('strong');
-            strong.textContent = detail.split(':')[0] + ': ';
-            p.insertBefore(strong, p.firstChild); // Add bold text before the actual detail
-            strong.style.color = '#333';
-            strong.style.fontWeight = 'bold';
-
-            carDiv.appendChild(p);
-        });
-
-        output.appendChild(carDiv);
-    });
-
-    // Call the media queries function after rendering the cars
-    applyMediaQueries();
-
-    // Add event listener for window resize to update styles dynamically
-    window.addEventListener('resize', applyMediaQueries);
-}
-
-
-
-    </script>
 </body>
 </html>

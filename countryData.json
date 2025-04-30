@@ -1,0 +1,378 @@
+// Simulating data from an external JSON file for testing
+    const countryData = {
+        "bahamas": [
+        {
+            "img": "https://via.placeholder.com/150?text=Bahamas+Image+1",
+            "text": "Box 1: Discover the beaches of the Bahamas!",
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Bahamas+Image+2",
+            "text": "Box 2: Explore the tropical wildlife."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Bahamas+Image+3",
+            "text": "Box 3: Visit Nassau, the capital of the Bahamas."
+        }
+    ],
+        "united-states": [
+        { "img": "usa.jpg", 
+          "text": "The United States of America, known for its diverse cities." },
+        { "img": "nyc.jpg", 
+          "text": "New York City, a major metropolitan hub." },
+        { "img": "la.jpg", 
+          "text": "Los Angeles, the entertainment capital of the world." }
+    ],
+        "canada": [
+        { "img": "canada.jpg", 
+          "text": "Canada, known for its natural beauty and friendly cities." },
+        { "img": "toronto.jpg", 
+          "text": "Toronto, Canada's largest city." },
+        { "img": "vancouver.jpg", 
+          "text": "Vancouver, a coastal seaport city." }
+    ],
+        "india": [
+        { "img": "india.jpg", 
+          "text": "India, a country with a rich history and culture." },
+        { "img": "delhi.jpg", 
+          "text": "Delhi, the capital city of India." },
+        { "img": "mumbai.jpg", 
+          "text": "Mumbai, the financial and entertainment capital of India." }
+    ],
+        "belize": [
+        {
+            "img": "https://via.placeholder.com/150?text=Belize+Image+1",
+            "text": "Box 1: Discover the Great Blue Hole."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Belize+Image+2",
+            "text": "Box 2: Visit the ancient Maya city of Caracol."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Belize+Image+3",
+            "text": "Box 3: Explore Belize's pristine beaches."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Belize+Image+3",
+            "text": "Box 3: Explore Belize's pristine beaches."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Belize+Image+3",
+            "text": "Box 3: Explore Belize's pristine beaches."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Belize+Image+3",
+            "text": "Box 3: Explore Belize's pristine beaches."
+        },
+        {
+            "button": "Test",
+        }
+    ],
+        "canada": [
+        {
+            "img": "https://via.placeholder.com/150?text=Canada+Image+1",
+            "text": "Box 1: Explore the Canadian Rockies!"
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Canada+Image+2",
+            "text": "Box 2: Discover Canadian culture and history."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Canada+Image+3",
+            "text": "Box 3: Experience Toronto's city life."
+        }
+    ],
+        "costa-rica": [
+        {
+            "img": "https://via.placeholder.com/150?text=Costa+Rica+Image+1",
+            "text": "Box 1: Explore Costa Rica's rainforests."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Costa+Rica+Image+2",
+            "text": "Box 2: Visit Arenal Volcano National Park."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Costa+Rica+Image+3",
+            "text": "Box 3: Relax on the beaches of Costa Rica."
+        }
+    ],
+    "cuba": [
+        {
+            "img": "https://via.placeholder.com/150?text=Cuba+Image+1",
+            "text": "Box 1: Experience the culture of Havana."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Cuba+Image+2",
+            "text": "Box 2: Visit the beaches of Varadero."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Cuba+Image+3",
+            "text": "Box 3: Explore the beauty of Trinidad."
+        }
+    ],
+    "guatemala": [
+        {
+            "img": "https://via.placeholder.com/150?text=Guatemala+Image+1",
+            "text": "Box 1: Explore the Mayan ruins of Tikal."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Guatemala+Image+2",
+            "text": "Box 2: Discover the beauty of Lake Atitlán."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Guatemala+Image+3",
+            "text": "Box 3: Visit the city of Antigua."
+        }
+    ],
+    "mexico": [
+        {
+            "img": "https://via.placeholder.com/150?text=Mexico+Image+1",
+            "text": "Box 1: Explore the ancient pyramids of Teotihuacan."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Mexico+Image+2",
+            "text": "Box 2: Discover the vibrant city of Mexico City."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Mexico+Image+3",
+            "text": "Box 3: Relax on the beaches of Cancun."
+        }
+    ],
+    "panama": [
+        {
+            "img": "https://via.placeholder.com/150?text=Panama+Image+1",
+            "text": "Box 1: Visit the Panama Canal."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Panama+Image+2",
+            "text": "Box 2: Explore Panama City."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Panama+Image+3",
+            "text": "Box 3: Discover the Bocas del Toro archipelago."
+        }
+    ],
+    "united-states": [
+        {
+            "img": "https://via.placeholder.com/150?text=US+Image+1",
+            "text": "Box 1: Visit the Grand Canyon!"
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=US+Image+2",
+            "text": "Box 2: Explore New York City landmarks."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=US+Image+3",
+            "text": "Box 3: Enjoy the beaches of California."
+        }
+    ],
+    "antigua-and-barbuda": [
+        {
+            "img": "https://via.placeholder.com/150?text=Antigua+and+Barbuda+Image+1",
+            "text": "Box 1: Explore the beautiful beaches of Antigua and Barbuda!"
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Antigua+and+Barbuda+Image+2",
+            "text": "Box 2: Visit Nelson's Dockyard, a UNESCO World Heritage Site."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Antigua+and+Barbuda+Image+3",
+            "text": "Box 3: Enjoy the tropical weather and crystal clear waters."
+        }
+    ],
+    "barbados": [
+        {
+            "img": "https://via.placeholder.com/150?text=Barbados+Image+1",
+            "text": "Box 1: Discover the wonders of Barbados' white-sand beaches."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Barbados+Image+2",
+            "text": "Box 2: Visit the capital city, Bridgetown, for a mix of culture and history."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Barbados+Image+3",
+            "text": "Box 3: Experience the tropical life with local cuisine and music."
+        }
+    ],
+    "dominica": [
+        {
+            "img": "https://via.placeholder.com/150?text=Dominica+Image+1",
+            "text": "Box 1: Hike through the rainforests of Dominica to explore waterfalls."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Dominica+Image+2",
+            "text": "Box 2: Discover the Boiling Lake, the world's second-largest boiling lake."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Dominica+Image+3",
+            "text": "Box 3: Enjoy Dominica's stunning natural landscapes and volcanoes."
+        }
+    ],
+    "dominican-republic": [
+        {
+            "img": "https://via.placeholder.com/150?text=Dominican+Republic+Image+1",
+            "text": "Box 1: Explore the beaches and resorts of the Dominican Republic."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Dominican+Republic+Image+2",
+            "text": "Box 2: Discover the vibrant capital, Santo Domingo."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Dominican+Republic+Image+3",
+            "text": "Box 3: Enjoy the rich history and culture of the island."
+        }
+    ],
+    "el-salvador": [
+        {
+            "img": "https://via.placeholder.com/150?text=El+Salvador+Image+1",
+            "text": "Box 1: Explore the beaches of El Salvador, known for great surfing."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=El+Salvador+Image+2",
+            "text": "Box 2: Visit the Mayan ruins of Tazumal."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=El+Salvador+Image+3",
+            "text": "Box 3: Enjoy the natural beauty of El Salvador's volcanoes."
+        }
+    ],
+    "grenada": [
+        {
+            "img": "https://via.placeholder.com/150?text=Grenada+Image+1",
+            "text": "Box 1: Relax on Grenada's picturesque beaches."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Grenada+Image+2",
+            "text": "Box 2: Visit Grand Anse Beach for a tropical getaway."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Grenada+Image+3",
+            "text": "Box 3: Explore Grenada's spice plantations."
+        }
+    ],
+    "haiti": [
+        {
+            "img": "https://via.placeholder.com/150?text=Haiti+Image+1",
+            "text": "Box 1: Discover Haiti's stunning mountainous landscapes."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Haiti+Image+2",
+            "text": "Box 2: Visit the historical site of Citadelle Laferrière."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Haiti+Image+3",
+            "text": "Box 3: Enjoy the vibrant culture and music of Haiti."
+        }
+    ],
+    "honduras": [
+        {
+            "img": "https://via.placeholder.com/150?text=Honduras+Image+1",
+            "text": "Box 1: Explore the beautiful beaches and reefs of Honduras."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Honduras+Image+2",
+            "text": "Box 2: Visit the ancient Mayan ruins of Copán."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Honduras+Image+3",
+            "text": "Box 3: Discover the lush rainforest of La Ceiba."
+        }
+    ],
+    "jamaica": [
+        {
+            "img": "https://via.placeholder.com/150?text=Jamaica+Image+1",
+            "text": "Box 1: Relax on Jamaica's famous Seven Mile Beach."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Jamaica+Image+2",
+            "text": "Box 2: Experience reggae music in Kingston."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Jamaica+Image+3",
+            "text": "Box 3: Visit the historic Rose Hall Great House."
+        }
+    ],
+    "nicaragua": [
+        {
+            "img": "https://via.placeholder.com/150?text=Nicaragua+Image+1",
+            "text": "Box 1: Explore the colonial city of Granada."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Nicaragua+Image+2",
+            "text": "Box 2: Hike up the active Masaya Volcano."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Nicaragua+Image+3",
+            "text": "Box 3: Enjoy Nicaragua's stunning lakes and beaches."
+        }
+    ],
+    "puerto-rico": [
+        {
+            "img": "https://via.placeholder.com/150?text=Puerto+Rico+Image+1",
+            "text": "Box 1: Explore Old San Juan's historic streets."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Puerto+Rico+Image+2",
+            "text": "Box 2: Visit the El Yunque Rainforest."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Puerto+Rico+Image+3",
+            "text": "Box 3: Relax on the stunning beaches of Puerto Rico."
+        }
+    ],
+    "saint-kitts-and-nevis": [
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Kitts+and+Nevis+Image+1",
+            "text": "Box 1: Explore the tropical islands of Saint Kitts and Nevis."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Kitts+and+Nevis+Image+2",
+            "text": "Box 2: Visit Brimstone Hill Fortress National Park."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Kitts+and+Nevis+Image+3",
+            "text": "Box 3: Relax on beautiful beaches and explore the lush rainforest."
+        }
+    ],
+    "saint-lucia": [
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Lucia+Image+1",
+            "text": "Box 1: Discover the Pitons, Saint Lucia's iconic volcanic peaks."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Lucia+Image+2",
+            "text": "Box 2: Visit the Sulphur Springs in Soufrière."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Lucia+Image+3",
+            "text": "Box 3: Enjoy the island's luxury resorts and beaches."
+        }
+    ],
+    "saint-vincent-and-the-grenadines": [
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Vincent+and+the+Grenadines+Image+1",
+            "text": "Box 1: Explore the beautiful islands of Saint Vincent and the Grenadines."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Vincent+and+the+Grenadines+Image+2",
+            "text": "Box 2: Visit the Tobago Cays Marine Park."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Saint+Vincent+and+the+Grenadines+Image+3",
+            "text": "Box 3: Enjoy the tropical weather and beautiful beaches."
+        }
+    ],
+    "trinidad-and-tobago": [
+        {
+            "img": "https://via.placeholder.com/150?text=Trinidad+and+Tobago+Image+1",
+            "text": "Box 1: Discover the vibrant culture and carnival of Trinidad."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Trinidad+and+Tobago+Image+2",
+            "text": "Box 2: Visit the island's lush rainforests and waterfalls."
+        },
+        {
+            "img": "https://via.placeholder.com/150?text=Trinidad+and+Tobago+Image+3",
+            "text": "Box 3: Enjoy the pristine beaches of Tobago."
+        }
+    ]
+}

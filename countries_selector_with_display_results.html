@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continents</title>
+    <link rel="stylesheet" type="text/css" href="C:\Users\Julius\Desktop\files\Real Estate\continent_selectors\style_countries.css">
+</head>
+<body>
+
+<h1>Select a Country</h1>
+<div>
+<select id="countrySelect">
+    <option class="country" value="antigua-and-barbuda">Antigua and Barbuda</option>
+    <option class="country" value="bahamas">Bahamas</option>
+    <option class="country" value="barbados">Barbados</option>
+    <option class="country" value="belize">Belize</option>
+    <option class="country" value="canada">Canada</option>
+    <option class="country" value="costa-rica">Costa Rica</option>
+    <option class="country" value="cuba">Cuba</option>
+    <option class="country" value="dominica">Dominica</option>
+    <option class="country" value="dominican-republic">Dominican Republic</option>
+    <option class="country" value="el-salvador">El Salvador</option>
+    <option class="country" value="grenada">Grenada</option>
+    <option class="country" value="guatemala">Guatemala</option>
+    <option class="country" value="haiti">Haiti</option>
+    <option class="country" value="honduras">Honduras</option>
+    <option class="country" value="jamaica">Jamaica</option>
+    <option class="country" value="mexico">Mexico</option>
+    <option class="country" value="nicaragua">Nicaragua</option>
+    <option class="country" value="panama">Panama</option>
+    <option class="country" value="puerto-rico">Puerto Rico</option>
+    <option class="country" value="saint-kitts-and-nevis">Saint Kitts and Nevis</option>
+    <option class="country" value="saint-lucia">Saint Lucia</option>
+    <option class="country" value="saint-vincent-and-the-grenadines">Saint Vincent and the Grenadines</option>
+    <option class="country" value="trinidad-and-tobago">Trinidad and Tobago</option>
+    <option class="country" value="united-states">United States</option>
+</select>
+
+<select id="citySelect" disabled>
+    <option value="">Select City</option>
+</select>
+
+</div>
+
+<button id="toggleButton">More Filters</button>
+
+<div id="dropdownDiv">
+    <div class="other_filters">
+        <div class="filter">
+            <select id="propertyTypeSelect">
+                <option value="">Select Property Type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="Condo">Condo</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="bedroomsSelect">
+                <option value="">Select Bedrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="bathroomsSelect">
+                <option value="">Select Bathrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="priceRangeSelect">
+                <option value="">Select Price Range</option>
+                <option value="0-100000">Up to 100,000</option>
+                <option value="100000-200000">100,000 - 200,000</option>
+                <option value="200000-300000">200,000 - 300,000</option>
+                <option value="300000-500000">300,000 - 500,000</option>
+                <option value="500000-1000000">500,000 - 1,000,000</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="squareFeetSelect">
+                <option value="">Select Square Feet</option>
+                <option value="0-1000">Up to 1000 sq ft</option>
+                <option value="1000-2000">1000 - 2000 sq ft</option>
+                <option value="2000-3000">2000 - 3000 sq ft</option>
+                <option value="3000-5000">3000 - 5000 sq ft</option>
+                <option value="5000+">5000+ sq ft</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="yearBuiltSelect">
+                <option value="">Year Built</option>
+                <option value="Before 2000">Before 2000</option>
+                <option value="2000-2010">2000 - 2010</option>
+                <option value="2011-2020">2011 - 2020</option>
+                <option value="2021+">2021+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="parkingSelect">
+                <option value="">Parking Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="propertyTypeSelect">
+                <option value="">Select Property Type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="House">House</option>
+                <option value="Villa">Villa</option>
+                <option value="Condo">Condo</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="bedroomsSelect">
+                <option value="">Select Bedrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="bathroomsSelect">
+                <option value="">Select Bathrooms</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="priceRangeSelect">
+                <option value="">Select Price Range</option>
+                <option value="0-100000">Up to 100,000</option>
+                <option value="100000-200000">100,000 - 200,000</option>
+                <option value="200000-300000">200,000 - 300,000</option>
+                <option value="300000-500000">300,000 - 500,000</option>
+                <option value="500000-1000000">500,000 - 1,000,000</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="squareFeetSelect">
+                <option value="">Select Square Feet</option>
+                <option value="0-1000">Up to 1000 sq ft</option>
+                <option value="1000-2000">1000 - 2000 sq ft</option>
+                <option value="2000-3000">2000 - 3000 sq ft</option>
+                <option value="3000-5000">3000 - 5000 sq ft</option>
+                <option value="5000+">5000+ sq ft</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="yearBuiltSelect">
+                <option value="">Year Built</option>
+                <option value="Before 2000">Before 2000</option>
+                <option value="2000-2010">2000 - 2010</option>
+                <option value="2011-2020">2011 - 2020</option>
+                <option value="2021+">2021+</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="parkingSelect">
+                <option value="">Parking Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="gardenSelect">
+                <option value="">Garden</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="flooringSelect">
+                <option value="">Flooring Type</option>
+                <option value="Wood">Wood</option>
+                <option value="Tile">Tile</option>
+                <option value="Carpet">Carpet</option>
+                <option value="Marble">Marble</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="publicTransportSelect">
+                <option value="">Proximity to Public Transport</option>
+                <option value="Close">Close</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="elevatorSelect">
+                <option value="">Elevator Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="furnishingSelect">
+                <option value="">Furnishing Status</option>
+                <option value="Furnished">Furnished</option>
+                <option value="Unfurnished">Unfurnished</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="viewSelect">
+                <option value="">View Type</option>
+                <option value="Sea">Sea</option>
+                <option value="Mountain">Mountain</option>
+                <option value="City">City</option>
+                <option value="Park">Park</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="airConditioningSelect">
+                <option value="">Air Conditioning</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="heatingSelect">
+                <option value="">Heating Type</option>
+                <option value="Central">Central</option>
+                <option value="Individual">Individual</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="poolSelect">
+                <option value="">Pool Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="balconySelect">
+                <option value="">Balcony Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="roofSelect">
+                <option value="">Roof Type</option>
+                <option value="Flat">Flat</option>
+                <option value="Sloped">Sloped</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="securitySelect">
+                <option value="">Security System</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="schoolsSelect">
+                <option value="">Nearby Schools</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="internetSelect">
+                <option value="">Internet Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="gymSelect">
+                <option value="">Gym Availability</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="storageSelect">
+                <option value="">Storage Space</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="shoppingSelect">
+                <option value="">Proximity to Shopping Malls</option>
+                <option value="Close">Close</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="hospitalSelect">
+                <option value="">Nearby Hospitals</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="parkSelect">
+                <option value="">Nearby Parks</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="filter">
+            <select id="beachSelect">
+                <option value="">Proximity to Beach</option>
+                <option value="Close">Close</option>
+                <option value="Far">Far</option>
+            </select>
+        </div>
+        
+    </div>
+</div>
+
+
+<button id="searchBtn" class="btn btn-search">Search</button>
+<button id="refreshBtn" class="btn btn-refresh">Refresh Results</button>
+<button id="resetBtn" class="btn btn-reset">Reset Selections</button>
+
+<!-- Dynamic content container -->
+<div id="countryContainer">
+    <div id="countryName"></div>
+    <div id="countryDetails"></div>
+</div>
+
+
+<script src="countryData.json"></script>
+<script >
+
+// Event listener for the search button
+const searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click", filterResults);
+
+// Get reference to the refresh button
+const refreshBtn = document.getElementById("refreshBtn");
+
+// Event listener for the refresh button
+refreshBtn.addEventListener("click", () => {
+    filterResults(); // Call the filterResults function to refresh the displayed results
+});
+
+// Get reference to the reset button
+const resetBtn = document.getElementById("resetBtn");
+
+// Event listener for the reset button
+resetBtn.addEventListener("click", () => {
+    // Reset all select menus
+    document.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
+    document.getElementById("citySelect").disabled = true;
+    document.getElementById("countryContainer").innerHTML = ''; // Clear previous results
+});
+
+// Function to handle filtering of results
+function filterResults() {
+    const countrySelect = document.getElementById("countrySelect");
+    const countryValue = countrySelect.value;
+    const countryName = countrySelect.options[countrySelect.selectedIndex].text;
+    const countryDetails = document.getElementById("countryDetails");
+
+    // Update the country name in the div
+    document.getElementById("countryName").textContent = "Selected Country: " + countryName;
+
+    // Clear the previous country details
+    countryDetails.innerHTML = '';
+
+    // Fetch the data for the selected country and update the content
+    const countryBoxes = countryData[countryValue] || [];
+    countryBoxes.forEach(function(box) {
+        const divBox = document.createElement("div");
+        divBox.classList.add("countryBox");
+
+        // Create and append image
+        const img = document.createElement("img");
+        img.src = box.img;
+
+        // Create and append country title
+        const title = document.createElement("h3");
+        title.textContent = countryName;
+
+        // Create and append description text
+        const textDiv = document.createElement("p");
+        textDiv.textContent = box.text;
+
+        // Create and append the explore button
+        const button = document.createElement("button");
+        button.classList.add("exploreButton");
+        button.textContent = "Explore More";
+
+        // Append elements to the div box
+        divBox.appendChild(img);
+        divBox.appendChild(title);
+        divBox.appendChild(textDiv);
+        divBox.appendChild(button);
+
+        // Append the div box to the countryDetails container
+        countryDetails.appendChild(divBox);
+    });
+
+    // Enable the city select dropdown for the selected country
+    populateCities(countryValue);
+}
+
+// Get references to the button and the dropdown div
+const toggleButton = document.getElementById("toggleButton");
+const dropdownDiv = document.getElementById("dropdownDiv");
+
+// Add event listener for the button to toggle the visibility of the dropdown div
+toggleButton.addEventListener("click", function() {
+    dropdownDiv.classList.toggle("show"); // Toggle the 'show' class to open/close the dropdown
+});
+
+// Add an event listener for the select change to update the country and city select options
+document.getElementById("countrySelect").addEventListener("change", function() {
+    const countryValue = this.value;
+    const countryName = this.options[this.selectedIndex].text;
+
+    // Update the country name in the div
+    document.getElementById("countryName").textContent = "Selected Country: " + countryName;
+
+    // Clear the previous country details
+    const countryDetails = document.getElementById("countryDetails");
+    countryDetails.innerHTML = '';
+
+    // Fetch the data for the selected country and update the content
+    const countryBoxes = countryData[countryValue] || [];
+    countryBoxes.forEach(function(box) {
+        const divBox = document.createElement("div");
+        divBox.classList.add("countryBox");
+
+        // Create and append image
+        const img = document.createElement("img");
+        img.src = box.img;
+
+        // Create and append country title
+        const title = document.createElement("h3");
+        title.textContent = countryName;
+
+        // Create and append description text
+        const textDiv = document.createElement("p");
+        textDiv.textContent = box.text;
+
+        // Create and append the explore button
+        const button = document.createElement("button");
+        button.classList.add("exploreButton");
+        button.textContent = "Explore More";
+
+        // Append elements to the div box
+        divBox.appendChild(img);
+        divBox.appendChild(title);
+        divBox.appendChild(textDiv);
+        divBox.appendChild(button);
+
+        // Append the div box to the countryDetails container
+        countryDetails.appendChild(divBox);
+    });
+
+    // Enable city select dropdown
+    populateCities(countryValue);
+});
+
+// Function to populate the city select dropdown dynamically
+function populateCities(countryValue) {
+    const citySelect = document.getElementById("citySelect");
+    const cities = cityData[countryValue] || [];
+
+    // Clear previous cities
+    citySelect.innerHTML = '<option value="">Select City</option>';
+
+    // If there are cities for the selected country, enable the dropdown
+    if (cities.length > 0) {
+        citySelect.disabled = false;
+
+        // Add each city as an option
+        cities.forEach(function(city) {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    } else {
+        citySelect.disabled = true; // Disable if no cities
+    }
+}
+
+</script>
+
+</body>
+</html>

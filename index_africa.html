@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Filter</title>
+    <script src="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate@main/cityData.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate@main/realEstate.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate@main/main.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="cityData.js"></script>
+    <script type="text/javascript" src="realEstateData.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/julius-altmann-3333/real-estate@main/style.css">
+</head>
+<body>
+    <div>
+        <select id="countrySelect">
+    <option value="Benin">Benin</option>
+    <option value="Botswana">Botswana</option>
+    <option value="Burkina Faso">Burkina Faso</option>
+    <option value="Burundi">Burundi</option>
+    <option value="Cabo Verde">Cabo Verde</option>
+    <option value="Cameroon">Cameroon</option>
+    <option value="Central African Republic">Central African Republic</option>
+    <option value="Chad">Chad</option>
+    <option value="Comoros">Comoros</option>
+    <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</option>
+    <option value="Congo (Democratic Republic)">Congo (Democratic Republic)</option>
+    <option value="Djibouti">Djibouti</option>
+    <option value="Egypt">Egypt</option>
+    <option value="Equatorial Guinea">Equatorial Guinea</option>
+    <option value="Eritrea">Eritrea</option>
+    <option value="Eswatini">Eswatini</option>
+    <option value="Ethiopia">Ethiopia</option>
+    <option value="Gabon">Gabon</option>
+    <option value="Gambia">Gambia</option>
+    <option value="Ghana">Ghana</option>
+    <option value="Guinea">Guinea</option>
+    <option value="Guinea-Bissau">Guinea-Bissau</option>
+    <option value="Ivory Coast">Ivory Coast</option>
+    <option value="Kenya">Kenya</option>
+    <option value="Lesotho">Lesotho</option>
+    <option value="Liberia">Liberia</option>
+    <option value="Libya">Libya</option>
+    <option value="Madagascar">Madagascar</option>
+    <option value="Malawi">Malawi</option>
+    <option value="Mali">Mali</option>
+    <option value="Mauritania">Mauritania</option>
+    <option value="Mauritius">Mauritius</option>
+    <option value="Morocco">Morocco</option>
+    <option value="Mozambique">Mozambique</option>
+    <option value="Namibia">Namibia</option>
+    <option value="Niger">Niger</option>
+    <option value="Nigeria">Nigeria</option>
+    <option value="Rwanda">Rwanda</option>
+    <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+    <option value="Senegal">Senegal</option>
+    <option value="Seychelles">Seychelles</option>
+    <option value="Sierra Leone">Sierra Leone</option>
+    <option value="Somalia">Somalia</option>
+    <option value="South Africa">South Africa</option>
+    <option value="South Sudan">South Sudan</option>
+    <option value="Sudan">Sudan</option>
+    <option value="Tanzania">Tanzania</option>
+    <option value="Togo">Togo</option>
+    <option value="Tunisia">Tunisia</option>
+    <option value="Uganda">Uganda</option>
+    <option value="Zambia">Zambia</option>
+    <option value="Zimbabwe">Zimbabwe</option>
+</select>
+
+        <select id="citySelect" disabled>
+            <option value="">Select City</option>
+        </select>
+    </div>
+
+    <!-- Real Estate Attributes -->
+    <div>
+        <!-- Basic Filters -->
+        <select id="propertyTypeSelect">
+            <option value="">Select Property Type</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Villa">Villa</option>
+            <option value="Condo">Condo</option>
+        </select>
+
+        <select id="bedroomsSelect">
+            <option value="">Select Bedrooms</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+        </select>
+
+        <select id="bathroomsSelect">
+            <option value="">Select Bathrooms</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3+</option>
+        </select>
+
+        <select id="priceRangeSelect">
+            <option value="">Select Price Range</option>
+            <option value="0-100000">Up to 100,000</option>
+            <option value="100000-200000">100,000 - 200,000</option>
+            <option value="200000-300000">200,000 - 300,000</option>
+            <option value="300000-500000">300,000 - 500,000</option>
+            <option value="500000-1000000">500,000 - 1,000,000</option>
+        </select>
+
+        <select id="squareFeetSelect">
+            <option value="">Select Square Feet</option>
+            <option value="0-1000">Up to 1000 sq ft</option>
+            <option value="1000-2000">1000 - 2000 sq ft</option>
+            <option value="2000-3000">2000 - 3000 sq ft</option>
+            <option value="3000-5000">3000 - 5000 sq ft</option>
+            <option value="5000+">5000+ sq ft</option>
+        </select>
+
+        <!-- Additional Filters -->
+        <select id="yearBuiltSelect">
+            <option value="">Year Built</option>
+            <option value="Before 2000">Before 2000</option>
+            <option value="2000-2010">2000 - 2010</option>
+            <option value="2011-2020">2011 - 2020</option>
+            <option value="2021+">2021+</option>
+        </select>
+
+        <select id="parkingSelect">
+            <option value="">Parking Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="gardenSelect">
+            <option value="">Garden</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <select id="flooringSelect">
+            <option value="">Flooring Type</option>
+            <option value="Wood">Wood</option>
+            <option value="Tile">Tile</option>
+            <option value="Carpet">Carpet</option>
+            <option value="Marble">Marble</option>
+        </select>
+
+        <select id="publicTransportSelect">
+            <option value="">Proximity to Public Transport</option>
+            <option value="Close">Close</option>
+            <option value="Far">Far</option>
+        </select>
+
+        <select id="elevatorSelect">
+            <option value="">Elevator Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="furnishingSelect">
+            <option value="">Furnishing Status</option>
+            <option value="Furnished">Furnished</option>
+            <option value="Unfurnished">Unfurnished</option>
+        </select>
+
+        <select id="viewSelect">
+            <option value="">View Type</option>
+            <option value="Sea">Sea</option>
+            <option value="Mountain">Mountain</option>
+            <option value="City">City</option>
+            <option value="Park">Park</option>
+        </select>
+
+        <select id="airConditioningSelect">
+            <option value="">Air Conditioning</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="heatingSelect">
+            <option value="">Heating Type</option>
+            <option value="Central">Central</option>
+            <option value="Individual">Individual</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="poolSelect">
+            <option value="">Pool Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="balconySelect">
+            <option value="">Balcony Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="roofSelect">
+            <option value="">Roof Type</option>
+            <option value="Flat">Flat</option>
+            <option value="Sloped">Sloped</option>
+        </select>
+
+        <select id="securitySelect">
+            <option value="">Security System</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="schoolsSelect">
+            <option value="">Nearby Schools</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <select id="internetSelect">
+            <option value="">Internet Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="gymSelect">
+            <option value="">Gym Availability</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="storageSelect">
+            <option value="">Storage Space</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+
+        <select id="shoppingSelect">
+            <option value="">Proximity to Shopping Malls</option>
+            <option value="Close">Close</option>
+            <option value="Far">Far</option>
+        </select>
+
+        <select id="hospitalSelect">
+            <option value="">Nearby Hospitals</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <select id="parkSelect">
+            <option value="">Nearby Parks</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <select id="beachSelect">
+            <option value="">Proximity to Beach</option>
+            <option value="Close">Close</option>
+            <option value="Far">Far</option>
+        </select>
+
+        <button id="searchBtn">Search</button>
+
+        <button id="refreshBtn">Refresh Results</button>
+
+        <button id="reset">Reset Selections</button>
+    </div>
+
+    <!-- Result Container -->
+    <div id="resultContainer">
+        <h3>Selected Properties:</h3>
+        <div id="resultItems"></div>
+    </div>
+</body>
+</html>

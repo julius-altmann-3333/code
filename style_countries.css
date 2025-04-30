@@ -1,0 +1,235 @@
+/* Basic styling for the content */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Style the select element */
+        select {
+          appearance: none; /* Remove default dropdown arrow */
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          padding: 10px 15px; /* Add some padding inside the dropdown */
+          font-size: 16px; /* Set font size */
+          border: 2px solid #ccc; /* Set border color */
+          border-radius: 8px; /* Rounded corners */
+          background-color: #f9f9f9; /* Light background color */
+          color: #333; /* Text color */
+          width: 200px; /* Set width of the select element */
+          cursor: pointer; /* Show pointer cursor on hover */
+          transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        /* Change the border and background color on focus */
+        select:focus {
+          border-color: #007bff; /* Blue border on focus */
+          background-color: #e9f5ff; /* Light blue background on focus */
+          outline: none; /* Remove default outline */
+        }
+
+        /* Add custom dropdown arrow */
+        select::-ms-expand {
+          display: none; /* Hide default dropdown arrow in IE */
+        }
+
+        /* Styling the dropdown arrow using a pseudo-element */
+        select::after {
+          content: '\25BC'; /* Unicode for downwards arrow */
+          font-size: 16px;
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+        }
+
+        #countryContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #countryName {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Responsive grid layout */
+        #countryDetails {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Box styling for each country div */
+        .countryBox {
+            width: 300px;
+            height: 300px; /* Increased height to fit content */
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Align the content vertically */
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .countryBox:hover {
+            transform: translateY(-10px); /* Hover effect to lift the box */
+        }
+
+        /* Image inside the div box */
+        .countryBox img {
+            max-width: 100%;
+            max-height: 120px; /* Ensuring images are not too large */
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /* Title text inside the box */
+        .countryBox h3 {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Paragraph text inside the box */
+        .countryBox p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* Button styling */
+        .exploreButton {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .exploreButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design for different screen sizes */
+        @media (max-width: 1024px) {
+            /* Tablet */
+            .countryBox {
+                width: 45%; /* Two boxes per row on tablet */
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile */
+            .countryBox {
+                width: 100%; /* One box per row on mobile */
+            }
+        }
+
+        /*Dropdown Button & Dropdown */
+
+        /* Style for the button */
+        #toggleButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #toggleButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for the dropdown div box */
+#dropdownDiv {
+    display: none;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    max-height: 0;
+}
+
+/* When the dropdown is visible */
+#dropdownDiv.show {
+    display: block;
+    opacity: 1;
+    max-height: 2000px; /* Adjust max-height based on your content */
+}
+
+/* General style for the filter selects */
+.other_filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter {
+    flex: 1 1 100%; /* Default to 100% width on small screens */
+}
+
+.filter select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+/* Responsive styles */
+@media (min-width: 576px) {
+    .filter {
+        flex: 1 1 48%; /* 2 filters per row */
+    }
+}
+
+@media (min-width: 768px) {
+    .filter {
+        flex: 1 1 31%; /* 3 filters per row */
+    }
+}
+
+@media (min-width: 992px) {
+    .filter {
+        flex: 1 1 22%; /* 4 filters per row */
+    }
+}
+
+@media (min-width: 1200px) {
+    .filter {
+        flex: 1 1 14%; /* 7 filters per row */
+    }
+}

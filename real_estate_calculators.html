@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Calculations</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        input, button { display: block; margin: 10px 0; padding: 8px; width: 100%; }
+        .result { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Real Estate Calculation Tools</h2>
+        
+        <h3>1. Loan-to-Value (LTV) Ratio</h3>
+        <label>Loan Amount ($): <input type="number" id="loanAmount"></label>
+        <label>Property Value ($): <input type="number" id="propertyValue"></label>
+        <button onclick="calculateLTV()">Calculate LTV</button>
+        <p class="result" id="ltvResult"></p>
+        
+        <h3>2. Debt Service Coverage Ratio (DSCR)</h3>
+        <label>Net Operating Income ($): <input type="number" id="noi"></label>
+        <label>Annual Debt Payments ($): <input type="number" id="debtPayments"></label>
+        <button onclick="calculateDSCR()">Calculate DSCR</button>
+        <p class="result" id="dscrResult"></p>
+        
+        <h3>3. Capitalization Rate</h3>
+        <label>Net Operating Income ($): <input type="number" id="capNoi"></label>
+        <label>Property Value ($): <input type="number" id="capValue"></label>
+        <button onclick="calculateCapRate()">Calculate Cap Rate</button>
+        <p class="result" id="capRateResult"></p>
+        
+        <h3>4. Mortgage Payment</h3>
+        <label>Loan Amount ($): <input type="number" id="mortgageLoan"></label>
+        <label>Annual Interest Rate (%): <input type="number" id="mortgageRate"></label>
+        <label>Loan Term (Years): <input type="number" id="loanTerm"></label>
+        <button onclick="calculateMortgage()">Calculate Mortgage</button>
+        <p class="result" id="mortgageResult"></p>
+    </div>
+
+    <script>
+        function calculateLTV() {
+            let loan = parseFloat(document.getElementById('loanAmount').value);
+            let value = parseFloat(document.getElementById('propertyValue').value);
+            if (value > 0) {
+                let ltv = (loan / value) * 100;
+                document.getElementById('ltvResult').innerText = `LTV Ratio: ${ltv.toFixed(2)}%`;
+            }
+        }
+
+        function calculateDSCR() {
+            let noi = parseFloat(document.getElementById('noi').value);
+            let debt = parseFloat(document.getElementById('debtPayments').value);
+            if (debt > 0) {
+                let dscr = noi / debt;
+                document.getElementById('dscrResult').innerText = `DSCR: ${dscr.toFixed(2)}`;
+            }
+        }
+
+        function calculateCapRate() {
+            let noi = parseFloat(document.getElementById('capNoi').value);
+            let value = parseFloat(document.getElementById('capValue').value);
+            if (value > 0) {
+                let capRate = (noi / value) * 100;
+                document.getElementById('capRateResult').innerText = `Cap Rate: ${capRate.toFixed(2)}%`;
+            }
+        }
+
+        function calculateMortgage() {
+            let loan = parseFloat(document.getElementById('mortgageLoan').value);
+            let rate = parseFloat(document.getElementById('mortgageRate').value) / 100 / 12;
+            let term = parseFloat(document.getElementById('loanTerm').value) * 12;
+            if (rate > 0 && term > 0) {
+                let payment = (loan * rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+                document.getElementById('mortgageResult').innerText = `Monthly Payment: $${payment.toFixed(2)}`;
+            }
+        }
+    </script>
+</body>
+</html>

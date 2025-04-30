@@ -1903,4 +1903,4 @@ const realEstateData = [
         "hospital": "Yes",
         "park": "Yes"
     }
-];
+]
