@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Full Page Layout */
+        body {
+            display: flex;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 15px 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #007bff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .main-content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .support-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .support-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .support-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .faq {
+            margin-top: 20px;
+        }
+
+        .faq h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .faq p {
+            font-size: 14px;
+            color: #444;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            margin-top: 30px;
+        }
+
+        .contact-form label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <h2>Help & Support</h2>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">🏠 Dashboard</a></li>
+            <li><a href="profile.html">📋 Profile</a></li>
+            <li><a href="edit-profile.html">✏️ Edit Profile</a></li>
+            <li><a href="account-settings.html">⚙️ Account Settings</a></li>
+            <li><a href="subscription.html">💳 Subscription</a></li>
+            <li><a href="membership-plans.html">📑 Membership Plans</a></li>
+            <li><a href="exclusive-content.html">🔑 Exclusive Content</a></li>
+            <li><a href="messages.html">📩 Messages</a></li>
+            <li><a href="privacy-settings.html">🔒 Privacy Settings</a></li>
+            <li><a href="help-support.html">❓ Help & Support</a></li>
+            <li><a href="terms-of-service.html">📜 Terms of Service</a></li>
+            <li><a href="privacy-policy.html">🔐 Privacy Policy</a></li>
+            <li><a href="logout.html">🚪 Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Help & Support</h1>
+
+        <div class="support-content">
+            <h2>Welcome to Support</h2>
+            <p>If you have any questions or need assistance, you're in the right place. Below are some common FAQs and a way to contact us.</p>
+
+            <!-- FAQ Section -->
+            <div class="faq">
+                <h3>❓ Frequently Asked Questions</h3>
+                <h3>1. How do I reset my password?</h3>
+                <p>Click on "Forgot Password" on the login page, enter your email, and follow the instructions to reset your password.</p>
+
+                <h3>2. How do I upgrade my subscription?</h3>
+                <p>Go to the "Membership Plans" page, select a new plan, and follow the instructions to complete the payment.</p>
+
+                <h3>3. How can I contact support?</h3>
+                <p>Use the contact form below to reach us, and we’ll respond as soon as possible.</p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>📧 Contact Support</h3>
+                <form>
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

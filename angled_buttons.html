@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angled Buttons</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .btn-container {
+      margin: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .angled-button {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #6c757d;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .angled-button:hover {
+      background-color: #5a6268;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .angled-button img {
+      max-width: 30px;
+      max-height: 30px;
+    }
+
+    .angled-button-light {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #f8f9fa;
+      color: #343a40;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .angled-button-light:hover {
+      background-color: #e2e6ea;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .angled-button-dark {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #343a40;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .angled-button-dark:hover {
+      background-color: #23272b;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .angled-button-grey {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #adb5bd;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .angled-button-grey:hover {
+      background-color: #8a9197;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .angled-button-black {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: #000;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .angled-button-black:hover {
+      background-color: #343a40;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="btn-container">
+    <button class="angled-button">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Toggle Sidebar">
+    </button>
+    <button class="angled-button-light">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Toggle Sidebar">
+    </button>
+    <button class="angled-button-dark">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Toggle Sidebar">
+    </button>
+    <button class="angled-button-grey">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Toggle Sidebar">
+    </button>
+    <button class="angled-button-black">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Toggle Sidebar">
+    </button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

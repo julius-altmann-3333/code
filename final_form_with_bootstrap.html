@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Card and Map</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .my-company-card {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .my-company-logo {
+            max-width: 100%;
+            height: auto;
+        }
+        .my-company-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .my-company-address {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .my-company-link {
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .my-company-link:hover {
+            text-decoration: underline;
+        }
+        .my-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center" style="width: 100%; height: 250px; background-color: white; border: 1px solid black;">
+        <button class="btn btn-outline-dark">Contact Us for Test Drive</button>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="my-company-card">
+                    <img src="https://via.placeholder.com/120" alt="Company Logo" class="my-company-logo">
+                    <div class="my-company-name">Company Name</div>
+                    <div class="my-company-address">
+                        1234 Example St<br>
+                        City, State, 12345
+                    </div>
+                    <a href="https://example.com" class="my-company-link">Visit Our Page</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="my_embed_frame">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26010380.412463084!2d-119.306607!3d37.269168!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2sKalifornien%2C%20USA!5e0!3m2!1sde!2sde!4v1717233902412!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="border p-4 mt-4 bg-light">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" class="form-control" id="dob" name="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="hobbies">Hobbies:</label>
+                        <select id="hobbies" name="hobbies" class="form-control" multiple>
+                            <option value="reading">Reading</option>
+                            <option value="traveling">Traveling</option>
+                            <option value="sports">Sports</option>
+                            <option value="music">Music</option>
+                            <option value="cooking">Cooking</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Comments:</label>
+                        <textarea id="comments" name="comments" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment">Appointment Time:</label>
+                        <input type="datetime-local" class="form-control" id="appointment" name="appointment">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

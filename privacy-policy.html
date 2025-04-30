@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Full Page Layout */
+        body {
+            display: flex;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 15px 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #007bff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .main-content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .policy-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .policy-content h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .policy-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <h2>Privacy Policy</h2>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">🏠 Dashboard</a></li>
+            <li><a href="profile.html">📋 Profile</a></li>
+            <li><a href="edit-profile.html">✏️ Edit Profile</a></li>
+            <li><a href="account-settings.html">⚙️ Account Settings</a></li>
+            <li><a href="terms-of-service.html">📜 Terms of Service</a></li>
+            <li><a href="privacy-policy.html">🔒 Privacy Policy</a></li>
+            <li><a href="logout.html">🚪 Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Privacy Policy</h1>
+
+        <div class="policy-content">
+            <h2>1. Introduction</h2>
+            <p>We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and safeguard your information...</p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We collect various types of information, including personal details, usage data, and technical information. This helps us provide a better service to you...</p>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>Your information is used to improve the functionality and personalization of our services. We do not share your personal data with third parties unless required by law...</p>
+
+            <h2>4. Data Protection</h2>
+            <p>We take strong measures to protect your data from unauthorized access or disclosure. However, no method of data transmission over the internet is 100% secure...</p>
+
+            <h2>5. Changes to the Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last Updated" date...</p>
+        </div>
+    </div>
+
+</body>
+</html>

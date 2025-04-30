@@ -1,71 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Display</title>
-    <style>
-        .content {
-            display: none;
-        }
-        .content.active {
-            display: block;
-        }
-        .content img {
-            width: 200px;
-            margin-right: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Upload</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://julius-altmann-3333.github.io/upload_form/style.css">
 </head>
 <body>
+  <div class="container-fluid">
+    <div class="section">
+      <div class="content-container">
+        <p>Section 1 Content</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="content-container-2">
+        
+    <iframe
+      id="JotFormIFrame-241571569159365"
+      title="Content Upload Form"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allow="geolocation; microphone; camera; fullscreen"
+      src="https://form.jotform.com/241571569159365"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no"
+    >
+    </iframe>
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-241571569159365']", "https://form.jotform.com/")</script>
+    
+      </div>
+    </div>
+    <div class="section">
+      <div class="content-container">
+        <p>Section 3 Content</p>
+      </div>
+    </div>
+  </div>
 
-    <h1>Content Display Options</h1>
-
-    <button onclick="loadContent('file1.html')">Show File 1 Content</button>
-    <button onclick="loadContent('file2.html')">Show File 2 Content</button>
-    <button onclick="loadContent('file3.html')">Show File 3 Content</button>
-    <button onclick="loadContent('file4.html')">Show File 4 Content</button>
-    <button onclick="loadContent('file5.html')">Show File 5 Content</button>
-    <button onclick="loadContent('file6.html')">Show File 6 Content</button>
-    <button onclick="loadContent('file7.html')">Show File 7 Content</button>
-    <button onclick="loadContent('file8.html')">Show File 8 Content</button>
-    <button onclick="loadContent('file9.html')">Show File 9 Content</button>
-
-    <div id="content1" class="content"></div>
-    <div id="content2" class="content"></div>
-    <div id="content3" class="content"></div>
-    <div id="content4" class="content"></div>
-    <div id="content5" class="content"></div>
-    <div id="content6" class="content"></div>
-    <div id="content7" class="content"></div>
-    <div id="content8" class="content"></div>
-    <div id="content9" class="content"></div>
-
-    <script>
-        function loadContent(file) {
-            // Hide all content divs
-            let allContents = document.querySelectorAll('.content');
-            allContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Determine which content div to show
-            let contentId = 'content' + file.match(/\d/)[0]; // Extracts the file number
-            let contentDiv = document.getElementById(contentId);
-
-            // Fetch and display the content from the selected file
-            fetch(file)
-                .then(response => response.text())
-                .then(html => {
-                    contentDiv.innerHTML = html;
-                    contentDiv.classList.add('active');
-                })
-                .catch(error => {
-                    contentDiv.innerHTML = "Failed to load content.";
-                    contentDiv.classList.add('active');
-                });
-        }
-    </script>
-
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

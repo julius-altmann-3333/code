@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Reservation</title>
+</head>
+<body>
+    <h1>Book Your Table Today</h1>
+    <p>Reserve your spot at our restaurant now!</p>
+    <form action="/make-reservation" method="POST">
+        <label for="date">Choose Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="time">Choose Time:</label>
+        <input type="time" id="time" name="time" required><br><br>
+
+        <button type="submit">Reserve Now</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Full Page Layout */
+        body {
+            display: flex;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            background: #343a40;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 15px 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #007bff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Membership Plans */
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .plan h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .plan p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .subscribe-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .nav-links a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .plans-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <h2>Membership Plans</h2>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">🏠 Dashboard</a></li>
+            <li><a href="profile.html">📋 Profile</a></li>
+            <li><a href="edit-profile.html">✏️ Edit Profile</a></li>
+            <li><a href="account-settings.html">⚙️ Account Settings</a></li>
+            <li><a href="membership-plans.html">💳 Membership Plans</a></li>
+            <li><a href="logout.html">🚪 Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Choose Your Membership Plan</h1>
+
+        <div class="plans-container">
+            <!-- Free Plan -->
+            <div class="plan">
+                <h2>Free</h2>
+                <p>Basic access to the platform.</p>
+                <div class="price">$0.00 / month</div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+
+            <!-- Silver Plan -->
+            <div class="plan">
+                <h2>Silver</h2>
+                <p>Unlock additional features with Silver.</p>
+                <div class="price">$14.99 / month</div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+
+            <!-- Gold Plan -->
+            <div class="plan">
+                <h2>Gold</h2>
+                <p>Full access with premium benefits.</p>
+                <div class="price">$29.99 / month</div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+
+            <!-- Platinum Plan -->
+            <div class="plan">
+                <h2>Platinum</h2>
+                <p>Exclusive features with Platinum membership.</p>
+                <div class="price">$49.99 / month</div>
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

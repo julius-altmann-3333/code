@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Survey</title>
+</head>
+<body>
+    <h1>We Value Your Feedback</h1>
+    <form action="/submit-survey" method="POST">
+        <label for="feedback">How satisfied are you with our product?</label><br>
+        <input type="radio" id="satisfied" name="feedback" value="Very Satisfied">
+        <label for="satisfied">Very Satisfied</label><br>
+        <input type="radio" id="neutral" name="feedback" value="Neutral">
+        <label for="neutral">Neutral</label><br>
+        <input type="radio" id="dissatisfied" name="feedback" value="Dissatisfied">
+        <label for="dissatisfied">Dissatisfied</label><br><br>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</body>
+</html>

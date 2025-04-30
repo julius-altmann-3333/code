@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://julius-altmann-3333.github.io/checklist/style.css">
+    <title>Checklist</title>
+</head>
+<body>
+    <h1>Checklist</h1>
+    <div>
+        <input type="text" id="new-task" placeholder="Add a new task...">
+        <button id="add-task-btn">Add Task</button>
+        <button id="delete-task-btn">Delete Checked Tasks</button>
+    </div>
+    <ul id="task-list">
+        <!-- Tasks will be added here -->
+    </ul>
+
+    <script>
+        function addTask() {
+            let taskText = document.getElementById('new-task').value;
+            if (taskText.trim() !== "") {
+                let li = document.createElement('li');
+                let checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        li.classList.add('finished');
+                    } else {
+                        li.classList.remove('finished');
+                    }
+                });
+                let span = document.createElement('span');
+                span.textContent = taskText;
+                span.classList.add('task-text');
+
+                let editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.classList.add('edit-btn');
+                editButton.addEventListener('click', function() {
+                    if (!li.classList.contains('finished')) {
+                        let newTaskText = prompt('Edit task:', span.textContent);
+                        if (newTaskText !== null && newTaskText.trim() !== "") {
+                            span.textContent = newTaskText;
+                        }
+                    }
+                });
+
+                let deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.classList.add('delete-btn');
+                deleteButton.addEventListener('click', function() {
+                    li.remove();
+                });
+
+                let buttonContainer = document.createElement('div');
+                buttonContainer.classList.add('task-buttons');
+                buttonContainer.appendChild(editButton);
+                buttonContainer.appendChild(deleteButton);
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(buttonContainer);
+                document.getElementById('task-list').appendChild(li);
+                document.getElementById('new-task').value = '';
+            }
+        }
+
+        document.getElementById('add-task-btn').addEventListener('click', addTask);
+
+        document.getElementById('new-task').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        document.getElementById('delete-task-btn').addEventListener('click', function() {
+            let tasks = document.querySelectorAll('#task-list li');
+            tasks.forEach(function(task) {
+                if (task.querySelector('input[type="checkbox"]').checked) {
+                    task.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Content on Button Click</title>
-    <style>
-        .content-block {
-            display: none;
-            margin-top: 20px;
-        }
-        .content-block img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Content Toggle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .button-container {
+      margin-bottom: 20px;
+    }
+    .content-container {
+      display: none;
+    }
+    .content-container.active {
+      display: block;
+    }
+    .content {
+      margin: 20px;
+    }
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-    <h1>Dynamic Content Example</h1>
-    
-    <button class="content-btn" data-target="content1">Show Content 1</button>
-    <button class="content-btn" data-target="content2">Show Content 2</button>
-    <button class="content-btn" data-target="content3">Show Content 3</button>
-    <button class="content-btn" data-target="content4">Show Content 4</button>
 
-    <div id="content1" class="content-block">
-        <h2>Content Block 1</h2>
-        <p>This is the first block of content.</p>
-        <img src="https://via.placeholder.com/300" alt="Placeholder Image 1">
+  <div class="button-container">
+    <button onclick="showContent('content1')">Show Content 1</button>
+    <button onclick="showContent('content2')">Show Content 2</button>
+  </div>
+
+  <div id="content1" class="content-container">
+    <div class="content">
+      <img src="https://via.placeholder.com/300" alt="Image 1">
+      <p>This is the first content with some text and an image.</p>
     </div>
+  </div>
 
-    <div id="content2" class="content-block">
-        <h2>Content Block 2</h2>
-        <p>This is the second block of content.</p>
-        <img src="https://via.placeholder.com/300" alt="Placeholder Image 2">
+  <div id="content2" class="content-container">
+    <div class="content">
+      <img src="https://via.placeholder.com/300" alt="Image 2">
+      <p>This is the second content with different text and an image.</p>
     </div>
+  </div>
 
-    <div id="content3" class="content-block">
-        <h2>Content Block 3</h2>
-        <p>This is the third block of content.</p>
-        <img src="https://via.placeholder.com/300" alt="Placeholder Image 3">
-    </div>
+  <script>
+    function showContent(contentId) {
+      // Hide all content containers
+      var contents = document.querySelectorAll('.content-container');
+      contents.forEach(function(content) {
+        content.classList.remove('active');
+      });
 
-    <div id="content4" class="content-block">
-        <h2>Content Block 4</h2>
-        <p>This is the fourth block of content.</p>
-        <img src="https://via.placeholder.com/300" alt="Placeholder Image 4">
-    </div>
+      // Show the selected content container
+      var selectedContent = document.getElementById(contentId);
+      selectedContent.classList.add('active');
+    }
+  </script>
 
-    <script>
-        // Function to hide all content blocks
-        function hideAllContent() {
-            const contentBlocks = document.querySelectorAll('.content-block');
-            contentBlocks.forEach(block => block.style.display = 'none');
-        }
-
-        // Attach event listeners to all buttons
-        const buttons = document.querySelectorAll('.content-btn');
-        buttons.forEach(button => {
-            button.addEventListener('click', function() {
-                hideAllContent();
-                const targetContent = document.getElementById(this.getAttribute('data-target'));
-                targetContent.style.display = 'block'; // Show the selected content block
-            });
-        });
-    </script>
 </body>
 </html>

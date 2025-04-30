@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Styling Buttons</title>
+<style>
+  /* Basic Button Style */
+  .button-basic {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: 2px solid #3498db;
+      color: #3498db;
+      background-color: transparent;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  .button-basic:hover {
+      background-color: #3498db;
+      color: #fff;
+  }
+
+  /* Outline Button Style */
+  .button-outline {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: 2px solid #3498db;
+      color: #3498db;
+      background-color: transparent;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+
+  .button-outline:hover {
+      background-color: #3498db;
+      color: #fff;
+  }
+
+  /* Rounded Button Style */
+  .button-rounded {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      color: #fff;
+      background-color: #3498db;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: background-color 0.3s, color 0.3s;
+  }
+
+  .button-rounded:hover {
+      background-color: #2980b9;
+  }
+</style>
+</head>
+<body>
+  <button class="button-basic">Basic Button</button>
+  <button class="button-outline">Outline Button</button>
+  <button class="button-rounded">Rounded Button</button>
+</body>
+</html>

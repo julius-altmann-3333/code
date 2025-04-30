@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #new-task {
+            width: calc(100% - 110px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #add-task-btn, #delete-task-btn {
+            padding: 10px;
+            margin-left: 5px;
+        }
+        .category-options {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+        .task-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .task-list li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .task-list li.finished {
+            text-decoration: line-through;
+            color: grey;
+        }
+        .task-text {
+            flex: 1; /* Take up remaining space */
+            margin-left: 5px;
+        }
+        .task-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        button.edit-btn, button.delete-btn {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Checklist</h1>
+
+    <div class="category-options">
+        <label><input type="radio" name="category" value="work" checked> Work</label>
+        <label><input type="radio" name="category" value="personal"> Personal</label>
+        <label><input type="radio" name="category" value="miscellaneous"> Miscellaneous</label>
+    </div>
+
+    <div>
+        <input type="text" id="new-task" placeholder="Add a new task...">
+        <button id="add-task-btn">Add Task</button>
+        <button id="delete-task-btn">Delete Checked Tasks</button>
+    </div>
+
+    <div id="work-tasks">
+        <h2>Work</h2>
+        <ul class="task-list" id="work-task-list"></ul>
+    </div>
+
+    <div id="personal-tasks">
+        <h2>Personal</h2>
+        <ul class="task-list" id="personal-task-list"></ul>
+    </div>
+
+    <div id="miscellaneous-tasks">
+        <h2>Miscellaneous</h2>
+        <ul class="task-list" id="miscellaneous-task-list"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let taskText = document.getElementById('new-task').value;
+            if (taskText.trim() !== "") {
+                let li = document.createElement('li');
+                let checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        li.classList.add('finished');
+                    } else {
+                        li.classList.remove('finished');
+                    }
+                });
+                let span = document.createElement('span');
+                span.textContent = taskText;
+                span.classList.add('task-text');
+
+                let editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.classList.add('edit-btn');
+                editButton.addEventListener('click', function() {
+                    if (!li.classList.contains('finished')) {
+                        let newTaskText = prompt('Edit task:', span.textContent);
+                        if (newTaskText !== null && newTaskText.trim() !== "") {
+                            span.textContent = newTaskText;
+                        }
+                    }
+                });
+
+                let deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.classList.add('delete-btn');
+                deleteButton.addEventListener('click', function() {
+                    li.remove();
+                });
+
+                let buttonContainer = document.createElement('div');
+                buttonContainer.classList.add('task-buttons');
+                buttonContainer.appendChild(editButton);
+                buttonContainer.appendChild(deleteButton);
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(buttonContainer);
+
+                // Get selected category
+                let category = document.querySelector('input[name="category"]:checked').value;
+
+                // Append task to the appropriate task list
+                switch (category) {
+                    case 'work':
+                        document.getElementById('work-task-list').appendChild(li);
+                        break;
+                    case 'personal':
+                        document.getElementById('personal-task-list').appendChild(li);
+                        break;
+                    case 'miscellaneous':
+                        document.getElementById('miscellaneous-task-list').appendChild(li);
+                        break;
+                    default:
+                        document.getElementById('miscellaneous-task-list').appendChild(li); // Default to Miscellaneous
+                        break;
+                }
+
+                document.getElementById('new-task').value = '';
+            }
+        }
+
+        document.getElementById('add-task-btn').addEventListener('click', addTask);
+
+        document.getElementById('new-task').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        document.getElementById('delete-task-btn').addEventListener('click', function() {
+            let tasks = document.querySelectorAll('.task-list li');
+            tasks.forEach(function(task) {
+                if (task.querySelector('input[type="checkbox"]').checked) {
+                    task.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

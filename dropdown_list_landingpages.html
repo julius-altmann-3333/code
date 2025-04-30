@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #333;
+            padding: 15px 10px;
+            position: relative;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling for <li> elements */
+        nav li {
+            margin: 8px;
+            text-align: center;
+            flex: 1 1 150px;
+            max-width: 200px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect */
+        nav li:hover {
+            background-color: #555;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            z-index: 10; /* Ensures it is above the menu */
+        }
+
+        /* Mobile Menu Styling */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 10px 0;
+                animation: slideIn 0.5s ease-out;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            nav li {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Animation for mobile menu */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Menu -->
+<nav>
+    <!-- Hamburger Icon for Mobile -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- Menu Links -->
+    <ul id="nav-links">
+        <li>Lead Generation</li>
+        <li>Product Sales</li>
+        <li>Event Registration</li>
+        <li>App Downloads</li>
+        <li>Audience Engagement</li>
+        <li>Brand Awareness</li>
+        <li>Content Downloads</li>
+        <li>Trial Sign-ups</li>
+        <li>Survey or Market Research</li>
+        <li>Coupon/Discount Offers</li>
+        <li>Partnership/Affiliate</li>
+        <li>Video Sales</li>
+        <li>Pre-launch Waitlist</li>
+        <li>Downloadable Tools</li>
+        <li>Charity or Donation Pages</li>
+        <li>Membership Sign-up</li>
+        <li>Local Business Sign-up</li>
+        <li>Subscription Box</li>
+        <li>Reservation Booking</li>
+        <li>Customer Testimonials</li>
+        <li>Job Application</li>
+        <li>Newsletter Subscription</li>
+        <li>User Test Sign-up</li>
+        <li>Product Demo</li>
+        <li>Community Forum</li>
+        <li>Product Launch</li>
+        <li>Pre-order Page</li>
+        <li>Loyalty Program</li>
+        <li>Free Consultation</li>
+        <li>Referral Program</li>
+    </ul>
+</nav>
+
+<!-- Script to toggle mobile menu -->
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('nav-links');
+        menu.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
