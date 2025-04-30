@@ -1,62 +1,151 @@
-body {
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .form-container {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        .form-container label {
-            font-weight: bold;
-        }
-
-        .form-container input, .form-container select, .form-container textarea {
-            width: 100%;
+        select {
             padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+            width: 200px;
+            float: left;
+            margin: 10px 10px 10px;
+        }
+
+        /* Extra small devices (phones, less than 600px) */
+        @media (max-width: 600px) {
+            select {
+                display: block; /* Show button on small screens */
+                width: 90%;
+                margin-left: 5%;
+                font-size: 16px;
+                padding: 10px 14px;
+            }
+        }
+
+        /* Small devices (tablets, 600px to 768px) */
+        @media (min-width: 600px) and (max-width: 768px) {
+            select {
+                display: block; /* Show button */
+                width: 90%;
+                margin-left: 5%;
+                font-size: 15px;
+                padding: 9px 13px;
+            }
+        }
+
+        #country_selector {
+            width: 100%;
+            height: auto;
+        }
+
+        #resultContainer {
+            width: 100%;
             border: 1px solid #ccc;
-        }
-
-        .form-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .form-container button:hover {
-            background-color: #45a049;
-        }
-
-        #results {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
             background-color: #f9f9f9;
+            float: left;
         }
 
-        #downloadBtn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            border-radius: 5px;
+        #box_buttons {
+            float: left;
+            width: 100%;
+            height: 50px;
+        }
+        /* Basic styling for results */
+        .result-item {
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .result-item img {
+            width: 150px;
+            height: auto;
+        }
+
+        .result-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-item h4 {
+            margin: 0;
+        }
+
+        .result-item p {
+            margin: 5px 0;
+        }
+
+        #filterButton {
+            margin: 10px 10px 10px;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s, color 0.3s; 
+            color: black; 
+            border: none; 
+            padding: 8px 12px; 
+            font-size: 14px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background 0.3s;"
+        }
+
+        #filters {
+            display: none;
+            float: left;
+        }
+
+        .filter {
+            float: left;
+        }
+
+        .filter-button {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            margin: 4px;
+            font-size: 14px;
             cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            display: none; /* Initially hidden */
         }
 
-        #downloadBtn:hover {
-            background-color: #006F8E;
+        /* Extra small devices (phones, less than 600px) */
+        @media (max-width: 600px) {
+            .filter-button {
+                display: block; /* Show button on small screens */
+                width: 90%;
+                margin-left: 5%;
+                font-size: 16px;
+                padding: 10px 14px;
+            }
+        }
+
+        /* Small devices (tablets, 600px to 768px) */
+        @media (min-width: 600px) and (max-width: 768px) {
+            .filter-button {
+                display: block; /* Show button */
+                width: 90%;
+                margin-left: 5%;
+                font-size: 15px;
+                padding: 9px 13px;
+            }
+        }
+
+        .filter-button.show {
+            display: inline-block; /* Make visible if 'show' class is added */
+        }
+
+        .filter-button:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .filter-button.selected {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .filter-button:active {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .filter-button:focus {
+            outline: none;
         }

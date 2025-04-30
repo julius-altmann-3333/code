@@ -152,14 +152,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 resultItem.innerHTML = `
                     <img src="${property.imageUrl}" alt="Property Image">
                     <div>
-                        <h4>${property.title}</h4>
-                        <p>Country: ${property.country}</p>
-                        <p>City: ${property.city}</p>
-                        <p>Price: $${property.price}</p>
-                        <p>Type: ${property.propertyType}</p>
-                        <p>Bedrooms: ${property.bedrooms}</p>
-                        <p>Bathrooms: ${property.bathrooms}</p>
-                        <p>Size: ${property.squareFeet} sq ft</p>
+                        <h4 class="title">${property.title}</h4>
+                        <p class="country">Country: ${property.country}</p>
+                        <p class="city">City: ${property.city}</p>
+                        <p class="price">Price: $${property.price}</p>
+                        <p class="type">Type: ${property.propertyType}</p>
+                        <p class="bedrooms">Bedrooms: ${property.bedrooms}</p>
+                        <p class="bathrooms">Bathrooms: ${property.bathrooms}</p>
+                        <p class="size">Size: ${property.squareFeet} sq ft</p>
                         <button class="filter-button" data-filter="internet">Internet: ${property.internet}</button>
                         <button class="filter-button" data-filter="parking">Parking: ${property.parking}</button>
                         <button class="filter-button" data-filter="garden">Garden: ${property.garden}</button>

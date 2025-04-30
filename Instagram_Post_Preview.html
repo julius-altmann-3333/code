@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Post Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .image-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        #post-preview {
+            max-width: 300px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: left;
+            border-radius: 10px;
+        }
+        #post-preview img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Prepare Instagram Post</h2>
+    <input type="file" id="file-input" multiple accept="image/*"><br><br>
+    <textarea id="caption" placeholder="Write your caption here..." rows="4" cols="30"></textarea>
+    
+    <h3>Images to be posted:</h3>
+    <div id="image-preview"></div>
+    
+    <h3>Post Preview</h3>
+    <div id="post-preview">
+        <img id="preview-image" src="" alt="Preview Image" style="display: none;">
+        <p id="preview-caption"></p>
+    </div>
+    
+    <script>
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('image-preview');
+            const previewImage = document.getElementById('preview-image');
+            previewContainer.innerHTML = '';
+            
+            if (files.length > 0) {
+                previewImage.src = URL.createObjectURL(files[0]);
+                previewImage.style.display = 'block';
+            }
+            
+            Array.from(files).forEach(file => {
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('image-container');
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                imgContainer.appendChild(img);
+                previewContainer.appendChild(imgContainer);
+            });
+        });
+        
+        document.getElementById('caption').addEventListener('input', function(event) {
+            document.getElementById('preview-caption').textContent = event.target.value;
+        });
+    </script>
+</body>
+</html>
