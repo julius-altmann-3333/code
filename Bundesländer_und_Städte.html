@@ -1,0 +1,452 @@
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .bundesland {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .bundesland h2 {
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .cities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin-top: 10px;
+        }
+
+        .city-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .city-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .city-info {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .city-btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+
+    </style>
+<header>
+    <h1>German Cities by Bundesland</h1>
+</header>
+
+<div class="container">
+
+    <!-- Baden-Württemberg -->
+    <div class="bundesland">
+        <h2>Baden-Württemberg</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('stuttgart')">Stuttgart</button>
+            <button class="city-btn" onclick="toggleCityInfo('mannheim')">Mannheim</button>
+            <button class="city-btn" onclick="toggleCityInfo('karlsruhe')">Karlsruhe</button>
+            <button class="city-btn" onclick="toggleCityInfo('freiburg')">Freiburg im Breisgau</button>
+            <button class="city-btn" onclick="toggleCityInfo('heidelberg')">Heidelberg</button>
+        </div>
+        <div id="stuttgart" class="city-info">
+            <h3>Stuttgart</h3>
+            <p>Capital city of Baden-Württemberg. Known for its automotive industry, home to Mercedes-Benz and Porsche.</p>
+        </div>
+        <div id="mannheim" class="city-info">
+            <h3>Mannheim</h3>
+            <p>A major industrial city, located at the junction of the Rhine and Neckar rivers.</p>
+        </div>
+        <div id="karlsruhe" class="city-info">
+            <h3>Karlsruhe</h3>
+            <p>Known for its grand palace and being the seat of Germany’s Federal Court.</p>
+        </div>
+        <div id="freiburg" class="city-info">
+            <h3>Freiburg im Breisgau</h3>
+            <p>Famous for its medieval architecture, and one of the greenest cities in Germany.</p>
+        </div>
+        <div id="heidelberg" class="city-info">
+            <h3>Heidelberg</h3>
+            <p>Known for its historical university and scenic castle overlooking the Neckar River.</p>
+        </div>
+    </div>
+
+    <!-- Bayern (Bavaria) -->
+    <div class="bundesland">
+        <h2>Bavaria (Bayern)</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('munich')">Munich</button>
+            <button class="city-btn" onclick="toggleCityInfo('nuremberg')">Nuremberg</button>
+            <button class="city-btn" onclick="toggleCityInfo('augsburg')">Augsburg</button>
+            <button class="city-btn" onclick="toggleCityInfo('regensburg')">Regensburg</button>
+            <button class="city-btn" onclick="toggleCityInfo('würzburg')">Würzburg</button>
+        </div>
+        <div id="munich" class="city-info">
+            <h3>Munich (München)</h3>
+            <p>Capital of Bavaria, famous for its beer gardens, Oktoberfest, and a rich cultural history.</p>
+        </div>
+        <div id="nuremberg" class="city-info">
+            <h3>Nuremberg (Nürnberg)</h3>
+            <p>Known for its historical landmarks, including Nuremberg Castle and its Christmas market.</p>
+        </div>
+        <div id="augsburg" class="city-info">
+            <h3>Augsburg</h3>
+            <p>One of Germany’s oldest cities, known for its medieval architecture and cultural history.</p>
+        </div>
+        <div id="regensburg" class="city-info">
+            <h3>Regensburg</h3>
+            <p>A UNESCO World Heritage site, known for its well-preserved medieval city center.</p>
+        </div>
+        <div id="würzburg" class="city-info">
+            <h3>Würzburg</h3>
+            <p>Famous for the Würzburg Residence, a baroque palace and UNESCO World Heritage site.</p>
+        </div>
+    </div>
+
+        <!-- Brandenburg -->
+    <div class="bundesland">
+        <h2>Brandenburg</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('potsdam')">Potsdam</button>
+            <button class="city-btn" onclick="toggleCityInfo('cottbus')">Cottbus</button>
+            <button class="city-btn" onclick="toggleCityInfo('brandenburg')">Brandenburg an der Havel</button>
+            <button class="city-btn" onclick="toggleCityInfo('frankfurt')">Frankfurt (Oder)</button>
+            <button class="city-btn" onclick="toggleCityInfo('oranienburg')">Oranienburg</button>
+        </div>
+        <div id="potsdam" class="city-info">
+            <h3>Potsdam</h3>
+            <p>Capital of Brandenburg, famous for its palaces, parks, and the Brandenburg Gate of Potsdam.</p>
+        </div>
+        <div id="cottbus" class="city-info">
+            <h3>Cottbus</h3>
+            <p>Known for its history and as a university city, Cottbus is one of the key cities in Lusatia.</p>
+        </div>
+        <div id="brandenburg" class="city-info">
+            <h3>Brandenburg an der Havel</h3>
+            <p>Historic town with a rich medieval background, featuring a variety of gothic and baroque architecture.</p>
+        </div>
+        <div id="frankfurt" class="city-info">
+            <h3>Frankfurt (Oder)</h3>
+            <p>A border city on the Oder River, known for its historical university and proximity to Poland.</p>
+        </div>
+        <div id="oranienburg" class="city-info">
+            <h3>Oranienburg</h3>
+            <p>Famous for the Sachsenhausen concentration camp memorial and its beautiful castle.</p>
+        </div>
+    </div>
+
+    <!-- Bremen -->
+    <div class="bundesland">
+        <h2>Bremen</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('bremen')">Bremen</button>
+            <button class="city-btn" onclick="toggleCityInfo('bremerhaven')">Bremerhaven</button>
+        </div>
+        <div id="bremen" class="city-info">
+            <h3>Bremen</h3>
+            <p>One of the smallest federal states, known for its historical city center and the Bremen Town Musicians fairy tale.</p>
+        </div>
+        <div id="bremerhaven" class="city-info">
+            <h3>Bremerhaven</h3>
+            <p>Located on the North Sea coast, famous for its harbor and the German Maritime Museum.</p>
+        </div>
+    </div>
+
+    <!-- Hamburg -->
+    <div class="bundesland">
+        <h2>Hamburg</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('hamburg')">Hamburg</button>
+        </div>
+        <div id="hamburg" class="city-info">
+            <h3>Hamburg</h3>
+            <p>The second-largest city in Germany, famous for its port, Speicherstadt, and vibrant cultural scene.</p>
+        </div>
+    </div>
+
+    <!-- Hesse (Hessen) -->
+    <div class="bundesland">
+        <h2>Hesse (Hessen)</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('frankfurt_hessen')">Frankfurt am Main</button>
+            <button class="city-btn" onclick="toggleCityInfo('wiesbaden')">Wiesbaden</button>
+            <button class="city-btn" onclick="toggleCityInfo('darmstadt')">Darmstadt</button>
+            <button class="city-btn" onclick="toggleCityInfo('offenbach')">Offenbach am Main</button>
+            <button class="city-btn" onclick="toggleCityInfo('kassel')">Kassel</button>
+        </div>
+        <div id="frankfurt_hessen" class="city-info">
+            <h3>Frankfurt am Main</h3>
+            <p>Germany’s financial hub, famous for its skyscrapers, museums, and historic Römer square.</p>
+        </div>
+        <div id="wiesbaden" class="city-info">
+            <h3>Wiesbaden</h3>
+            <p>Known for its spa culture, Wiesbaden is one of Germany’s oldest and most beautiful spa towns.</p>
+        </div>
+        <div id="darmstadt" class="city-info">
+            <h3>Darmstadt</h3>
+            <p>Famous for its role in science, especially in the field of information technology and computer science.</p>
+        </div>
+        <div id="offenbach" class="city-info">
+            <h3>Offenbach am Main</h3>
+            <p>A city in the Frankfurt metropolitan area, known for its leather industry and museums.</p>
+        </div>
+        <div id="kassel" class="city-info">
+            <h3>Kassel</h3>
+            <p>Home to the world-famous documenta contemporary art exhibition and the beautiful Wilhelmshöhe Palace.</p>
+        </div>
+    </div>
+
+    <!-- Lower Saxony (Niedersachsen) -->
+    <div class="bundesland">
+        <h2>Lower Saxony (Niedersachsen)</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('hanover')">Hanover (Hannover)</button>
+            <button class="city-btn" onclick="toggleCityInfo('braunschweig')">Braunschweig</button>
+            <button class="city-btn" onclick="toggleCityInfo('oldenburg')">Oldenburg</button>
+            <button class="city-btn" onclick="toggleCityInfo('osnabrueck')">Osnabrück</button>
+            <button class="city-btn" onclick="toggleCityInfo('wolfsburg')">Wolfsburg</button>
+        </div>
+        <div id="hanover" class="city-info">
+            <h3>Hanover (Hannover)</h3>
+            <p>Known for its trade fairs, beautiful parks, and the Hannover Zoo, one of the oldest zoos in the world.</p>
+        </div>
+        <div id="braunschweig" class="city-info">
+            <h3>Braunschweig</h3>
+            <p>Known for its medieval heritage and as the former residence of the Dukes of Brunswick.</p>
+        </div>
+        <div id="oldenburg" class="city-info">
+            <h3>Oldenburg</h3>
+            <p>Oldenburg is known for its history as a royal residence and its cultural institutions.</p>
+        </div>
+        <div id="osnabrueck" class="city-info">
+            <h3>Osnabrück</h3>
+            <p>A historic city, famous for the Peace of Westphalia, which ended the Thirty Years' War in 1648.</p>
+        </div>
+        <div id="wolfsburg" class="city-info">
+            <h3>Wolfsburg</h3>
+            <p>Known as the headquarters of Volkswagen and for the Autostadt, a large automotive-themed park.</p>
+        </div>
+    </div>
+
+       <!-- Mecklenburg-Vorpommern -->
+    <div class="bundesland">
+        <h2>Mecklenburg-Vorpommern</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('rostock')">Rostock</button>
+            <button class="city-btn" onclick="toggleCityInfo('schwerin')">Schwerin</button>
+            <button class="city-btn" onclick="toggleCityInfo('neubrandenburg')">Neubrandenburg</button>
+            <button class="city-btn" onclick="toggleCityInfo('stralsund')">Stralsund</button>
+            <button class="city-btn" onclick="toggleCityInfo('greifswald')">Greifswald</button>
+        </div>
+        <div id="rostock" class="city-info">
+            <h3>Rostock</h3>
+            <p>Known for its harbor, Rostock is one of the oldest cities in northern Germany with a rich maritime history.</p>
+        </div>
+        <div id="schwerin" class="city-info">
+            <h3>Schwerin</h3>
+            <p>The capital of Mecklenburg-Vorpommern, Schwerin is famous for its beautiful palace, Schwerin Castle, by the lake.</p>
+            <img style="width: 300px; height: 200px;">
+        </div>
+        <div id="neubrandenburg" class="city-info">
+            <h3>Neubrandenburg</h3>
+            <p>Known for its historical old town and the scenic Neubrandenburger See.</p>
+        </div>
+        <div id="stralsund" class="city-info">
+            <h3>Stralsund</h3>
+            <p>A UNESCO World Heritage site with its well-preserved medieval center and connection to the Baltic Sea.</p>
+        </div>
+        <div id="greifswald" class="city-info">
+            <h3>Greifswald</h3>
+            <p>Famous for its university, which was founded in 1456, and its picturesque Old Town.</p>
+        </div>
+    </div>
+
+    <!-- North Rhine-Westphalia (Nordrhein-Westfalen) -->
+    <div class="bundesland">
+        <h2>North Rhine-Westphalia (Nordrhein-Westfalen)</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('cologne')">Cologne (Köln)</button>
+            <button class="city-btn" onclick="toggleCityInfo('düsseldorf')">Düsseldorf</button>
+            <button class="city-btn" onclick="toggleCityInfo('dortmund')">Dortmund</button>
+            <button class="city-btn" onclick="toggleCityInfo('essen')">Essen</button>
+            <button class="city-btn" onclick="toggleCityInfo('bochum')">Bochum</button>
+        </div>
+        <div id="cologne" class="city-info">
+            <h3>Cologne (Köln)</h3>
+            <p>Famous for its stunning cathedral, Cologne is one of Germany’s oldest cities with a rich cultural scene.</p>
+        </div>
+        <div id="düsseldorf" class="city-info">
+            <h3>Düsseldorf</h3>
+            <p>Known for its fashion and trade fairs, Düsseldorf also boasts a rich art scene and is a hub for international business.</p>
+        </div>
+        <div id="dortmund" class="city-info">
+            <h3>Dortmund</h3>
+            <p>A major city in the Ruhr area, Dortmund is known for its football club, Dortmund BVB, and its industrial heritage.</p>
+        </div>
+        <div id="essen" class="city-info">
+            <h3>Essen</h3>
+            <p>Part of the Ruhr metropolitan region, Essen is known for its role in the coal and steel industry and its cultural institutions.</p>
+        </div>
+        <div id="bochum" class="city-info">
+            <h3>Bochum</h3>
+            <p>Another city in the Ruhr area, Bochum is known for its industrial past and the Ruhr University.</p>
+        </div>
+    </div>
+
+    <!-- Rhineland-Palatinate (Rheinland-Pfalz) -->
+    <div class="bundesland">
+        <h2>Rhineland-Palatinate (Rheinland-Pfalz)</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('mainz')">Mainz</button>
+            <button class="city-btn" onclick="toggleCityInfo('koblenz')">Koblenz</button>
+            <button class="city-btn" onclick="toggleCityInfo('ludwigshafen')">Ludwigshafen am Rhein</button>
+            <button class="city-btn" onclick="toggleCityInfo('trier')">Trier</button>
+            <button class="city-btn" onclick="toggleCityInfo('worms')">Worms</button>
+        </div>
+        <div id="mainz" class="city-info">
+            <h3>Mainz</h3>
+            <p>The capital of Rhineland-Palatinate, Mainz is known for its historic old town and as the home of the Gutenberg Printing Press.</p>
+        </div>
+        <div id="koblenz" class="city-info">
+            <h3>Koblenz</h3>
+            <p>Located at the confluence of the Rhine and Moselle rivers, Koblenz is famous for its Deutsches Eck (German Corner) monument.</p>
+        </div>
+        <div id="ludwigshafen" class="city-info">
+            <h3>Ludwigshafen am Rhein</h3>
+            <p>A key industrial city, Ludwigshafen is home to the headquarters of BASF, one of the world's largest chemical companies.</p>
+        </div>
+        <div id="trier" class="city-info">
+            <h3>Trier</h3>
+            <p>One of Germany's oldest cities, known for its well-preserved Roman monuments such as the Porta Nigra and the Trier Cathedral.</p>
+        </div>
+        <div id="worms" class="city-info">
+            <h3>Worms</h3>
+            <p>Famous for its historical significance, including being the site of the Diet of Worms in 1521 during the Reformation.</p>
+        </div>
+    </div>
+
+    <!-- Saarland -->
+    <div class="bundesland">
+        <h2>Saarland</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('saarbruecken')">Saarbrücken</button>
+            <button class="city-btn" onclick="toggleCityInfo('neunkirchen')">Neunkirchen</button>
+            <button class="city-btn" onclick="toggleCityInfo('sankt_wendel')">Sankt Wendel</button>
+            <button class="city-btn" onclick="toggleCityInfo('völklingen')">Völklingen</button>
+            <button class="city-btn" onclick="toggleCityInfo('saarlouis')">Saarlouis</button>
+        </div>
+        <div id="saarbruecken" class="city-info">
+            <h3>Saarbrücken</h3>
+            <p>The capital of Saarland, Saarbrücken is a key city on the Saar River and has a strong historical and cultural heritage.</p>
+        </div>
+        <div id="neunkirchen" class="city-info">
+            <h3>Neunkirchen</h3>
+            <p>Located in the south of Saarland, Neunkirchen is known for its steel industry and historic landmarks.</p>
+        </div>
+        <div id="sankt_wendel" class="city-info">
+            <h3>Sankt Wendel</h3>
+            <p>Known for its beautiful surrounding nature and its historical significance as a medieval town.</p>
+        </div>
+        <div id="völklingen" class="city-info">
+            <h3>Völklingen</h3>
+            <p>A UNESCO World Heritage site, Völklingen is known for its former ironworks that are now a museum.</p>
+        </div>
+        <div id="saarlouis" class="city-info">
+            <h3>Saarlouis</h3>
+            <p>Founded by the French in the 17th century, Saarlouis has a rich military history and beautiful baroque architecture.</p>
+        </div>
+    </div>
+
+    <!-- Sachsen (Saxony) -->
+    <div class="bundesland">
+        <h2>Sachsen (Saxony)</h2>
+        <div class="cities">
+            <button class="city-btn" onclick="toggleCityInfo('dresden')">Dresden</button>
+            <button class="city-btn" onclick="toggleCityInfo('leipzig')">Leipzig</button>
+            <button class="city-btn" onclick="toggleCityInfo('chemnitz')">Chemnitz</button>
+            <button class="city-btn" onclick="toggleCityInfo('zwickau')">Zwickau</button>
+            <button class="city-btn" onclick="toggleCityInfo('plauen')">Plauen</button>
+        </div>
+        <div id="dresden" class="city-info">
+            <h3>Dresden</h3>
+            <p>Known for its baroque architecture and art treasures, Dresden is often referred to as the "Florence of the Elbe."</p>
+        </div>
+        <div id="leipzig" class="city-info">
+            <h3>Leipzig</h3>
+            <p>A cultural hub, Leipzig is known for its music scene, vibrant arts, and being the home of the famous composer Johann Sebastian Bach.</p>
+        </div>
+        <div id="chemnitz" class="city-info">
+            <h3>Chemnitz</h3>
+            <p>Once an industrial city, Chemnitz has transformed into a cultural center with a mix of old and new architecture.</p>
+        </div>
+        <div id="zwickau" class="city-info">
+            <h3>Zwickau</h3>
+            <p>Known for its automotive industry (specifically the Trabant) and beautiful old town.</p>
+        </div>
+        <div id="plauen" class="city-info">
+            <h3>Plauen</h3>
+            <p>A historic town with a rich tradition in lace-making and textiles, as well as beautiful surrounding nature.</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+<script>
+    function toggleCityInfo(cityId) {
+        var cityInfo = document.getElementById(cityId);
+        if (cityInfo.style.display === "none" || cityInfo.style.display === "") {
+            cityInfo.style.display = "block";
+        } else {
+            cityInfo.style.display = "none";
+        }
+    }
+</script>
+

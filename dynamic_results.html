@@ -2,118 +2,136 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Car Selector</title>
+  <title>Dynamic Car Display</title>
   <style>
-    .car-box {
-      margin-bottom: 20px;
+    :root {
+      --card-bg: #ffffff;
+      --card-border: #ddd;
+      --card-radius: 12px;
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --primary-color: #007acc;
+      --font-family: 'Segoe UI', sans-serif;
     }
 
-    .car-manufacturer {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-      font-size: 18px;
+    body {
+      font-family: var(--font-family);
+      margin: 0;
+      padding: 20px;
+      background: #f5f7fa;
     }
 
-    .dropdown .car-type {
-      display: block;
-      margin-left: 15px;
-      cursor: pointer;
-      color: blue;
-      text-decoration: underline;
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
     }
 
-    .car-details {
-      display: none;
-      margin-left: 30px;
-      padding: 10px;
-      background-color: #e8f4ff;
-      border-left: 3px solid #007acc;
-      margin-top: 5px;
-      border-radius: 4px;
+    #car-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    .result-box {
-      margin-top: 30px;
+    .car-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .car-content {
       padding: 15px;
-      background-color: #f0f0f0;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      min-height: 50px;
-      transition: background-color 0.3s ease;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .car-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .car-desc {
+      font-size: 14px;
+      margin-bottom: 15px;
+      flex: 1;
+    }
+
+    .car-actions {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
 <body>
 
-  <div class="car-box">
-    <a href="#" class="car-manufacturer">Suzuki</a>
-    <div class="dropdown">
-      <a href="#" class="car-type">Swift</a>
-      <div class="car-details">Suzuki Swift is a compact hatchback.</div>
-
-      <a href="#" class="car-type">Vitara</a>
-      <div class="car-details">Suzuki Vitara is a small SUV.</div>
-
-      <a href="#" class="car-type">Jimny</a>
-      <div class="car-details">Suzuki Jimny is a compact off-roader.</div>
-
-      <a href="#" class="car-type">Baleno</a>
-      <div class="car-details">Suzuki Baleno is a premium hatchback.</div>
-
-      <a href="#" class="car-type">Celerio</a>
-      <div class="car-details">Suzuki Celerio is a city car.</div>
-    </div>
-  </div>
-
-  <div class="car-box">
-    <a href="#" class="car-manufacturer">Tesla</a>
-    <div class="dropdown">
-      <a href="#" class="car-type">Model S</a>
-      <div class="car-details">Tesla Model S is a luxury electric sedan.</div>
-
-      <a href="#" class="car-type">Model 3</a>
-      <div class="car-details">Tesla Model 3 is an affordable electric sedan.</div>
-
-      <a href="#" class="car-type">Model X</a>
-      <div class="car-details">Tesla Model X is a luxury electric SUV.</div>
-
-      <a href="#" class="car-type">Model Y</a>
-      <div class="car-details">Tesla Model Y is a compact electric SUV.</div>
-    </div>
-  </div>
-
-  <!-- Add more car-boxes similarly if needed -->
-
-  <div id="result-display" class="result-box">
-    Click a car model to see details here.
-  </div>
+  <h1>Select a Car</h1>
+  <div id="car-container"></div>
 
   <script>
-    const resultBox = document.getElementById("result-display");
+    const container = document.getElementById('car-container');
 
-    document.querySelectorAll(".car-type").forEach(type => {
-      type.addEventListener("click", event => {
-        event.preventDefault();
-
-        // Hide all other car-details
-        document.querySelectorAll(".car-details").forEach(detail => {
-          detail.style.display = "none";
-        });
-
-        // Get the clicked one and show its next sibling (which is the detail div)
-        const detailDiv = type.nextElementSibling;
-        if (detailDiv && detailDiv.classList.contains("car-details")) {
-          detailDiv.style.display = "block";
-
-          const manufacturer = type.closest(".car-box").querySelector(".car-manufacturer").textContent;
-          const model = type.textContent;
-
-          resultBox.textContent = `Selected Car: ${manufacturer} - ${model}`;
+    // Load car data from external JSON file
+    fetch('cars.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch car data.");
         }
+        return response.json();
+      })
+      .then(carData => {
+        carData.forEach(car => {
+          const card = document.createElement('div');
+          card.className = 'car-card';
+
+          card.innerHTML = `
+            <img class="car-img" src="${car.image}" alt="${car.model}">
+            <div class="car-content">
+              <div class="car-title">${car.manufacturer} ${car.model}</div>
+              <div class="car-desc">${car.description}</div>
+              <div class="car-actions">
+                <button class="btn">Details</button>
+                <button class="btn">Buy Now</button>
+              </div>
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        container.innerHTML = `<p style="color: red;">Error loading car data: ${error.message}</p>`;
       });
-    });
   </script>
+
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic HTML Loader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .button-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .button-container button:hover {
+      background-color: #0056b3;
+    }
+
+    #result-box {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Load External HTML into a Div</h1>
+
+  <div class="button-container">
+    <button onclick="loadContent('buy_and_hold_investors.html')">Load Buy & Hold</button>
+    <button onclick="loadContent('commercial_real_estate_investors.html')">Load CRE</button>
+    <button onclick="loadContent('page3.html')">Load Page 3</button>
+  </div>
+
+  <div id="result-box">
+    <p><em>Click a button to load content here...</em></p>
+  </div>
+
+  <script>
+    function loadContent(file) {
+      const resultBox = document.getElementById("result-box");
+      resultBox.innerHTML = "<p><em>Loading...</em></p>";
+
+      fetch(file)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`Failed to load ${file}: ${res.statusText}`);
+          }
+          return res.text();
+        })
+        .then(html => {
+          resultBox.innerHTML = html;
+        })
+        .catch(err => {
+          resultBox.innerHTML = `<p style="color: red;">${err.message}</p>`;
+        });
+    }
+  </script>
+
+</body>
+</html>

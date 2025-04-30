@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styles for the navbar */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+
+        /* Style for iframe container */
+        .iframe-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        iframe {
+            width: 80%;
+            height: 600px;
+            border: none;
+        }
+
+        /* Main content */
+        main {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="loadPage('index-ecommerce.html')">Home</a></li>
+                <li><a href="#" onclick="loadPage('product-page.html')">Product Page</a></li>
+                <li><a href="#" onclick="loadPage('category-page.html')">Categories</a></li>
+                <li><a href="#" onclick="loadPage('cart.html')">Shopping Cart</a></li>
+                <li><a href="#" onclick="loadPage('checkout.html')">Checkout</a></li>
+                <li><a href="#" onclick="loadPage('order-confirmation.html')">Order Confirmation</a></li>
+                <li><a href="#" onclick="loadPage('account.html')">Account</a></li>
+                <li><a href="#" onclick="loadPage('login-register.html')">Login/Register</a></li>
+                <li><a href="#" onclick="loadPage('about-us.html')">About Us</a></li>
+                <li><a href="#" onclick="loadPage('faq.html')">FAQ</a></li>
+                <li><a href="#" onclick="loadPage('shipping-info.html')">Shipping & Delivery</a></li>
+                <li><a href="#" onclick="loadPage('returns.html')">Returns & Exchanges</a></li>
+                <li><a href="#" onclick="loadPage('privacy-policy.html')">Privacy Policy</a></li>
+                <li><a href="#" onclick="loadPage('terms-conditions.html')">Terms & Conditions</a></li>
+                <li><a href="#" onclick="loadPage('contact-us.html')">Contact Us</a></li>
+                <li><a href="#" onclick="loadPage('blog.html')">Blog</a></li>
+                <li><a href="#" onclick="loadPage('search-results.html')">Search Results</a></li>
+                <li><a href="#" onclick="loadPage('reviews.html')">Customer Reviews</a></li>
+                <li><a href="#" onclick="loadPage('special-offers.html')">Special Offers</a></li>
+                <li><a href="#" onclick="loadPage('sitemap.html')">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Welcome to Our eCommerce Store</h1>
+        <p>Browse our wide range of products and enjoy shopping!</p>
+    </main>
+
+    <!-- Iframe for displaying pages -->
+    <section class="iframe-container">
+        <iframe id="pageFrame" src="" title="Page Content"></iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 eCommerce Store | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript to load pages into iframe -->
+    <script>
+        // Function to load the external HTML pages into the iframe
+        function loadPage(page) {
+            // Set the iframe source to the clicked page's URL
+            document.getElementById('pageFrame').src = page;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Display</title>
+    <style>
+        .dropdown { display: none; list-style: none; padding: 0; }
+        .dropdown li { cursor: pointer; padding: 5px; }
+        .dropdown li:hover { background: #f0f0f0; }
+        #result-container { margin-top: 20px; padding: 20px; border: 1px solid #ccc; text-align: center; max-width: 600px; margin-left: auto; margin-right: auto; background: #f9f9f9; border-radius: 10px; }
+        #result-container img { max-width: 100%; height: auto; margin-top: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#" class="menu">Social Media</a>
+                <ul class="dropdown">
+                    <li data-title="Content Creation" data-content="Learn about content creation strategies, tools, and trends that shape social media today." data-img1="social1.jpg" data-img2="social1b.jpg">Content Creation</li>
+                    <li data-title="Influencer Marketing" data-content="Find out how influencer marketing can boost your brand and drive engagement." data-img1="social2.jpg" data-img2="social2b.jpg">Influencer Marketing</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menu">Tourism & Travel</a>
+                <ul class="dropdown">
+                    <li data-title="Adventure Tourism" data-content="Discover the thrill of adventure tourism, from extreme sports to breathtaking landscapes." data-img1="travel1.jpg" data-img2="travel1b.jpg">Adventure Tourism</li>
+                    <li data-title="Sustainable Tourism" data-content="Learn about sustainable tourism practices that benefit the environment and local communities." data-img1="travel2.jpg" data-img2="travel2b.jpg">Sustainable Tourism</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="menu">Venture Capital & Startups</a>
+                <ul class="dropdown">
+                    <li data-title="Seed Funding" data-content="Explore the world of seed funding for startups and how early-stage investment works." data-img1="startup1.jpg" data-img2="startup1b.jpg">Seed Funding</li>
+                    <li data-title="Venture Capital Firms" data-content="Learn how venture capital firms operate and invest in emerging businesses." data-img1="startup2.jpg" data-img2="startup2b.jpg">Venture Capital Firms</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    <div id="result-container">
+        <h2>Select a topic to see details here.</h2>
+        <p></p>
+    </div>
+
+    <script>
+        document.querySelectorAll('.menu').forEach(menu => {
+            menu.addEventListener('click', function(event) {
+                event.preventDefault();
+                let dropdown = this.nextElementSibling;
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        document.querySelectorAll('.dropdown li').forEach(item => {
+            item.addEventListener('click', function() {
+                let resultContainer = document.getElementById('result-container');
+                resultContainer.innerHTML = `<h2>${this.dataset.title}</h2>`;
+                resultContainer.innerHTML += `<p>${this.dataset.content}</p>`;
+                if (this.dataset.img1 && this.dataset.img2) {
+                    resultContainer.innerHTML += `<img src="${this.dataset.img1}" alt="Image 1">`;
+                    resultContainer.innerHTML += `<img src="${this.dataset.img2}" alt="Image 2">`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

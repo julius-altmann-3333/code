@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Pages Links</title>
+    <style>
+        /* Remove blue color from links */
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        /* Change color of the link when hovered */
+        a:hover {
+            color: #007bff; /* You can adjust the hover color */
+        }
+
+        /* Styling for the content container where the linked page content will be displayed */
+        #content-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            min-height: 300px;
+            position: relative;
+        }
+
+        #content-container iframe {
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Landing Pages Links</h1>
+
+    <ul>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_buy_and_hold_investors.html')">Buy and Hold Investors</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_commercial_real_estate_investors.html')">Commercial Real Estate Investors</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_downsizers_empty_nesters.html')">Downsizers & Empty Nesters</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_fix_and_flip_investors.html')">Fix and Flip Investors</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_luxury_buyers.html')">Luxury Buyers</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_move_up_buyers.html')">Move Up Buyers</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_multifamily_real_estate_investors.html')">Multifamily Real Estate Investors</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_multigenerational_buyers.html')">Multigenerational Buyers</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_short_term_rental_investors_airbnb_vacation_rentals.html')">Short Term Rental Investors (Airbnb/Vacation Rentals)</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_student_housing_investors.html')">Student Housing Investors</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_vacation_home_buyers.html')">Vacation Home Buyers</a></li>
+        
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_real_estate_development_investors.html')">Real Estate Development Investors</a></li>
+        <li><a href="javascript:void(0);" onclick="loadContent('landingpages_vacation_property_investors_resorts_and_second_homes.html')">Vacation Property Investors (Resorts and Second Homes)</a></li>
+    </ul>
+
+    <div id="content-container">
+        <!-- Content of the linked page will be displayed here -->
+        <p>Select a link above to view the landing page content.</p>
+    </div>
+
+    <script>
+        // Function to load the content of the linked page into the content-container
+        function loadContent(page) {
+            const container = document.getElementById('content-container');
+            container.innerHTML = ''; // Clear the previous content
+
+            // Create an iframe element to load the page
+            const iframe = document.createElement('iframe');
+            iframe.src = `file:///C:/Users/Julius/Desktop/Real%20Estate/${page}`;
+
+            // Append the iframe to the container
+            container.appendChild(iframe);
+
+            // Adjust iframe height after content is loaded
+            iframe.onload = function() {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                adjustIframeHeight(iframe, iframeDoc);
+            };
+        }
+
+        // Function to adjust iframe height based on the content
+        function adjustIframeHeight(iframe, iframeDoc) {
+            try {
+                // Get the height of the content inside the iframe and set it as the iframe's height
+                iframe.style.height = iframeDoc.body.scrollHeight + 'px';
+            } catch (e) {
+                console.error('Unable to access iframe content:', e);
+            }
+        }
+    </script>
+
+</body>
+</html>

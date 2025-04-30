@@ -5,118 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Website</title>
     <style>
+        /* Basic styles for the navbar */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
-        /* Navigation styles */
-        nav {
+        header {
             background-color: #333;
             color: white;
-            padding: 10px;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
         }
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Allow items to wrap */
             justify-content: center;
+            width: 100%; /* Ensure the ul takes full width */
         }
         nav ul li {
             margin: 10px 15px;
+            flex: 1 1 auto; /* Allow items to resize responsively */
         }
         nav ul li a {
             color: white;
             text-decoration: none;
             padding: 10px;
             display: block;
+            text-align: center;
         }
         nav ul li a:hover {
             background-color: #575757;
             border-radius: 5px;
         }
 
-        /* Container to load content in iframe */
-        .box_pages {
+        /* Style for iframe container */
+        .iframe-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        iframe {
+            width: 80%;
+            height: 600px;
+            border: none;
+        }
+
+        /* Main content */
+        main {
+            text-align: center;
             margin: 20px;
         }
-        
-        /* Responsive Design */
+
+        /* Responsive Media Query */
         @media (max-width: 768px) {
             nav ul li {
-                flex: 1 1 45%; /* Two items per row on medium-sized screens */
+                flex: 1 1 45%; /* Items will take up 45% of the width on smaller screens */
             }
         }
 
         @media (max-width: 480px) {
             nav ul li {
-                flex: 1 1 100%; /* Full-width items on smaller screens */
+                flex: 1 1 100%; /* Items will take full width on very small screens */
             }
-        }
-
-        .box_preview {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        iframe {
-            width: 80%;
-            height: 600px;
-            border: none;
-            display: block;
-            margin: 0 auto;
         }
     </style>
 </head>
 <body>
 
-<!-- Navigation Menu -->
-<header>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="loadPage('login.html')">Login</a></li>
-            <li><a href="#" onclick="loadPage('signup.html')">Sign Up</a></li>
-            <li><a href="#" onclick="loadPage('forgot-password.html')">Forgot Password?</a></li>
-            <li><a href="#" onclick="loadPage('dashboard.html')">Dashboard</a></li>
-            <li><a href="#" onclick="loadPage('profile.html')">My Profile</a></li>
-            <li><a href="#" onclick="loadPage('edit-profile.html')">Edit Profile</a></li>
-            <li><a href="#" onclick="loadPage('account-settings.html')">Account Settings</a></li>
-            <li><a href="#" onclick="loadPage('subscription.html')">Subscription & Billing</a></li>
-            <li><a href="#" onclick="loadPage('membership-plans.html')">Membership Plans</a></li>
-            <li><a href="#" onclick="loadPage('exclusive-content.html')">Exclusive Content</a></li>
-            <li><a href="#" onclick="loadPage('activity-feed.html')">Activity Feed</a></li>
-            <li><a href="#" onclick="loadPage('messages.html')">Messages</a></li>
-            <li><a href="#" onclick="loadPage('privacy-settings.html')">Privacy Settings</a></li>
-            <li><a href="#" onclick="loadPage('logout.html')">Logout</a></li>
-            <li><a href="#" onclick="loadPage('terms-of-service.html')">Terms of Service</a></li>
-            <li><a href="#" onclick="loadPage('privacy-policy.html')">Privacy Policy</a></li>
-            <li><a href="#" onclick="loadPage('help-support.html')">Help & Support</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- Navigation Menu -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="loadPage('login.html')">Login</a></li>
+                <li><a href="#" onclick="loadPage('signup.html')">Sign Up</a></li>
+                <li><a href="#" onclick="loadPage('forgot-password.html')">Forgot Password?</a></li>
+                <li><a href="#" onclick="loadPage('dashboard.html')">Dashboard</a></li>
+                <li><a href="#" onclick="loadPage('profile.html')">My Profile</a></li>
+                <li><a href="#" onclick="loadPage('edit-profile.html')">Edit Profile</a></li>
+                <li><a href="#" onclick="loadPage('account-settings.html')">Account Settings</a></li>
+                <li><a href="#" onclick="loadPage('subscription.html')">Subscription & Billing</a></li>
+                <li><a href="#" onclick="loadPage('membership-plans.html')">Membership Plans</a></li>
+                <li><a href="#" onclick="loadPage('exclusive-content.html')">Exclusive Content</a></li>
+                <li><a href="#" onclick="loadPage('activity-feed.html')">Activity Feed</a></li>
+                <li><a href="#" onclick="loadPage('messages.html')">Messages</a></li>
+                <li><a href="#" onclick="loadPage('privacy-settings.html')">Privacy Settings</a></li>
+                <li><a href="#" onclick="loadPage('logout.html')">Logout</a></li>
+                <li><a href="#" onclick="loadPage('terms-of-service.html')">Terms of Service</a></li>
+                <li><a href="#" onclick="loadPage('privacy-policy.html')">Privacy Policy</a></li>
+                <li><a href="#" onclick="loadPage('help-support.html')">Help & Support</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- Content Area -->
-<main>
-    <div class="box_pages">
-        <h1>Click a link to load the content</h1>
-    </div>
+    <!-- Main Content -->
+    <main>
+        <h1>Welcome to Our Membership Website</h1>
+        <p>Access all exclusive features and content by logging in or signing up!</p>
+    </main>
 
-    <div class="box_preview">
-        <!-- Iframe for dynamic content loading -->
-        <iframe id="iframeContent" src="" title="Page Content"></iframe>
-    </div>
-</main>
+    <!-- Iframe for displaying pages -->
+    <section class="iframe-container">
+        <iframe id="pageFrame" src="" title="Page Content"></iframe>
+    </section>
 
-<!-- JavaScript to load pages into iframe -->
-<script>
-    function loadPage(page) {
-        // Set the iframe source to the clicked page's URL
-        document.getElementById('iframeContent').src = page;
-    }
-</script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Membership Website | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript to load pages into iframe -->
+    <script>
+        // Function to load the external HTML pages into the iframe
+        function loadPage(page) {
+            // Set the iframe source to the clicked page's URL
+            document.getElementById('pageFrame').src = page;
+        }
+    </script>
 
 </body>
 </html>

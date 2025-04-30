@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Manufacturers and Models</title>
+    <style>
+        /* Some basic styling for the layout */
+        .container {
+            margin: 20px;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            min-height: 100px;
+        }
+        #model-select {
+            margin-top: 10px;
+        }
+        .output-field {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Select a Car Manufacturer</h2>
+        <select id="manufacturer-select">
+            <option value="">Select a manufacturer</option>
+            <option value="toyota">Toyota</option>
+            <option value="ford">Ford</option>
+            <option value="bmw">BMW</option>
+            <option value="audi">Audi</option>
+            <option value="mercedes">Mercedes</option>
+        </select>
+
+        <h3>Select a Car Model</h3>
+        <select id="model-select" disabled>
+            <option value="">Select a model</option>
+        </select>
+
+        <!-- Output Field for the selected model -->
+        <div id="output-field" class="output-field">
+            Please select a car model to see the result.
+        </div>
+    </div>
+
+    <script>
+        // Define car manufacturers and their models
+        const carData = {
+            toyota: ['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma'],
+            ford: ['F-150', 'Mustang', 'Explorer', 'Escape', 'Fusion'],
+            bmw: ['X5', '3 Series', 'M3', 'X3', '5 Series'],
+            audi: ['A4', 'Q5', 'A6', 'Q7', 'A3'],
+            mercedes: ['C-Class', 'E-Class', 'S-Class', 'GLC', 'A-Class']
+        };
+
+        // Select the manufacturer dropdown and the model dropdown
+        const manufacturerSelect = document.getElementById('manufacturer-select');
+        const modelSelect = document.getElementById('model-select');
+        const outputField = document.getElementById('output-field');
+
+        // Function to update the model select dropdown based on the selected manufacturer
+        manufacturerSelect.addEventListener('change', function() {
+            const selectedManufacturer = this.value;
+
+            // Clear previous models and disable the model select
+            modelSelect.innerHTML = '<option value="">Select a model</option>';
+            modelSelect.disabled = true;
+
+            if (selectedManufacturer && carData[selectedManufacturer]) {
+                // Populate the model select dropdown with corresponding models
+                carData[selectedManufacturer].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+                modelSelect.disabled = false;
+                outputField.innerHTML = 'Please select a car model to see the result.';
+            } else {
+                outputField.innerHTML = 'Please select a manufacturer to see models.';
+            }
+        });
+
+        // Function to display the selected model in the output field
+        modelSelect.addEventListener('change', function() {
+            const selectedModel = this.value;
+            if (selectedModel) {
+                outputField.innerHTML = `You selected the ${selectedModel}.`;
+            } else {
+                outputField.innerHTML = 'Please select a car model to see the result.';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-Story Mega Mansion - Material and Measurement Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 28px;
+            margin-top: 30px;
+            color: #444;
+        }
+        .material-list, .wall-layout {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .material-list ul, .wall-layout ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .material-list li, .wall-layout li {
+            margin: 10px 0;
+        }
+        .model-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+        .model-section h2 {
+            font-size: 28px;
+            color: #444;
+        }
+        #model-container {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        .input-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .input-container label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .input-container input {
+            padding: 5px;
+            font-size: 16px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>10-Story Mega Mansion - Material & Measurement Plan</h1>
+</header>
+
+<div class="content">
+    <section>
+        <h2 class="section-title">3D Model and Adjustments</h2>
+
+        <div class="model-section">
+            <h2>Interactive 3D Model of the Mega Mansion</h2>
+            <div id="model-container"></div>
+        </div>
+
+        <div class="input-container">
+            <div>
+                <label for="width">Width (m):</label>
+                <input type="number" id="width" value="30" />
+            </div>
+            <div>
+                <label for="height">Height (m):</label>
+                <input type="number" id="height" value="10" />
+            </div>
+            <div>
+                <label for="depth">Depth (m):</label>
+                <input type="number" id="depth" value="40" />
+            </div>
+            <button id="updateModel">Update Model</button>
+        </div>
+    </section>
+</div>
+
+<!-- Include Three.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// Basic Three.js setup
+let scene, camera, renderer, building;
+
+function init() {
+    // Set up scene, camera, and renderer
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('model-container').appendChild(renderer.domElement);
+
+    // Create a basic building model (a simple box as an example)
+    const geometry = new THREE.BoxGeometry(30, 10, 40); // Initial dimensions (width, height, depth)
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    building = new THREE.Mesh(geometry, material);
+    scene.add(building);
+
+    // Set camera position
+    camera.position.z = 100;
+
+    // Animation loop
+    animate();
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+// Update building dimensions based on user input
+document.getElementById('updateModel').addEventListener('click', function () {
+    const width = parseFloat(document.getElementById('width').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const depth = parseFloat(document.getElementById('depth').value);
+
+    // Update geometry of the building with the new dimensions
+    building.geometry.dispose();
+    building.geometry = new THREE.BoxGeometry(width, height, depth);
+});
+
+// Initialize the 3D scene
+init();
+</script>
+
+</body>
+</html>

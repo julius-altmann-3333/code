@@ -1,27 +1,138 @@
-.content-container {
-      max-width: 1200px;
-      height: 200px;
-      margin: 0 auto;
-      background-color: #f8f9fa; /* Light grey background */
-      border: 1px solid #dee2e6; /* Light grey border */
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+.section_navigation {
+     width: 100%;
+     height: 150px;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #333;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-links li {
+    margin: 0 15px;
+}
+
+.navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.navbar-links a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 20px;
+        box-sizing: border-box;
     }
-    .content-container {
-      max-width: 1200px;
-      height: auto;
-      margin: 0 auto;
-      background-color: #f8f9fa; /* Light grey background */
-      border: 1px solid #dee2e6; /* Light grey border */
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+
+    .navbar-links.active {
+        display: flex;
     }
-    .section {
-      margin: 1rem 0;
+
+    .hamburger-menu {
+        display: flex;
     }
+
+    .navbar-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .navbar-links a {
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+}
+
+
+.section_content {
+    width: 100%;
+    height: auto;
+}
+
+.section_footer {
+    width: 100%;
+    height: 400px;
+}
+
+.footer_columns {
+    width: 33%;
+    text-align: center;
+    float: left;
+}
+
+.copyright {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    float: left;
+    padding: 5px;
+}
+
+.container {
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    list-style: none;
+    cursor: pointer;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar with Dropdowns</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Brand</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <!-- Home Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Home
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownHome">
+            <a class="dropdown-item" href="#">Sub-item 1</a>
+            <a class="dropdown-item" href="#">Sub-item 2</a>
+            <a class="dropdown-item" href="#">Sub-item 3</a>
+          </div>
+        </li>
+        <!-- Features Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFeatures" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Features
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownFeatures">
+            <a class="dropdown-item" href="#">Sub-item 1</a>
+            <a class="dropdown-item" href="#">Sub-item 2</a>
+            <a class="dropdown-item" href="#">Sub-item 3</a>
+          </div>
+        </li>
+        <!-- Pricing Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPricing" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Landing Pages
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownPricing">
+                    <a href="javascript:void(0);" onclick="loadContent('buy_and_hold_investors.html')">Buy & Hold Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('commercial_real_estate_investors.html')" class="dropdown-item">Commercial Real Estate Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('downsizers_empty_nesters.html')" class="dropdown-item">Downsizers & Empty Nesters</a>
+                    <a href="javascript:void(0);" onclick="loadContent('first_time_buyers.html')" class="dropdown-item">First Time Buyers</a>
+                    <a href="javascript:void(0);" onclick="loadContent('fix_and_flip_investors.html')" class="dropdown-item">Fix & Flip Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('luxury_buyers.html')" class="dropdown-item">Luxury Buyers</a>
+                    <a href="javascript:void(0);" onclick="loadContent('move_up_buyers.html')" class="dropdown-item">Move Up Buyers</a>
+                    <a href="javascript:void(0);" onclick="loadContent('multifamily_real_estate_investors.html')" class="dropdown-item">Multifamily Real Estate Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('multigenerational_buyers.html')" class="dropdown-item">Multigenerational Buyers</a>
+                    <a href="javascript:void(0);" onclick="loadContent('real_estate_development_investors.html')" class="dropdown-item">Real Estate Development Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('short_term_rental_investors_airbnb_vacation_rentals.html')" class="dropdown-item">Short Term Rental Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('student_housing_investors.html')" class="dropdown-item">Student Housing Investors</a>
+                    <a href="javascript:void(0);" onclick="loadContent('vacation_home_buyers.html')" class="dropdown-item">Vacation Home Buyers</a>
+                    <a href="javascript:void(0);" onclick="loadContent('vacation_property_investors_resorts_and_second_homes.html')" class="dropdown-item">Vacation Property Investors / Resorts & Second Homes</a>
+          </div>
+        </li>
+        <!-- Contact Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownContact" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Articles
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownContact">
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 1</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 2</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 3</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 4</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 5</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 6</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 7</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 8</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 9</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 10</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 11</a>
+            <a href="C:\Users\Julius\Desktop\Platform\index.html" class="dropdown-item">Article 12</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Footer Section 1 -->
+        <div class="col-12 col-md-4 mb-3">
+          <h5>About Us</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec urna euismod, cursus lacus eu, viverra leo.</p>
+        </div>
+        <!-- Footer Section 2 -->
+        <div class="col-12 col-md-4 mb-3">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Home</a></li>
+            <li><a href="#" class="text-white">Features</a></li>
+            <li><a href="#" class="text-white">Pricing</a></li>
+            <li><a href="#" class="text-white">Contact</a></li>
+          </ul>
+        </div>
+        <!-- Footer Section 3 -->
+        <div class="col-12 col-md-4 mb-3">
+          <h5>Contact Us</h5>
+          <p>1234 Street Name, City, Country</p>
+          <p>Email: contact@example.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Footer Copyright -->
+        <div class="col-12 text-center">
+          <p>&copy; 2025 Your Company. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

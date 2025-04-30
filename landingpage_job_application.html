@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Team</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Join Our Team</h1>
+        <p>Explore exciting career opportunities and take the next step in your professional journey.</p>
+    </header>
+    
+    <section class="job-listings">
+        <h2>Current Openings</h2>
+        <div class="job">
+            <h3>Software Engineer</h3>
+            <p>Location: Remote | Full-time</p>
+            <p>We are looking for a talented software engineer to build innovative solutions.</p>
+            <a href="#apply" class="apply-btn">Apply Now</a>
+        </div>
+        <div class="job">
+            <h3>Marketing Manager</h3>
+            <p>Location: New York, NY | Full-time</p>
+            <p>Join our marketing team and help us reach new heights.</p>
+            <a href="#apply" class="apply-btn">Apply Now</a>
+        </div>
+    </section>
+    
+    <section id="apply" class="application-form">
+        <h2>Apply Now</h2>
+        <form action="submit_application.php" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="resume">Upload Resume</label>
+            <input type="file" id="resume" name="resume" required>
+
+            <label for="message">Why do you want to join us?</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        .output {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .car-box {
+            border: 2px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            text-align: center;
+            width: 200px;
+            margin: 10px;
+        }
+
+        .car-box img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Cars</h1>
+
+    <!-- Filter section -->
+    <div>
+        <select id="manufacturerSelect">
+            <option value="">Select Manufacturer</option>
+            <option value="audi">Audi</option>
+            <option value="bmw">BMW</option>
+            <option value="mercedes">Mercedes</option>
+        </select>
+
+        <select id="kilometerstandSelect">
+            <option value="">Select Kilometerstand</option>
+            <option value="70000-80000">70,000 - 80,000 km</option>
+            <option value="80000-90000">80,000 - 90,000 km</option>
+            <option value="90000-100000">90,000 - 100,000 km</option>
+        </select>
+
+        <select id="leistungSelect">
+            <option value="">Select Leistung</option>
+            <option value="400kW">400 kW / 600 PS</option>
+            <option value="350kW">350 kW / 500 PS</option>
+            <option value="300kW">300 kW / 400 PS</option>
+        </select>
+
+        <select id="transmissionSelect">
+            <option value="">Select Transmission</option>
+            <option value="automatic">Automatic</option>
+            <option value="manual">Manual</option>
+        </select>
+
+        <select id="fuelTypeSelect">
+            <option value="">Select Fuel Type</option>
+            <option value="petrol">Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="electric">Electric</option>
+        </select>
+
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- Output Section -->
+    <div id="output" class="output"></div>
+
+    <script>
+       document.getElementById('searchBtn').addEventListener('click', searchCars);
+
+const carsData = [
+    { manufacturer: 'audi', kilometerstand: '75000', leistung: '400kW', transmission: 'automatic', fuelType: 'petrol', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'audi', model: 'A1', leistung: '81kW/110PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'audi', model: 'A3', leistung: '110kW/150PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'audi', model: 'A4', leistung: '150kW/204PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'Audi', model: 'A6', leistung: '210kW/286PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'Audi', model: 'A8', leistung: '250kW/340PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'Audi', model: 'Q7', leistung: '294kW/400PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'Audi', model: 'RS7', leistung: '370kW/503PS', image: 'https://via.placeholder.com/200x150?text=Audi' },
+  { manufacturer: 'BMW', model: '1 Series', leistung: '100kW/136PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'BMW', model: '3 Series', leistung: '135kW/184PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'BMW', model: '5 Series', leistung: '190kW/258PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'BMW', model: '7 Series', leistung: '250kW/340PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'BMW', model: 'X5', leistung: '250kW/340PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'BMW', model: 'X3', leistung: '190kW/258PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'BMW', model: 'i3', leistung: '125kW/170PS', image: 'https://via.placeholder.com/200x150?text=BMW' },
+  { manufacturer: 'Mercedes-Benz', model: 'A-Class', leistung: '100kW/136PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' },
+  { manufacturer: 'Mercedes-Benz', model: 'C-Class', leistung: '150kW/204PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' },
+  { manufacturer: 'Mercedes-Benz', model: 'E-Class', leistung: '210kW/286PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' },
+  { manufacturer: 'Mercedes-Benz', model: 'S-Class', leistung: '300kW/408PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' },
+  { manufacturer: 'Mercedes-Benz', model: 'GLC', leistung: '250kW/340PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' },
+  { manufacturer: 'Mercedes-Benz', model: 'GLE', leistung: '294kW/400PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' },
+  { manufacturer: 'Mercedes-Benz', model: 'G-Class', leistung: '420kW/577PS', image: 'https://via.placeholder.com/200x150?text=Mercedes' }
+];
+
+function searchCars() {
+    const manufacturer = document.getElementById('manufacturerSelect').value;
+    const kilometerstand = document.getElementById('kilometerstandSelect').value;
+    const leistung = document.getElementById('leistungSelect').value;
+    const transmission = document.getElementById('transmissionSelect').value;
+    const fuelType = document.getElementById('fuelTypeSelect').value;
+
+    const filteredCars = carsData.filter(car => {
+        const matchesManufacturer = manufacturer ? car.manufacturer === manufacturer : true;
+        const matchesKilometerstand = kilometerstand ? isKilometerstandInRange(car.kilometerstand, kilometerstand) : true;
+        const matchesLeistung = leistung ? car.leistung === leistung : true;
+        const matchesTransmission = transmission ? car.transmission === transmission : true;
+        const matchesFuelType = fuelType ? car.fuelType === fuelType : true;
+
+        return matchesManufacturer && matchesKilometerstand && matchesLeistung && matchesTransmission && matchesFuelType;
+    });
+
+    displayCars(filteredCars);
+}
+
+function isKilometerstandInRange(carKm, range) {
+    const [min, max] = range.split('-').map(val => parseInt(val));
+    const carKmValue = parseInt(carKm);
+    return carKmValue >= min && carKmValue <= max;
+}
+
+function displayCars(cars) {
+    const output = document.getElementById('output');
+    output.innerHTML = '';  // Clear previous results
+
+    if (cars.length === 0) {
+        output.innerHTML = '<p>No cars match your criteria.</p>';
+    }
+
+    cars.forEach(car => {
+        const carDiv = document.createElement('div');
+        carDiv.classList.add('car-box');
+        carDiv.style.border = "2px solid #ccc";
+        carDiv.style.padding = "15px";
+        carDiv.style.borderRadius = "8px";
+        carDiv.style.backgroundColor = "#f8f8f8";
+        carDiv.style.textAlign = "center";
+        carDiv.style.width = "250px";
+        carDiv.style.margin = "10px";
+        carDiv.style.transition = "transform 0.3s ease-in-out"; // Add transition for hover effect
+
+        carDiv.addEventListener('mouseenter', () => {
+            carDiv.style.transform = "scale(1.05)"; // Scale up on hover
+        });
+
+        carDiv.addEventListener('mouseleave', () => {
+            carDiv.style.transform = "scale(1)"; // Scale back to normal
+        });
+
+        carDiv.innerHTML = `
+            <img src="${car.image}" alt="${car.manufacturer} car" style="width: 100%; height: auto; border-radius: 5px;">
+            <p style="font-weight: bold; color: #333;">Manufacturer: <span style="color: #007BFF;">${car.manufacturer}</span></p>
+            <p style="color: #555;">Kilometerstand: ${car.kilometerstand} km</p>
+            <p style="color: #555;">Leistung: ${car.leistung}</p>
+            <p style="color: #555;">Transmission: ${car.transmission}</p>
+            <p style="color: #555;">Fuel Type: ${car.fuelType}</p>
+        `;
+
+        output.appendChild(carDiv);
+    });
+}
+
+    </script>
+</body>
+</html>

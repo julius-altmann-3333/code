@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid Estate</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Pyramid Estate</h1>
+    </header>
+    
+    <section class="introduction">
+        <h2>Welcome to Pyramid Estate</h2>
+        <p>Discover the beauty and elegance of our exclusive properties.</p>
+    </section>
+    
+    <div id="pyramid-container"></div>
+    
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        
+        // Pyramid Geometry
+        const pyramidGeometry = new THREE.ConeGeometry(10, 15, 4);
+        const pyramidMaterial = new THREE.MeshStandardMaterial({ color: 0xffa500, wireframe: false });
+        const pyramid = new THREE.Mesh(pyramidGeometry, pyramidMaterial);
+        scene.add(pyramid);
+        
+        // Light
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 20, 10);
+        scene.add(light);
+        
+        // Camera position
+        camera.position.set(20, 20, 20);
+        camera.lookAt(0, 0, 0);
+        
+        // Controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.rotateSpeed = 0.5;
+        controls.enableZoom = true;
+        controls.enablePan = false;
+        controls.autoRotate = false;
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>

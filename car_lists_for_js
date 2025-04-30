@@ -138,15 +138,14 @@
         manufacturer: 'audi', model: 'Audi 100', kilometerstand: '180000', leistung: '88kW', image: 'https://via.placeholder.com/200x150?text=Audi+100',
         erstzulassung: '05/1992', motor: 'I5', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '2', kraftstoffart: 'gasoline',
         verbrauch: 'urban-8.5', energieeffizienzklasse: 'C', getriebe: 'automatic', klimatisierung: 'air-conditioning', farbe: 'silver', innenausstattung: 'fabric'
-    },
+    }
+]
 
 
 
 
 
-
-
-    
+[
     { 
         manufacturer: 'bmw', model: 'M2', kilometerstand: '25000', leistung: '410kW', image: 'https://via.placeholder.com/200x150?text=BMW+M2',
         erstzulassung: '02/2021', motor: 'I6', matchingNumbers: 'yes', typ: 'coupe', fahrzeughalter: '1', kraftstoffart: 'gasoline',
@@ -241,95 +240,5 @@
         manufacturer: 'bmw', model: 'ALPINA B7', kilometerstand: '42000', leistung: '523kW', image: 'https://via.placeholder.com/200x150?text=ALPINA+B7',
         erstzulassung: '06/2020', motor: 'V8', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
         verbrauch: 'urban-14.0', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'sunroof', farbe: 'grey', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: '1 Series (F40)', kilometerstand: '25000', leistung: '100kW', image: 'https://via.placeholder.com/200x150?text=BMW+1+Series',
-        erstzulassung: '01/2023', motor: 'I3', matchingNumbers: 'yes', typ: 'hatchback', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-6.2', energieeffizienzklasse: 'B', getriebe: 'manual', klimatisierung: 'manual', farbe: 'blue', innenausstattung: 'fabric'
-    },
-    {
-        manufacturer: 'bmw', model: '2 Series Gran Coupe (F44)', kilometerstand: '30000', leistung: '135kW', image: 'https://via.placeholder.com/200x150?text=BMW+2+Series+Gran+Coupe',
-        erstzulassung: '05/2022', motor: 'I4', matchingNumbers: 'yes', typ: 'gran-coupe', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-7.5', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'dual-zone-climate-control', farbe: 'black', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: 'M2 (G87)', kilometerstand: '15000', leistung: '275kW', image: 'https://via.placeholder.com/200x150?text=BMW+M2',
-        erstzulassung: '08/2023', motor: 'I6', matchingNumbers: 'yes', typ: 'sports-car', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-10.0', energieeffizienzklasse: 'C', getriebe: 'manual', klimatisierung: 'air-conditioning', farbe: 'red', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: '3 Series (G20)', kilometerstand: '35000', leistung: '250kW', image: 'https://via.placeholder.com/200x150?text=BMW+3+Series',
-        erstzulassung: '01/2022', motor: 'I4', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '2', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-8.0', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'dual-zone-climate-control', farbe: 'grey', innenausstattung: 'fabric'
-    },
-    {
-        manufacturer: 'bmw', model: 'M3 (G80)', kilometerstand: '12000', leistung: '375kW', image: 'https://via.placeholder.com/200x150?text=BMW+M3',
-        erstzulassung: '03/2023', motor: 'I6', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-12.0', energieeffizienzklasse: 'C', getriebe: 'manual', klimatisierung: 'automatic-climate-control', farbe: 'blue', innenausstattung: 'suede'
-    },
-    {
-        manufacturer: 'bmw', model: '4 Series (G22)', kilometerstand: '25000', leistung: '230kW', image: 'https://via.placeholder.com/200x150?text=BMW+4+Series',
-        erstzulassung: '07/2022', motor: 'I4', matchingNumbers: 'yes', typ: 'coupe', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-9.5', energieeffizienzklasse: 'B', getriebe: 'automatic', klimatisierung: 'sunroof', farbe: 'white', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: 'M4 (G82)', kilometerstand: '8000', leistung: '375kW', image: 'https://via.placeholder.com/200x150?text=BMW+M4',
-        erstzulassung: '01/2023', motor: 'I6', matchingNumbers: 'yes', typ: 'coupe', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-13.5', energieeffizienzklasse: 'C', getriebe: 'automatic', klimatisierung: 'air-conditioning', farbe: 'yellow', innenausstattung: 'alcantara'
-    },
-    {
-        manufacturer: 'bmw', model: '5 Series (G60)', kilometerstand: '22000', leistung: '300kW', image: 'https://via.placeholder.com/200x150?text=BMW+5+Series',
-        erstzulassung: '09/2023', motor: 'I6', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-8.5', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'dual-zone-climate-control', farbe: 'grey', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: 'M5 (F90)', kilometerstand: '45000', leistung: '441kW', image: 'https://via.placeholder.com/200x150?text=BMW+M5',
-        erstzulassung: '02/2020', motor: 'V8', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-14.5', energieeffizienzklasse: 'C', getriebe: 'automatic', klimatisierung: 'sunroof', farbe: 'blue', innenausstattung: 'suede'
-    },
-    {
-        manufacturer: 'bmw', model: '7 Series (G70)', kilometerstand: '10000', leistung: '400kW', image: 'https://via.placeholder.com/200x150?text=BMW+7+Series',
-        erstzulassung: '04/2023', motor: 'V8', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-14.0', energieeffizienzklasse: 'B', getriebe: 'automatic', klimatisierung: 'automatic-climate-control', farbe: 'silver', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: 'X1 (U11)', kilometerstand: '12000', leistung: '150kW', image: 'https://via.placeholder.com/200x150?text=BMW+X1',
-        erstzulassung: '03/2023', motor: 'I3', matchingNumbers: 'yes', typ: 'suv', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-6.8', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'dual-zone-climate-control', farbe: 'green', innenausstattung: 'fabric'
-    },
-    {
-        manufacturer: 'bmw', model: 'X3 (G01)', kilometerstand: '18000', leistung: '250kW', image: 'https://via.placeholder.com/200x150?text=BMW+X3',
-        erstzulassung: '06/2023', motor: 'I6', matchingNumbers: 'yes', typ: 'suv', fahrzeughalter: '2', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-10.0', energieeffizienzklasse: 'B', getriebe: 'automatic', klimatisierung: 'sunroof', farbe: 'white', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: 'X5 (G05)', kilometerstand: '35000', leistung: '300kW', image: 'https://via.placeholder.com/200x150?text=BMW+X5',
-        erstzulassung: '02/2022', motor: 'V6', matchingNumbers: 'yes', typ: 'suv', fahrzeughalter: '1', kraftstoffart: 'diesel',
-        verbrauch: 'urban-8.5', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'automatic-climate-control', farbe: 'black', innenausstattung: 'fabric'
-    },
-    {
-        manufacturer: 'bmw', model: 'Z4 (G29)', kilometerstand: '10000', leistung: '250kW', image: 'https://via.placeholder.com/200x150?text=BMW+Z4',
-        erstzulassung: '11/2022', motor: 'I6', matchingNumbers: 'yes', typ: 'roadster', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-9.5', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'air-conditioning', farbe: 'yellow', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: 'i4', kilometerstand: '5000', leistung: '300kW', image: 'https://via.placeholder.com/200x150?text=BMW+i4',
-        erstzulassung: '05/2023', motor: 'electric', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'electric',
-        verbrauch: 'urban-15.0', energieeffizienzklasse: 'A+', getriebe: 'automatic', klimatisierung: 'dual-zone-climate-control', farbe: 'red', innenausstattung: 'suede'
-    },
-    {
-        manufacturer: 'bmw', model: 'iX3', kilometerstand: '7000', leistung: '285kW', image: 'https://via.placeholder.com/200x150?text=BMW+iX3',
-        erstzulassung: '02/2023', motor: 'electric', matchingNumbers: 'yes', typ: 'suv', fahrzeughalter: '1', kraftstoffart: 'electric',
-        verbrauch: 'urban-20.0', energieeffizienzklasse: 'A', getriebe: 'automatic', klimatisierung: 'sunroof', farbe: 'blue', innenausstattung: 'fabric'
-    },
-    {
-        manufacturer: 'bmw', model: 'iX (G09)', kilometerstand: '8000', leistung: '400kW', image: 'https://via.placeholder.com/200x150?text=BMW+iX',
-        erstzulassung: '01/2023', motor: 'electric', matchingNumbers: 'yes', typ: 'suv', fahrzeughalter: '1', kraftstoffart: 'electric',
-        verbrauch: 'urban-25.0', energieeffizienzklasse: 'A+', getriebe: 'automatic', klimatisierung: 'dual-zone-climate-control', farbe: 'silver', innenausstattung: 'leather'
-    },
-    {
-        manufacturer: 'bmw', model: '7 Series (G70)', kilometerstand: '10000', leistung: '400kW', image: 'https://via.placeholder.com/200x150?text=BMW+7+Series',
-        erstzulassung: '04/2023', motor: 'V8', matchingNumbers: 'yes', typ: 'sedan', fahrzeughalter: '1', kraftstoffart: 'gasoline',
-        verbrauch: 'urban-14.0', energieeffizienzklasse: 'B', getriebe: 'automatic', klimatisierung: 'automatic-climate-control', farbe: 'silver', innenausstattung: 'leather'
     }
 ]

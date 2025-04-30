@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+a:hover {
+    color: #007bff; 
+}
+
+#container_content {
+	height: auto;
+	width: 100%;
+	max-width: 100%;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+#container_content iframe {
+    width: 100% !important;
+    min-height: 600px;
+    border: none;
+}
+
+#landingpages {
+	margin-left: -250px;
+}
+
+@media screen and only (max-width: 768px;) {
+	#landingpages {
+		margin-left: 0;
+	}
+}
